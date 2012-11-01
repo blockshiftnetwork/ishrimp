@@ -13211,7 +13211,10 @@ img.logo-header {
         }
 
 .card-table {
-    width: max-content;
+    max-width: max-content;
+}
+.card-table-body {
+overflow: auto;
 }
 
 .btn-login {
@@ -13233,13 +13236,13 @@ img.logo-header {
     top: 28px;
 }
 #map {
-  height: 100%;
-  width: 120%;
-  top: 0px;
+  height: 89%;
+  width: 105%;
+  top: 6px;
   left: 0px;
   position: absolute;
-  z-index: 200;
-  /* overflow: hidden; */
+  z-index: 0;
+ 
 }
 
 

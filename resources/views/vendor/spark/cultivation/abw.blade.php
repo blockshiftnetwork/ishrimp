@@ -1,27 +1,29 @@
-<div class="card card-default">
+<div class="card card-table card-default">
     <div class="card-header">
         <h5>Insumos y Minerales</h5>
     </div>
-    <div class="card-body p-0">
-<table class="table scroll" id="tbl_abw" style="margin-top:10px;margin-bottom:0px;">
+    <div class="card-body">
+<table
+id="tbl_abw"
+style="width:99.9%;"
+data-toggle="table"
+data-classes="table table-striped table-hover table-borderless"
+data-pagination="true"
+data-search="true"
+data-unique-id="true">
     <thead>
         <tr>
-            <th class="col-xs-1" style="width: 36px;"><input type="checkbox" id="selecctall"></th>
-            <th class="col-xs-2" style="line-height: 15px; vertical-align: middle; width: 62px;">Nombre piscina</th>
-            <th class="col-xs-1 text-left" style="padding-left: 2%; width: 73.1771px;">Última ABW</th>
-            <th class="col-xs-2" style="padding-left: 2%; width: 58.2292px;">Última Fecha ABW</th>
-            <th class="col-xs-1 text-left" style="width: 63px;">Muestras</th>
-            <th class="col-xs-2" style="padding-left: 2%; width: 122.229px;">ABW (g)</th>
-            <th class="col-xs-1" style="padding-left: 2%; width: 122.229px;">WG (g)</th>
-            <th class="col-xs-2" style="padding-left: 0%; width: 122px;">Supervivencia (%)</th>
+            <th class="col-xs-2" data-checkbox="true" data-field="name_pool">Nombre piscina</th>
+            <th class="col-xs-1 text-left" data-field="last_abw">Última ABW</th>
+            <th class="col-xs-2" data-field="last_date">Última Fecha ABW</th>
+            <th class="col-xs-1 text-left" >Muestras</th>
+            <th class="col-xs-2" data-field="abw">ABW (g)</th>
+            <th class="col-xs-1" data-field="wg">WG (g)</th>
+            <th class="col-xs-2" data-field="survival">Supervivencia (%)</th>
         </tr>
     </thead>
     <tbody style="height: 228px !important;">
-        <tr id="p_1266">
-            <td class="col-xs-1">
-                <input type="checkbox" style="cursor:pointer;margin-top: 8px;" id="chk1266" class="group_abw"
-                    checked="">
-            </td>
+        <tr>
             <td class="col-xs-2">
                 <span class="clsPondName">Piscina 10</span>
             </td>
@@ -36,7 +38,7 @@
                 <span id="lastabwDate">28-Jan 19 11:06 AM</span>
             </td>
             <td class="col-xs-1 text-center">
-                <span class="btn btn-light btn-duplicate" style="border-radius: 50px; border: 1px solid #ccc;"><b>+</b></span>
+                <button class="btn btn-light btn-duplicate btn-abw" role="button"  style="border-radius: 50px; border: 1px solid #ccc;"><b>+</b></button>
             </td>
             <td class="col-xs-1" style="width:100px;">
                 <input type="hidden" name="harvestDate" id="harvestDate" value="0000-00-00 00:00:00">
@@ -58,13 +60,11 @@
             </td>
         </tr>
           </tbody>
+          
 </table>
 </div>
-</div>
-@section('custom-scripts')
-    <script>
-    $(function() {
 
-    })
-    </script>
-@endsection
+</div>
+<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+  Tooltip on top
+</button>

@@ -1,7 +1,7 @@
 @extends('spark::layouts.app')
 
 @section('content')
-<cultivation>
+<div>
     <div class="spark-screen container" style="min-height: fit-content; height: 100%; width: 100%;">
         <div style="height: 100%;">
             <!-- Tabs -->
@@ -28,6 +28,7 @@
                     </a>
                 </li>
             </ul>
+            
             @endsection
 
             <div style="height: 100%; width: 100%;">
@@ -45,5 +46,115 @@
             </div>
         </div>
     </div>
-</cultivation>
+</div>
+@endsection
+
+@section('cultivation-scripts')
+<script>
+$(document).ready(function() {
+    var j = 0;
+    $('#dateField').flatpickr({
+        altInput: true,
+        altFormat: 'F j, Y',
+        dateFormat: 'Y-m-d'
+    });
+
+    $('#medicine-table').on('click', '.btn-duplicate', function() {
+        let current_row = $(this).parent().parent(),
+            new_row = current_row.clone(),
+            table_body = current_row.parent();
+
+        $(this).off('click');
+        $(this).removeClass('btn-duplicate');
+        $(this).addClass('btn-delete');
+        $(this).html('<b>-</b>');
+
+        table_body.append(new_row.attr('id',++j));
+    });
+
+    $('#medicine-table').on('click', '.btn-delete', function() {
+        $(this).parent().parent().remove();
+    })
+
+    $('.btn-abw').popover({title: "Muestras", html: true, placement: "bottom"});
+    $('#tbl_abw').on('click', '.btn-abw', function() {
+         var tr = $(this).parent().parent();
+            console.log($(tr).find('input'));
+        $('.btn-abw').popover('toggle');
+        
+        $('.popover-body').append('<div class="row cal-content"></div>');
+        $('.cal-content').append('<div class="col-md-6 mx-auto"><input class="form-control" type="text"></div>');
+        $('.cal-content').append('<div class="col-md-6 mx-auto"><input class="form-control" type="text"></div>');
+        $('.popover-body').append('<div class="row mt-2"><button id="cal-pop" onclick="calabw()" class="btn btn-success mx-auto">calcular</button><button id="close-pop" class="btn btn-danger mx-auto">cancelar</button></div>');
+    
+    })
+    
+});
+function select(event){
+    var id = event.target.value;
+    var presentation = $(event.target).parent().next().children();
+    $(presentation[0]).empty();
+    $(presentation[0]).append('<option value="" selected>Seleccione</option>');
+    $.ajax({
+        url: "presentation/"+id,
+        type: 'GET',
+        dataType: 'json',
+        success: function(response){
+         var resp = response.data;
+          for(var i = 0; i<resp.length; i++){
+            $(presentation[0]).append('<option value="'+ resp[i].id +'">'+resp[i].name+'</option>');
+          }
+        }
+    });
+
+   
+};
+
+function saveData(){
+
+   $(this).addClass('disabled');
+
+    var table = $('#medicine-table');
+    var exitsData = false;
+    var timeout = null;
+
+    table.find('tr').each(function(){
+        //Find inputs
+        $(this).find('.form-control').each(function(){
+            textVal = this.value;
+            inputName = $(this).attr("name");
+            $('#'+inputName+'_s').val(textVal);
+           exitsData= true;
+
+        });
+        //if exits inputs inside tr
+        if(exitsData){
+            var form = $('#data').serialize();
+            $.post("{{route('cultivation.store')}}",form,function(resp){
+              console.log(resp);
+             }).done(function(){
+               clearTimeout(timeout);
+               timeout = setTimeout(function(){
+                $('#alert').addClass('show');
+                $('#alert').on('closed.bs.alert',function(){
+                    location.reload();
+                });
+               }, 2000)
+             }).fail(function(resp){
+                console.log('error',resp);
+             });
+             
+        }
+    })
+   
+}
+    function calabw(){
+      
+        console.log('cal');
+        console.log($('#tbl_abw').bootstrapTable('getSelections'))
+  
+    }
+   
+</script>
+
 @endsection

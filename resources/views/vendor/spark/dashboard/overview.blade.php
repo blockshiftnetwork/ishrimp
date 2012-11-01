@@ -5,42 +5,36 @@
     </div>
 
     <div class="card-body">
-            <div class="table-toolbar">
-                <div class="pull-right search mb-2">
-                    <input class="form-control" type="text" placeholder="Buscar"></div>
-            </div>
             <div class="table-container">
-                <table id="ponds-snap-tbl" class="table table-striped table-hover bg-white" style="width:99.9%;">
+                <table id="ponds-snap-tbl"
+                style="width:99.9%;"
+                data-toggle="table"
+                data-classes="table table-striped table-hover table-borderless"
+                data-pagination="true"
+                data-search="true">
                     <thead class="thead-primary">
                         <tr>
-                            <th>
-                                <div class="th-inner sortable">Nombre Piscina</div>
-
-                            </th>
-                            <th>
-                                <div class="th-inner sortable">DOC (Días)</div>
-
-                            </th>
-                            <th>
-                                <div class="th-inner sortable">ABW</div>
-
-                            </th>
-                            <th>
-                                <div class="th-inner sortable">AWG</div>
-
-                            </th>
-                            <th>
-                                <div class="th-inner sortable">Balanceado<br>acumulado (Kg)</div>
-
-                            </th>
-                            <th>
-                                <div class="th-inner sortable">DO<br>(mg / L)</div>
-
-                            </th>
-                            <th>
-                                <div class="th-inner sortable">Ratio <br> Conversion<br></div>
-
-                            </th>
+                            <th
+                            data-sortable="true"
+                            data-fild="name">Nombre Piscina</th>
+                            <th
+                            data-sortable="true"
+                            data-field="doc">DOC (Días)</th>
+                            <th
+                            data-sortable="true"
+                            data-field="abw">ABW</th>
+                            <th
+                            data-sortable="true"
+                            data-field="awg">AWG</th>
+                            <th
+                            data-sortable="true"
+                            data-field="balaced">Balanceado<br>acumulado (Kg)</th>
+                            <th
+                            data-sortable="true"
+                            data-field="do">DO<br>(mg / L)</th>
+                            <th
+                            data-sortable="true"
+                            data-field="ratio">Ratio <br> Conversion<br></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,9 +61,6 @@
 
                     </tbody>
                 </table>
-
-                <div class="fixed-table-pagination" style="display: none;">
-                </div>
             </div>
     </div>
 </div>
