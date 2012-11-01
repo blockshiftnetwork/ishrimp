@@ -16,11 +16,11 @@
 									<label class="mr-2">Hora</label>
 									<input class="form-control col-2 mr-4 " type="text" id="timeDp" name="time">
 									<label class="mr-2">Laboratorios</label>
-									<select name="lab" class="custom-select">
+									<select id="lab" name="lab" class="custom-select">
 										<option value="" selected>Seleccione</option>
-										<option value="1">Laboratorio 1</option>
-										<option value="2">Laboratorio 2</option>
-										<option value="3">Laboratorio 3</option>
+										@foreach($laboratories as $lab)
+										<option value="{{$lab->id}}" >{{$lab->name}}</option>
+										@endforeach
 									</select>
 									<input type="button" onclick="saveDaylyParameters()" value="Guardar" class="btn btn-light ml-auto dayly-parameters-submit">
 								</div>
@@ -32,6 +32,7 @@
 				style="font-size: 10px">
 					<tbody>
 						<tr>
+							<td rowspan="3"><i class="fa fa-square-o"></i></td>
 							<td rowspan="3">Nombre Piscina</td>
 							<td colspan="10">Niveles Óptimos de Agua</td>
 							<td colspan="2">Microbiologia</td>
@@ -56,6 +57,7 @@
 						</tr>
 						@foreach($pools as $pool)
 						<tr class="input-row">
+							<td><input type="checkbox" id="check" name="checke"></td>
 							<td><span>{{$pool->name}}</span> <input type="hidden" name="id" value="{{$pool->id}}"> </td>
 							<td><input type="text" name="ph" id="ph" class="form-control" value="0"></td>
 							<td><input type="text" name="ppt" id="ppt" class="form-control" value="0"></td>
@@ -63,7 +65,7 @@
 							<td><input type="text" name="temperature" id="" class="form-control" value="0"></td>
 							<td><input type="text" name="co3" id="co3" class="form-control" value="0"></td>
 							<td><input type="text" name="hc03" id="hco3" class="form-control" value="0"></td>
-							<td><input type="text" name="total" id="total" class="form-control" value="0"></td>
+							<td><input type="text" name="total" id="total" class="form-control" value="0" readonly></td>
 							<td><input type="text" name="ppm_d" id="ppm_d" class="form-control" value="0"></td>
 							<td><input type="text" name="ppm_a" id="ppm_a" class="form-control" value="0"></td>
 							<td><input type="text" name="ppm_h" id="ppm_h" class="form-control" value="0"></td>
@@ -88,6 +90,8 @@
 		<input type="hidden" id="ppm_h_s" name="ppm_h" required>
 		<input type="hidden" id="green_colonies_s" name="green_colonies" required>
 		<input type="hidden" id="yellow_colonies_s" name="yellow_colonies" required>
+		<input type="hidden" id="dateDp_s" name="dateDp_s" required>
+		<input type="hidden" id="lab_s" name="lab_s" required>
 		</form>
 	</div>
 </div>

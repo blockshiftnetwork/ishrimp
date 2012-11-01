@@ -7,6 +7,7 @@ use App\Cultivation;
 use App\Pool;
 use App\Resource;
 use App\PresentationResource;
+use App\Laboratory;
 
 class CultivationController extends Controller
 {
@@ -20,7 +21,8 @@ class CultivationController extends Controller
         $team_id = auth()->user()->currentTeam->id;
         $pools = Pool::select('id', 'name')->where('team_id', $team_id)->get();
         $resources = Resource::select('id', 'name')->where('team_id', $team_id)->get();
-        return view('vendor.spark.cultivation')->with(['pools' => $pools, 'resources' => $resources]);  
+        $laboratories = Laboratory::select('id', 'name')->get();
+        return view('vendor.spark.cultivation')->with(['pools' => $pools, 'resources' => $resources,'laboratories' => $laboratories]);  
     }
 
     public function getPresentationResource($resource_id)

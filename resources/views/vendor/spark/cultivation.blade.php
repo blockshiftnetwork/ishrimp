@@ -89,11 +89,12 @@ $(document).ready(function() {
     $('.btn-abw').popover({title: "Muestras", html: true, placement: "left"});
 
     $('input').on('change',function(){
+        console.log('change');
         if($(this).prop('name') === 'hc03' || $(this).prop('name') === 'co3'){
             var alcals = $(this).parent().parent().find('input');
-            var co3 = parseInt($(alcals[5]).val(), 10);
-            var hco3 = parseInt($(alcals[6]).val(), 10);
-            var total = $(alcals[7]);
+            var co3 = parseInt($(alcals[6]).val(), 10);
+            var hco3 = parseInt($(alcals[7]).val(), 10);
+            var total = $(alcals[8]);
             co3 = co3 > 0 ? co3 : 0;
             hco3 = hco3 > 0 ? hco3 : 0;
             total.val(co3 + hco3);
@@ -212,37 +213,39 @@ function saveDaylyParameters(){
     
     table.find('tr').each(function(){
         var inputs = $(this).find('input');
-        for (let i = 0; i < inputs.length; i++) {
-           if($(inputs[i]).val() != 0){
-               console.log($(inputs[i]).val());
+
+        if(inputs.length > 0){
+
+         for (let i = 0; i < inputs.length; i++) {
+           if($(inputs[0]).prop('checked')) {
+
+             var textVal = $(inputs[i]).val();
+             inputName =  $(inputs[i]).attr("name");
+             $('#'+inputName+'_s').val(textVal);
+
            }else{
-               valid= false;
-               console.log(valid);
-               
+                valid= false;
            }
-            
-            
+               
         }
-        // $(this).find('input').each(function(){
-        //     console.log($(this).val());
-        //     var textVal = $(this).val();
-        //     inputName = $(this).attr("name");
-        //     $('#'+inputName+'_s').val(textVal);
-        //     return ($(this).val() != 0)
-        // });
-        // if(valid){
-        //     var form = $('#formDayly').serialize();
-        //     console.log(valid);
-            // $.post("{{route('storeDaylyParam')}}",form,function(resp){
-            //    console.log(resp);
-            //   }).done(function(){
-            //     console.log("success");
-            //   }).fail(function(resp){
-            //      console.log('error',resp);
-            //   });
-        }
+        
+         if(valid){
+            $('#dateDp_s').val($('#dateDp').val());
+            $('#lab_s').val($('#lab').val());
+             var form = $('#formDayly').serialize();
+             console.log(form);
+             $.post("{{route('storeDaylyParam')}}",form,function(resp){
+                      
+                 console.log(resp);               
+               }).done(function(){
+                                                                                                                                                               
+                  console.log("success");                                                                                                                                                                                                                 
+              }).fail(function(resp){                                                 
+                        });
+         }
+        }                                                                                                            
        
-});
+        });
 }
    
 </script>
