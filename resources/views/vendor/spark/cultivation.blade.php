@@ -206,19 +206,42 @@ function saveDataResourceUsed(){
 function saveDaylyParameters(){
 
     var table = $('#paramaters-table');
-    var exitsData = false;
+    var time = $('#timeDp').val();
+    var valid = true;
     var timeout = null;
-    table.find('tr').each(function(){
-        $(this).find('input').each(function(){
-            if($(this).val() != ""){
-            var textVal = $(this).val();
-            inputName = $(this).attr("name");
-            $('#'+inputName+'_s').val(textVal);
-            }
-            var form = $('#formDayly').serialize();
-            console.log(form)
     
-        });
+    table.find('tr').each(function(){
+        var inputs = $(this).find('input');
+        for (let i = 0; i < inputs.length; i++) {
+           if($(inputs[i]).val() != 0){
+               console.log($(inputs[i]).val());
+           }else{
+               valid= false;
+               console.log(valid);
+               
+           }
+            
+            
+        }
+        // $(this).find('input').each(function(){
+        //     console.log($(this).val());
+        //     var textVal = $(this).val();
+        //     inputName = $(this).attr("name");
+        //     $('#'+inputName+'_s').val(textVal);
+        //     return ($(this).val() != 0)
+        // });
+        // if(valid){
+        //     var form = $('#formDayly').serialize();
+        //     console.log(valid);
+            // $.post("{{route('storeDaylyParam')}}",form,function(resp){
+            //    console.log(resp);
+            //   }).done(function(){
+            //     console.log("success");
+            //   }).fail(function(resp){
+            //      console.log('error',resp);
+            //   });
+        }
+       
 });
 }
    

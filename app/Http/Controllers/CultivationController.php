@@ -113,4 +113,24 @@ class CultivationController extends Controller
     public function destroy(Pool $pool)
     {
     }
+    ###Dayly Parameters##
+    public function storeDaylyParam(Request $request)
+    {
+        $request->validate([
+            'pool_id' => 'required',
+            'ph' => 'required',
+            'ppt' => 'required',
+            'ppm' => 'required',
+            'temperature' => 'required',
+            'co3' => 'required',
+            'hco3' => 'required',
+            'ppm_d' => 'required',
+            'ppm_a' => 'required',
+            'ppm_h' => 'required',
+            'green_colonies' => 'required',
+            'yellow_colonies' => 'required',
+        ]);
+
+     dd($resquest);
+        }
 }

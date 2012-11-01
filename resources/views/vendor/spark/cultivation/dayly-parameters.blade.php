@@ -57,18 +57,18 @@
 						@foreach($pools as $pool)
 						<tr class="input-row">
 							<td><span>{{$pool->name}}</span> <input type="hidden" name="id" value="{{$pool->id}}"> </td>
-							<td><input type="text" name="ph" id="ph" class="form-control"></td>
-							<td><input type="text" name="ppt" id="ppt" class="form-control"></td>
-							<td><input type="text" name="ppm" id="ppm" class="form-control"></td>
-							<td><input type="text" name="temperature" id="" class="form-control"></td>
-							<td><input type="text" name="co3" id="co3" class="form-control"></td>
-							<td><input type="text" name="hc03" id="hco3" class="form-control"></td>
-							<td><input type="text" name="total" id="total" class="form-control"></td>
-							<td><input type="text" name="ppm_d" id="ppm_d" class="form-control"></td>
-							<td><input type="text" name="ppm_a" id="ppm_a" class="form-control"></td>
-							<td><input type="text" name="ppm_h" id="ppm_h" class="form-control"></td>
-							<td><input type="text" name="green_colonies" id="green_colonies" class="form-control"></td>
-							<td><input type="text" name="yellow_colonies" id="yellow_colonies" class="form-control"></td>		
+							<td><input type="text" name="ph" id="ph" class="form-control" value="0"></td>
+							<td><input type="text" name="ppt" id="ppt" class="form-control" value="0"></td>
+							<td><input type="text" name="ppm" id="ppm" class="form-control" value="0"></td>
+							<td><input type="text" name="temperature" id="" class="form-control" value="0"></td>
+							<td><input type="text" name="co3" id="co3" class="form-control" value="0"></td>
+							<td><input type="text" name="hc03" id="hco3" class="form-control" value="0"></td>
+							<td><input type="text" name="total" id="total" class="form-control" value="0"></td>
+							<td><input type="text" name="ppm_d" id="ppm_d" class="form-control" value="0"></td>
+							<td><input type="text" name="ppm_a" id="ppm_a" class="form-control" value="0"></td>
+							<td><input type="text" name="ppm_h" id="ppm_h" class="form-control" value="0"></td>
+							<td><input type="text" name="green_colonies" id="green_colonies" class="form-control" value="0"></td>
+							<td><input type="text" name="yellow_colonies" id="yellow_colonies" class="form-control" value="0"></td>		
 						</tr>
 						@endforeach
 					</tbody>
