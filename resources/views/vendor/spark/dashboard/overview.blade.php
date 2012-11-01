@@ -8,7 +8,6 @@
             <div class="table-container">
                 <table id="ponds-snap-tbl"
                 class="bg-white"
-                style="width:99.9%;"
                 data-toggle="table"
                 data-classes="table table-striped table-hover table-borderless"
                 data-pagination="true"
