@@ -63,7 +63,7 @@
 
                         <!-- Logout -->
                         <a class="dropdown-item" href="/logout">
-                            <i class="fa fa-fw text-left fa-btn fa-sign-out"></i> {{__('Logout')}}
+                            <i class="fa fa-fw text-left fa-btn fa-sign-out"></i> {{__('app.logout')}}
                         </a>
                     </div>
                 </li>

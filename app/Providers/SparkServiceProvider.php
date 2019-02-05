@@ -33,7 +33,7 @@ class SparkServiceProvider extends ServiceProvider
      * @var array
      */
     protected $developers = [
-        //
+        'alexr1712@gmail.com'
     ];
 
     /**
@@ -50,17 +50,17 @@ class SparkServiceProvider extends ServiceProvider
      */
     public function booted()
     {
-        Spark::useStripe()->noCardUpFront()->trialDays(10);
+        // Spark::useStripe()->noCardUpFront()->trialDays(10);
 
-        Spark::freePlan()
-            ->features([
-                'First', 'Second', 'Third'
-            ]);
+        // Spark::freePlan()
+        //     ->features([
+        //         'First', 'Second', 'Third'
+        //     ]);
 
-        Spark::plan('Basic', 'provider-id-1')
-            ->price(10)
-            ->features([
-                'First', 'Second', 'Third'
-            ]);
+        // Spark::plan('Basic', 'provider-id-1')
+        //     ->price(10)
+        //     ->features([
+        //         'First', 'Second', 'Third'
+        //     ]);
     }
 }

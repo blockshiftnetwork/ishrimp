@@ -2,10 +2,13 @@
 
 namespace App;
 
+use Laravel\Spark\CanJoinTeams;
+use Laravel\Passport\HasApiTokens;
 use Laravel\Spark\User as SparkUser;
 
 class User extends SparkUser
 {
+    use HasApiTokens, CanJoinTeams;
     /**
      * The attributes that are mass assignable.
      *

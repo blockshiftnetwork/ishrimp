@@ -1,3 +1,5 @@
+<!-- Hide Trial -->
+{{-- 
 @if (Auth::user()->onTrial())
     <!-- Trial Reminder -->
     <h6 class="dropdown-header">{{__('Trial')}}</h6>
@@ -8,6 +10,7 @@
 
     <div class="dropdown-divider"></div>
 @endif
+--}}
 
 @if (Spark::usesTeams() && Auth::user()->ownsCurrentTeam() && Auth::user()->currentTeamOnTrial())
     <!-- Team Trial Reminder -->
