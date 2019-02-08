@@ -28,14 +28,24 @@
         <!-- Navigation -->
         @if (Auth::check())
             @include('spark::nav.user')
-        @else
-            @include('spark::nav.guest')
-        @endif
 
-        <!-- Main Content -->
-        <main class="py-4">
-            @yield('content')
-        </main>
+        @else
+            {{-- @include('spark::nav.guest') --}}
+        @endif
+        <div class="row">
+                @if (Auth::check())
+            <div class="col-md-2 bg-white">
+
+                @include('spark::nav.user-left')
+
+            </div>
+            @endif
+              <!-- Main Content -->
+             <main class="py-4 col-md-8">
+                @yield('content')
+            </main>
+        </div>
+
 
         <!-- Application Level Modals -->
         @if (Auth::check())

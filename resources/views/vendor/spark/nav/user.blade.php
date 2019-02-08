@@ -19,7 +19,7 @@
 
             <div id="navbarSupportedContent" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
-                    @includeIf('spark::nav.user-left')
+
                 </ul>
 
                 <a @click="showNotifications" class="notification-pill mx-auto mb-3 mb-md-0 mr-md-0 ml-md-auto">

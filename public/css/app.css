@@ -13101,3 +13101,17 @@ pre {
   border-radius: 50%;
 }
 
+.sidebar{
+    position: relative;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.icon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+.table .thead-primary th {
+    color: #fff;
+    background-color: #4396ce;
+    border-color: #5b676f;
+}

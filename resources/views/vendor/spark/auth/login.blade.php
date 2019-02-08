@@ -1,7 +1,7 @@
 @extends('spark::layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" style="background-image:url(assets/images/background/bg-login.jpg);">
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="card card-default">
