@@ -14,18 +14,14 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
-        // $this->middleware('subscribed');
-
-        // $this->middleware('verified');
     }
 
     /**
      * Show the application dashboard.
      *
-     * @return Response
+     * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function show()
+    public function index()
     {
         return view('home');
     }
