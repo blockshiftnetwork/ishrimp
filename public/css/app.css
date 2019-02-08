@@ -13101,6 +13101,7 @@ pre {
   border-radius: 50%;
 }
 
+/* customs style*/
 .sidebar{
     position: relative;
     margin-top: 20px;
@@ -13114,4 +13115,23 @@ pre {
     color: #fff;
     background-color: #4396ce;
     border-color: #5b676f;
+}
+/*login*/
+img.logo-header {
+    position: relative;
+    margin-top: -10% !important;
+    margin-bottom: 10%;
+}
+
+.login-background {
+    z-index: 0;
+    background-size: 100%;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-position: center;
+}
+
+.card-login{
+    border-radius: 2%;
 }
