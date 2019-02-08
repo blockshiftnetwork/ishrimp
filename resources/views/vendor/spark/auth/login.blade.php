@@ -7,7 +7,7 @@
             <div class="card  card-login card-default mx-auto">
 
 
-                <img src="{{ asset('images/radio-select-default.svg') }}" alt="logo" class="logo-header w-25 mx-auto mt-5">
+                <img src="{{ asset('images/top-login-header.svg') }}" alt="logo" class="logo-header w-25 mx-auto mt-5">
                 <div class="card-body">
                     @include('spark::shared.errors')
 
