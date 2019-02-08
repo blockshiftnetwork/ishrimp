@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class PoolsTable extends Migration
+class CategoryResourcesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class PoolsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pools', function (Blueprint $table) {
+        Schema::create('category_resources', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->integer('parent_id')->default(0);
             $table->integer('team_id')->unsigned();
             $table->foreign('team_id')->references('id')->on('teams');
-            $table->string('name', 255);
-            $table->float('size', 8, 2);
-            $table->text('coordinates');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class PoolsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pools');
+        Schema::dropIfExists('category_resources');
     }
 }
