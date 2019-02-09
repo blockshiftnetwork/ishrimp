@@ -14,6 +14,12 @@
                                     {{__('Dashboard')}}
                                 </a>
                             </li>
+                            <li class="nav-item ">
+                                    <a class="nav-link" href="" aria-controls="Inventario" role="tab" data-toggle="tab">
+                                        <i class="fa fa-map icon"></i>
+                                        {{__('Maps')}}
+                                    </a>
+                                </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="" aria-controls="Inventario" role="tab" data-toggle="tab">
                                 <i class="fa fa-dashboard icon"></i>

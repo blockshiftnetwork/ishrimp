@@ -33,6 +33,7 @@
             {{-- @include('spark::nav.guest') --}}
             <div class="login-background"  style="background-image:url({{ asset('images/bg-login.jpg') }});"></div>
         @endif
+          <!-- Main Content -->
         <div class="row">
                 @if (Auth::check())
             <div class="col-md-2 bg-white">
@@ -40,11 +41,19 @@
                 @include('spark::nav.user-left')
 
             </div>
+            <main class="py-4 col-md-9">
+                    @yield('content')
+                </main>
+            @else
+            <main class="py-4 col-md-9 mx-auto">
+                    @yield('content')
+                </main>
             @endif
-              <!-- Main Content -->
-             <main class="py-4 col-md-9 mx-auto">
-                @yield('content')
-            </main>
+
+
+
+
+
         </div>
 
 

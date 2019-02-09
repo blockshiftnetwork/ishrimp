@@ -12,7 +12,7 @@
 
                     <form class="form-horizontal form-materia" role="form" method="POST" action="/login">
                         {{ csrf_field() }}
-                        <h4 class="box-title ml-4">Inicio de sesion</h4>
+                        <h4 class="box-title ml-4">Inicio de sesión</h4>
                         <!-- E-Mail Address -->
                         <div class="form-group row mt-4 mx-auto">
                             <div class="col-md-12">
