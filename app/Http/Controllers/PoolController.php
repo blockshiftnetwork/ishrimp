@@ -14,7 +14,7 @@ class PoolController extends Controller
      */
     public function index()
     {
-        echo $team_id = auth()->user()->currentTeam->id;
+         echo $team_id = auth()->user()->currentTeam->id;
     }
 
     /**
@@ -35,7 +35,7 @@ class PoolController extends Controller
      */
     public function store(Request $request)
     {
-        echo "string";
+        //
     }
 
     /**

@@ -15,4 +15,5 @@ class Pool extends Model
    		'size',
    		'coordinates'
 	];
+
 }

@@ -34,4 +34,3 @@ class PoolsSowingTable extends Migration
         Schema::dropIfExists('pools_sowing');
     }
 }
-
