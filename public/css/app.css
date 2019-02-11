@@ -13176,3 +13176,10 @@ img.logo-header {
     height: 50px;
     border-radius: 25px;
 }
+
+/* maps*/
+
+#map {
+    width: 1000px;
+    height: 600px;
+}

@@ -11,11 +11,11 @@
                         <li class="nav-item">
                                 <a class="nav-link" href="#dashboard" aria-controls="dashboard" role="tab" data-toggle="tab">
                                     <i class="fa fa-dashboard icon"></i>
-                                    {{__('Dashboard')}}
+                                    {{__('Overview')}}
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                    <a class="nav-link" href="" aria-controls="Inventario" role="tab" data-toggle="tab">
+                                    <a class="nav-link" href="#maps" aria-controls="maps" role="tab" data-toggle="tab">
                                         <i class="fa fa-map icon"></i>
                                         {{__('Maps')}}
                                     </a>
@@ -50,11 +50,12 @@
                 <div class="col-md-9">
                         <div class="tab-content">
                             <!-- Profile -->
-                            <div role="tabcard" class="tab-pane active" id="dashboard">
+                            <div role="tabcard" class="tab-pane active " id="dashboard">
                                 @include('spark::dashboard.overview')
                             </div>
-
-
+                            <div role="tabcard" class="tab-pane " id="maps">
+                                    @include('spark::dashboard.maps')
+                                </div>
                         </div>
                     </div>
             </div>

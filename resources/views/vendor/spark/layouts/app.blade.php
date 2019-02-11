@@ -22,6 +22,7 @@
     <script>
         window.Spark = @json(array_merge(Spark::scriptVariables(), []));
     </script>
+
 </head>
 <body>
     <div id="spark-app" v-cloak>
@@ -68,5 +69,8 @@
     <!-- JavaScript -->
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="/js/sweetalert.min.js"></script>
+<script src="{{ asset('js/gmaps.js') }}"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPTtrYvFKQQLcrKoHzTdmtB9-0e_cx8Qo&region=EC&callback=initMap">
+    </script>
 </body>
 </html>
