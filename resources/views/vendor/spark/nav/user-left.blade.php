@@ -6,12 +6,13 @@
     @else
         <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
     @endif
+
 @endpush
 <div class="spark-settings-tabs sidebar bg-white">
     <aside>
     <a class="nav-link" href="/home">
             <h3 class="nav-heading ">
-                {{__('Overview')}}
+                {{__('Dashboard')}}
             </h3></a>
             @yield("overview_options")
     </aside>

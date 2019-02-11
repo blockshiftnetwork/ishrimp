@@ -1,6 +1,6 @@
 
-        <div>
-            <div class="card card-default">
+
+            <div class="card card-default card-table">
                 <div class="card-header">
                     {{__('Visíón General')}}
                 </div>
