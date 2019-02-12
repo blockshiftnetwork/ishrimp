@@ -56,7 +56,7 @@ class PoolSowingController extends Controller
      */
     public function show(PoolSowing $poolSowing)
     {
-        return 'pool_sowed' => PoolSowing::findOrFail($poolSowing);
+        return PoolSowing::findOrFail($poolSowing);
     }
 
     /**
