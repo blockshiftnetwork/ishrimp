@@ -56,7 +56,7 @@ class PoolController extends Controller
      */
     public function show(Pool $pool)
     {
-        return 'pool' => Pool::findOrFail($pool);
+        return Pool::findOrFail($pool);
     }
 
     /**
