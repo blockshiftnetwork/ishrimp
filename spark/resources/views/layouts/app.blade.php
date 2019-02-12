@@ -27,9 +27,9 @@
     <div id="spark-app" v-cloak>
         <!-- Navigation -->
         @if (Auth::check())
-            @include('spark::nav.user')
+
         @else
-            @include('spark::nav.guest')
+
         @endif
 
         <!-- Main Content -->
