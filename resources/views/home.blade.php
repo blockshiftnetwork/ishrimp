@@ -1,20 +1,65 @@
 @extends('spark::layouts.app')
 
-@section('content')
-<home :user="user" inline-template>
-    <div class="container">
-        <!-- Application Dashboard -->
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card card-default">
-                    <div class="card-header">{{__('Dashboard')}}</div>
 
-                    <div class="card-body">
-                        {{__('Your application\'s dashboard.')}}
+@section('content')
+    <home :user="user" :teams="teams" inline-template>
+        <div class="spark-screen container">
+            <div class="row">
+                <!-- Tabs -->
+                @section('overview_options')
+                <ul class="nav flex-column mb-4 ">
+                        <li class="nav-item">
+                                <a class="nav-link" href="#dashboard" aria-controls="dashboard" role="tab" data-toggle="tab">
+                                    <i class="fa fa-dashboard icon"></i>
+                                    {{__('Overview')}}
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                    <a class="nav-link" href="#maps" aria-controls="maps" role="tab" data-toggle="tab">
+                                        <i class="fa fa-map icon"></i>
+                                        {{__('Maps')}}
+                                    </a>
+                                </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="" aria-controls="Inventario" role="tab" data-toggle="tab">
+                                <i class="fa fa-dashboard icon"></i>
+                                {{__('Inventario')}}
+                            </a>
+                        </li>
+
+
+                            <li class="nav-item ">
+                                <a class="nav-link" href="" aria-controls="pools" role="tab" data-toggle="tab">
+                                        <i class="fa fa-spinner icon"></i>
+                                    {{__('Piscinas')}}
+                                </a>
+                            </li>
+
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="" aria-controls="param" role="tab" data-toggle="tab">
+                                    <i class="fa fa-bar-chart icon"></i>
+                                {{__('Parametros Diarios')}}
+                            </a>
+                        </li>
+
+                    </ul>
+                @endsection
+
+                <!-- Tab cards -->
+                <div class="col-md-9">
+                        <div class="tab-content">
+                            <!-- Profile -->
+                            <div role="tabcard" class="tab-pane active " id="dashboard">
+                                @include('spark::dashboard.overview')
+                            </div>
+                            <div role="tabcard" class="tab-pane " id="maps">
+                                    @include('spark::dashboard.maps')
+                                </div>
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
-    </div>
-</home>
+    </home>
 @endsection
+
