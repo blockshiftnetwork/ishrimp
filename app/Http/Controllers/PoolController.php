@@ -14,7 +14,10 @@ class PoolController extends Controller
      */
     public function index()
     {
-         echo $team_id = auth()->user()->currentTeam->id;
+         $team_id = auth()->user()->currentTeam->id;
+         $pools = Pool::where('team_id', $team_id);
+
+         return $pools->with('message', 'Lista de piscinas!');
     }
 
     /**
@@ -33,11 +36,18 @@ class PoolController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+   public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'team_id' => auth()->user()->currentTeam->id,
+            'name' => 'required',
+            'size' => 'required',
+            'coordinates' => 'required'
+        ]);
+        $pool = Pool::create($request->all());
 
+        return redirect()->back()->with('message', 'Piscina Guardada!');
+    }
     /**
      * Display the specified resource.
      *
@@ -46,7 +56,7 @@ class PoolController extends Controller
      */
     public function show(Pool $pool)
     {
-        //
+        return 'pool' => Pool::findOrFail($pool);
     }
 
     /**
@@ -69,7 +79,16 @@ class PoolController extends Controller
      */
     public function update(Request $request, Pool $pool)
     {
-        //
+        $request->validate([
+            'team_id' => auth()->user()->currentTeam->id,
+            'name' => 'required',
+            'size' => 'required',
+            'coordinates' => 'required'
+        ]);
+
+        Pool::where('id', $request->id)->update($request->all());
+        
+        return redirect()->back()->with('message', 'Piscina Actualizada!');
     }
 
     /**
@@ -80,6 +99,9 @@ class PoolController extends Controller
      */
     public function destroy(Pool $pool)
     {
-        //
+        $pool = Pool::findOrFail($pool);
+        $pool->delete();
+
+        return redirect()->back()->with('message', 'Piscina Eliminada!');
     }
 }
