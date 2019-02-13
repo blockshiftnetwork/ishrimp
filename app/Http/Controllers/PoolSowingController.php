@@ -14,9 +14,12 @@ class PoolSowingController extends Controller
      */
     public function index(Request $id)
     {
-         $pools_sowed = PoolSowing::where('pool_id', $id);
-
-         return $pools_sowed->with('message', 'Listado de Siembras de la piscina #'..'!');
+         $pools_sowed = PoolSowing::where('pool_id', $id)->get;
+        
+        return response()->json([
+            'status' => '200',
+            'data' => $pools_sowed
+        ]);
     }
 
     /**

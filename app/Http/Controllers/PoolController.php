@@ -14,10 +14,13 @@ class PoolController extends Controller
      */
     public function index()
     {
-         $team_id = auth()->user()->currentTeam->id;
-         $pools = Pool::where('team_id', $team_id);
-
-         return $pools->with('message', 'Lista de piscinas!');
+        $team_id = auth()->user()->currentTeam->id;
+        $pools = Pool::where('team_id', $team_id)->get();
+        
+        return response()->json([
+            'status' => '200',
+            'data' => $pools
+        ]);
     }
 
     /**
