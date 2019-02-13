@@ -13179,7 +13179,127 @@ img.logo-header {
 
 /* maps*/
 
+
+#plMapOptions {
+    width: auto;
+    z-index: 999;
+    height: 45px;
+    padding-left: 0px;
+    text-align: left;
+    background: none;
+    position: absolute;
+    top: 28px;
+}
 #map {
-    width: 1000px;
-    height: 600px;
+    height: 150%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    z-index: 200;
+    overflow: hidden;
+}
+
+#plMapOptions #tabcontent {
+    margin-left: 7px;
+    width: auto;
+    display: inline-block;
+    height: auto;
+    background: #FFF;
+    border: 1px solid #CCC;
+    margin-top: 7px;
+    font-size: 1.2rem;
+    line-height: 1.25;
+    color: #000;
+    font-weight: 600;
+    background-color: #fff;
+    background-image: none;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+}
+#plMapOptions #tabcontent .nav>li>a {
+    padding: 4px 8px;
+    color: #555;
+    cursor: pointer;
+    margin: 0;
+}
+.nav-tabs>li>a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
+
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+
+.bar-option {
+float: left;
+}
+
+#pac-input {
+    margin-top: 8px;
+    margin-left: 20px;
+    height: 37px;
+    font-size: 12px;
+    padding: 1px 7px;
+    border-radius: 3px;
+    color: #222;
+    text-overflow: ellipsis;
+    font-size: 1.2rem;
+    font-family: arial;
+}
+.right-inner-addon {
+    position: relative;
+}
+div#txtGoogleLocationSearch {
+    position: relative;
+    z-index: 999;
+    float: right;
+    width: auto;
+
+}
+.right-inner-addon i {
+    position: absolute;
+    right: -10px;
+    padding: 7px 0px;
+    pointer-events: none;
+    font-size: 1.2rem;
+}
+
+div#btn-createpool {
+    margin-top: 5px;
+    z-index: 999;
+    height: auto;
+    position: relative;
+    top: 7px;
+    left: 45%;
+    width: fit-content;
+}
+/*pools*/
+.dsh_board_main_body_cont {
+    width: 100%;
+    float: left;
+    height: auto;
+    margin-top: 43px !important;
+}
+.mid_container {
+    width: 100%;
+    float: left;
+    padding: 10px;
+    background-color: #fbfbfb;
+}
+
+.top_space {
+    margin-top: 10px;
 }

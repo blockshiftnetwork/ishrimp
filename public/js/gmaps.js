@@ -1,6 +1,6 @@
         var map;
-        var locLat='-2.254873';
-        var locLng='-79.799292';
+        var locLat='-2.293005';
+        var locLng='-79.7797965';
         var markers = [];
         var infoWindow;
         var locationSelect;
@@ -9,7 +9,7 @@
 
             map = new google.maps.Map(document.getElementById("map"), {
 				center: new google.maps.LatLng(locLat,locLng),
-				  zoom: 14,
+				  zoom: 18,
 				  mapTypeId: google.maps.MapTypeId.HYBRID,
 				  mapTypeControl: false,
 				  mapTypeControlOptions: {
