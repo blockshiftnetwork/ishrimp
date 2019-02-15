@@ -79,7 +79,7 @@
 
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-5" >
                                 <div class="col-6">
                                     <div class="card">
                                             <h4 class="card-title">
@@ -88,13 +88,15 @@
                                                 <canvas id="myChart3" width="700" height="600"></canvas>
                                         </div>
                                     </div>
-                                        <div class="col-6">
-                                                <div class="card">
-                                                            <canvas id="myChart4" width="700" height="600"></canvas>
-                                                    </div>
 
+                                    <div class="col-6">
+                                            <div class="card">
+                                                    <h4 class="card-title">
+                                                           pH vs DO vs Temp
+                                                     </h4>
+                                                        <canvas id="myChart4" width="700" height="600"></canvas>
+                                                </div>
                                             </div>
-
                                 </div>
                                 </div>
 

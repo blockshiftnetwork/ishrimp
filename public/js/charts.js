@@ -1,5 +1,6 @@
 var ctx = document.getElementById("myChart").getContext('2d');
 var data = [1,4,20, 223, 155,65,100]
+
 var myChart =new Chart(ctx, {
     type: 'bar',
     data: {
@@ -64,7 +65,7 @@ var myChart =new Chart(ctx, {
   });
 
   var ctx2 = document.getElementById("myChart2").getContext('2d');
-  var myChart =new Chart(ctx2, {
+  var myChart2 =new Chart(ctx2, {
     type: 'bar',
     data: {
       labels: ['enero 23','enero 24','enero 25','enero 26','enero 27','enero 28'],
@@ -122,8 +123,9 @@ var myChart =new Chart(ctx, {
       }
     }
   });
+
   var ctx3 = document.getElementById("myChart3").getContext('2d');
-  var myChart =new Chart(ctx3, {
+  var myChart3 =new Chart(ctx3, {
     type: 'bar',
     data: {
       labels: ['8:00','10:30','11:50','13:25','14:30','15:32','16:14','18:45', '20:24'],
@@ -147,6 +149,70 @@ var myChart =new Chart(ctx, {
           fill: false,
           data:  [23,43,32,12,32,423,21,23,535,124],
           backgroundColor: '#1eca49',
+          borderColor: '#1eca49'
+        }
+      ]
+    },
+    options: {
+      tooltips: {
+        enabled: true,
+        titleFontSize: 24,
+        bodyFontSize: 24
+      },
+      legend: {
+        display: true,
+        position: 'bottom',
+        labels: {
+          fontColor: 'black',
+          boxWidth: 2
+        }
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            fontColor: 'black',
+          }
+        }],
+        xAxes: [{
+          distribution: 'linear',
+          ticks: {
+            fontColor: 'black',
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+  var ctx4 = document.getElementById("myChart4").getContext('2d');
+  var myChart4 =new Chart(ctx4, {
+    type: 'line',
+    data: {
+      labels: ['enero 23','enero 24','enero 25','enero 26','enero 27','enero 28'],
+      datasets: [
+        {
+
+          label: 'Temp',
+          fill: true,
+          data: [23,34,23,18,32,25],
+          backgroundColor: '#168ede69',
+          borderColor: '#168ede'
+        },
+        {
+
+          label: 'Do',
+          fill: false,
+          data:  [122,200,50,130,234,132],
+          backgroundColor: '#FF0040',
+          borderColor: '#FF0040',
+
+        },
+        {
+
+          label: 'pH',
+          fill: true,
+          data:  [4,4,,4,6,3,5],
+          backgroundColor: '#1eca4970',
           borderColor: '#1eca49'
         }
       ]
