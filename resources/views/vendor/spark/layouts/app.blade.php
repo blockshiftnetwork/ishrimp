@@ -22,7 +22,8 @@
     <script>
         window.Spark = @json(array_merge(Spark::scriptVariables(), []));
     </script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 </head>
 <body>
     <div id="spark-app" v-cloak>
@@ -69,8 +70,9 @@
     <!-- JavaScript -->
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="/js/sweetalert.min.js"></script>
-<script src="{{ asset('js/gmaps.js') }}"></script>
+    <script src="{{ asset('js/gmaps.js') }}"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPTtrYvFKQQLcrKoHzTdmtB9-0e_cx8Qo&region=EC&callback=initMap">
     </script>
+      <script src="{{ asset('js/charts.js') }}"> </script>
 </body>
 </html>

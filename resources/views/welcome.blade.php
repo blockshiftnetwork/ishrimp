@@ -10,12 +10,12 @@
 
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
-
+    <link href="{{ mix(Spark::usesRightToLeftTheme() ? 'css/app-rtl.css' : 'css/app.css') }}" rel="stylesheet">
     <style>
         body, html {
-            background: url('/img/spark-bg.png');
-            background-repeat: repeat;
-            background-size: 300px 200px;
+            background: url("{{ asset('images/bg-login.jpg') }}");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
             height: 100%;
             margin: 0;
         }
@@ -70,25 +70,22 @@
 </head>
 <body>
     <div class="full-height flex-column">
+
         <nav class="links">
-            <a href="/login" style="margin-right: 15px;">
-                <button>
+            <a href="/login" class="btn btn-primary" style="margin-right: 15px;">
+
                     {{__('Login')}}
-                </button>
+
             </a>
 
-            <a href="/register">
-                <button>
+            <a href="/register" class="btn btn-primary">
+
                     {{__('Register')}}
-                </button>
+
             </a>
         </nav>
 
-        <div class="flex-fill flex-center">
-            <h1 class="text-center">
-                <img src="/img/color-logo.png" alt="{{__('Logo')}}" />
-            </h1>
-        </div>
+
     </div>
 </body>
 </html>

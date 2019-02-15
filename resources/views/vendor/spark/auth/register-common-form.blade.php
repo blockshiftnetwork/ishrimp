@@ -34,11 +34,11 @@
     @endif
 
     <!-- Name -->
-    <div class="form-group row">
-        <label class="col-md-4 col-form-label text-md-right">{{__('Name')}}</label>
+    <div class="form-group row  mt-4 mx-auto">
 
-        <div class="col-md-6">
-            <input type="text" class="form-control" name="name" v-model="registerForm.name" :class="{'is-invalid': registerForm.errors.has('name')}" autofocus>
+
+        <div class="col-md-9  mx-auto">
+            <input type="text" class="form-control" name="name"  placeholder="{{__('Name')}}" v-model="registerForm.name" :class="{'is-invalid': registerForm.errors.has('name')}" autofocus>
 
             <span class="invalid-feedback" v-show="registerForm.errors.has('name')">
                 @{{ registerForm.errors.get('name') }}
@@ -47,11 +47,11 @@
     </div>
 
     <!-- E-Mail Address -->
-    <div class="form-group row">
-        <label class="col-md-4 col-form-label text-md-right">{{__('E-Mail Address')}}</label>
+    <div class="form-group row  mt-4 mx-auto">
 
-        <div class="col-md-6">
-            <input type="email" class="form-control" name="email" v-model="registerForm.email" :class="{'is-invalid': registerForm.errors.has('email')}">
+
+        <div class="col-md-9  mx-auto">
+            <input type="email" class="form-control" name="email"  placeholder="{{__('E-Mail')}}" v-model="registerForm.email" :class="{'is-invalid': registerForm.errors.has('email')}">
 
             <span class="invalid-feedback" v-show="registerForm.errors.has('email')">
                 @{{ registerForm.errors.get('email') }}
@@ -60,11 +60,11 @@
     </div>
 
     <!-- Password -->
-    <div class="form-group row">
-        <label class="col-md-4 col-form-label text-md-right">{{__('Password')}}</label>
+    <div class="form-group row  mt-4 mx-auto">
 
-        <div class="col-md-6">
-            <input type="password" class="form-control" name="password" v-model="registerForm.password" :class="{'is-invalid': registerForm.errors.has('password')}">
+
+        <div class="col-md-9  mx-auto">
+            <input type="password" class="form-control" name="password"  placeholder="{{__('Password')}}" v-model="registerForm.password" :class="{'is-invalid': registerForm.errors.has('password')}">
 
             <span class="invalid-feedback" v-show="registerForm.errors.has('password')">
                 @{{ registerForm.errors.get('password') }}
@@ -73,11 +73,11 @@
     </div>
 
     <!-- Password Confirmation -->
-    <div class="form-group row">
-        <label class="col-md-4 col-form-label text-md-right">{{__('Confirm Password')}}</label>
+    <div class="form-group row  mt-4 mx-auto">
 
-        <div class="col-md-6">
-            <input type="password" class="form-control" name="password_confirmation" v-model="registerForm.password_confirmation" :class="{'is-invalid': registerForm.errors.has('password_confirmation')}">
+
+        <div class="col-md-9  mx-auto">
+            <input type="password" class="form-control" name="password_confirmation"  placeholder="{{__('Passsword Confirmation')}}" v-model="registerForm.password_confirmation" :class="{'is-invalid': registerForm.errors.has('password_confirmation')}">
 
             <span class="invalid-feedback" v-show="registerForm.errors.has('password_confirmation')">
                 @{{ registerForm.errors.get('password_confirmation') }}
@@ -87,8 +87,8 @@
 
     <!-- Terms And Conditions -->
     <div v-if=" ! selectedPlan || selectedPlan.price == 0">
-        <div class="form-group row">
-            <div class="col-md-6 offset-md-4">
+        <div class="form-group row  mt-4 mx-auto">
+            <div class="col-md-9  mx-auto offset-md-4">
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="terms" :class="{'is-invalid': registerForm.errors.has('terms')}" v-model="registerForm.terms">
                     <label class="form-check-label" for="terms">
@@ -100,10 +100,10 @@
                 </div>
             </div>
         </div>
-        
-        <div class="form-group row mb-0">
-            <div class="col-md-6 offset-md-4">
-                <button class="btn btn-primary" @click.prevent="register" :disabled="registerForm.busy">
+
+        <div class="form-group row mb-0  mt-4 mx-auto">
+            <div class="col-md-6  mx-auto offset-md-4">
+                <button class="btn btn-primary btn-block btn-login btn-rounded text-uppercase waves-effect waves-light" @click.prevent="register" :disabled="registerForm.busy">
                     <span v-if="registerForm.busy">
                         <i class="fa fa-btn fa-spinner fa-spin"></i> {{__('Registering')}}
                     </span>

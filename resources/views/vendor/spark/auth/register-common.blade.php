@@ -119,20 +119,13 @@
 </div>
 
 <!-- Basic Profile -->
-<div class="row justify-content-center">
+<div class="row justify-content-center mx-auto " style="margin-top:10%">
     <div class="col-lg-8">
-        <div class="card card-default">
-            <div class="card-header">
-                <span v-if="paidPlans.length > 0">
-                    {{__('Profile')}}
-                </span>
+        <div class="card  card-login card-default bg-white mx-auto">
+                <img src="{{ asset('images/top-login-header.svg') }}" alt="logo" class="logo-header w-100 mx-auto mt-5">
 
-                <span v-else>
-                    {{__('Register')}}
-                </span>
-            </div>
 
-            <div class="card-body">
+            <div class="card-body  px-0">
                 <!-- Generic Error Message -->
                 <div class="alert alert-danger" v-if="registerForm.errors.has('form')">
                     @{{ registerForm.errors.get('form') }}

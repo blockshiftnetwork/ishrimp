@@ -12,11 +12,34 @@
     <aside>
     <a class="nav-link" href="/home">
             <h3 class="nav-heading ">
-                {{__('Dashboard')}}
+                {{__('Tablero')}}
             </h3></a>
             @yield("overview_options")
     </aside>
+    <aside>
+        <a class="nav-link" href="">
+        <h3 class="nav-heading ">
+            {{__('Inventario')}}
+        </h3></a>
+        @yield('Inventario_options')
 
+    </aside>
+    <aside>
+        <a class="nav-link" href="">
+        <h3 class="nav-heading ">
+            {{__('Cultivo')}}
+        </h3></a>
+        @yield('Cultivo_options')
+
+    </aside>
+    <aside>
+        <a class="nav-link" href="/settings">
+        <h3 class="nav-heading ">
+            {{__('Siembra')}}
+        </h3></a>
+        @yield('Siembra_options')
+
+    </aside>
         <aside>
             <a class="nav-link" href="/settings">
             <h3 class="nav-heading ">
