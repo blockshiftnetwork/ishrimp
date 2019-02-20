@@ -85,17 +85,31 @@ class PoolController extends Controller
      * @param  \App\Pool  $pool
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pool $pool)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
             'size' => 'required',
             'coordinates' => 'required'
         ]);
-
-        Pool::where('id', $request->id)->update($request->all());
         
-        return redirect()->back()->with('message', 'Piscina Actualizada!');
+        $pool = Pool::find($id) ;
+        $pool->team_id = auth()->user()->currentTeam->id;
+        $pool->name = $request->name;
+        $pool->size = $request->size;
+        $pool->coordinates = $request->coordinates;
+        $pool->save();
+
+        return redirect()->back()->with('message', 'Piscina Guardada!');
+        // $request->validate([
+        //     'name' => 'required',
+        //     'size' => 'required',
+        //     'coordinates' => 'required'
+        // ]);
+
+        // Pool::where('id', $request->id)->update($request->all());
+        
+        // return redirect()->back()->with('message', 'Piscina Actualizada!');
     }
 
     /**

@@ -27,13 +27,13 @@
 <div class="card bg-white bx-25" style="z-index: 999; position: absolute; top: 60%;">
 <div class="card-body">
    <div class="row mx-auto"> 
-    <form class="form-group" role="form" role="form" method="POST" action="{{route('pools.store')}}">
+    <form class="form-group" role="form" role="form" method="POST" action="{{route('pools.update' , 1)}}">
     {{ csrf_field() }}
-
+        @method('PUT')
         <div class="col-md-12  mx-auto">
         <input class="form-control mb-2" type="text" name="name" placeholder="nombre" id="name">
         
-        <input class="form-control mb-2" type="text" name="size" placeholder="Area" id="size">
+        <input class="form-control mb-2" type="number" name="size" placeholder="Area" id="size">
         <input class="form-control mb-2" type="text" name="coordinates" placeholder="coordenadas" id="coordinates">
     </div>
    
