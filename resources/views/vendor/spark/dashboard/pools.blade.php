@@ -163,7 +163,7 @@
                                     <tr>
                                         <td class="text-center" rowspan="1">58</td>
                                         <td class="text-center" rowspan="1">20-Jan 19</td>
-                                        <td class="text-center">Optiline 35% #5 - Gisis</td>
+                                        <td class="text-center">Optiline 35% </td>
                                         <td class="text-center">5075</td>
                                         <td class="text-center">5075</td>
                                         <td class="text-center">
@@ -178,7 +178,7 @@
                                     <tr>
                                         <td class="text-center" rowspan="1">58</td>
                                         <td class="text-center" rowspan="1">19-Jan 19</td>
-                                        <td class="text-center">Optiline 35% #5 - Gisis</td>
+                                        <td class="text-center">Optiline 35% </td>
                                         <td class="text-center">5075</td>
                                         <td class="text-center">5075</td>
                                         <td class="text-center">
@@ -193,7 +193,7 @@
                                     <tr>
                                         <td class="text-center" rowspan="1">57</td>
                                         <td class="text-center" rowspan="1">14-Jan 19</td>
-                                        <td class="text-center">Optiline 35% #5 - Gisis</td>
+                                        <td class="text-center">Optiline 35% </td>
                                         <td class="text-center">5075</td>
                                         <td class="text-center">5075</td>
                                         <td class="text-center">
@@ -216,21 +216,21 @@
                                     <div class="one col-md-6">
                                         <span>
                                         <i class="fa fa-square" style="color: #1065E6">
-                                        </i> Nature Wellness 42% #1 - Gisis: 90.00 Kg</span>
+                                        </i> Nature Wellness 42% </span>
                                         <span><i class="fa fa-square" style="color: #D3402A">
-                                        </i> Nature Wellness 42% #2 - Gisis: 305.00 Kg</span>
+                                        </i> Nature Wellness 42%</span>
                                         <span><i class="fa fa-square" style="color: #FFB708">
-                                        </i> Nature Wellness 38% #3 - Gisis: 450.00 Kg</span>
+                                        </i> Nature Wellness 38% </span>
                                         <span><i class="fa fa-square" style="color: #008299">
-                                        </i> Nature Wellness 35% #4 - Gisis: 2085.00 Kg</span>
+                                        </i> Nature Wellness 35% </span>
                                         <span><i class="fa fa-square" style="color: #009856">
                                         </i> Lorica 2 - Gisis: 290.00 Kg</span><span>
                                             <i class="fa fa-square" style="color: #DC4FAD">
                                             </i> Lorica 4 - Gisis: 670.00 Kg</span><span>
                                                 <i class="fa fa-square" style="color: #FF8F32">
-                                                </i> Optiline 35% #5 - Gisis: 5075.00 Kg</span>
+                                                </i> Optiline 35% </span>
                                                 <span><i class="fa fa-square" style="color: #5DB2FF">
-                                                </i> Optiline 35% #6 - Gisis: 275.00 Kg</span>
+                                                </i> Optiline 35%</span>
                                             </div>
                                             <div class="two col-md-2 list-group">
                                                     <li class="list-group-item"><b>9240.00 Kgs</b></li>
@@ -693,8 +693,6 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    
-                                
                                     </tbody>
                                 </table>
                             </div>

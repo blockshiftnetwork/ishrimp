@@ -33,7 +33,7 @@
         <div class="col-md-12  mx-auto">
         <input class="form-control mb-2" type="text" name="name" placeholder="nombre" id="name">
         
-        <input class="form-control mb-2" type="number" name="size" placeholder="Area" id="size">
+        <input class="form-control mb-2" type="text" name="size" placeholder="Area" id="size">
         <input class="form-control mb-2" type="text" name="coordinates" placeholder="coordenadas" id="coordinates">
     </div>
    

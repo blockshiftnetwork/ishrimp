@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css" />
     <!-- CSS -->
     <link href="{{ mix(Spark::usesRightToLeftTheme() ? 'css/app-rtl.css' : 'css/app.css') }}" rel="stylesheet">
 
@@ -22,7 +22,10 @@
     <script>
         window.Spark = @json(array_merge(Spark::scriptVariables(), []));
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 </head>
 <body>
     <div id="spark-app" v-cloak>
@@ -88,7 +91,22 @@
                   //$('#sidebar').toggleClass('in');
                   //$('a[aria-expanded=true]').attr('aria-expanded', 'false');
               });
-          });
+
+          
+        });
       </script>
+     <script>
+            $('.datapicker').datepicker({
+                format: "dd/mm/yyyy",
+                endDate: "today",
+                maxViewMode: 3,
+                todayBtn: "linked",
+                multidate: false,
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true
+            });
+     </script>
 </body>
 </html>
