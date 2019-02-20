@@ -600,7 +600,107 @@
                 </div>
                 <!-- Labs -->
                 <div role="tabpanel" class="tab-pane" id="lab_pill">
+                         <div class="fixed-table-container mt-5">
+                            <div class="fixed-table-header">
+                                    <h4 class="text-title mt-4">Otras entradas</h4>
+                                    <div class="pull-right search mb-2">
+                                            <input class="form-control" type="text" placeholder="Buscar">
+                                        </div>
+                                    </div>
+                            <div class="fixed-table-body">
+                                <div class="fixed-table-loading" style="top: 37px; display: none;">Cargando,por favor
+                                    espere...</div>
+                                <table id="ponds-snap-tbl" class="table table-striped table-hover bg-white"
+                                    style="width:99.9%;">
+                                    <thead class="thead-primary">
+                                        <th style="">
+                                            <div class="th-inner sortable text-center">factor de conversión</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th style="">
+                                            <div class="th-inner sortable text-center">Salinidad (PPT)</div>
+                                            <div class="fht-cell">
+                                            </div>
+                                        </th>
+                                        <th style="">
+                                            <div class="th-inner sortable text-center">DO</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th style="">
+                                            <div class="th-inner sortable text-center">CO3</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th style="">
+                                            <div class="th-inner sortable text-center">HCO3</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th style="">
+                                                <div class="th-inner sortable text-center">total</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
 
+                                                <th style="">
+                                                        <div class="th-inner sortable text-center">Dureza (PPM)</div>
+                                                        <div class="fht-cell"></div>
+                                                    </th>
+                                                    <th style="">
+                                                            <div class="th-inner sortable text-center">Amoníaco (NH4 +)</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th style="">
+                                                            <div class="th-inner sortable text-center">Hierro</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th style="">
+                                                            <div class="th-inner sortable text-center">Colonias verdes</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th style="">
+                                                            <div class="th-inner sortable text-center">Colonias amarillas</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th style="">
+                                                            <div class="th-inner sortable text-center">Fecha de la prueba</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                        <th style="">
+                                            <div class="th-inner sortable text-center" >Acciones</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <td class="text-center"  rowspan="1">0</td>
+                                            <td class="text-center" rowspan="1">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">30-Jan 19</td>
+                                            
+                                            <td class="text-center">
+                                                <div class="actions btn btn-group-sm" style="width: max-content;">
+                                                    <a href="" class="btn btn-success btn-xs mr-4">
+                                                        <i class="fa fa-edit"></i></a>
+                                                    <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                        <i class="fa fa-trash-o" ></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    
+                                
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="fixed-table-pagination" style="display: none;">
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
