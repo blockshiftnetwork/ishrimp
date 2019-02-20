@@ -33,7 +33,7 @@
                     aria-expanded="false"><span class="button_name">Cultivo Actual</span> <span
                         class="caret"></span></a>
                 <ul class="dropdown-menu menu-dropdown harvest-dropdown" role="menu">
-                    <li><a href="javascript:void(0)" id="current" class="harvests">Cultivo Actual</a></li>
+                    <li><a href="" id="current" class="harvests">Cultivo Actual</a></li>
                 </ul>
             </li>
         </div>
@@ -155,7 +155,7 @@
                                             <div class="actions btn btn-group-sm">
                                                 <a href="" class="btn btn-success btn-xs mr-4">
                                                     <i class="fa fa-edit"></i></a>
-                                                    <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                    <a href="" class="btn btn-xs btn-danger">
                                                     <i class="fa fa-trash-o" ></i></a>
                                             </div>
                                         </td>
@@ -163,14 +163,14 @@
                                     <tr>
                                         <td class="text-center" rowspan="1">58</td>
                                         <td class="text-center" rowspan="1">20-Jan 19</td>
-                                        <td class="text-center">Optiline 35% #5 - Gisis</td>
+                                        <td class="text-center">Optiline 35% </td>
                                         <td class="text-center">5075</td>
                                         <td class="text-center">5075</td>
                                         <td class="text-center">
                                                 <div class="actions btn btn-group-sm">
                                                     <a href="" class="btn btn-success btn-xs mr-4">
                                                         <i class="fa fa-edit"></i></a>
-                                                        <a href="javascript:void(0)"  class="btn btn-xs btn-danger">
+                                                        <a href=""  class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash-o" ></i></a>
                                                 </div>
                                             </td>
@@ -178,14 +178,14 @@
                                     <tr>
                                         <td class="text-center" rowspan="1">58</td>
                                         <td class="text-center" rowspan="1">19-Jan 19</td>
-                                        <td class="text-center">Optiline 35% #5 - Gisis</td>
+                                        <td class="text-center">Optiline 35% </td>
                                         <td class="text-center">5075</td>
                                         <td class="text-center">5075</td>
                                         <td class="text-center">
                                                 <div class="actions btn btn-group-sm">
                                                     <a href="" class="btn btn-success btn-xs mr-4">
                                                         <i class="fa fa-edit"></i></a>
-                                                        <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                        <a href="" class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash-o" ></i></a>
                                                 </div>
                                             </td>
@@ -193,14 +193,14 @@
                                     <tr>
                                         <td class="text-center" rowspan="1">57</td>
                                         <td class="text-center" rowspan="1">14-Jan 19</td>
-                                        <td class="text-center">Optiline 35% #5 - Gisis</td>
+                                        <td class="text-center">Optiline 35% </td>
                                         <td class="text-center">5075</td>
                                         <td class="text-center">5075</td>
                                         <td class="text-center">
                                                 <div class="actions btn btn-group-sm">
                                                     <a href="" class="btn btn-success btn-xs mr-4">
                                                         <i class="fa fa-edit"></i></a>
-                                                        <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                        <a href="" class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash-o" ></i></a>
                                                 </div>
                                             </td>
@@ -216,21 +216,21 @@
                                     <div class="one col-md-6">
                                         <span>
                                         <i class="fa fa-square" style="color: #1065E6">
-                                        </i> Nature Wellness 42% #1 - Gisis: 90.00 Kg</span>
+                                        </i> Nature Wellness 42% </span>
                                         <span><i class="fa fa-square" style="color: #D3402A">
-                                        </i> Nature Wellness 42% #2 - Gisis: 305.00 Kg</span>
+                                        </i> Nature Wellness 42%</span>
                                         <span><i class="fa fa-square" style="color: #FFB708">
-                                        </i> Nature Wellness 38% #3 - Gisis: 450.00 Kg</span>
+                                        </i> Nature Wellness 38% </span>
                                         <span><i class="fa fa-square" style="color: #008299">
-                                        </i> Nature Wellness 35% #4 - Gisis: 2085.00 Kg</span>
+                                        </i> Nature Wellness 35% </span>
                                         <span><i class="fa fa-square" style="color: #009856">
                                         </i> Lorica 2 - Gisis: 290.00 Kg</span><span>
                                             <i class="fa fa-square" style="color: #DC4FAD">
                                             </i> Lorica 4 - Gisis: 670.00 Kg</span><span>
                                                 <i class="fa fa-square" style="color: #FF8F32">
-                                                </i> Optiline 35% #5 - Gisis: 5075.00 Kg</span>
+                                                </i> Optiline 35% </span>
                                                 <span><i class="fa fa-square" style="color: #5DB2FF">
-                                                </i> Optiline 35% #6 - Gisis: 275.00 Kg</span>
+                                                </i> Optiline 35%</span>
                                             </div>
                                             <div class="two col-md-2 list-group">
                                                     <li class="list-group-item"><b>9240.00 Kgs</b></li>
@@ -303,7 +303,7 @@
                                             <div class="actions btn btn-group-sm">
                                                 <a href="" class="btn btn-success btn-xs mr-4">
                                                     <i class="fa fa-edit"></i></a>
-                                                <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                <a href="" class="btn btn-xs btn-danger">
                                                     <i class="fa fa-trash-o" ></i></a>
                                             </div>
                                         </td>
@@ -318,7 +318,7 @@
                                                 <div class="actions btn btn-group-sm">
                                                     <a href="" class="btn btn-success btn-xs mr-4">
                                                         <i class="fa fa-edit"></i></a>
-                                                    <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                    <a href="" class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash-o" ></i></a>
                                                 </div>
                                             </td>
@@ -333,7 +333,7 @@
                                                     <div class="actions btn btn-group-sm">
                                                         <a href="" class="btn btn-success btn-xs mr-4">
                                                             <i class="fa fa-edit"></i></a>
-                                                        <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                        <a href="" class="btn btn-xs btn-danger">
                                                             <i class="fa fa-trash-o" ></i></a>
                                                     </div>
                                                 </td>
@@ -348,7 +348,7 @@
                                                         <div class="actions btn btn-group-sm">
                                                             <a href="" class="btn btn-success btn-xs mr-4">
                                                                 <i class="fa fa-edit"></i></a>
-                                                            <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                            <a href="" class="btn btn-xs btn-danger">
                                                                 <i class="fa fa-trash-o" ></i></a>
                                                         </div>
                                                     </td>
@@ -416,7 +416,7 @@
                                                 <div class="actions btn btn-group-sm">
                                                     <a href="" class="btn btn-success btn-xs mr-4">
                                                         <i class="fa fa-edit"></i></a>
-                                                    <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                    <a href="" class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash-o" ></i></a>
                                                 </div>
                                             </td>
@@ -431,7 +431,7 @@
                                                     <div class="actions btn btn-group-sm">
                                                         <a href="" class="btn btn-success btn-xs mr-4">
                                                             <i class="fa fa-edit"></i></a>
-                                                        <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                        <a href="" class="btn btn-xs btn-danger">
                                                             <i class="fa fa-trash-o" ></i></a>
                                                     </div>
                                                 </td>
@@ -446,7 +446,7 @@
                                                         <div class="actions btn btn-group-sm">
                                                             <a href="" class="btn btn-success btn-xs mr-4">
                                                                 <i class="fa fa-edit"></i></a>
-                                                            <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                            <a href="" class="btn btn-xs btn-danger">
                                                                 <i class="fa fa-trash-o" ></i></a>
                                                         </div>
                                                     </td>
@@ -531,7 +531,7 @@
                                                     <div class="actions btn btn-group-sm">
                                                         <a href="" class="btn btn-success btn-xs mr-4">
                                                             <i class="fa fa-edit"></i></a>
-                                                            <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                            <a href="" class="btn btn-xs btn-danger">
                                                             <i class="fa fa-trash-o" ></i></a>
                                                     </div>
                                                 </td>
@@ -549,7 +549,7 @@
                                                         <div class="actions btn btn-group-sm">
                                                             <a href="" class="btn btn-success btn-xs mr-4">
                                                                 <i class="fa fa-edit"></i></a>
-                                                                <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                                <a href="" class="btn btn-xs btn-danger">
                                                                 <i class="fa fa-trash-o" ></i></a>
                                                         </div>
                                                     </td>
@@ -567,7 +567,7 @@
                                                             <div class="actions btn btn-group-sm">
                                                                 <a href="" class="btn btn-success btn-xs mr-4">
                                                                     <i class="fa fa-edit"></i></a>
-                                                                    <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                                    <a href="" class="btn btn-xs btn-danger">
                                                                     <i class="fa fa-trash-o" ></i></a>
                                                             </div>
                                                         </td>
@@ -585,7 +585,7 @@
                                                                 <div class="actions btn btn-group-sm">
                                                                     <a href="" class="btn btn-success btn-xs mr-4">
                                                                         <i class="fa fa-edit"></i></a>
-                                                                        <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                                        <a href="" class="btn btn-xs btn-danger">
                                                                         <i class="fa fa-trash-o" ></i></a>
                                                                 </div>
                                                             </td>
@@ -600,7 +600,105 @@
                 </div>
                 <!-- Labs -->
                 <div role="tabpanel" class="tab-pane" id="lab_pill">
+                         <div class="fixed-table-container mt-5">
+                            <div class="fixed-table-header">
+                                    <h4 class="text-title mt-4">Otras entradas</h4>
+                                    <div class="pull-right search mb-2">
+                                            <input class="form-control" type="text" placeholder="Buscar">
+                                        </div>
+                                    </div>
+                            <div class="fixed-table-body">
+                                <div class="fixed-table-loading" style="top: 37px; display: none;">Cargando,por favor
+                                    espere...</div>
+                                <table id="ponds-snap-tbl" class="table table-striped table-hover bg-white"
+                                    style="width:99.9%;">
+                                    <thead class="thead-primary">
+                                        <th style="">
+                                            <div class="th-inner sortable text-center">factor de conversión</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th style="">
+                                            <div class="th-inner sortable text-center">Salinidad (PPT)</div>
+                                            <div class="fht-cell">
+                                            </div>
+                                        </th>
+                                        <th style="">
+                                            <div class="th-inner sortable text-center">DO</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th style="">
+                                            <div class="th-inner sortable text-center">CO3</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th style="">
+                                            <div class="th-inner sortable text-center">HCO3</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th style="">
+                                                <div class="th-inner sortable text-center">total</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
 
+                                                <th style="">
+                                                        <div class="th-inner sortable text-center">Dureza (PPM)</div>
+                                                        <div class="fht-cell"></div>
+                                                    </th>
+                                                    <th style="">
+                                                            <div class="th-inner sortable text-center">Amoníaco (NH4 +)</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th style="">
+                                                            <div class="th-inner sortable text-center">Hierro</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th style="">
+                                                            <div class="th-inner sortable text-center">Colonias verdes</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th style="">
+                                                            <div class="th-inner sortable text-center">Colonias amarillas</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th style="">
+                                                            <div class="th-inner sortable text-center">Fecha de la prueba</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                        <th style="">
+                                            <div class="th-inner sortable text-center" >Acciones</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <td class="text-center"  rowspan="1">0</td>
+                                            <td class="text-center" rowspan="1">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">0</td>
+                                            <td class="text-center">30-Jan 19</td>
+                                            
+                                            <td class="text-center">
+                                                <div class="actions btn btn-group-sm" style="width: max-content;">
+                                                    <a href="" class="btn btn-success btn-xs mr-4">
+                                                        <i class="fa fa-edit"></i></a>
+                                                    <a href="" class="btn btn-xs btn-danger">
+                                                        <i class="fa fa-trash-o" ></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="fixed-table-pagination" style="display: none;">
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Pool;
 class HomeController extends Controller
 {
     /**
@@ -27,6 +27,8 @@ class HomeController extends Controller
      */
     public function show()
     {
-        return view('home');
+        $team_id = auth()->user()->currentTeam->id;
+        $pools = Pool::where('team_id', $team_id)->get();
+        return view('home')->with(['pools' => $pools]);
     }
 }
