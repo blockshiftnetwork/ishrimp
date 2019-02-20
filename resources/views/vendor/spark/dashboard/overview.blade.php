@@ -54,57 +54,28 @@
                                     </th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr data-index="0">
-                                        <td style="" ><a class="text-muted" href="" title="Piscina 2">Piscina 2</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="78">78</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="14.34">14.34</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="1.89">1.89</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="9240.00">9240.00</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="NA">NA</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="9240.00">340.00</a></td>
-
-                                    </tr>
-                                    <tr data-index="1">
-                                        <td style="" ><a class="text-muted" href="" title="Piscina 3">Piscina 3</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="42">42</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="7.98">7.98</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="1.98">1.98</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="3775.00">3775.00</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="NA">NA</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="9240.00">250.00</a></td>
-
-                                    </tr>
-                                    <tr data-index="2">
-                                        <td style="" ><a class="text-muted" href="" title="Piscina 4">Piscina 4</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="78">78</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="7.18">7.18</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="1.18">1.18</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="11385.00">11385.00</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="NA">NA</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="9240.00">145.00</a></td>
-
-                                    </tr>
-                                    <tr data-index="3">
-                                        <td style="" ><a class="text-muted" href="" title="Piscina 5">Piscina 5</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="50">50</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="6.34">6.34</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="1.34">1.34</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="4500.00">4500.00</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="NA">NA</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="9240.00">40.00</a></td>
-
-                                    </tr>
-                                    <tr data-index="4">
-                                        <td style="" ><a class="text-muted" href="" title="Piscina 6">Piscina 6</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="50">50</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="7.68">7.68</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="2.45">2.45</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="4376.00">4376.00</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="NA">NA</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="9240.00">240.00</a></td>
-
-                                    </tr>
+                                <tbody> 
+                                    @php
+                                                $doc = 32;
+                                                $awc = 132;
+                                                $awg = 2.31;
+                                                $ba = 12342.00;
+                                                $do = 12;
+                                                $rc = $doc+($awc+$awg+$ba)/$do;
+                                            @endphp
+                                    @foreach ($pools as $item)
+                                        <tr>
+                                           
+                                            <td><a class="text-muted" href="">{{$item->name}}</a></td>
+                                            <td><a class="text-muted" href="">{{$doc}}</a></td>
+                                            <td><a class="text-muted" href="">{{$awc}}</a></td>
+                                            <td><a class="text-muted" href="">{{$awg}}</a></td>
+                                            <td><a class="text-muted" href="">{{$ba}}</a></td>
+                                            <td><a class="text-muted" href="">{{$do}}</a></td>
+                                            <td><a class="text-muted" href="">{{$rc}}</a></td>
+                                        </tr>
+                                    @endforeach
+                                    
                                   </tbody>
                                 </table>
                             </div>

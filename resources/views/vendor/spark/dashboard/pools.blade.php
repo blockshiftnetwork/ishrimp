@@ -33,7 +33,7 @@
                     aria-expanded="false"><span class="button_name">Cultivo Actual</span> <span
                         class="caret"></span></a>
                 <ul class="dropdown-menu menu-dropdown harvest-dropdown" role="menu">
-                    <li><a href="javascript:void(0)" id="current" class="harvests">Cultivo Actual</a></li>
+                    <li><a href="" id="current" class="harvests">Cultivo Actual</a></li>
                 </ul>
             </li>
         </div>
@@ -155,7 +155,7 @@
                                             <div class="actions btn btn-group-sm">
                                                 <a href="" class="btn btn-success btn-xs mr-4">
                                                     <i class="fa fa-edit"></i></a>
-                                                    <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                    <a href="" class="btn btn-xs btn-danger">
                                                     <i class="fa fa-trash-o" ></i></a>
                                             </div>
                                         </td>
@@ -170,7 +170,7 @@
                                                 <div class="actions btn btn-group-sm">
                                                     <a href="" class="btn btn-success btn-xs mr-4">
                                                         <i class="fa fa-edit"></i></a>
-                                                        <a href="javascript:void(0)"  class="btn btn-xs btn-danger">
+                                                        <a href=""  class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash-o" ></i></a>
                                                 </div>
                                             </td>
@@ -185,7 +185,7 @@
                                                 <div class="actions btn btn-group-sm">
                                                     <a href="" class="btn btn-success btn-xs mr-4">
                                                         <i class="fa fa-edit"></i></a>
-                                                        <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                        <a href="" class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash-o" ></i></a>
                                                 </div>
                                             </td>
@@ -200,7 +200,7 @@
                                                 <div class="actions btn btn-group-sm">
                                                     <a href="" class="btn btn-success btn-xs mr-4">
                                                         <i class="fa fa-edit"></i></a>
-                                                        <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                        <a href="" class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash-o" ></i></a>
                                                 </div>
                                             </td>
@@ -303,7 +303,7 @@
                                             <div class="actions btn btn-group-sm">
                                                 <a href="" class="btn btn-success btn-xs mr-4">
                                                     <i class="fa fa-edit"></i></a>
-                                                <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                <a href="" class="btn btn-xs btn-danger">
                                                     <i class="fa fa-trash-o" ></i></a>
                                             </div>
                                         </td>
@@ -318,7 +318,7 @@
                                                 <div class="actions btn btn-group-sm">
                                                     <a href="" class="btn btn-success btn-xs mr-4">
                                                         <i class="fa fa-edit"></i></a>
-                                                    <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                    <a href="" class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash-o" ></i></a>
                                                 </div>
                                             </td>
@@ -333,7 +333,7 @@
                                                     <div class="actions btn btn-group-sm">
                                                         <a href="" class="btn btn-success btn-xs mr-4">
                                                             <i class="fa fa-edit"></i></a>
-                                                        <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                        <a href="" class="btn btn-xs btn-danger">
                                                             <i class="fa fa-trash-o" ></i></a>
                                                     </div>
                                                 </td>
@@ -348,7 +348,7 @@
                                                         <div class="actions btn btn-group-sm">
                                                             <a href="" class="btn btn-success btn-xs mr-4">
                                                                 <i class="fa fa-edit"></i></a>
-                                                            <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                            <a href="" class="btn btn-xs btn-danger">
                                                                 <i class="fa fa-trash-o" ></i></a>
                                                         </div>
                                                     </td>
@@ -416,7 +416,7 @@
                                                 <div class="actions btn btn-group-sm">
                                                     <a href="" class="btn btn-success btn-xs mr-4">
                                                         <i class="fa fa-edit"></i></a>
-                                                    <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                    <a href="" class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash-o" ></i></a>
                                                 </div>
                                             </td>
@@ -431,7 +431,7 @@
                                                     <div class="actions btn btn-group-sm">
                                                         <a href="" class="btn btn-success btn-xs mr-4">
                                                             <i class="fa fa-edit"></i></a>
-                                                        <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                        <a href="" class="btn btn-xs btn-danger">
                                                             <i class="fa fa-trash-o" ></i></a>
                                                     </div>
                                                 </td>
@@ -446,7 +446,7 @@
                                                         <div class="actions btn btn-group-sm">
                                                             <a href="" class="btn btn-success btn-xs mr-4">
                                                                 <i class="fa fa-edit"></i></a>
-                                                            <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                            <a href="" class="btn btn-xs btn-danger">
                                                                 <i class="fa fa-trash-o" ></i></a>
                                                         </div>
                                                     </td>
@@ -531,7 +531,7 @@
                                                     <div class="actions btn btn-group-sm">
                                                         <a href="" class="btn btn-success btn-xs mr-4">
                                                             <i class="fa fa-edit"></i></a>
-                                                            <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                            <a href="" class="btn btn-xs btn-danger">
                                                             <i class="fa fa-trash-o" ></i></a>
                                                     </div>
                                                 </td>
@@ -549,7 +549,7 @@
                                                         <div class="actions btn btn-group-sm">
                                                             <a href="" class="btn btn-success btn-xs mr-4">
                                                                 <i class="fa fa-edit"></i></a>
-                                                                <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                                <a href="" class="btn btn-xs btn-danger">
                                                                 <i class="fa fa-trash-o" ></i></a>
                                                         </div>
                                                     </td>
@@ -567,7 +567,7 @@
                                                             <div class="actions btn btn-group-sm">
                                                                 <a href="" class="btn btn-success btn-xs mr-4">
                                                                     <i class="fa fa-edit"></i></a>
-                                                                    <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                                    <a href="" class="btn btn-xs btn-danger">
                                                                     <i class="fa fa-trash-o" ></i></a>
                                                             </div>
                                                         </td>
@@ -585,7 +585,7 @@
                                                                 <div class="actions btn btn-group-sm">
                                                                     <a href="" class="btn btn-success btn-xs mr-4">
                                                                         <i class="fa fa-edit"></i></a>
-                                                                        <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                                        <a href="" class="btn btn-xs btn-danger">
                                                                         <i class="fa fa-trash-o" ></i></a>
                                                                 </div>
                                                             </td>
@@ -688,7 +688,7 @@
                                                 <div class="actions btn btn-group-sm" style="width: max-content;">
                                                     <a href="" class="btn btn-success btn-xs mr-4">
                                                         <i class="fa fa-edit"></i></a>
-                                                    <a href="javascript:void(0)" class="btn btn-xs btn-danger">
+                                                    <a href="" class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash-o" ></i></a>
                                                 </div>
                                             </td>

@@ -75,6 +75,7 @@
          <script src="{{ asset('js/charts.js') }}"> </script>
       <script>
           $(document).ready(function () {
+              
             $(window).resize(function(e) {
                 if($(window).width()>=760){
                   $("#sidebar").removeClass("active");
@@ -86,15 +87,21 @@
               });
           
               $('#sidebarcollapse').on('click', function () {
-                  console.log("hello");
                   $('#sidebar').toggleClass('active');
-                  //$('#sidebar').toggleClass('in');
-                  //$('a[aria-expanded=true]').attr('aria-expanded', 'false');
-              });
+               });
 
+              $.ajax({
+                  url: 'pools',
+                  type: 'GET',
+                  dataType: 'json',
+                  success: function(response){
+                      console.log(response);
+                  }
+              })
           
         });
       </script>
+      
      <script>
             $('.datapicker').datepicker({
                 format: "dd/mm/yyyy",

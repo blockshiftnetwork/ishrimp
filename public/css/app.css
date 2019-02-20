@@ -13131,6 +13131,7 @@ pre {
   left: 0;
   height: 100vh;
   z-index: 999;
+  margin-left: 20px;
   background: #ffffff;
   color: #fff;
   transition: all 0.3s;
