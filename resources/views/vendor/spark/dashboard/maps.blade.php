@@ -8,7 +8,25 @@
             <!-- <li><a id="srchalerts" class="mapSrchTab">Alerts</a></li> -->
         </ul>
         <div id="settingscroller" style="display: none;">
-             <span class="irs js-irs-0"><span class="irs"><span class="irs-line" tabindex="-1"><span class="irs-line-left"></span><span class="irs-line-mid"></span><span class="irs-line-right"></span></span><span class="irs-min">0</span><span class="irs-max">5</span><span class="irs-from">0</span><span class="irs-to">0</span><span class="irs-single">0</span></span><span class="irs-grid"></span><span class="irs-bar"></span><span class="irs-shadow shadow-from"></span><span class="irs-shadow shadow-to"></span><span class="irs-slider from"></span><span class="irs-slider to"></span></span><input id="txtMapSearchRange" type="text" name="range_1" value="" class="irs-hidden-input" readonly="">
+             <span class="irs js-irs-0"><span class="irs">
+                 <span class="irs-line" tabindex="-1">
+                     <span class="irs-line-left">
+                         </span><span class="irs-line-mid">
+                             </span>
+                             <span class="irs-line-right"></span>
+                            </span><span class="irs-min">0</span>
+                            <span class="irs-max">5</span>
+                            <span class="irs-from">0</span>
+                            <span class="irs-to">0</span>
+                            <span class="irs-single">0</span>
+                        </span><span class="irs-grid"></span>
+                        <span class="irs-bar"></span>
+                        <span class="irs-shadow shadow-from">
+                            </span><span class="irs-shadow shadow-to">
+                                </span><span class="irs-slider from">
+                                    </span><span class="irs-slider to">
+                                        </span></span>
+                                        <input id="txtMapSearchRange" type="text" name="range_1" value="" class="irs-hidden-input" readonly="">
         </div>
     </div><!-- tabcontent-->
 
@@ -27,7 +45,7 @@
 <div class="card bg-white bx-25" style="z-index: 999; position: absolute; top: 60%;">
 <div class="card-body">
    <div class="row mx-auto"> 
-    <form class="form-group" role="form" role="form" method="POST" action="{{route('pools.update')}}">
+    <form class="form-group" role="form" role="form" method="POST" action="{{route('pools.store')}}">
     {{ csrf_field() }}
         <div class="col-md-12  mx-auto">
         <input class="form-control mb-2" type="text" name="name" placeholder="nombre" id="name">
