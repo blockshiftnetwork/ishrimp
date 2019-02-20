@@ -2,6 +2,7 @@
 
             <div class="card card-default card-table">
                 <div class="card-header">
+
                     {{__('Visíón General')}}
                 </div>
 
@@ -18,7 +19,8 @@
                 </div>
                 <div class="pull-right search mb-2">
                     <input class="form-control" type="text" placeholder="Buscar"></div>
-                </div><div class="fixed-table-container">
+                </div>
+                <div class="fixed-table-container">
                     <div class="fixed-table-header">
                         <table>
                             </table>
@@ -41,16 +43,15 @@
                                 <th style="">
                                     <div class="th-inner sortable">AWG</div>
                                     <div class="fht-cell"></div></th><th style="">
-                                        <div class="th-inner sortable">Alimento<br>acumulado (Kg)</div>
+                                        <div class="th-inner sortable">Balanceado<br>acumulado (Kg)</div>
                                         <div class="fht-cell"></div>
                                     </th>
                                     <th style=""><div class="th-inner sortable">DO<br>(mg / L)</div>
                                         <div class="fht-cell"></div>
                                     </th>
-                                    <th style="">
-                                            <div class="th-inner sortable">pH</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
+                                    <th style=""><div class="th-inner sortable">Ratio <br> Conversion<br></div>
+                                        <div class="fht-cell"></div>
+                                    </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -61,7 +62,8 @@
                                         <td style="" ><a class="text-muted" href="" title="1.89">1.89</a></td>
                                         <td style="" ><a class="text-muted" href="" title="9240.00">9240.00</a></td>
                                         <td style="" ><a class="text-muted" href="" title="NA">NA</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="NA">NA</a></td>
+                                        <td style="" ><a class="text-muted" href="" title="9240.00">340.00</a></td>
+
                                     </tr>
                                     <tr data-index="1">
                                         <td style="" ><a class="text-muted" href="" title="Piscina 3">Piscina 3</a></td>
@@ -70,7 +72,8 @@
                                         <td style="" ><a class="text-muted" href="" title="1.98">1.98</a></td>
                                         <td style="" ><a class="text-muted" href="" title="3775.00">3775.00</a></td>
                                         <td style="" ><a class="text-muted" href="" title="NA">NA</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="NA">NA</a></td>
+                                        <td style="" ><a class="text-muted" href="" title="9240.00">250.00</a></td>
+
                                     </tr>
                                     <tr data-index="2">
                                         <td style="" ><a class="text-muted" href="" title="Piscina 4">Piscina 4</a></td>
@@ -79,7 +82,8 @@
                                         <td style="" ><a class="text-muted" href="" title="1.18">1.18</a></td>
                                         <td style="" ><a class="text-muted" href="" title="11385.00">11385.00</a></td>
                                         <td style="" ><a class="text-muted" href="" title="NA">NA</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="NA">NA</a></td>
+                                        <td style="" ><a class="text-muted" href="" title="9240.00">145.00</a></td>
+
                                     </tr>
                                     <tr data-index="3">
                                         <td style="" ><a class="text-muted" href="" title="Piscina 5">Piscina 5</a></td>
@@ -88,7 +92,8 @@
                                         <td style="" ><a class="text-muted" href="" title="1.34">1.34</a></td>
                                         <td style="" ><a class="text-muted" href="" title="4500.00">4500.00</a></td>
                                         <td style="" ><a class="text-muted" href="" title="NA">NA</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="NA">NA</a></td>
+                                        <td style="" ><a class="text-muted" href="" title="9240.00">40.00</a></td>
+
                                     </tr>
                                     <tr data-index="4">
                                         <td style="" ><a class="text-muted" href="" title="Piscina 6">Piscina 6</a></td>
@@ -97,7 +102,8 @@
                                         <td style="" ><a class="text-muted" href="" title="2.45">2.45</a></td>
                                         <td style="" ><a class="text-muted" href="" title="4376.00">4376.00</a></td>
                                         <td style="" ><a class="text-muted" href="" title="NA">NA</a></td>
-                                        <td style="" ><a class="text-muted" href="" title="NA">NA</a></td>
+                                        <td style="" ><a class="text-muted" href="" title="9240.00">240.00</a></td>
+
                                     </tr>
                                   </tbody>
                                 </table>

@@ -1,25 +1,27 @@
-var map;
+        var map;
+        var locLat='-2.293005';
+        var locLng='-79.7797965';
         var markers = [];
         var infoWindow;
         var locationSelect;
 
         function initMap() {
 
-            var map = new google.maps.Map(document.getElementById('map'), {zoom: 12, mapTypeId: 'hybrid'});
-            var geocoder = new google.maps.Geocoder;
-
-            geocoder.geocode({'address': 'Guayaquil'}, function(results, status) {
-              if (status === 'OK') {
-                map.setCenter(results[0].geometry.location);
-                new google.maps.Marker({
-                  map: map,
-                  position: results[0].geometry.location
-                });
-              } else {
-                window.alert('Geocode was not successful for the following reason: ' +
-                    status);
-              }
-            });
+            map = new google.maps.Map(document.getElementById("map"), {
+				center: new google.maps.LatLng(locLat,locLng),
+				  zoom: 18,
+				  mapTypeId: google.maps.MapTypeId.HYBRID,
+				  mapTypeControl: false,
+				  mapTypeControlOptions: {
+					  style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+					  position: google.maps.ControlPosition.LEFT_BOTTOM
+				  },
+				  zoomControlOptions: {
+					position: google.maps.ControlPosition.RIGHT_BOTTOM
+                  },
+				  fullscreenControl: false,
+				  streetViewControl: false,
+			});
           }
 
             function handleLocationError(browserHasGeolocation, infoWindow, pos) {
