@@ -33,11 +33,11 @@
 
     </aside>
     <aside>
-        <a class="nav-link" href="/settings">
+        <a class="nav-link" href="/sowing">
         <h3 class="nav-heading ">
             {{__('Siembra')}}
         </h3></a>
-        @yield('Siembra_options')
+        @yield('Sowing_options')
 
     </aside>
         <aside>

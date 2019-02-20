@@ -12,10 +12,8 @@
 */
 
 Route::get('/', 'WelcomeController@show');
-
 Route::get('/home', 'HomeController@show');
-
 Route::resource('pools', 'PoolController');
 Route::resource('/pools_sowing', 'PoolSowingController');
-
 Route::resource('/cultivation', 'CultivationController');
+Route::resource('/sowing', 'SowingController');
