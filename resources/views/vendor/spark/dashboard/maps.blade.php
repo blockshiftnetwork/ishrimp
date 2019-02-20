@@ -27,9 +27,8 @@
 <div class="card bg-white bx-25" style="z-index: 999; position: absolute; top: 60%;">
 <div class="card-body">
    <div class="row mx-auto"> 
-    <form class="form-group" role="form" role="form" method="POST" action="{{route('pools.update' , 1)}}">
+    <form class="form-group" role="form" role="form" method="POST" action="{{route('pools.update')}}">
     {{ csrf_field() }}
-        @method('PUT')
         <div class="col-md-12  mx-auto">
         <input class="form-control mb-2" type="text" name="name" placeholder="nombre" id="name">
         
