@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <!-- CSS -->
     <link href="{{ mix(Spark::usesRightToLeftTheme() ? 'css/app-rtl.css' : 'css/app.css') }}" rel="stylesheet">
 
@@ -23,7 +23,6 @@
         window.Spark = @json(array_merge(Spark::scriptVariables(), []));
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 </head>
 <body>
     <div id="spark-app" v-cloak>
@@ -38,11 +37,13 @@
           <!-- Main Content -->
         <div class="row">
                 @if (Auth::check())
-            <div class="col-md-2 bg-white">
+                <div class="wrapper">
+            <nav id="sidebar">
 
                 @include('spark::nav.user-left')
 
-            </div>
+            </nav>
+        </div>
             <main class="py-4 col-md-9">
                     @yield('content')
                 </main>
@@ -52,12 +53,7 @@
                 </main>
             @endif
 
-
-
-
-
         </div>
-
 
         <!-- Application Level Modals -->
         @if (Auth::check())
@@ -73,6 +69,26 @@
     <script src="{{ asset('js/gmaps.js') }}"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPTtrYvFKQQLcrKoHzTdmtB9-0e_cx8Qo&region=EC&callback=initMap">
     </script>
-      <script src="{{ asset('js/charts.js') }}"> </script>
+         <script src="{{ asset('js/charts.js') }}"> </script>
+      <script>
+          $(document).ready(function () {
+            $(window).resize(function(e) {
+                if($(window).width()>=760){
+                  $("#sidebar").removeClass("active");
+                  $("#sidebar").removeClass("fixed");
+                }else{
+                  $("#sidebar").addClass("active");
+                  $("#sidebar").addClass("fixed");
+                }
+              });
+          
+              $('#sidebarcollapse').on('click', function () {
+                  console.log("hello");
+                  $('#sidebar').toggleClass('active');
+                  //$('#sidebar').toggleClass('in');
+                  //$('a[aria-expanded=true]').attr('aria-expanded', 'false');
+              });
+          });
+      </script>
 </body>
 </html>

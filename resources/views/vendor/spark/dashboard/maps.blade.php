@@ -24,6 +24,25 @@
        <button class="btn btn-primary btn-sm" style="padding: 0.3rem 0.5rem">Crear piscina</button>
     </div>
 </div>
+<div class="card bg-white bx-25" style="z-index: 999; position: absolute; top: 60%;">
+<div class="card-body">
+   <div class="row mx-auto"> 
+    <form class="form-group" role="form" role="form" method="POST" action="{{route('pools.store')}}">
+    {{ csrf_field() }}
+
+        <div class="col-md-12  mx-auto">
+        <input class="form-control mb-2" type="text" name="name" placeholder="nombre" id="name">
+        
+        <input class="form-control mb-2" type="number" name="size" placeholder="Area" id="size">
+        <input class="form-control mb-2" type="text" name="coordinates" placeholder="coordenadas" id="coordinates">
+    </div>
+   
+           <button class="btn btn-success btn-block" type="submit">Guardar</button>
+   
+</form>
+</div>
+</div>
+</div>
 <div class="bl-primary" style="width: 150%; height: 100%;">
    <div id="map"></div>
 </div>

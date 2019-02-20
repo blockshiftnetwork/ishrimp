@@ -13119,6 +13119,42 @@ pre {
 .row {
     width: 98%;
 }
+.wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+#sidebar {
+  width: 250px;
+  position: relative;
+  top: auto;
+  left: 0;
+  height: 100vh;
+  z-index: 999;
+  background: #ffffff;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+#sidebar.active {
+  margin-left: -250px;
+}
+
+.sidebar-toggler {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid #00000029;
+  border-radius: 0.25rem;
+
+}
+
+#sidebar.fixed {
+  position: fixed !important;
+  top: auto;
+  
+}
 /*login*/
 img.logo-header {
     position: relative;
@@ -13137,7 +13173,9 @@ img.logo-header {
 .card-login{
     border-radius: 2%;
 }
+
 @media screen and (max-width: 440px) {
+  
     .login-background {
         z-index: 0;
         background-size: auto;
@@ -13153,6 +13191,7 @@ img.logo-header {
         margin-left: 0px !important;
         margin-right: -35px !important;
         }
+      
     }
 
     @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -13191,13 +13230,13 @@ img.logo-header {
     top: 28px;
 }
 #map {
-    height: 150%;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-    position: absolute;
-    z-index: 200;
-    overflow: hidden;
+  height: 100%;
+  width: 150%;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  z-index: 200;
+  /* overflow: hidden; */
 }
 
 #plMapOptions #tabcontent {
@@ -13286,6 +13325,7 @@ div#btn-createpool {
     left: 45%;
     width: fit-content;
 }
+
 /*pools*/
 .dsh_board_main_body_cont {
     width: 100%;
