@@ -1,6 +1,5 @@
 @extends('spark::layouts.app')
 
-
 @section('content')
     <home :user="user" :teams="teams" inline-template>
         <div class="spark-screen container" style="min-height: fit-content; height: 100%; width: 100%;">
@@ -58,5 +57,6 @@
             </div>
         </div>
     </home>
+
 @endsection
 

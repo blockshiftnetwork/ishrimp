@@ -39,10 +39,10 @@
 </div>
 <div id="btn-createpool" class="pull-left" style="display: block;">
     <div class="btn-group-lg">
-       <button class="btn btn-primary btn-sm" style="padding: 0.3rem 0.5rem">Crear piscina</button>
+       <button id="createpool" class="btn btn-primary btn-sm" style="padding: 0.3rem 0.5rem">Crear piscina</button>
     </div>
 </div>
-<div class="card bg-white bx-25" style="z-index: 999; position: absolute; top: 60%;">
+<div id="form_pool" class="card bg-white bx-25" style="z-index: 999; position: absolute; top: 60%; display: none">
 <div class="card-body">
    <div class="row mx-auto"> 
     <form class="form-group" role="form" role="form" method="POST" action="{{route('pools.store')}}">
@@ -50,11 +50,11 @@
         <div class="col-md-12  mx-auto">
         <input class="form-control mb-2" type="text" name="name" placeholder="nombre" id="name">
         
-        <input class="form-control mb-2" type="number" name="size" placeholder="Area" id="size">
-        <input class="form-control mb-2" type="text" name="coordinates" placeholder="coordenadas" id="coordinates">
+        <input class="form-control mb-2" type="text" name="size" placeholder="Area" id="size">
+        <input class="form-control mb-2" type="hidden" name="coordinates" placeholder="coordenadas" id="coordinates">
     </div>
    
-           <button class="btn btn-success btn-block" type="submit">Guardar</button>
+           <button id="savePool" class="btn btn-success btn-block" type="submit">Guardar</button>
    
 </form>
 </div>

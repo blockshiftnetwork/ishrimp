@@ -73,7 +73,7 @@
     </script>
     <script src="{{ asset('js/gmaps.js') }}"> </script>
      <script src="{{ asset('js/infobubble.js') }}"></script>
-    <script src="{{ asset('js/gmap_drawing.js') }}"></script>
+    
    
     
          <script src="{{ asset('js/charts.js') }}"> </script>

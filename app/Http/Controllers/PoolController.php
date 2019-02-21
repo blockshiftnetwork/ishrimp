@@ -41,19 +41,18 @@ class PoolController extends Controller
      */
    public function store(Request $request)
     {
-        $request->validate([
+        /*$request->validate([
             'name' => 'required',
             'size' => 'required',
             'coordinates' => 'required'
         ]);
-        
+        */
         $pool = new Pool;
         $pool->team_id = auth()->user()->currentTeam->id;
         $pool->name = $request->name;
         $pool->size = $request->size;
         $pool->coordinates = $request->coordinates;
         $pool->save();
-
         return redirect()->back()->with('message', 'Piscina Guardada!');
     }
     /**

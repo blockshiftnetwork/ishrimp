@@ -13,7 +13,7 @@ class CultivationController extends Controller
      */
     public function index()
     {
-       return view('vendor.spark.cultivation.balanced');
+       return view('vendor.spark.cultivation.cultivation');
     }
 
     /**
