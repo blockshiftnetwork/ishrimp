@@ -4,7 +4,9 @@
         var markers = [];
         var infoWindow;
         var locationSelect;
-
+        var drawingModeEnabled = 1;
+        var editModeEnabled = 0;
+        var newPondAreaSize;
 window.onload = function () {
   var hexVal = "0123456789ABCDEF".split("");
   var defaultColor = '#ff0000';
@@ -23,6 +25,24 @@ window.onload = function () {
             fullscreenControl: false,
             streetViewControl: false,
           });
+
+          var myDrawingManager = new google.maps.drawing.DrawingManager();
+          myDrawingManager.setMap(map);
+          //ShowDrawingTools(myDrawingManager,true); 
+          DrawingTools(myDrawingManager,map);
+          google.maps.event.addListener(myDrawingManager, 'overlaycomplete', function(event) {
+          console.log(event);
+              polygon = new google.maps.Polygon({
+                  path: event.overlay.getPath()
+                  , map: map
+                  , strokeColor: defaultColor
+                  , strokeWeight: 3
+                  , strokeOpacity: 0.5
+                  , fillColor: defaultColor
+                  , fillOpacity: 0.3
+                  , clickable: false
+              });
+            });
           //para dibujar el poligono
           var polygon = new google.maps.Polygon({
               path: [
@@ -40,6 +60,8 @@ window.onload = function () {
                clickable: false,
                
           });
+          var area = google.maps.geometry.spherical.computeArea(polygon.getPath());
+          console.log('area', area);
           //asigna colores a cada poligono
           polygon.currentColor = makeColor();
           polygon.setOptions({
@@ -47,6 +69,7 @@ window.onload = function () {
              fillColor: polygon.currentColor,
              clickable: true,
           });
+         
           function makeColor(){
               /**
                * Otra forma de crear un color aleatoriamente:
@@ -110,5 +133,42 @@ window.onload = function () {
               polygon.getPath().push(e.latLng);
               console.log('lat: ' , e.latLng.lat(),'lng: ' , e.latLng.lng(), );
           });
+
+          var centerControlDiv = document.createElement('div');
+      var centerControl = new addPondCreationButton(centerControlDiv, map); 
+      centerControlDiv.index = 1; 
+      centerControlDiv.setAttribute("class","clsMapAddPond"); 
+      map.controls[google.maps.ControlPosition.LEFT_TOP].push(centerControlDiv); 
+    
       };
         
+    function DrawingTools(myDrawingManager,map) {   
+    myDrawingManager = new google.maps.drawing.DrawingManager({
+    drawingMode: null,
+    drawingControl: false,
+    drawingControlOptions: {
+      position: google.maps.ControlPosition.TOP_RIGHT,
+      drawingModes: [
+      google.maps.drawing.OverlayType.POLYGON
+      ]
+    },
+    polygonOptions: {
+      draggable: false,
+      editable: true,
+      fillColor: '#000000',
+      fillOpacity: 0.5,
+      strokeColor: '#000000',
+      strokeWidth: 5
+    }
+    });
+    myDrawingManager.setMap(map);
+    // when polygon drawing is complete, an event is raised by the map
+    // this function will listen to the event and work appropriately
+    
+} 
+function ShowDrawingTools(myDrawingManager ,val) {   
+    myDrawingManager.setOptions({
+         drawingMode: null,
+            drawingControl: val
+    });
+}

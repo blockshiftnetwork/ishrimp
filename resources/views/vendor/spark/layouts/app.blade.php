@@ -22,10 +22,10 @@
     <script>
         window.Spark = @json(array_merge(Spark::scriptVariables(), []));
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+
 </head>
 <body>
     <div id="spark-app" v-cloak>
@@ -67,11 +67,15 @@
     </div>
 
     <!-- JavaScript -->
-    <script src="{{ mix('js/app.js') }}"></script>
+   <script src="{{ mix('js/app.js') }}"></script>
     <script src="/js/sweetalert.min.js"></script>
-    <script src="{{ asset('js/gmaps.js') }}"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPTtrYvFKQQLcrKoHzTdmtB9-0e_cx8Qo&region=EC&callback=initMap">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPTtrYvFKQQLcrKoHzTdmtB9-0e_cx8Qo&libraries=drawing,geometry,places&region=EC&callback=initMap">
     </script>
+    <script src="{{ asset('js/gmaps.js') }}"> </script>
+     <script src="{{ asset('js/infobubble.js') }}"></script>
+    <script src="{{ asset('js/gmap_drawing.js') }}"></script>
+   
+    
          <script src="{{ asset('js/charts.js') }}"> </script>
       <script>
           $(document).ready(function () {
