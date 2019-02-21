@@ -25,12 +25,11 @@
 
     </aside>
     <aside>
-        <a class="nav-link" href="">
+        <a class="nav-link" href="/culture">
         <h3 class="nav-heading ">
             {{__('Cultivo')}}
         </h3></a>
         @yield('Cultivo_options')
-
     </aside>
     <aside>
         <a class="nav-link" href="/settings">

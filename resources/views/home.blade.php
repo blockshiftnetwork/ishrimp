@@ -9,34 +9,25 @@
                 @section('overview_options')
                 <ul class="nav flex-column mb-4 ">
                         <li class="nav-item">
-                                <a class="nav-link" href="#dashboard" aria-controls="dashboard" role="tab" data-toggle="tab">
-                                    <i class="fa fa-dashboard icon"></i>
-                                    {{__('Visión General')}}
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                    <a class="nav-link" href="#maps" aria-controls="maps" role="tab" data-toggle="tab">
-                                        <i class="fa fa-map icon"></i>
-                                        {{__('Mapas')}}
-                                    </a>
-                                </li>
-
-
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#pools" aria-controls="pools" role="tab" data-toggle="tab">
-                                        <i class="fa fa-spinner icon"></i>
-                                    {{__('Piscinas')}}
+                            <a class="nav-link" href="#dashboard" aria-controls="dashboard" role="tab" data-toggle="tab">
+                                <i class="fa fa-dashboard icon"></i>
+                                {{__('Visión General')}}
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                                <a class="nav-link" href="#maps" aria-controls="maps" role="tab" data-toggle="tab">
+                                    <i class="fa fa-map icon"></i>
+                                    {{__('Mapas')}}
                                 </a>
                             </li>
 
 
                         <li class="nav-item ">
-                            <a class="nav-link" href="" aria-controls="param" role="tab" data-toggle="tab">
-                                    <i class="fa fa-bar-chart icon"></i>
-                                {{__('Parametros Diarios')}}
+                            <a class="nav-link" href="#pools" aria-controls="pools" role="tab" data-toggle="tab">
+                                    <i class="fa fa-spinner icon"></i>
+                                {{__('Piscinas')}}
                             </a>
                         </li>
-
                     </ul>
                 @endsection
 

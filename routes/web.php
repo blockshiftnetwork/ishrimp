@@ -17,3 +17,5 @@ Route::get('/home', 'HomeController@show');
 
 Route::resource('/pools', 'PoolController');
 Route::resource('/pools_sowing', 'PoolSowingController');
+
+Route::get('/culture', 'CultureController@daylyParameters');
