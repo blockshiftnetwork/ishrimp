@@ -48,8 +48,9 @@
     <form class="form-group" role="form" role="form" method="POST" action="{{route('pools.store')}}">
     {{ csrf_field() }}
         <div class="col-md-12  mx-auto">
+        <label for="name">Piscina</label>
         <input class="form-control mb-2" type="text" name="name" placeholder="nombre" id="name">
-        
+        <label for="size">Hectareas</label>
         <input class="form-control mb-2" type="text" name="size" placeholder="Area" id="size">
         <input class="form-control mb-2" type="hidden" name="coordinates" placeholder="coordenadas" id="coordinates">
     </div>

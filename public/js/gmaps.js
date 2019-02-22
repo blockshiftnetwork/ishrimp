@@ -64,7 +64,11 @@
       drawTools();
 
     })
-      
+          //ShowDrawingTools(myDrawingManager,true); 
+       
+         
+          //para dibujar el poligono
+          polygon = new google.maps.Polygon({});
           listenerMouserOver(polygon);
           var area = google.maps.geometry.spherical.computeArea(polygon.getPath());
           console.log('area', area);
