@@ -1,11 +1,11 @@
-<div id="plMapOptions"><!-- Fixed div -->
+<!-- <div id="plMapOptions"> Fixed div
     <div id="tabcontent" class="pull-left">
         <ul class="nav nav-tabs" id="navSearchOptions" style="display: block;">
             <li class="bar-option"><a id="srchabw" class="mapSrchTab">ABW</a></li>
             <li class="bar-option"><a id="srchawg" class="mapSrchTab">AWG</a></li>
             <li class="bar-option"><a id="srchdo" class="mapSrchTab">DO</a></li>
             <li class="bar-option"><a id="srchfeed" class="mapSrchTab">Alimentar</a></li>
-            <!-- <li><a id="srchalerts" class="mapSrchTab">Alerts</a></li> -->
+            <!-- <li><a id="srchalerts" class="mapSrchTab">Alerts</a></li> 
         </ul>
         <div id="settingscroller" style="display: none;">
              <span class="irs js-irs-0"><span class="irs">
@@ -28,9 +28,9 @@
                                         </span></span>
                                         <input id="txtMapSearchRange" type="text" name="range_1" value="" class="irs-hidden-input" readonly="">
         </div>
-    </div><!-- tabcontent-->
+    </div>tabcontent
 
-  </div>
+  </div>-->
   <div id="txtGoogleLocationSearch" class="pull-left" style="display: block;">
     <div class="right-inner-addon">
         <i class="fa fa-search"></i>
@@ -48,10 +48,10 @@
     <form class="form-group" role="form" role="form" method="POST" action="{{route('pools.store')}}">
     {{ csrf_field() }}
         <div class="col-md-12  mx-auto">
-        <label for="name">Piscina</label>
+        <label for="name">Nombre de la piscina</label>
         <input class="form-control mb-2" type="text" name="name" placeholder="nombre" id="name">
-        <label for="size">Hectareas</label>
-        <input class="form-control mb-2" type="text" name="size" placeholder="Area" id="size">
+        <label for="size">Tamaño (Hectáreas)</label>
+        <input class="form-control mb-2" type="text" name="size" placeholder="Area" id="size" readonly>
         <input class="form-control mb-2" type="hidden" name="coordinates" placeholder="coordenadas" id="coordinates">
     </div>
    
@@ -59,6 +59,15 @@
    
 </form>
 </div>
+</div>
+</div>
+
+<div id="info_pool" class="card bg-white bx-25" style="z-index: 999; position: absolute; top: 60%; display: none">
+<div class="card-body">
+   <div class="row mx-auto"> 
+   <label id="lbname"></label>
+   <label id="lbsize"></label>
+  </div>
 </div>
 </div>
 <div class="bl-primary" style="width: 150%; height: 100%;">

@@ -9,10 +9,10 @@
                         placeholder="Buscar Piscina ..." style="width: 98%;margin: 0 1%;">
                     <ul class="menu-dropdown search-list" role="menu"
                         style="margin: 5px 0 0;line-height: 30px; width: 100%;">
-                        <li class="nodata" style="display:none;">No se encontraron coincidencias</li>
-                        <li class="searchlist_li"><a href="javascript: void(0)"  class="pond-dropdown">Piscina 2</a></li>
-                        <li class="searchlist_li"><a href="javascript: void(0)"  class="pond-dropdown">Piscina 3</a></li>
-                        <li class="searchlist_li"><a href="javascript: void(0)" class="pond-dropdown">Piscina 4</a></li>
+                        <li class="nodata dropdown-item" style="display:none;">No se encontraron coincidencias</li>
+                        <li class="searchlist_li dropdown-item"><a href="javascript: void(0)"  class="pond-dropdown">Piscina 2</a></li>
+                        <li class="searchlist_li dropdown-item"><a href="javascript: void(0)"  class="pond-dropdown">Piscina 3</a></li>
+                        <li class="searchlist_li dropdown-item"><a href="javascript: void(0)" class="pond-dropdown">Piscina 4</a></li>
                     </ul>
                 </div>
             </li>
@@ -43,8 +43,8 @@
     <div class="mid_container top_space">
         <div role="tabpanel" id="pond-detail-pills">
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a class="btn btn-light" href="#graphs_pill" aria-controls="graphs_section" role="tab"
+            <ul class="nav nav-pills nav-tabs" role="tablist">
+                <li role="presentation" class=" nav-item"><a class="btn btn-light nav-link active" href="#graphs_pill" aria-controls="graphs_section" role="tab"
                         data-toggle="tab">Gráficos</a></li>
                 <li role="presentation"><a class="btn btn-light"  href="#feed_chart_pill" aria-controls="feed_chart_section" role="tab"
                         data-toggle="tab">Alimentación</a></li>

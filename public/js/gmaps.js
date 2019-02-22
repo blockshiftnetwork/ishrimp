@@ -6,22 +6,22 @@
         var myDrawingManager;
         var polygon;
         var pools;
-       
+        var infowindows;
             
       
 
   $( document ).ready(function() {
+      infoWindow = new google.maps.InfoWindow;
        $.ajax({
                   url: 'pools',
                   type: 'GET',
                   dataType: 'json',
                   success: function(response){
                     pools =response.data;
-                      console.log(response.data);
 
           for (var i = 0; i < pools.length; i++) {
+              var pool = pools[i];
               var latLng = JSON.parse(pools[i].coordinates);
-              console.log(latLng);
               var polygon = new google.maps.Polygon({
                path: latLng,
                map: map,
@@ -30,12 +30,13 @@
                strokeOpacity: 0.5,
                fillColor: defaultColor,
                fillOpacity: 0.3,
-               clickable: false,
-               
+               clickable: true,
              });
-                    }
-                  }
-              });
+              polygon.setMap(map);
+             listenerMouserOver(polygon, pool);
+            }
+         }
+      });
        
           map = new google.maps.Map(document.getElementById("map"), {
             center: new google.maps.LatLng(locLat, locLng),
@@ -159,10 +160,22 @@ function loadFormpool(size, coordinates){
   $('#size').val(size);
    $('#coordinates').val(coordinates);
 }
-function  listenerMouserOver(poly) {
-  google.maps.event.addListener(polygon, 'mouseover', function(event) {
-            console.log('over',event);
 
-          })
+function  listenerMouserOver(poly, pool) {
+  poly.addListener('mouseover', function(event) {
+    var contentString = '<div class="card bg-white" style="width: 100%"><div class="card-body" style="width: 100%">'+ '<h3 style="font-size:3rem">'+ pool.name+ '</h3>' +
+     '<ul class="list-group">' + 
+     '<li class="list-item-group" style="font-size:2rem">' + 'Hectáreas: ' + pool.size + '</li>'+
+     '</div> </div>' ;
+     
+      infoWindow.setContent(contentString);
+      infoWindow.setPosition(event.latLng);
+      infoWindow.open(map);
+     
+})
+    poly.addListener('mouseout', function(event) {
+     infoWindow.close();
+     
+})
 }
 

@@ -56,12 +56,12 @@
                                 </thead>
                                 <tbody> 
                                     @php
-                                                $doc = 32;
-                                                $awc = 132;
-                                                $awg = 2.31;
-                                                $ba = 12342.00;
-                                                $do = 12;
-                                                $rc = $doc+($awc+$awg+$ba)/$do;
+                                                $doc = 0;
+                                                $awc = 0;
+                                                $awg = 0.0;
+                                                $ba = 0.00;
+                                                $do = 0;
+                                                $rc =0;
                                             @endphp
                                     @foreach ($pools as $item)
                                         <tr>
