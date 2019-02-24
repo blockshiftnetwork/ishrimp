@@ -15,6 +15,9 @@
     <!-- CSS -->
     <link href="{{ mix(Spark::usesRightToLeftTheme() ? 'css/app-rtl.css' : 'css/app.css') }}" rel="stylesheet">
 
+    <!-- flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
     <!-- Scripts -->
     @stack('scripts')
 
@@ -45,9 +48,8 @@
 
                 @include('spark::nav.user-left')
 
-            </nav>
-        </div>
-            <main class="py-4 col-md-9">
+            </div>
+            <main class="py-4 col-md-10">
                     @yield('content')
                 </main>
             @else
@@ -67,7 +69,9 @@
     </div>
 
     <!-- JavaScript -->
-   <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
+    <!-- flatpickr -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="/js/sweetalert.min.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPTtrYvFKQQLcrKoHzTdmtB9-0e_cx8Qo&libraries=drawing,geometry,places&region=EC&callback=initMap">
     </script>
@@ -116,5 +120,7 @@
             });
      </script>
      @yield('scripts')
+      <script src="{{ asset('js/charts.js') }}"> </script>
+    @yield('custom-scripts')
 </body>
 </html>

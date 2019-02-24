@@ -3,7 +3,7 @@
             <div class="card card-default card-table">
                 <div class="card-header">
 
-                    {{__('Visíón General')}}
+                    {{__('Visión General')}}
                 </div>
 
                 <div class="card-body">
