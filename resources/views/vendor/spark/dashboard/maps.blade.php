@@ -39,7 +39,8 @@
 </div>
 <div id="btn-createpool" class="pull-left" style="display: block;">
     <div class="btn-group-lg">
-       <button id="createpool" class="btn btn-primary btn-sm" style="padding: 0.3rem 0.5rem">Crear piscina</button>
+       <button id="createpool" class="btn btn-primary btn-sm" style="padding: 0.3rem 0.5rem">Agregar Piscina</button>
+         <button id="cancel" class="btn btn-danger btn-sm" style="padding: 0.3rem 0.5rem;display: none">Cancelar</button>
     </div>
 </div>
 <div id="form_pool" class="card bg-white bx-25" style="z-index: 999; position: absolute; top: 60%; display: none">
@@ -49,7 +50,7 @@
     {{ csrf_field() }}
         <div class="col-md-12  mx-auto">
         <label for="name">Nombre de la piscina</label>
-        <input class="form-control mb-2" type="text" name="name" placeholder="nombre" id="name">
+        <input class="form-control mb-2" type="text" name="name" placeholder="nombre" id="name" required>
         <label for="size">Tamaño (Hectáreas)</label>
         <input class="form-control mb-2" type="text" name="size" placeholder="Area" id="size" readonly>
         <input class="form-control mb-2" type="hidden" name="coordinates" placeholder="coordenadas" id="coordinates">

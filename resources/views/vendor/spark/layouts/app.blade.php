@@ -76,7 +76,6 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPTtrYvFKQQLcrKoHzTdmtB9-0e_cx8Qo&libraries=drawing,geometry,places&region=EC&callback=initMap">
     </script>
     <script src="{{ asset('js/gmaps.js') }}"> </script>
-     <script src="{{ asset('js/charts.js') }}"> </script>
       <script>
           $(document).ready(function () {
               

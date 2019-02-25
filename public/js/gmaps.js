@@ -7,6 +7,7 @@
         var polygon;
         var pools;
         var infowindows;
+        var drawMode = false;
             
       
 
@@ -62,9 +63,10 @@
   myDrawingManager.setMap(map);
 
     $('#createpool').on('click', function(){
+      drawMode = true;
       drawTools();
+    });
 
-    })
           //ShowDrawingTools(myDrawingManager,true); 
        
          
@@ -129,7 +131,26 @@ function drawTools(){
     });
 
   myDrawingManager.setMap(map);
+  cancelDraw(myDrawingManager,null);
   listenerOverlay();
+}
+
+function cancelDraw(overlay1, overlay2){
+     $('#createpool').attr("style", "display:none");
+   $('#cancel').attr("style", "display:block");
+   $('#cancel').on('click', function(){
+      if(overlay1 != null){
+        overlay1.setMap(null);
+      }
+      if(overlay2 != null){
+        overlay2.setMap(null);
+      }
+       
+        $('#createpool').attr("style", "display:block");
+         $('#cancel').attr("style", "display:none; background-color:red;");
+
+         unloadFormpool();
+    });
 }
 
 function listenerOverlay(){
@@ -139,7 +160,6 @@ function listenerOverlay(){
             polygon.currentColor = makeColor();
              npoly = new google.maps.Polygon({
                   path: event.overlay.getPath(),
-                  icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
                    map: map,
                    strokeColor: polygon.currentColor,
                    strokeWeight: 3,
@@ -148,8 +168,10 @@ function listenerOverlay(){
                    fillOpacity: 0.3,
                    clickable: false,
               });
+               polygon.setMap(map);
              var size = google.maps.geometry.spherical.computeArea(npoly.getPath());
               closeDrawingTools();
+              cancelDraw(npoly, event.overlay);
               loadFormpool((size/10000).toFixed(2), JSON.stringify(npoly.getPath().getArray()));
             });
 
@@ -161,14 +183,17 @@ function loadFormpool(size, coordinates){
    $('#coordinates').val(coordinates);
 }
 
+function unloadFormpool(){
+  form_pool.style.display = "none";
+  $('#size').val('');
+   $('#coordinates').val('');
+}
+
 function  listenerMouserOver(poly, pool) {
   poly.addListener('mouseover', function(event) {
-    var contentString = '<div class="card bg-white" style="width: 100%"><div class="card-body" style="width: 100%">'+ '<h3 style="font-size:3rem">'+ pool.name+ '</h3>' +
-     '<ul class="list-group">' + 
-     '<li class="list-item-group" style="font-size:2rem">' + 'Hectáreas: ' + pool.size + '</li>'+
-     '</div> </div>' ;
+   
      
-      infoWindow.setContent(contentString);
+      infoWindow.setContent(strInfoPools(pool));
       infoWindow.setPosition(event.latLng);
       infoWindow.open(map);
      
@@ -177,5 +202,23 @@ function  listenerMouserOver(poly, pool) {
      infoWindow.close();
      
 })
+
+  function strInfoPools(dataPool){
+ return '<div class="card bg-white text-justify" style="width: 18rem;">'+
+           '<img class="card-img-top" src="/images/top-login-header.svg" alt="Card image cap">'+
+           '<div class="card-body">'+
+             '<h5 class="card-title text-uppercase">'+dataPool.name+'</h5>'+
+             '<ul class="list-group-flush">'+
+                '<li class="list-group-item d-flex justify-content-between align-items-center">'+
+                    'Tamaño (Hectáreas): '+
+                  '<span class="badge badge-primary badge-pill">'+dataPool.size+'</span>'+
+                '</li>'+
+              '</ul>'+
+          '</div>'+
+        '</div>'
+
+  }
+
+
 }
 
