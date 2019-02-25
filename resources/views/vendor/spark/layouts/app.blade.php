@@ -80,7 +80,7 @@
           $(document).ready(function () {
               
             $(window).resize(function(e) {
-                if($(window).width()>=760){
+                if($(window).width()>=1600){
                   $("#sidebar").removeClass("active");
                   $("#sidebar").removeClass("fixed");
                 }else{
@@ -93,14 +93,6 @@
                   $('#sidebar').toggleClass('active');
                });
 
-              $.ajax({
-                  url: 'pools',
-                  type: 'GET',
-                  dataType: 'json',
-                  success: function(response){
-                      console.log(response);
-                  }
-              })
           
         });
       </script>

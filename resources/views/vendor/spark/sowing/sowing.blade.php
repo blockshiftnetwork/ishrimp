@@ -146,7 +146,7 @@
             <button type="button" id="saveFeeding" class="btn btn-success ml-5 mr-5">Guardar</button>
             <button type="button" class="btn btn-danger cancel mr-5">Cancelar</button>						
         </div>
-    </div>	-->
+    </div>
     <div id="sowing" class="card bg-white" style="z-index: 999; position: absolute; top: 60%">
 <div class="card-body">
    <div class="row mx-auto"> 
@@ -166,7 +166,7 @@
 </form>
 </div>
 </div>
-</div>
+</div>  -->
 <div class="modal fade" id="addSowingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

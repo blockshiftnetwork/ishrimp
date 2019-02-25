@@ -2,7 +2,7 @@
         var locLat='-2.293005';
         var locLng='-79.7797965';
         var hexVal = "0123456789ABCDEF".split("");
-        var defaultColor = '#ff0000';
+        var defaultColor = '#01B6F0';
         var myDrawingManager;
         var polygon;
         var pools;
@@ -13,6 +13,7 @@
 
   $( document ).ready(function() {
       infoWindow = new google.maps.InfoWindow;
+       iniMap();
        $.ajax({
                   url: 'pools',
                   type: 'GET',
@@ -39,21 +40,7 @@
          }
       });
        
-          map = new google.maps.Map(document.getElementById("map"), {
-            center: new google.maps.LatLng(locLat, locLng),
-            zoom: 18,
-            mapTypeId: google.maps.MapTypeId.HYBRID,
-            mapTypeControl: false,
-            mapTypeControlOptions: {
-              style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-              position: google.maps.ControlPosition.LEFT_BOTTOM
-            },
-            zoomControlOptions: {
-              position: google.maps.ControlPosition.RIGHT_BOTTOM
-            },
-            fullscreenControl: false,
-            streetViewControl: false,
-          });
+         
 
     myDrawingManager = new google.maps.drawing.DrawingManager({
     drawingMode: null,
@@ -87,10 +74,10 @@
     
       });
           
-          function makeColor(){
-              return '#' + hexVal.sort(function(){
-                  return (Math.round(Math.random())-0.5);
-              }).slice(0,6).join('');
+function makeColor(){
+     return '#' + hexVal.sort(function(){
+         return (Math.round(Math.random())-0.5);
+                   }).slice(0,6).join('');
           }
 
 function closeDrawingTools() {   
@@ -101,7 +88,7 @@ function closeDrawingTools() {
 }
 
 function iniMap(){
-     map = new google.maps.Map(document.getElementById("map"), {
+    map = new google.maps.Map(document.getElementById("map"), {
             center: new google.maps.LatLng(locLat, locLng),
             zoom: 18,
             mapTypeId: google.maps.MapTypeId.HYBRID,
@@ -147,7 +134,7 @@ function cancelDraw(overlay1, overlay2){
       }
        
         $('#createpool').attr("style", "display:block");
-         $('#cancel').attr("style", "display:none; background-color:red;");
+         $('#cancel').attr("style", "display:none;");
 
          unloadFormpool();
     });

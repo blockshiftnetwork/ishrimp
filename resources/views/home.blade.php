@@ -37,7 +37,7 @@
                             <div role="tabcard" class="tab-pane active " id="dashboard">
                                 @include('spark::dashboard.overview')
                             </div>
-                            <div role="tabcard" class="tab-pane " id="maps" style="height: 100%; width: 100%;">
+                            <div role="tabcard" class="tab-pane " id="maps" style="height:-webkit-fill-available; width: 100%;">
                                     @include('spark::dashboard.maps')
                                 </div>
                                 <div role="tabcard" class="tab-pane " id="pools" style="height: 100%; width: 100%;">
