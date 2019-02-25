@@ -33,7 +33,7 @@
                 <!-- Tab cards -->
                 <div style="height: 100%; width: 100%;">
                         <div class="tab-content">
-                            <!-- Profile -->
+                            
                             <div role="tabcard" class="tab-pane active " id="dashboard">
                                 @include('spark::dashboard.overview')
                             </div>

@@ -11,7 +11,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#medicine" aria-controls="medicine" role="tab" data-toggle="tab">
                             <i class="fa fa-eyedropper icon"></i>
-                            {{__('Medicina')}}
+                            {{__('Insumo')}}
                         </a>
                     </li>
                 </ul>
@@ -31,8 +31,8 @@
                         <div role="tabcard" class="tab-pane active" id="medicine">
                             @include('spark::culture.medicine')
                         </div>
-                    </div>
-                    <div class="tab-content">
+                   
+                   
                         <div role="tabcard" class="tab-pane" id="dayly-parameters">
                             @include('spark::culture.dayly-parameters')
                         </div>

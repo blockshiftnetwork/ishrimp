@@ -49,7 +49,7 @@
                 @include('spark::nav.user-left')
 
             </div>
-            <main class="py-4 col-md-10">
+            <main class="py-4 col-md-9 mx-auto">
                     @yield('content')
                 </main>
             @else
@@ -80,7 +80,7 @@
           $(document).ready(function () {
               
             $(window).resize(function(e) {
-                if($(window).width()>=1600){
+                if($(window).width()>=1200){
                   $("#sidebar").removeClass("active");
                   $("#sidebar").removeClass("fixed");
                 }else{

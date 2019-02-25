@@ -1,6 +1,3 @@
-@section('title')
-Parámetros Diarios
-@endsection
 
 <div>
 	<div class="card card-default">
