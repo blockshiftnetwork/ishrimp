@@ -13126,12 +13126,12 @@ pre {
 
 #sidebar {
   width: 250px;
-  position: fixed;
+  position: relative;
   top: auto;
   left: 0;
   height: 100vh;
   z-index: 1000;
-  margin-left: 0px;
+  margin-left: 20px;
   background: #ffffff;
   color: #fff;
   transition: all 0.3s;
@@ -13152,7 +13152,7 @@ pre {
 }
 
 #sidebar.fixed {
-  position: fixed !important;
+  position: absolute !important;
   top: auto;
   
 }
@@ -13336,6 +13336,7 @@ div#btn-createpool {
     margin-top: 43px !important;
 }
 .mid_container {
+    overflow: auto;
     width: 100%;
     float: left;
     padding: 10px;
@@ -13347,6 +13348,7 @@ div#btn-createpool {
 }
 
 .footer_feed_cont {
+
     width: 100%;
     height: auto;
     float: left;

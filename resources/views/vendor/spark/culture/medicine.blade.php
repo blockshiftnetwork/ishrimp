@@ -1,14 +1,11 @@
-@section('title')
-Medicamentos y Minerales
-@endsection
 
 <div>
     <div class="card card-default">
         <div class="card-header">
-            <h5>Medicamentos y Minerales</h5>
+            <h5>Insumos y Minerales</h5>
         </div>
         <div class="card-body p-0">
-            <form method="post">
+            <form method="post" action="">
                 <div class="container p-0 m-0">
                     <div class="row bg-primary text-light m-0" style="width: 100%">
                         <div class="col-12">
@@ -71,7 +68,7 @@ Medicamentos y Minerales
                     <hr>
                     <div class="row m-0 p-2">
                         <div class="col-12">
-                            <input type="submit" value="Guardar" class="btn btn-primary">
+                            <input type="button" value="Guardar" class="btn btn-primary">
                         </div>
                     </div>
                     <div class="row m-0 p-2">
