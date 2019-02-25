@@ -1,11 +1,11 @@
-<div id="plMapOptions"><!-- Fixed div -->
+<!-- <div id="plMapOptions"> Fixed div
     <div id="tabcontent" class="pull-left">
         <ul class="nav nav-tabs" id="navSearchOptions" style="display: block;">
             <li class="bar-option"><a id="srchabw" class="mapSrchTab">ABW</a></li>
             <li class="bar-option"><a id="srchawg" class="mapSrchTab">AWG</a></li>
             <li class="bar-option"><a id="srchdo" class="mapSrchTab">DO</a></li>
             <li class="bar-option"><a id="srchfeed" class="mapSrchTab">Alimentar</a></li>
-            <!-- <li><a id="srchalerts" class="mapSrchTab">Alerts</a></li> -->
+            <!-- <li><a id="srchalerts" class="mapSrchTab">Alerts</a></li> 
         </ul>
         <div id="settingscroller" style="display: none;">
              <span class="irs js-irs-0"><span class="irs">
@@ -28,9 +28,9 @@
                                         </span></span>
                                         <input id="txtMapSearchRange" type="text" name="range_1" value="" class="irs-hidden-input" readonly="">
         </div>
-    </div><!-- tabcontent-->
+    </div>tabcontent
 
-  </div>
+  </div>-->
   <div id="txtGoogleLocationSearch" class="pull-left" style="display: block;">
     <div class="right-inner-addon">
         <i class="fa fa-search"></i>
@@ -39,25 +39,36 @@
 </div>
 <div id="btn-createpool" class="pull-left" style="display: block;">
     <div class="btn-group-lg">
-       <button class="btn btn-primary btn-sm" style="padding: 0.3rem 0.5rem">Crear piscina</button>
+       <button id="createpool" class="btn btn-primary btn-sm" style="padding: 0.3rem 0.5rem">Agregar Piscina</button>
+         <button id="cancel" class="btn btn-danger btn-sm" style="padding: 0.3rem 0.5rem;display: none">Cancelar</button>
     </div>
 </div>
-<div class="card bg-white bx-25" style="z-index: 999; position: absolute; top: 60%;">
+<div id="form_pool" class="card bg-white bx-25" style="z-index: 999; position: absolute; top: 60%; display: none">
 <div class="card-body">
    <div class="row mx-auto"> 
     <form class="form-group" role="form" role="form" method="POST" action="{{route('pools.store')}}">
     {{ csrf_field() }}
         <div class="col-md-12  mx-auto">
-        <input class="form-control mb-2" type="text" name="name" placeholder="nombre" id="name">
-        
-        <input class="form-control mb-2" type="number" name="size" placeholder="Area" id="size">
-        <input class="form-control mb-2" type="text" name="coordinates" placeholder="coordenadas" id="coordinates">
+        <label for="name">Nombre de la piscina</label>
+        <input class="form-control mb-2" type="text" name="name" placeholder="nombre" id="name" required>
+        <label for="size">Tamaño (Hectáreas)</label>
+        <input class="form-control mb-2" type="text" name="size" placeholder="Area" id="size" readonly>
+        <input class="form-control mb-2" type="hidden" name="coordinates" placeholder="coordenadas" id="coordinates">
     </div>
    
-           <button class="btn btn-success btn-block" type="submit">Guardar</button>
+           <button id="savePool" class="btn btn-success btn-block" type="submit">Guardar</button>
    
 </form>
 </div>
+</div>
+</div>
+
+<div id="info_pool" class="card bg-white bx-25" style="z-index: 999; position: absolute; top: 60%; display: none">
+<div class="card-body">
+   <div class="row mx-auto"> 
+   <label id="lbname"></label>
+   <label id="lbsize"></label>
+  </div>
 </div>
 </div>
 <div class="bl-primary" style="width: 150%; height: 100%;">

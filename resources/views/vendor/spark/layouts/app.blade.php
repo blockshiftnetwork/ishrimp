@@ -15,6 +15,9 @@
     <!-- CSS -->
     <link href="{{ mix(Spark::usesRightToLeftTheme() ? 'css/app-rtl.css' : 'css/app.css') }}" rel="stylesheet">
 
+    <!-- flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
     <!-- Scripts -->
     @stack('scripts')
 
@@ -22,10 +25,10 @@
     <script>
         window.Spark = @json(array_merge(Spark::scriptVariables(), []));
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+
 </head>
 <body>
     <div id="spark-app" v-cloak>
@@ -45,9 +48,8 @@
 
                 @include('spark::nav.user-left')
 
-            </nav>
-        </div>
-            <main class="py-4 col-md-9">
+            </div>
+            <main class="py-4 col-md-10">
                     @yield('content')
                 </main>
             @else
@@ -68,16 +70,17 @@
 
     <!-- JavaScript -->
     <script src="{{ mix('js/app.js') }}"></script>
+    <!-- flatpickr -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="/js/sweetalert.min.js"></script>
-    <script src="{{ asset('js/gmaps.js') }}"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPTtrYvFKQQLcrKoHzTdmtB9-0e_cx8Qo&region=EC&callback=initMap">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPTtrYvFKQQLcrKoHzTdmtB9-0e_cx8Qo&libraries=drawing,geometry,places&region=EC&callback=initMap">
     </script>
-         <script src="{{ asset('js/charts.js') }}"> </script>
+    <script src="{{ asset('js/gmaps.js') }}"> </script>
       <script>
           $(document).ready(function () {
               
             $(window).resize(function(e) {
-                if($(window).width()>=760){
+                if($(window).width()>=1600){
                   $("#sidebar").removeClass("active");
                   $("#sidebar").removeClass("fixed");
                 }else{
@@ -90,14 +93,6 @@
                   $('#sidebar').toggleClass('active');
                });
 
-              $.ajax({
-                  url: 'pools',
-                  type: 'GET',
-                  dataType: 'json',
-                  success: function(response){
-                      console.log(response);
-                  }
-              })
           
         });
       </script>
@@ -115,5 +110,8 @@
                 todayHighlight: true
             });
      </script>
+     @yield('scripts')
+      <script src="{{ asset('js/charts.js') }}"> </script>
+    @yield('custom-scripts')
 </body>
 </html>

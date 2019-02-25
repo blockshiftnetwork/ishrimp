@@ -14,7 +14,7 @@ class PoolSowingController extends Controller
      */
     public function index(Request $id)
     {
-         $pools_sowed = PoolSowing::where('pool_id', $id)->get;
+         $pools_sowed = PoolSowing::where('pool_id', $id)->get();
         
         return response()->json([
             'status' => '200',
