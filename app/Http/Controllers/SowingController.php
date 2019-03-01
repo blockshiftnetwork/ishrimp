@@ -34,7 +34,15 @@ class SowingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'pool_id' => 'required',
+            'planted_larvae' => 'required',
+            'larvae_type' => 'required',
+            'planted_at' => 'required'
+        ]);
+        $sowing = PoolSowing::create($request->all());
+
+        return redirect()->back()->with('message', 'Siembra Guardada!');
     }
 
     /**
