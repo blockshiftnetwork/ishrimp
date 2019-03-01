@@ -34,7 +34,21 @@ class CultivationController extends Controller
      */
    public function store(Request $request)
     {
-        
+        $request->validate([
+            'resource_id' => 'required',
+            'quantity' => 'required',
+            'presentation_id' => 'required'
+        ]);
+
+        $cultivation = new Cultivation;
+        $cultivation->team_id = auth()->user()->currentTeam->id;
+        $cultivation->resource_id = $request->resource_id;
+        $cultivation->quantity = $request->quantity;
+        $cultivation->presentation_id = $request->presentation_id;
+
+        $cultivation->save();
+
+        return redirect()->back()->with('message', 'Recurso guardado!');
     }
     /**
      * Display the specified resource.
