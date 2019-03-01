@@ -5,7 +5,8 @@
             <h5>Insumos y Minerales</h5>
         </div>
         <div class="card-body p-0">
-            <form method="post" action="">
+            <form method="POST" action="{{route('cultivation.store')}}">
+                 {{ csrf_field() }}
                 <div class="container p-0 m-0">
                     <div class="row bg-primary text-light m-0" style="width: 100%">
                         <div class="col-12">
@@ -36,22 +37,22 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-control">
+                                    <select id="presentation_id" name="presentation_id"  class="form-control">
                                         <option value="">Seleccione</option>
-                                        <option value="medicamentos">Medicamentos</option>
-                                        <option value="minerales">Minerales</option>
-                                        <option value="probioticos">Probióticos</option>
-                                        <option value="otros">Otros</option>
+                                        <option value="1">Medicamentos</option>
+                                        <option value="2">Minerales</option>
+                                        <option value="3">Probióticos</option>
+                                        <option value="4">Otros</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-control">
+                                    <select id="resource_id" name="resource_id" class="form-control">
                                         <option value="">Seleccione</option>
-                                        <option value="cal">cal</option>
+                                        <option value="1">cal</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <input class="form-control" type="text">
+                                    <input id="quantity" name="quantity" class="form-control" type="text">
                                 </td>
                                 <td>
                                     Kg
@@ -68,7 +69,7 @@
                     <hr>
                     <div class="row m-0 p-2">
                         <div class="col-12">
-                            <input type="button" value="Guardar" class="btn btn-primary">
+                            <input type="submit" value="Guardar" class="btn btn-primary">
                         </div>
                     </div>
                     <div class="row m-0 p-2">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cultivation;
 
 class CultivationController extends Controller
 {
@@ -34,6 +35,7 @@ class CultivationController extends Controller
      */
    public function store(Request $request)
     {
+
         $request->validate([
             'resource_id' => 'required',
             'quantity' => 'required',
