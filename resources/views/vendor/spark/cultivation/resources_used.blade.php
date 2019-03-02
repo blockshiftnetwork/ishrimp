@@ -20,8 +20,8 @@
                         <table class="table" id="medicine-table">
                             <thead>   
                                 <th>Nombre piscina</th>
-                                <th>Variedad</th>
                                 <th>Recurso</th>
+                                <th>Variedad</th>
                                 <th>Cantidad</th>
                                 <th></th>
                                 <th>Nota</th>
@@ -37,18 +37,22 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select id="presentation_id" name="presentation_id"  class="form-control" required="">
+                                    <select id="resource_id" name="resource_id" class="form-control" required="">
                                         <option value="">Seleccione</option>
-                                        <option value="1">Medicamentos</option>
-                                        <option value="2">Minerales</option>
-                                        <option value="3">Probióticos</option>
-                                        <option value="4">Otros</option>
+                                        @foreach ($resources as $resource)
+                                        <option value="{{$resource->id}}">{{$resource->name}}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                                 <td>
-                                    <select id="resource_id" name="resource_id" class="form-control" required="">
+                                    <select id="presentation_id" name="presentation_id"  class="form-control" required="">
                                         <option value="">Seleccione</option>
-                                        <option value="3">cal</option>
+                                        @foreach ($resources as $resource)
+                                        <option value="1">Medicamentos</option>
+                                        @endforeach
+                                        <!--<option value="2">Minerales</option>
+                                        <option value="3">Probióticos</option>
+                                        <option value="4">Otros</option> -->
                                     </select>
                                 </td>
                                 <td>
