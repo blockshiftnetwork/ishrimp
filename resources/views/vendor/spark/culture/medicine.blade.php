@@ -29,7 +29,7 @@
                             </thead>
                             <tbody>
                                 <td>
-                                    <select class="form-control">
+                                    <select id="pool_id" name="pool_id" class="form-control" required="">
                                         <option value="">Seleccione</option>
                                         <option value="1">Piscina 1</option>
                                         <option value="2">Piscina 2</option>
@@ -37,7 +37,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select id="presentation_id" name="presentation_id"  class="form-control">
+                                    <select id="presentation_id" name="presentation_id"  class="form-control" required="">
                                         <option value="">Seleccione</option>
                                         <option value="1">Medicamentos</option>
                                         <option value="2">Minerales</option>
@@ -46,19 +46,19 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select id="resource_id" name="resource_id" class="form-control">
+                                    <select id="resource_id" name="resource_id" class="form-control" required="">
                                         <option value="">Seleccione</option>
-                                        <option value="1">cal</option>
+                                        <option value="3">cal</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <input id="quantity" name="quantity" class="form-control" type="text">
+                                    <input id="quantity" name="quantity" class="form-control" type="text" required="">
                                 </td>
                                 <td>
                                     Kg
                                 </td>
                                 <td>
-                                    <textarea class="form-control" cols="30" rows="1" style="max-height: 38px; min-height: 38px;"></textarea>
+                                    <textarea id="note" name="note" class="form-control" cols="30" rows="1" style="max-height: 38px; min-height: 38px;"></textarea>
                                 </td>
                                 <td>
                                     <span class="btn btn-light btn-duplicate" style="border-radius: 50px; border: 1px solid #ccc;"><b>+</b></span>
