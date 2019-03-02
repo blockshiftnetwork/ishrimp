@@ -11,7 +11,7 @@
                     <li class="nav-item ">
                         <a class="nav-link active" href="#resource" aria-controls="resource" role="tab" data-toggle="tab">
                             <i class="fa fa-eyedropper icon"></i>
-                            {{__('resource')}}
+                            {{__('Resources')}}
                         </a>
                     </li>
                 </ul>

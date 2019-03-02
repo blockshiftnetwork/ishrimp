@@ -17,6 +17,8 @@ Route::resource('/pools', 'PoolController');
 Route::resource('/pools_sowing', 'PoolSowingController');
 Route::resource('/cultivation', 'CultivationController');
 Route::resource('/sowing', 'SowingController');
-Route::get('/resource', function() {
-    return view('spark::resource-settings');
+Route::get('/culture', function() {
+    return view('spark::culture');
 })->middleware('auth');
+Route::resource('resource', 'ResourceController')->middleware('auth');
+

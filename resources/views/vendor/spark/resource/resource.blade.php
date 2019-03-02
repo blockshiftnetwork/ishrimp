@@ -34,10 +34,20 @@
                                                 <div class="tablesorter-header-inner">Nombre del Recurso</div>
                                             </th>
                                             <th class="">
+                                                <div class="tablesorter-header-inner">Proveedor</div>
+                                            </th>
+                                            <th class="">
                                                 <div class="tablesorter-header-inner">Tipo</div>
                                             </th>
                                             <th class="">
-                                                <div class="tablesorter-header-inner">Proveedor</div>
+                                                    <div class="tablesorter-header-inner">Presentación</div>
+                                                </th>
+
+                                                <th class="">
+                                                        <div class="tablesorter-header-inner">Cantidad</div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="tablesorter-header-inner">precio</div>
                                             </th>
                                             <th class="">
                                                 <div class="tablesorter-header-inner">Acciones</div>
@@ -56,6 +66,15 @@
                                             </td>
                                             <td class="filter_row">
                                                 <span class="tank_filter">proveedor 1</span>
+                                            </td>
+                                            <td class="filter_row">
+                                                <span class="tank_filter">gris</span>
+                                            </td>
+                                            <td class="filter_row">
+                                                <span class="tank_filter">25 kg</span>
+                                            </td>
+                                            <td class="filter_row">
+                                                <span class="tank_filter">25</span>
                                             </td>
                                             <td class="text-center">
                                                 <div class="actions btn btn-group-sm">
@@ -84,17 +103,28 @@
                                 </div>
                                 <div class="modal-body">
                                     <form class="form-group" action="" method="post">
-                                        <div class="form-group">
+                                       <div class="form-group"> 
                                             <label for="category_id">Tipo de recurso</label>
                                             <select class="form-control" name="category_id" id="category_id" required>
                                                 <option value="" selected>Tipo de Recurso</option>
                                                 <option value="1">Insumo</option>
                                                 <option value="1">Balanceado</option>
                                             </select>
+                                       </div>
+                                            <div class="form-group">
+                                            <select class="form-control" name="present_id" id="present_id" required>
+                                                    <option value="" selected>Presentación</option>
+                                                    <option value="1">25 kg</option>
+                                                    <option value="1">50 kg</option>
+                                                </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="name">Nombre del Recurso</label>
                                             <input class="form-control" type="text" name="name" id="name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="name">Cantidad</label>
+                                            <input class="form-control" type="number" name="quantity" id="quantity" required>
                                         </div>
                                         <div class="form-group">
                                                 <label for="category_id">Proveedor</label>
