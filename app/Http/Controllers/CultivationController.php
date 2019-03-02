@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cultivation;
+use App\Pool;
+use App\Resource;
 
 class CultivationController extends Controller
 {
@@ -13,8 +15,11 @@ class CultivationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-       return view('vendor.spark.cultivation.cultivation');
+    {   
+        $team_id = auth()->user()->currentTeam->id;
+        $pools = Pool::select('id', 'name')->where('team_id', $team_id)->get();
+        $resources = Resource::select('id', 'name')->where('team_id', $team_id)->get;
+        return view('vendor.spark.cultivation.cultivation')->with(['pools' => $pools], ['resources' => $resources]);  
     }
 
     /**
@@ -62,7 +67,7 @@ class CultivationController extends Controller
      */
     public function show()
     {
-       
+
     }
 
     /**

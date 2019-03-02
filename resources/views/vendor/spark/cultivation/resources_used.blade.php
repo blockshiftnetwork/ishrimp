@@ -18,7 +18,7 @@
                     </div>
                     <div class="row m-0 p-2">
                         <table class="table" id="medicine-table">
-                            <thead>
+                            <thead>   
                                 <th>Nombre piscina</th>
                                 <th>Variedad</th>
                                 <th>Recurso</th>
@@ -31,9 +31,9 @@
                                 <td>
                                     <select id="pool_id" name="pool_id" class="form-control" required="">
                                         <option value="">Seleccione</option>
-                                        <option value="1">Piscina 1</option>
-                                        <option value="2">Piscina 2</option>
-                                        <option value="3">Piscina 3</option>
+                                        @foreach ($pools as $pool)
+                                        <option value="{{$pool->id}}">{{$pool->name}}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                                 <td>
