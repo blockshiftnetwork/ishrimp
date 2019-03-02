@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Cultivation;
 use App\Pool;
 use App\Resource;
+use App\PresentationResource;
 
 class CultivationController extends Controller
 {
@@ -20,6 +21,13 @@ class CultivationController extends Controller
         $pools = Pool::select('id', 'name')->where('team_id', $team_id)->get();
         $resources = Resource::select('id', 'name')->where('team_id', $team_id)->get();
         return view('vendor.spark.cultivation.cultivation')->with(['pools' => $pools, 'resources' => $resources]);  
+    }
+
+    public function getPresentationResource(Request $resource_id)
+    {        
+        $presentation = PresentationResource::where('resource_id', $resource_id)->get();
+        
+        return $presentation;
     }
 
     /**
