@@ -42,7 +42,7 @@ class CultivationController extends Controller
             'quantity' => 'required',
             'presentation_id' => 'required'
         ]);
-       // $cultivation = Cultivation::create($request->all());
+
         $cultivation = new Cultivation;
         $cultivation->pool_id = $request->pool_id;
         $cultivation->resource_id = $request->resource_id;
