@@ -48,6 +48,7 @@ class CultivationController extends Controller
         $cultivation->resource_id = $request->resource_id;
         $cultivation->quantity = $request->quantity;
         $cultivation->presentation_id = $request->presentation_id;
+        $cultivation->note = $request->note;
 
         $cultivation->save();
 
