@@ -37,18 +37,19 @@ class CultivationController extends Controller
     {
 
         $request->validate([
+            'pool_id' => 'required',
             'resource_id' => 'required',
             'quantity' => 'required',
             'presentation_id' => 'required'
         ]);
-
-        $cultivation = new Cultivation;
+        $cultivation = Cultivation::create($request->all());
+       /* $cultivation = new Cultivation;
         $cultivation->team_id = auth()->user()->currentTeam->id;
         $cultivation->resource_id = $request->resource_id;
         $cultivation->quantity = $request->quantity;
         $cultivation->presentation_id = $request->presentation_id;
 
-        $cultivation->save();
+        $cultivation->save();*/
 
         return redirect()->back()->with('message', 'Recurso guardado!');
     }
