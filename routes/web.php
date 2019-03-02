@@ -20,3 +20,6 @@ Route::resource('/sowing', 'SowingController');
 Route::get('/culture', function() {
     return view('spark::culture');
 })->middleware('auth');
+Route::get('/resource', function() {
+    return view('spark::resource-settings');
+})->middleware('auth');

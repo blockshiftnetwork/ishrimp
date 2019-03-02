@@ -17,11 +17,11 @@
             @yield("overview_options")
     </aside>
     <aside>
-        <a class="nav-link" href="">
+        <a class="nav-link" href="/resource">
         <h3 class="nav-heading ">
-            {{__('Inventario')}}
+            {{__('Configuración de Recursos')}}
         </h3></a>
-        @yield('Inventario_options')
+        @yield('resource_options')
 
     </aside>
     <aside>

@@ -110,7 +110,6 @@
                 todayHighlight: true
             });
      </script>
-     @yield('scripts')
       <script src="{{ asset('js/charts.js') }}"> </script>
     @yield('custom-scripts')
 </body>
