@@ -6,7 +6,7 @@
             <div style="height: 100%;">
                 <!-- Tabs -->
 @section('Cultivo_options')
-<ul class="nav flex-column mb-4 ">
+<!--<ul class="nav flex-column mb-4 ">
     <li class="nav-item">
             <a class="nav-link" href="#balanced" aria-controls="balanced" role="tab" data-toggle="tab">
                 <i class="flaticon-bagofflour space"></i>
@@ -39,14 +39,14 @@
         </li>
 
 
-</ul>
+</ul> -->
 @endsection
 
        <div style="height: 100%; width: 100%;">
                         <div class="tab-content">
                             <!-- Profile -->
                             <div role="tabcard" class="tab-pane active " id="balanced">
-                                @include('spark::cultivation.balanced')
+                                @include('spark::cultivation.resources_used')
                             </div>
                           
                         </div>
