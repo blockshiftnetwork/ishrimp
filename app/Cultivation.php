@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cultivation extends Model
 {
-    protected $table = 'inventory_resources';
+    protected $table = 'pools_resources_used';
 
     protected $fillable = [
     	'resource_id',

@@ -25,7 +25,7 @@
 
     </aside>
     <aside>
-        <a class="nav-link" href="/culture">
+        <a class="nav-link" href="/cultivation">
         <h3 class="nav-heading ">
             {{__('Cultivo')}}
         </h3></a>
