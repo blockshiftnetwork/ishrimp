@@ -186,9 +186,8 @@
     </div>
   </div>
 </div>
-@section('scripts')
+@section('custom-scripts')
 
-@endsection
 <script type="text/javascript">
     $('#addSowingModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
