@@ -20,8 +20,8 @@
                         <table class="table" id="medicine-table">
                             <thead>   
                                 <th>Nombre piscina</th>
-                                <th>Variedad</th>
                                 <th>Recurso</th>
+                                <th>Variedad</th>
                                 <th>Cantidad</th>
                                 <th></th>
                                 <th>Nota</th>
@@ -37,25 +37,28 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select id="presentation_id" name="presentation_id"  class="form-control" required="">
+                                    <select id="resource_id" name="resource_id" class="form-control" required="">
                                         <option value="">Seleccione</option>
-                                        <option value="1">Medicamentos</option>
-                                        <option value="2">Minerales</option>
-                                        <option value="3">Probióticos</option>
-                                        <option value="4">Otros</option>
+                                        @foreach ($resources as $resource)
+                                        <option value="{{$resource->id}}">{{$resource->name}}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                                 <td>
-                                    <select id="resource_id" name="resource_id" class="form-control" required="">
+                                    <select id="presentation_id" name="presentation_id"  class="form-control" required="">
                                         <option value="">Seleccione</option>
-                                        <option value="3">cal</option>
+                                        {{-- @foreach ($presentations as $presentation) --}}
+                                        <option value="1">Medicamentos</option>
+                                        {{-- @endforeach --}}
                                     </select>
                                 </td>
                                 <td>
                                     <input id="quantity" name="quantity" class="form-control" type="text" required="">
                                 </td>
                                 <td>
-                                    Kg
+                                   {{-- @foreach ($presentations as $presentation)
+                                      {{$presentation->unity}}
+                                    @endforeach --}}
                                 </td>
                                 <td>
                                     <textarea id="note" name="note" class="form-control" cols="30" rows="1" style="max-height: 38px; min-height: 38px;"></textarea>
