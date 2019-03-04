@@ -2,6 +2,11 @@
 
 
 @section('content')
+@if(session()->has('message'))
+        <div class="alert alert-success">
+                {{ session()->get('message') }};
+        </div>
+@endif 
     <spark-settings :user="user" :teams="teams" inline-template>
         <div class="spark-screen container">
             <div class="row">
@@ -29,4 +34,31 @@
             </div>
         </div>
     </spark-settings>
+@endsection
+@section('custom-scripts')
+<script>
+      
+        $('#editProviderModal').on('shown.bs.modal',function(event){
+         var button = $(event.relatedTarget);
+         var modal = $(this);
+         var id = button.data('id');
+         var name = button.data('name');
+         var phone = button.data('phone');
+         var email = button.data('email')
+         var address = button.data('address');
+         modal.find('.modal-body #name').val(name);
+         modal.find('.modal-body #phone').val(phone);
+         modal.find('.modal-body #email').val(email);
+         modal.find('.modal-body #address').val(address);
+         modal.find('.modal-body #id').val(id);
+        })
+
+        $('#deleteProviderModal').on('shown.bs.modal',function(event){
+            var button = $(event.relatedTarget);
+            var modal = $(this);
+            var id = button.data('id');
+            modal.find('.modal-body #id').val(id);
+           })
+                
+     </script>
 @endsection

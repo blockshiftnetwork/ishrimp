@@ -23,11 +23,13 @@ class CultivationController extends Controller
         return view('vendor.spark.cultivation.cultivation')->with(['pools' => $pools, 'resources' => $resources]);  
     }
 
-    public function getPresentationResource(Request $resource_id)
+    public function getPresentationResource($resource_id)
     {        
         $presentation = PresentationResource::where('resource_id', $resource_id)->get();
-        
-        return $presentation;
+        return response()->json([
+            'status' => '200',
+            'data' => $presentation,
+        ]);
     }
 
     /**
@@ -48,7 +50,7 @@ class CultivationController extends Controller
      */
    public function store(Request $request)
     {
-
+        
         $request->validate([
             'pool_id' => 'required',
             'resource_id' => 'required',
@@ -65,7 +67,10 @@ class CultivationController extends Controller
 
         $cultivation->save();
 
-        return redirect()->back()->with('message', 'Recurso guardado!');
+        return response()->json([
+            'status' => '200',
+            'data' => 'Recurso guardado!',
+        ]); 
     }
     /**
      * Display the specified resource.

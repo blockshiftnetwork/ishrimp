@@ -51,3 +51,7 @@
 
 @endsection
 
+@section('custom-scripts')
+<script src="{{ asset('js/gmaps.js') }}"> </script>
+<script src="{{ asset('js/charts.js') }}"> </script>
+@endsection

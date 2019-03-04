@@ -76,18 +76,17 @@ class ProviderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request)
+    { 
         $request->validate([
             'name' => 'required',
             'phone' => 'required',
             'address' => 'required',
             'email' => 'required'
         ]);
-        
-        $id_prov = Provider::find($id) ;
-       
-        Provider::where('id', $id_prov)->update($request->all());
+    
+        $provider = Provider::find($request->id);
+        $provider->update($request->except('_token','_method'));
         
         return redirect()->back()->with('message', 'Proveedor Actualizado!');
     }
@@ -98,9 +97,9 @@ class ProviderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $Provider = Provider::findOrFail($id);
+        $Provider = Provider::findOrFail($request->id);
         $Provider->delete();
 
         return redirect()->back()->with('message', 'Proveedor Eliminado!');

@@ -149,3 +149,25 @@
         </div>
     </spark-settings>
 @endsection
+@section('custom-scripts')
+<script>
+        $('#addProviderModal').on('shown.bs.modal',function(event){
+            console.log('modal');
+        });
+        $('#editProviderModal').on('show.bs.modal',function(event){
+            console.log('modal');
+            var button = $(event.relatedTarget);
+            var modal = $(this);
+            var id = button.data('id');
+            var name = button.data('name');
+            var phone = button.data('phone');
+            var email = button.data('email')
+            var addres = button.data('address');
+            modal.find('.modal-body #name').val(name);
+            modal.find('.modal-body #phone').val(phone);
+            modal.find('.modal-body #email').val(email);
+            modal.find('.modal-body #address').val(address);
+            modal.find('.modal-body #id').val(id);
+        })
+    </script>
+@endsection
