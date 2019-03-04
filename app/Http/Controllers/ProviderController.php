@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Resource;
 use App\Provider;
-use App\Http\Controllers\ProviderController;
 
-class ResourceController extends Controller
+class ProviderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class ResourceController extends Controller
      */
     public function index()
     {
-        $providers = Provider::get();
-        return view('vendor.spark.resource-settings')->with(['providers' => $providers]);
+
     }
 
     /**
@@ -38,7 +35,16 @@ class ResourceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'email' => 'required'
+        ]);
+
+        $Provider = Provider::create($request->all());
+
+        return redirect()->back()->with('message', 'Proveedor Guardado!');
     }
 
     /**
@@ -49,7 +55,7 @@ class ResourceController extends Controller
      */
     public function show($id)
     {
-        //
+        return Provider::findOrFail($id);
     }
 
     /**
@@ -72,7 +78,18 @@ class ResourceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'email' => 'required'
+        ]);
+        
+        $id_prov = Provider::find($id) ;
+       
+        Provider::where('id', $id_prov)->update($request->all());
+        
+        return redirect()->back()->with('message', 'Proveedor Actualizado!');
     }
 
     /**
@@ -83,6 +100,9 @@ class ResourceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Provider = Provider::findOrFail($id);
+        $Provider->delete();
+
+        return redirect()->back()->with('message', 'Proveedor Eliminado!');
     }
 }

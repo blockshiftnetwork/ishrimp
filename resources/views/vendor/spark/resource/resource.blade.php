@@ -182,21 +182,21 @@
                                         </tr>
                                     </thead>
                                     <tbody class="results" aria-live="polite" aria-relevant="all">
+                                        @foreach ($providers as $provider)
                                         <tr class="scrl_tr" role="row">
+                                            <td class="filter_row"> 
+                                                <span class="tank_filter">{{$provider->name}}</span>
+                                            </td>
                                             <td class="filter_row">
-                                                <span class="tank_filter">Pedro Perez</span>
+                                                <span class="tank_filter">{{$provider->phone}}</span>
 
                                             </td>
                                             <td class="filter_row">
-                                                <span class="tank_filter">+555673434</span>
-
-                                            </td>
-                                            <td class="filter_row">
-                                                    <span class="tank_filter">pedro@gmail.com</span>
+                                                    <span class="tank_filter">{{$provider->email}}</span>
     
                                                 </td>
                                                 <td class="filter_row">
-                                                        <span class="tank_filter">la dirección</span>
+                                                        <span class="tank_filter">{{$provider->address}}</span>
         
                                                     </td>
                                             <td class="text-center">
@@ -208,6 +208,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                               
@@ -225,10 +226,11 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="form-group" action="" method="post">
+                                    <form class="form-group" action="{{route('provider.store')}}" method="post">
+                                    {{ csrf_field() }}
                                         <div class="form-group">
                                             <label for="name">Nombre del Proveedor</label>
-                                            <input class="form-control" type="text" name="name" id="name" required>
+                                            <input class="form-control" type="text" name="name" id="name" required="">
                                         </div>
                                         <div class="form-group">
                                                 <label for="Phone">Número de teléfono</label>
@@ -242,13 +244,15 @@
                                                         <label for="Phone">Dirección</label>
                                                         <input class="form-control" type="text" name="address" id="address" required>
                                                 </div>
-                                    </form>
+                                                <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
+                                                                </form>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-dismiss="modal">{{__('Close')}}</button>
                                     <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
                                 </div>
+            
                             </div>
                         </div>
                     </div>
