@@ -103,7 +103,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal">{{__('No, Cancel')}}</button>
-                    {{-- <button type="submit" class="btn btn-warning">{{__('Yes, Delete')}}</button> --}}
+                    <button type="submit" class="btn btn-warning">{{__('Yes, Delete')}}</button> 
                 </div>
             </form>
         </div>
