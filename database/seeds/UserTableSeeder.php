@@ -17,8 +17,8 @@ class UserTableSeeder extends Seeder
      	'email' => 'admin@gmail.com',
      	'password' => bcrypt('123456')
      ];
-       /* $user = array_where($countries, function ($value, $key) {
-            return !DB::table('countries')->where('code', $value['code'])->exists();
+       /* $user = array_where($user, function ($value, $key) {
+            return !DB::table('users')->where('code', $value['code'])->exists();
         });*/
         
         /****************************************************************************
