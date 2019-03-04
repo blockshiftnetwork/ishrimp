@@ -201,10 +201,10 @@
                                                     </td>
                                             <td class="text-center">
                                                 <div class="actions btn btn-group-sm">
-                                                    <a href="" class="btn btn-success btn-xs mr-4">
-                                                        <i class="fa fa-edit"></i></a>
-                                                    <a href="" class="btn btn-xs btn-danger">
-                                                        <i class="fa fa-trash-o"></i></a>
+                                                    <button id="#edit" data-id="{{$provider->id}}"  data-name="{{$provider->name}}" data-phone="{{$provider->phone}}" data-email="{{$provider->email}}" data-address="{{$provider->address}}" data-toggle="modal" data-target="#editProviderModal" class="btn btn-success btn-xs mr-4">
+                                                        <i class="fa fa-edit" ></i></button>
+                                                    <button data-id="{{$provider->id}}"  data-toggle="modal" data-target="#deleteProviderModal"  class="btn btn-xs btn-danger">
+                                                        <i class="fa fa-trash-o"></i></button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -215,48 +215,9 @@
                             </div>
                         </section>
                     </div>
-                    <div class="modal fade" id="addProviderModal" tabindex="-1" role="dialog"
-                        aria-labelledby="ModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Agregar Proveedor</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="form-group" action="{{route('provider.store')}}" method="post">
-                                    {{ csrf_field() }}
-                                        <div class="form-group">
-                                            <label for="name">Nombre del Proveedor</label>
-                                            <input class="form-control" type="text" name="name" id="name" required="">
-                                        </div>
-                                        <div class="form-group">
-                                                <label for="Phone">Número de teléfono</label>
-                                                <input class="form-control" type="tel" name="phone" id="phone" required>
-                                            </div>
-                                            <div class="form-group">
-                                                    <label for="Phone">Email</label>
-                                                    <input class="form-control" type="email" name="email" id="email" required>
-                                                </div>
-                                                <div class="form-group">
-                                                        <label for="Phone">Dirección</label>
-                                                        <input class="form-control" type="text" name="address" id="address" required>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
-                                                                </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal">{{__('Close')}}</button>
-                                    <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
-                                </div>
-            
-                            </div>
-                        </div>
-                    </div>
-
+                    <!-- Modals Providers -->
+                    @include('spark::modals.resource.providerModals')
+               
                 </div>
                 <!-- labs -->
                 <div role="tabpanel" class="tab-pane" id="labs">
@@ -369,3 +330,4 @@
     </div>
 
 </div>
+
