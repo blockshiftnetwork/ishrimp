@@ -19,7 +19,7 @@ class ResourcesTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('category_resources');
             $table->integer('provider_id')->unsigned();
-            $table->foreign('provider_id')->references('id')->on('providers');
+            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
             $table->integer('team_id')->unsigned();
             $table->foreign('team_id')->references('id')->on('teams');
             $table->timestamps();
