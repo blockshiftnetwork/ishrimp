@@ -100,15 +100,6 @@ class PoolController extends Controller
         $pool->save();
 
         return redirect()->back()->with('message', 'Piscina Guardada!');
-        // $request->validate([
-        //     'name' => 'required',
-        //     'size' => 'required',
-        //     'coordinates' => 'required'
-        // ]);
-
-        // Pool::where('id', $request->id)->update($request->all());
-        
-        // return redirect()->back()->with('message', 'Piscina Actualizada!');
     }
 
     /**
