@@ -16,6 +16,7 @@ Route::get('/home', 'HomeController@show');
 Route::resource('/pools', 'PoolController');
 Route::resource('/pools_sowing', 'PoolSowingController');
 Route::resource('/cultivation', 'CultivationController');
+Route::get('presentation/{resource_id}','CultivationController@getPresentationResource');
 Route::resource('/sowing', 'SowingController');
 Route::get('/culture', function() {
     return view('spark::culture');
