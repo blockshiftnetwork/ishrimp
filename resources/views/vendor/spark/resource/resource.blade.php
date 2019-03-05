@@ -40,14 +40,14 @@
                                                 <div class="tablesorter-header-inner">Tipo</div>
                                             </th>
                                             <th class="">
-                                                    <div class="tablesorter-header-inner">Presentación</div>
-                                                </th>
+                                                <div class="tablesorter-header-inner">Presentación</div>
+                                            </th>
 
-                                                <th class="">
-                                                        <div class="tablesorter-header-inner">Cantidad</div>
-                                                </th>
-                                                <th class="">
-                                                    <div class="tablesorter-header-inner">precio</div>
+                                            <th class="">
+                                                <div class="tablesorter-header-inner">Cantidad</div>
+                                            </th>
+                                            <th class="">
+                                                <div class="tablesorter-header-inner">precio</div>
                                             </th>
                                             <th class="">
                                                 <div class="tablesorter-header-inner">Acciones</div>
@@ -77,17 +77,20 @@
                                                 <span class="tank_filter">25</span>
                                             </td>
                                             <td class="text-center">
-                                                    <div class="actions btn btn-group-sm">
-                                                            <button id="#edit" data-toggle="modal" data-target="#editResourceModal" class="btn btn-success btn-xs mr-4">
-                                                                <i class="fa fa-edit" ></i></button>
-                                                            <button  data-toggle="modal" data-target="#deleteResourceModal"  class="btn btn-xs btn-danger">
-                                                                <i class="fa fa-trash-o"></i></button>
-                                                        </div>
+                                                <div class="actions btn btn-group-sm">
+                                                    <button id="#edit" data-toggle="modal"
+                                                        data-target="#editResourceModal"
+                                                        class="btn btn-success btn-xs mr-4">
+                                                        <i class="fa fa-edit"></i></button>
+                                                    <button data-toggle="modal" data-target="#deleteResourceModal"
+                                                        class="btn btn-xs btn-danger">
+                                                        <i class="fa fa-trash-o"></i></button>
+                                                </div>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                               
+
                             </div>
                         </section>
                     </div>
@@ -119,11 +122,11 @@
                                                 <div class="tablesorter-header-inner">Teléfono</div>
                                             </th>
                                             <th class="">
-                                                    <div class="tablesorter-header-inner">Email</div>
-                                                </th>
-                                                <th class="">
-                                                        <div class="tablesorter-header-inner">Dirección</div>
-                                                </th>
+                                                <div class="tablesorter-header-inner">Email</div>
+                                            </th>
+                                            <th class="">
+                                                <div class="tablesorter-header-inner">Dirección</div>
+                                            </th>
                                             <th class="">
                                                 <div class="tablesorter-header-inner">Acciones</div>
                                             </th>
@@ -132,7 +135,7 @@
                                     <tbody class="results" aria-live="polite" aria-relevant="all">
                                         @foreach ($providers as $provider)
                                         <tr class="scrl_tr" role="row">
-                                            <td class="filter_row"> 
+                                            <td class="filter_row">
                                                 <span class="tank_filter">{{$provider->name}}</span>
                                             </td>
                                             <td class="filter_row">
@@ -140,32 +143,40 @@
 
                                             </td>
                                             <td class="filter_row">
-                                                    <span class="tank_filter">{{$provider->email}}</span>
-    
-                                                </td>
-                                                <td class="filter_row">
-                                                        <span class="tank_filter">{{$provider->address}}</span>
-        
-                                                    </td>
+                                                <span class="tank_filter">{{$provider->email}}</span>
+
+                                            </td>
+                                            <td class="filter_row">
+                                                <span class="tank_filter">{{$provider->address}}</span>
+
+                                            </td>
                                             <td class="text-center">
                                                 <div class="actions btn btn-group-sm">
-                                                    <button id="#edit" data-id="{{$provider->id}}"  data-name="{{$provider->name}}" data-phone="{{$provider->phone}}" data-email="{{$provider->email}}" data-address="{{$provider->address}}" data-toggle="modal" data-target="#editProviderModal" class="btn btn-success btn-xs mr-4">
-                                                        <i class="fa fa-edit" ></i></button>
-                                                    <button data-id="{{$provider->id}}"  data-toggle="modal" data-target="#deleteProviderModal"  class="btn btn-xs btn-danger">
+                                                    <button id="#edit" data-id="{{$provider->id}}"
+                                                        data-name="{{$provider->name}}"
+                                                        data-phone="{{$provider->phone}}"
+                                                        data-email="{{$provider->email}}"
+                                                        data-address="{{$provider->address}}" data-toggle="modal"
+                                                        data-target="#editProviderModal"
+                                                        class="btn btn-success btn-xs mr-4">
+                                                        <i class="fa fa-edit"></i></button>
+                                                    <button data-id="{{$provider->id}}" data-toggle="modal"
+                                                        data-target="#deleteProviderModal"
+                                                        class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash-o"></i></button>
                                                 </div>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                        @endforeach
                                     </tbody>
                                 </table>
-                              
+
                             </div>
                         </section>
                     </div>
                     <!-- Modals Providers -->
                     @include('spark::modals.resource.providerModals')
-               
+
                 </div>
                 <!-- labs -->
                 <div role="tabpanel" class="tab-pane" id="labs">
@@ -194,8 +205,8 @@
                                                 <div class="tablesorter-header-inner">Email</div>
                                             </th>
                                             <th class="">
-                                                    <div class="tablesorter-header-inner">Dirección</div>
-                                                </th>
+                                                <div class="tablesorter-header-inner">Dirección</div>
+                                            </th>
                                             <th class="">
                                                 <div class="tablesorter-header-inner">Acciones</div>
                                             </th>
@@ -215,26 +226,28 @@
                                                 <span class="tank_filter">laboratorio1@gmail.com</span>
                                             </td>
                                             <td class="filter_row">
-                                                    <span class="tank_filter">La dirección</span>
-                                                </td>
+                                                <span class="tank_filter">La dirección</span>
+                                            </td>
                                             <td class="text-center">
-                                                    <div class="actions btn btn-group-sm">
-                                                            <button id="#editLab"  data-toggle="modal" data-target="#editLabModal" class="btn btn-success btn-xs mr-4">
-                                                                <i class="fa fa-edit" ></i></button>
-                                                            <button  data-toggle="modal" data-target="#deleteLabModal"  class="btn btn-xs btn-danger">
-                                                                <i class="fa fa-trash-o"></i></button>
-                                                        </div>
+                                                <div class="actions btn btn-group-sm">
+                                                    <button id="#editLab" data-toggle="modal"
+                                                        data-target="#editLabModal" class="btn btn-success btn-xs mr-4">
+                                                        <i class="fa fa-edit"></i></button>
+                                                    <button data-toggle="modal" data-target="#deleteLabModal"
+                                                        class="btn btn-xs btn-danger">
+                                                        <i class="fa fa-trash-o"></i></button>
+                                                </div>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                              
+
                             </div>
                         </section>
                     </div>
                     <!-- Modals Labs -->
                     @include('spark::modals.resource.labModals')
-               
+
                 </div>
 
             </div>
@@ -242,4 +255,3 @@
     </div>
 
 </div>
-

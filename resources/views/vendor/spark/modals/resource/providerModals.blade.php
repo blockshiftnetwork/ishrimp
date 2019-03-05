@@ -10,7 +10,7 @@
                 </button>
             </div>
             <form class="form-group" action="{{route('provider.store')}}" method="post">
-            <div class="modal-body">
+                <div class="modal-body">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="name">Nombre del Proveedor</label>
@@ -27,13 +27,13 @@
                     <div class="form-group">
                         <label for="Phone">Dirección</label>
                         <input class="form-control" type="text" name="address" id="address" required>
-                    </div>                
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
-                <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
-            </div>
-        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
+                    <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -103,7 +103,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal">{{__('No, Cancel')}}</button>
-                    <button type="submit" class="btn btn-warning">{{__('Yes, Delete')}}</button> 
+                    <button type="submit" class="btn btn-warning">{{__('Yes, Delete')}}</button>
                 </div>
             </form>
         </div>
