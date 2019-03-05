@@ -1,5 +1,10 @@
 
 <div>
+    <div id="alert" class="alert alert-success alert-dismissible fade in">
+                <strong>Success!</strong> Insumos Agregados con exito
+                <button class="btn btn-sm btn-success" data-dismiss="alert" aria-label="close">Continuar</button>
+
+    </div>
     <div class="card card-default">
         <div class="card-header">
             <h5>Insumos y Minerales</h5>
@@ -72,7 +77,7 @@
                         <hr>
                         <div class="row m-0 p-2">
                             <div class="col-12">
-                                <input type="btn" value="Guardar" onclick="saveData()" class="btn btn-primary">
+                                <button  onclick="saveData()" class="btn btn-primary">Guardar</button>
                             </div>
                         </div>
                     </form>
@@ -144,7 +149,10 @@ function select(event){
 
    
 };
+
 function saveData(){
+
+   $(this).addClass('disabled');
 
     var table = $('#medicine-table');
     var exitsData = false;
@@ -167,12 +175,14 @@ function saveData(){
              }).done(function(){
                clearTimeout(timeout);
                timeout = setTimeout(function(){
-                alert("Recursos guardados con exito")
-                location.reload();
+                $('#alert').addClass('show');
+                $('#alert').on('closed.bs.alert',function(){
+                    location.reload();
+                });
                }, 2000)
              }).fail(function(resp){
                 console.log('error',resp);
-             })
+             });
              
         }
     })

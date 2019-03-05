@@ -4,7 +4,7 @@
 @section('content')
 @if(session()->has('message'))
         <div class="alert alert-success">
-                {{ session()->get('message') }};
+                {{ session()->get('message') }}
         </div>
 @endif 
     <spark-settings :user="user" :teams="teams" inline-template>
