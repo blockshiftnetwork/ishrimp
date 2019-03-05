@@ -40,14 +40,14 @@
                                                 <div class="tablesorter-header-inner">Tipo</div>
                                             </th>
                                             <th class="">
-                                                    <div class="tablesorter-header-inner">Presentación</div>
-                                                </th>
+                                                <div class="tablesorter-header-inner">Presentación</div>
+                                            </th>
 
-                                                <th class="">
-                                                        <div class="tablesorter-header-inner">Cantidad</div>
-                                                </th>
-                                                <th class="">
-                                                    <div class="tablesorter-header-inner">precio</div>
+                                            <th class="">
+                                                <div class="tablesorter-header-inner">Cantidad</div>
+                                            </th>
+                                            <th class="">
+                                                <div class="tablesorter-header-inner">precio</div>
                                             </th>
                                             <th class="">
                                                 <div class="tablesorter-header-inner">Acciones</div>
@@ -78,73 +78,24 @@
                                             </td>
                                             <td class="text-center">
                                                 <div class="actions btn btn-group-sm">
-                                                    <a href="" class="btn btn-success btn-xs mr-4">
-                                                        <i class="fa fa-edit"></i></a>
-                                                    <a href="" class="btn btn-xs btn-danger">
-                                                        <i class="fa fa-trash-o"></i></a>
+                                                    <button id="#edit" data-toggle="modal"
+                                                        data-target="#editResourceModal"
+                                                        class="btn btn-success btn-xs mr-4">
+                                                        <i class="fa fa-edit"></i></button>
+                                                    <button data-toggle="modal" data-target="#deleteResourceModal"
+                                                        class="btn btn-xs btn-danger">
+                                                        <i class="fa fa-trash-o"></i></button>
                                                 </div>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                               
+
                             </div>
                         </section>
                     </div>
-                    <div class="modal fade" id="addResourceModal" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Agregar Recurso</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="form-group" action="" method="post">
-                                       <div class="form-group"> 
-                                            <label for="category_id">Tipo de recurso</label>
-                                            <select class="form-control" name="category_id" id="category_id" required>
-                                                <option value="" selected>Tipo de Recurso</option>
-                                                <option value="1">Insumo</option>
-                                                <option value="1">Balanceado</option>
-                                            </select>
-                                       </div>
-                                            <div class="form-group">
-                                            <select class="form-control" name="present_id" id="present_id" required>
-                                                    <option value="" selected>Presentación</option>
-                                                    <option value="1">25 kg</option>
-                                                    <option value="1">50 kg</option>
-                                                </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="name">Nombre del Recurso</label>
-                                            <input class="form-control" type="text" name="name" id="name" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="name">Cantidad</label>
-                                            <input class="form-control" type="number" name="quantity" id="quantity" required>
-                                        </div>
-                                        <div class="form-group">
-                                                <label for="category_id">Proveedor</label>
-                                                <select class="form-control" name="provider_id" id="provider_id" required>
-                                                    <option value="" selected>Tipo de Recurso</option>
-                                                    <option value="1">Insumo</option>
-                                                    <option value="1">Balanceado</option>
-                                                </select>
-                                            </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal">{{__('Close')}}</button>
-                                    <button type="button" class="btn btn-primary">{{__('Save')}}</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    <!-- Modals resources -->
+                    @include('spark::modals.resource.ResourceModals')
                 </div>
 
                 <!-- tab providers  -->
@@ -171,11 +122,11 @@
                                                 <div class="tablesorter-header-inner">Teléfono</div>
                                             </th>
                                             <th class="">
-                                                    <div class="tablesorter-header-inner">Email</div>
-                                                </th>
-                                                <th class="">
-                                                        <div class="tablesorter-header-inner">Dirección</div>
-                                                </th>
+                                                <div class="tablesorter-header-inner">Email</div>
+                                            </th>
+                                            <th class="">
+                                                <div class="tablesorter-header-inner">Dirección</div>
+                                            </th>
                                             <th class="">
                                                 <div class="tablesorter-header-inner">Acciones</div>
                                             </th>
@@ -184,7 +135,7 @@
                                     <tbody class="results" aria-live="polite" aria-relevant="all">
                                         @foreach ($providers as $provider)
                                         <tr class="scrl_tr" role="row">
-                                            <td class="filter_row"> 
+                                            <td class="filter_row">
                                                 <span class="tank_filter">{{$provider->name}}</span>
                                             </td>
                                             <td class="filter_row">
@@ -192,32 +143,40 @@
 
                                             </td>
                                             <td class="filter_row">
-                                                    <span class="tank_filter">{{$provider->email}}</span>
-    
-                                                </td>
-                                                <td class="filter_row">
-                                                        <span class="tank_filter">{{$provider->address}}</span>
-        
-                                                    </td>
+                                                <span class="tank_filter">{{$provider->email}}</span>
+
+                                            </td>
+                                            <td class="filter_row">
+                                                <span class="tank_filter">{{$provider->address}}</span>
+
+                                            </td>
                                             <td class="text-center">
                                                 <div class="actions btn btn-group-sm">
-                                                    <button id="#edit" data-id="{{$provider->id}}"  data-name="{{$provider->name}}" data-phone="{{$provider->phone}}" data-email="{{$provider->email}}" data-address="{{$provider->address}}" data-toggle="modal" data-target="#editProviderModal" class="btn btn-success btn-xs mr-4">
-                                                        <i class="fa fa-edit" ></i></button>
-                                                    <button data-id="{{$provider->id}}"  data-toggle="modal" data-target="#deleteProviderModal"  class="btn btn-xs btn-danger">
+                                                    <button id="#edit" data-id="{{$provider->id}}"
+                                                        data-name="{{$provider->name}}"
+                                                        data-phone="{{$provider->phone}}"
+                                                        data-email="{{$provider->email}}"
+                                                        data-address="{{$provider->address}}" data-toggle="modal"
+                                                        data-target="#editProviderModal"
+                                                        class="btn btn-success btn-xs mr-4">
+                                                        <i class="fa fa-edit"></i></button>
+                                                    <button data-id="{{$provider->id}}" data-toggle="modal"
+                                                        data-target="#deleteProviderModal"
+                                                        class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash-o"></i></button>
                                                 </div>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                        @endforeach
                                     </tbody>
                                 </table>
-                              
+
                             </div>
                         </section>
                     </div>
                     <!-- Modals Providers -->
                     @include('spark::modals.resource.providerModals')
-               
+
                 </div>
                 <!-- labs -->
                 <div role="tabpanel" class="tab-pane" id="labs">
@@ -246,8 +205,8 @@
                                                 <div class="tablesorter-header-inner">Email</div>
                                             </th>
                                             <th class="">
-                                                    <div class="tablesorter-header-inner">Dirección</div>
-                                                </th>
+                                                <div class="tablesorter-header-inner">Dirección</div>
+                                            </th>
                                             <th class="">
                                                 <div class="tablesorter-header-inner">Acciones</div>
                                             </th>
@@ -267,61 +226,27 @@
                                                 <span class="tank_filter">laboratorio1@gmail.com</span>
                                             </td>
                                             <td class="filter_row">
-                                                    <span class="tank_filter">La dirección</span>
-                                                </td>
+                                                <span class="tank_filter">La dirección</span>
+                                            </td>
                                             <td class="text-center">
                                                 <div class="actions btn btn-group-sm">
-                                                    <a href="" class="btn btn-success btn-xs mr-4">
-                                                        <i class="fa fa-edit"></i></a>
-                                                    <a href="" class="btn btn-xs btn-danger">
-                                                        <i class="fa fa-trash-o"></i></a>
+                                                    <button id="#editLab" data-toggle="modal"
+                                                        data-target="#editLabModal" class="btn btn-success btn-xs mr-4">
+                                                        <i class="fa fa-edit"></i></button>
+                                                    <button data-toggle="modal" data-target="#deleteLabModal"
+                                                        class="btn btn-xs btn-danger">
+                                                        <i class="fa fa-trash-o"></i></button>
                                                 </div>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                              
+
                             </div>
                         </section>
                     </div>
-                    <div class="modal fade" id="addLabModal" tabindex="-1" role="dialog"
-                        aria-labelledby="SellersModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="SellersModalLabel">Agregar Laboratorio</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="form-group" action="" method="post">
-                                        <div class="form-group">
-                                            <label for="name">Nombre del Laboratorio</label>
-                                            <input class="form-control" type="text" name="name" id="name" required>
-                                        </div>
-                                        <div class="form-group">
-                                                <label for="name">Teléfono</label>
-                                                <input class="form-control" type="tel" name="phone" id="phone" required>
-                                            </div>
-                                            <div class="form-group">
-                                                    <label for="name">Email</label>
-                                                    <input class="form-control" type="email" name="email" id="email" required>
-                                                </div>
-                                                <div class="form-group">
-                                                        <label for="name">Dirección</label>
-                                                        <input class="form-control" type="text" name="address" id="address" required>
-                                                    </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal">{{__('Close')}}</button>
-                                    <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Modals Labs -->
+                    @include('spark::modals.resource.labModals')
 
                 </div>
 
@@ -330,4 +255,3 @@
     </div>
 
 </div>
-

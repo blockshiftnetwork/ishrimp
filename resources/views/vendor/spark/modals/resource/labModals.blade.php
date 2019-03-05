@@ -1,33 +1,33 @@
 <!--add Modal-->
-<div class="modal fade" id="addProviderModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+<div class="modal fade" id="addLabModal" tabindex="-1" role="dialog" aria-labelledby="SellersModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Proveedor</h5>
+                <h5 class="modal-title" id="SellersModalLabel">Agregar Laboratorio</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="form-group" action="{{route('provider.store')}}" method="post">
+            <form class="form-group" action="" method="post">
                 <div class="modal-body">
-                    {{ csrf_field() }}
                     <div class="form-group">
-                        <label for="name">Nombre del Proveedor</label>
-                        <input class="form-control" type="text" name="name" id="name" required="">
+                        <label for="name">Nombre del Laboratorio</label>
+                        <input class="form-control" type="text" name="name" id="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="Phone">Número de teléfono</label>
+                        <label for="name">Teléfono</label>
                         <input class="form-control" type="tel" name="phone" id="phone" required>
                     </div>
                     <div class="form-group">
-                        <label for="Phone">Email</label>
+                        <label for="name">Email</label>
                         <input class="form-control" type="email" name="email" id="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="Phone">Dirección</label>
+                        <label for="name">Dirección</label>
                         <input class="form-control" type="text" name="address" id="address" required>
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
@@ -38,38 +38,36 @@
     </div>
 </div>
 <!-- Edit modal -->
-<div class="modal fade" id="editProviderModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="editLabModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar Proveedor</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Editar Laboratorio</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="form-group" action="{{route('provider.update','provider')}}" method="post">
-
+            <form class="form-group" action="" method="post">
                 <div class="modal-body">
                     @method('PATCH')
                     {{ csrf_field() }}
-                    <input type="hidden" name="id" id="id" required="">
                     <div class="form-group">
-                        <label for="name">Nombre del Proveedor</label>
-                        <input class="form-control" type="text" name="name" id="name" required="">
+                        <label for="name">Nombre del Laboratorio</label>
+                        <input class="form-control" type="text" name="name" id="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="Phone">Número de teléfono</label>
+                        <label for="name">Teléfono</label>
                         <input class="form-control" type="tel" name="phone" id="phone" required>
                     </div>
                     <div class="form-group">
-                        <label for="Phone">Email</label>
+                        <label for="name">Email</label>
                         <input class="form-control" type="email" name="email" id="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="Phone">Dirección</label>
+                        <label for="name">Dirección</label>
                         <input class="form-control" type="text" name="address" id="address" required>
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
@@ -81,8 +79,7 @@
 </div>
 
 <!-- Delete Modal -->
-<div class="modal modal-danger fade" id="deleteProviderModal" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel">
+<div class="modal modal-danger fade" id="deleteLabModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -91,12 +88,12 @@
                         aria-hidden="true">&times;</span></button>
 
             </div>
-            <form action="{{route('provider.destroy','provider')}}" method="post">
+            <form action="" method="post">
                 {{method_field('delete')}}
                 {{csrf_field()}}
                 <div class="modal-body">
                     <p class="text-center">
-                        ¿Está seguro de querer eliminar este proveedor?
+                        ¿Está seguro de querer eliminar este laboratorio?
                     </p>
                     <input type="hidden" name="id" id="id" value="">
 
