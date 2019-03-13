@@ -10,9 +10,9 @@
 @endpush
 <div class="spark-settings-tabs sidebar bg-white">
     <aside>
-    <a class="nav-link" href="/home">
+    <a class="nav-link home" href="/home">
             <h3 class="nav-heading ">
-                {{__('Tablero')}}
+                {{__('Dashboard')}}
             </h3></a>
             @yield("overview_options")
     </aside>
