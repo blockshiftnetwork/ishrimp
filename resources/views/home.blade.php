@@ -8,7 +8,7 @@
                 @section('overview_options')
                 <ul class="nav flex-column mb-4 ">
                         <li class="nav-item">
-                            <a class="nav-link" href="#dashboard" aria-controls="dashboard" role="tab" data-toggle="tab">
+                            <a class="nav-link active" href="#dashboard" aria-controls="dashboard" role="tab" data-toggle="tab">
                                 <i class="fa fa-dashboard icon"></i>
                                 {{__('Visión General')}}
                             </a>
@@ -33,7 +33,6 @@
                 <!-- Tab cards -->
                 <div style="height: 100%; width: 100%;">
                         <div class="tab-content">
-                            
                             <div role="tabcard" class="tab-pane active " id="dashboard">
                                 @include('spark::dashboard.overview')
                             </div>

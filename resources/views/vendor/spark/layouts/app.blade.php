@@ -41,13 +41,13 @@
           <!-- Main Content -->
         <div class="row">
                 @if (Auth::check())
-            <div class="wrapper">
-            <nav id="sidebar">
+         
+            <nav id="sidebar" class="col-md-3">
 
                 @include('spark::nav.user-left')
             </nav>
-            </div>
-            <main class="py-4 col-md-9 mx-auto">
+            
+            <main class="py-4  col-md-9 mx-auto">
                     @yield('content')
                 </main>
             @else
@@ -81,10 +81,24 @@
     </script>
     
       <script>
-          $(document).ready(function () {
-              
+          $(function () {
+            if($(window).width()>=765){
+                $("#sidebar").removeClass("active");
+                $("#sidebar").removeClass("fixed");
+              }else{
+                $("#sidebar").addClass("active");
+                $("#sidebar").addClass("fixed");
+             
+              }
+             
+              $('#sidebar').on('focusout', function () {
+                if($(window).width()<=765){
+                    $('#sidebar').toggleClass('active');
+                }
+                
+             });
             $(window).resize(function(e) {
-                if($(window).width()>=1200){
+                if($(window).width()>=765){
                   $("#sidebar").removeClass("active");
                   $("#sidebar").removeClass("fixed");
                 }else{
@@ -96,6 +110,7 @@
               $('#sidebarcollapse').on('click', function () {
                   $('#sidebar').toggleClass('active');
                });
+               
         });
       </script>
       

@@ -13126,19 +13126,21 @@ pre {
 
 #sidebar {
   width: 250px;
+  min-width: min-content;
   position: relative;
   top: auto;
   left: 0;
   height: 100vh;
   z-index: 1000;
-  margin-left: 20px;
+  /* margin-left: 20px; */
   background: #ffffff;
   color: #fff;
   transition: all 0.3s;
 }
 
 #sidebar.active {
-  margin-left: -250px;
+  margin-left: -100%;
+  margin-right: 50%;
 }
 
 .sidebar-toggler {
@@ -13154,7 +13156,7 @@ pre {
 #sidebar.fixed {
   position: absolute !important;
   top: auto;
-  
+  transition: all 0.3s; 
 }
 /*login*/
 img.logo-header {

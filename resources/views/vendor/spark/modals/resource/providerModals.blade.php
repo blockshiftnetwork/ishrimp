@@ -49,7 +49,6 @@
                 </button>
             </div>
             <form class="form-group" action="{{route('provider.update','provider')}}" method="post">
-
                 <div class="modal-body">
                     @method('PATCH')
                     {{ csrf_field() }}
