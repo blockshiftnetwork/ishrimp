@@ -20,6 +20,13 @@
                         {{__('Parámetros Diarios')}}
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#abw" aria-controls="abw" role="tab"
+                        data-toggle="tab">
+                        <i class="fa fa-bar-chart icon"></i>
+                        {{__('ABW')}}
+                    </a>
+                </li>
             </ul>
             @endsection
 
@@ -30,6 +37,9 @@
                     </div>
                     <div role="tabcard" class="tab-pane" id="dayly-parameters">
                         @include('spark::cultivation.dayly-parameters')
+                    </div>
+                    <div role="tabcard" class="tab-pane" id="abw">
+                        @include('spark::cultivation.abw')
                     </div>
                 </div>
             </div>
