@@ -12,7 +12,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css" />
-    
+
     <!-- CSS -->
     <link href="{{ mix(Spark::usesRightToLeftTheme() ? 'css/app-rtl.css' : 'css/app.css') }}" rel="stylesheet">
 
@@ -26,7 +26,7 @@
     <script>
         window.Spark = @json(array_merge(Spark::scriptVariables(), []));
     </script>
-    
+
 </head>
 <body>
     <div id="spark-app" v-cloak>
@@ -77,12 +77,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
-     
+
     </script>
-    
+
       <script>
           $(document).ready(function () {
-              
+
             $(window).resize(function(e) {
                 if($(window).width()>=1200){
                   $("#sidebar").removeClass("active");
@@ -92,13 +92,13 @@
                   $("#sidebar").addClass("fixed");
                 }
               });
-          
+
               $('#sidebarcollapse').on('click', function () {
                   $('#sidebar').toggleClass('active');
                });
         });
       </script>
-      
+
      <script>
             $('.datapicker').datepicker({
                 format: "dd/mm/yyyy",
@@ -112,7 +112,7 @@
                 todayHighlight: true
             });
      </script>
-     
+
     @yield('custom-scripts')
 </body>
 </html>

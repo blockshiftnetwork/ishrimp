@@ -18,6 +18,8 @@ require('spark-bootstrap');
 
 require('./components/bootstrap');
 
+Vue.component('default-component', require('./components/ExampleComponent.vue'));
+
 var app = new Vue({
     mixins: [require('spark')]
 });
