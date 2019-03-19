@@ -51,6 +51,7 @@
 
 @section('cultivation-scripts')
 <script>
+tag = $();
 $(document).ready(function() {
     var j = 0;
     $('#dateField').flatpickr({
@@ -79,7 +80,7 @@ $(document).ready(function() {
     $('.btn-abw').popover({title: "Muestras", html: true, placement: "bottom"});
     $('#tbl_abw').on('click', '.btn-abw', function(event) {
          var tr = $(this).parent().parent();
-         var tag = $(event.target).parent();
+        tag = $(event.target).parent();
         $(tag).popover('toggle');
         
         $('.popover-body').append('<div id="cal-pop" class="row cal-content"></div>');
@@ -95,11 +96,11 @@ $(document).ready(function() {
         let sample = $('#sample')[0].value;
         abw.val((newAbw/sample).toFixed(2));
         wg.val((abw.val() - lastAbw.val()).toFixed(2));
-        $('.btn-abw').popover('hide');
+        $(tag).popover('hide');
     });
 
     $('#btn-gr').on('click', '#close-pop', function() {
-        $('.btn-abw').popover('hide');
+        $(tag).popover('hide');
     });
 
     })    
