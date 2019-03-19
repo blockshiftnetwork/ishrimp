@@ -14,10 +14,10 @@ class ResourceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $providers = Provider::get();
-        return view('vendor.spark.resource-settings')->with(['providers' => $providers]);
+        $resources = Resource::where('team_id', $Request->team_id)->get();
+        return view('vendor.spark.resource-settings')->with(['resources' => $resources]);
     }
 
     /**
@@ -38,7 +38,16 @@ class ResourceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'category_id' => 'required',
+            'provider_id' => 'required',
+            'team_id' => 'required'
+        ]);
+
+        $Resource = Resource::create($request->all());
+
+        return redirect()->back()->with('message', 'Recurso Guardado!');
     }
 
     /**
@@ -49,7 +58,7 @@ class ResourceController extends Controller
      */
     public function show($id)
     {
-        //
+        return Resource::findOrFail($id);
     }
 
     /**
@@ -72,7 +81,17 @@ class ResourceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'category_id' => 'required',
+            'provider_id' => 'required',
+            'team_id' => 'required'
+        ]);
+    
+        $resource = Resource::find($request->id);
+        $resource->update($request->except('_token','_method'));
+        
+        return redirect()->back()->with('message', 'Recurso Actualizado!');
     }
 
     /**
@@ -83,6 +102,9 @@ class ResourceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $resource = Resource::findOrFail($request->id);
+        $resource->delete();
+
+        return redirect()->back()->with('message', 'Recurso Eliminado!');
     }
 }
