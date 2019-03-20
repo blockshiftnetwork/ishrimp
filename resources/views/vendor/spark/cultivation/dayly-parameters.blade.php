@@ -6,7 +6,7 @@
 		</div>
 		<div class="card-body p-0">
 			<form>
-				<table class="table mb-0">
+				<table class="table mb-0 bg-white">
 					<thead class="thead-primary">
 						<tr>
 							<th colspan="12">
