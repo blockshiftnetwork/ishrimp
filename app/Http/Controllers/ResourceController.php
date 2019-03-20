@@ -53,7 +53,7 @@ class ResourceController extends Controller
 
     public function destroy($id)
     {
-        $resource = Resource::findOrFail($request->id);
+        $resource = Resource::findOrFail($id);
         $resource->delete();
 
         return redirect()->back()->with('message', 'Recurso Eliminado!');
