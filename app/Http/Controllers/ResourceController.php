@@ -16,7 +16,7 @@ class ResourceController extends Controller
      */
     public function index(Request $request)
     {
-        $resources = Resource::where('team_id', $Request->team_id)->get();
+        $resources = Resource::where('team_id', $request->team_id)->get();
         return view('vendor.spark.resource-settings')->with(['resources' => $resources]);
     }
 
