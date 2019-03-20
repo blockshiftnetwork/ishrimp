@@ -23,7 +23,7 @@
                     <div class="row m-0 p-2">
                             <form id="form-r" class="form-group" role="form" role="form" method="POST" action="{{route('cultivation.store')}}">
                                    
-                        <table class="table" id="medicine-table">
+                        <table class="table" id="medicine-table" class="bg-white">
                             <thead>   
                                 <th>Nombre piscina</th>
                                 <th>Recurso</th>

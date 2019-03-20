@@ -51,7 +51,6 @@
 
 @section('cultivation-scripts')
 <script>
-tag = $();
 $(document).ready(function() {
     var j = 0;
     $('#dateField').flatpickr({
@@ -77,16 +76,21 @@ $(document).ready(function() {
         $(this).parent().parent().remove();
     })
 
-    $('.btn-abw').popover({title: "Muestras", html: true, placement: "bottom"});
-    $('#tbl_abw').on('click', '.btn-abw', function(event) {
-         var tr = $(this).parent().parent();
-        tag = $(event.target).parent();
-        $(tag).popover('toggle');
-        
+    $('.btn-abw').popover({title: "Muestras", html: true, placement: "left"});
+    //$('.btn-abw').children().click(false); 
+});
+
+function showPopover(event){
+    var tr = $(event.target).parent().parent();
+        tag = $(event.target);
+        tag.popover('show', {title: "Muestras", html: true, placement: "left"});
+        console.log(tag, tr);
+        $('.popover-body').empty();
         $('.popover-body').append('<div id="cal-pop" class="row cal-content"></div>');
-        $('.cal-content').append('<div class="col-md-6 mx-auto"><input id="new-abw" class="form-control" placeholder="ABW" type="text"></div>');
-        $('.cal-content').append('<div class="col-md-6 mx-auto"><input id="sample" class="form-control" placeholder="muestra" type="text"></div>');
-        $('.popover-body').append('<div id="btn-gr" class="row mt-2"><button id="cal-abw" class="btn btn-success mx-auto">calcular</button><button id="close-pop" class="btn btn-danger mx-auto">cancelar</button></div>');
+        $('.cal-content').append('<div class="col-6 mx-auto"><input id="new-abw" class="form-control" placeholder="ABW" type="number"></div>');
+        $('.cal-content').append('<div class="col-6 mx-auto"><input id="sample" class="form-control" placeholder="muestra" type="number"></div>');
+        $('.popover-body').append('<div id="btn-gr" class="row mt-2 btn-group-xs"><button id="cal-abw" class="btn btn-success mx-auto">calcular</button><button id="close-pop" class="btn btn-danger mx-auto">cancelar</button></div>');
+       
         $('#btn-gr').on('click', '#cal-abw', function() {
         let inputs = tr.find('input');
         let lastAbw = $(inputs[7]);
@@ -94,20 +98,23 @@ $(document).ready(function() {
         let wg = $(inputs[9]);
         let newAbw = $('#new-abw')[0].value;
         let sample = $('#sample')[0].value;
+        if(sample > 0  && newAbw >= 0){
         abw.val((newAbw/sample).toFixed(2));
         wg.val((abw.val() - lastAbw.val()).toFixed(2));
-        $(tag).popover('hide');
+        hiddenPopover(tag);  
+        }else{
+            alert('revise los campos');
+        }
+        
     });
-
     $('#btn-gr').on('click', '#close-pop', function() {
-        $(tag).popover('hide');
+        hiddenPopover(tag);
     });
+}
 
-    })    
-});
-
-function showPopover(){
-
+function hiddenPopover(tag){
+    tag.popover('hide');
+    tag.popover('enable');
 }
 function select(event){
     var id = event.target.value;

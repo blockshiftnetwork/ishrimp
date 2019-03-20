@@ -5,7 +5,7 @@
     <div class="card-body">
 <table
 id="tbl_abw"
-style="width:99.9%;"
+class="bg-white"
 data-toggle="table"
 data-classes="table table-striped table-hover table-borderless"
 data-pagination="true"
@@ -38,7 +38,7 @@ data-unique-id="true">
                 <span id="lastabwDate">28-Jan 19 11:06 AM</span>
             </td>
             <td class="col-xs-1 text-center">
-                <button class="btn btn-light btn-duplicate btn-abw" role="button" style="border-radius: 50px; border: 1px solid #ccc;"><b>+</b></button>
+                <button class="btn btn-light btn-duplicate btn-abw" role="button" onclick="showPopover(event)" style="border-radius: 50px; border: 1px solid #ccc;">+</button>
             </td>
             <td class="col-xs-1" style="width:100px;">
                 <input type="hidden" name="harvestDate" id="harvestDate" value="0000-00-00 00:00:00">
@@ -74,7 +74,7 @@ data-unique-id="true">
                 <span id="lastabwDate">28-Jan 19 11:06 AM</span>
             </td>
             <td class="col-xs-1 text-center">
-                <button class="btn btn-light btn-duplicate btn-abw" role="button" style="border-radius: 50px; border: 1px solid #ccc;"><b>+</b></button>
+                <button class="btn btn-light btn-duplicate btn-abw" role="button"  onclick="showPopover(event)" style="border-radius: 50px; border: 1px solid #ccc;">+</button>
             </td>
             <td class="col-xs-1" style="width:100px;">
                 <input type="hidden" name="harvestDate" id="harvestDate" value="0000-00-00 00:00:00">

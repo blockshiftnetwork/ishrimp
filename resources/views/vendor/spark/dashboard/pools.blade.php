@@ -107,35 +107,20 @@
             <!-- tab table  -->
             <div role="tabpanel" class="tab-pane" id="feed_chart_pill">
                 <div class="fixed-table-container mt-5">
-                    <table id="ponds-snap-tbl" class="table table-striped table-hover bg-white" style="width:99.9%;">
+                    <table id="ponds-snap-tbl" class="bg-white"
+                    data-toggle="table"
+                    data-classes="table table-striped table-hover table-borderless"
+                    data-pagination="true"
+                    data-search="true"
+                    data-unique-id="true" style="width:99.9%;">
                         <thead class="thead-primary">
                             <tr>
-
-                                <th>
-                                    <div class="th-inner sortable text-center">Días</div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">Fecha del Evento</div>
-                                    <div class="fht-cell">
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">Nombre del Balanceado</div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">Total del Día<br>(Kg)</div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">Consumo Neto<br> Kg)</div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">Acciones</div>
-                                    <div class="fht-cell"></div>
-                                </th>
+                                <th data-field="days" data-sortable="true">Días</th>
+                                <th data-field="event_date" >Fecha del Evento</th>
+                                <th data-field="balanced">Nombre del Balanceado</th>
+                                <th data-field="total_day" >Total del Día<br>(Kg)</th>
+                                <th data-field="cn">Consumo Neto<br> Kg)</th>
+                                <th data-field="actions">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -241,47 +226,23 @@
             </div>
             <!-- inputs -->
             <div role="tabpanel" class="tab-pane" id="inputs_pill">
-
-                <div class="fixed-table-container mt-5">
                     <div class="fixed-table-header">
                         <h4 class="text-title mt-4">Medicamentos y Minerales</h4>
-                        <div class="pull-right search mb-2">
-                            <input class="form-control" type="text" placeholder="Buscar">
-                        </div>
                     </div>
-                    <div class="fixed-table-body">
-                        <div class="fixed-table-loading" style="top: 37px; display: none;">Cargando,por favor
-                            espere...</div>
-                        <table id="ponds-snap-tbl" class="table table-striped table-hover bg-white"
-                            style="width:99.9%;">
+
+                        <table id="ponds-snap-tbl" class="bg-white"
+                            data-toggle="table"
+                            data-classes="table table-striped table-hover table-borderless"
+                            data-pagination="true"
+                            data-search="true">
                             <thead class="thead-primary">
                                 <tr>
-
-                                    <th>
-                                        <div class="th-inner sortable text-center">Nombre del Recurso</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">Tipo de Recurso</div>
-                                        <div class="fht-cell">
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">Cantidad en Inventario</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">Fecha del Evento<br>(Kg)</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">Notas</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">Acciones</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
+                                    <th data-field="name"  data-sortable="true">Nombre del Recurso</th>
+                                    <th data-field="resource">Tipo de Recurso</th>
+                                    <th data-field="quantity">Cantidad en Inventario </th>
+                                    <th data-field="date">Fecha del Evento<br>(Kg)</th>
+                                    <th data-field="note">Notas</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -349,52 +310,24 @@
 
                             </tbody>
                         </table>
-                    </div>
-                    <div class="fixed-table-pagination" style="display: none;">
-                    </div>
-                </div>
-
-
-                <div class="fixed-table-container mt-5">
+                
                     <div class="fixed-table-header">
                         <h4 class="text-title mt-4">Otras entradas</h4>
-                        <div class="pull-right search mb-2">
-                            <input class="form-control" type="text" placeholder="Buscar">
-                        </div>
                     </div>
-                    <div class="fixed-table-body">
-                        <div class="fixed-table-loading" style="top: 37px; display: none;">Cargando,por favor
-                            espere...</div>
-                        <table id="ponds-snap-tbl" class="table table-striped table-hover bg-white"
-                            style="width:99.9%;">
+                   
+                      <table id="ponds-snap-tbl" class="table table-striped table-hover bg-white"
+                            data-toggle="table"
+                            data-classes="table table-striped table-hover table-borderless"
+                            data-pagination="true"
+                            data-search="true">
                             <thead class="thead-primary">
                                 <tr>
-
-                                    <th>
-                                        <div class="th-inner sortable text-center">Nombre del Recurso</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">Tipo de Recurso</div>
-                                        <div class="fht-cell">
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">Cantidad en Inventario</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">Fecha del Evento<br>(Kg)</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">Notas</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">Acciones</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
+                                    <th>Nombre del Recurso</th>
+                                    <th>Tipo de Recurso</th>
+                                    <th>Cantidad en Inventario</th>
+                                    <th>Fecha del Evento<br>(Kg)</th>
+                                    <th>Notas</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -447,57 +380,26 @@
 
                             </tbody>
                         </table>
-                    </div>
-                    <div class="fixed-table-pagination" style="display: none;">
-                    </div>
-                </div>
-
-            </div>
+              </div>
             <!-- abw -->
             <div role="tabpanel" class="tab-pane" id="abw_pill">
-                        <table id="ponds-snap-tbl" class="table table-striped table-hover bg-white"
+                        <table id="ponds-snap-tbl" class="bg-white"
+                            data-toggle="table"
+                            data-classes="table table-striped table-hover table-borderless"
+                            data-pagination="true"
+                            data-search="true"
                             style="width:99.9%;">
                             <thead class="thead-primary">
                                 <tr>
-
-                                    <th>
-                                        <div class="th-inner sortable text-center">Muestras (g)</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">ABW (g)</div>
-                                        <div class="fht-cell">
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">AGW (g)</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">Tasa Balanceado (Kg)</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">Bio-masa (Kg)</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">Supervivencia (%)</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
-
-                                    <th>
-                                        <div class="th-inner sortable text-center">FCR</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">Fecha del Evento</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
-                                    <th>
-                                        <div class="th-inner sortable text-center">Acciones</div>
-                                        <div class="fht-cell"></div>
-                                    </th>
+                                    <th>Muestras (g)</th>
+                                    <th>ABW (g)</th>
+                                    <th>AGW (g)</th>
+                                    <th>Tasa Balanceado (Kg)</th>
+                                    <th>Bio-masa (Kg)</th>
+                                    <th>Supervivencia (%)</th>
+                                    <th>FCR</th>
+                                    <th>Fecha del Evento</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -583,70 +485,28 @@
             </div>
             <!-- Labs -->
             <div role="tabpanel" class="tab-pane" id="lab_pill">
-                <div class="fixed-table-container mt-5">
                     <div class="fixed-table-header">
                         <h4 class="text-title mt-4">Otras entradas</h4>
-                        <div class="pull-right search mb-2">
-                            <input class="form-control" type="text" placeholder="Buscar">
-                        </div>
                     </div>
-                        <table id="ponds-snap-tbl" class="table table-striped table-hover bg-white"
-                            style="width:99.9%;">
+                        <table id="ponds-snap-tbl" class="bg-white"
+                            data-toggle="table"
+                            data-classes="table table-striped table-hover table-borderless"
+                            data-pagination="true"
+                            data-search="true">
                             <thead class="thead-primary">
-                                <th>
-                                    <div class="th-inner sortable text-center">factor de conversión</div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">Salinidad (PPT)</div>
-                                    <div class="fht-cell">
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">DO</div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">CO3</div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">HCO3</div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">total</div>
-                                    <div class="fht-cell"></div>
-                                </th>
-
-                                <th>
-                                    <div class="th-inner sortable text-center">Dureza (PPM)</div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">Amoníaco (NH4 +)</div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">Hierro</div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">Colonias verdes</div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">Colonias amarillas</div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">Fecha de la prueba</div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <div class="th-inner sortable text-center">Acciones</div>
-                                    <div class="fht-cell"></div>
-                                </th>
+                                <th>factor de conversión</th>
+                                <th>Salinidad (PPT)</th>
+                                <th>DO</th>
+                                <th>CO3</th>
+                                <th>HCO3</th>
+                                <th>total</th>
+                                <th>Dureza (PPM)</th>
+                                <th>Amoníaco (NH4 +)</th>
+                                <th>Hierro</th>
+                                <th>Colonias verdes</th>
+                                <th>Colonias amarillas</th>
+                                <th>Fecha de la prueba</th>
+                                <th>Acciones</th>
                             </thead>
                             <tbody>
                                 <tr>
@@ -674,11 +534,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                   
-                    <div class="fixed-table-pagination" style="display: none;">
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
