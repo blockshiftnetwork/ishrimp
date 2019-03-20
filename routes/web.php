@@ -21,8 +21,8 @@ Route::resource('/sowing', 'SowingController');
 Route::resource('/resource', 'ResourceController');
 Route::post('/resource/providers', 'ResourceController@storeProvider')->name('storeProvider');
 Route::get('/resource/providers', 'ResourceController@showProvider')->name('showProvider');;
-Route::put('/resource/providers', 'ResourceController@updateProvider')->name('updateProvider');;
-Route::delete('/resource/providers', 'ResourceController@destroyProvider')->name('destroyProvider');;
+Route::patch('/resource/providers/{provider_id}', 'ResourceController@updateProvider')->name('updateProvider');;
+Route::delete('/resource/providers/{provider_id}', 'ResourceController@destroyProvider')->name('destroyProvider');;
 
 
 

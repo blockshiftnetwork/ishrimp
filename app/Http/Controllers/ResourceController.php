@@ -89,7 +89,6 @@ class ResourceController extends Controller
             'address' => 'required',
             'email' => 'required'
         ]);
-    
         $provider = Provider::find($request->id);
         $provider->update($request->except('_token','_method'));
         
