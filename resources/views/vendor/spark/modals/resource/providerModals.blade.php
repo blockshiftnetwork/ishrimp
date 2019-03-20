@@ -9,7 +9,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="form-group" action="{{route('provider.store')}}" method="post">
+            <form class="form-group" action="{{route('storeProvider')}}" method="post">
                 <div class="modal-body">
                     {{ csrf_field() }}
                     <div class="form-group">
@@ -48,7 +48,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="form-group" action="{{route('provider.update','provider')}}" method="post">
+            <form class="form-group" action="{{route('updateProvider','provider')}}" method="post">
                 <div class="modal-body">
                     @method('PATCH')
                     {{ csrf_field() }}
@@ -90,7 +90,7 @@
                         aria-hidden="true">&times;</span></button>
 
             </div>
-            <form action="{{route('provider.destroy','provider')}}" method="post">
+            <form action="{{route('destroyProvider','provider')}}" method="post">
                 {{method_field('delete')}}
                 {{csrf_field()}}
                 <div class="modal-body">

@@ -9,33 +9,14 @@ use App\Http\Controllers\ProviderController;
 
 class ResourceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
+    public function index()
     {
-        $resources = Resource::where('team_id', $request->team_id)->get();
-        return view('vendor.spark.resource-settings')->with(['resources' => $resources]);
+        $team_id = auth()->user()->currentTeam->id;
+        $resources = Resource::where('team_id', $team_id)->get();
+        $providers = Provider::all();
+        return view('vendor.spark.resource-settings')->with(['resources' => $resources, 'providers' => $providers]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -50,35 +31,11 @@ class ResourceController extends Controller
         return redirect()->back()->with('message', 'Recurso Guardado!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         return Resource::findOrFail($id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -94,17 +51,56 @@ class ResourceController extends Controller
         return redirect()->back()->with('message', 'Recurso Actualizado!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $resource = Resource::findOrFail($request->id);
         $resource->delete();
 
         return redirect()->back()->with('message', 'Recurso Eliminado!');
+    }
+
+    /*##### Providers Methods #####*/
+
+    public function storeProvider(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'email' => 'required'
+        ]);
+
+        $Provider = Provider::create($request->all());
+
+        return redirect()->back()->with('message', 'Proveedor Guardado!');
+    }
+
+    public function showProvider($id)
+    {
+        return Provider::findOrFail($id);
+    }
+
+
+    public function updateProvider(Request $request)
+    { 
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'email' => 'required'
+        ]);
+    
+        $provider = Provider::find($request->id);
+        $provider->update($request->except('_token','_method'));
+        
+        return redirect()->back()->with('message', 'Proveedor Actualizado!');
+    }
+
+    public function destroyProvider(Request $request)
+    {
+        $Provider = Provider::findOrFail($request->id);
+        $Provider->delete();
+
+        return redirect()->back()->with('message', 'Proveedor Eliminado!');
     }
 }
