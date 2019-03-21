@@ -21,7 +21,6 @@
                         </div>
                     </div>
                     <div class="row m-0 p-2">
-                            <form id="form-r" class="form-group" role="form" role="form" method="POST" action="{{route('cultivation.store')}}">
                                    
                         <table class="table" id="medicine-table" class="bg-white">
                             <thead>   
@@ -77,7 +76,7 @@
                         <hr>
                         <div class="row m-0 p-2">
                             <div class="col-12">
-                                <button  onclick="saveData()" class="btn btn-primary">Guardar</button>
+                                <button  onclick="saveDataResourceUsed()" class="btn btn-primary">Guardar</button>
                             </div>
                         </div>
                     </form>

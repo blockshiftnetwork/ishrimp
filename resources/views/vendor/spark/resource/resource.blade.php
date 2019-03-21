@@ -29,53 +29,26 @@
                                 <table class="table table-striped table-hover bg-white text-center" id="feedSch_tbl"
                                     style="width:99.9%;">
                                     <thead class="thead-primary">
-                                        <tr>
-                                            <th class="" scope="col">
-                                                <div class="tablesorter-header-inner">Nombre del Recurso</div>
-                                            </th>
-                                            <th class="">
-                                                <div class="tablesorter-header-inner">Proveedor</div>
-                                            </th>
-                                            <th class="">
-                                                <div class="tablesorter-header-inner">Tipo</div>
-                                            </th>
-                                            <th class="">
-                                                <div class="tablesorter-header-inner">Presentación</div>
-                                            </th>
 
-                                            <th class="">
-                                                <div class="tablesorter-header-inner">Cantidad</div>
-                                            </th>
-                                            <th class="">
-                                                <div class="tablesorter-header-inner">precio</div>
-                                            </th>
-                                            <th class="">
-                                                <div class="tablesorter-header-inner">Acciones</div>
-                                            </th>
+                                        <tr>
+                                            <th>Nombre del Recurso</th>
+                                            <th class="">Proveedor</th>
+                                            <th class="">Tipo</th>
+                                            <th class="">Presentación</th>
+                                            <th class="">Cantidad</th>
+                                            <th class="">Precio</th>
+                                            <th class="">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody class="results" aria-live="polite" aria-relevant="all">
-                                        <tr class="scrl_tr" role="row">
-                                            <td class="filter_row">
-                                                <span class="tank_filter">Lorica 2 - Gisis</span>
-
-                                            </td>
-                                            <td class="filter_row">
-                                                <span class="tank_filter">Alimento</span>
-
-                                            </td>
-                                            <td class="filter_row">
-                                                <span class="tank_filter">proveedor 1</span>
-                                            </td>
-                                            <td class="filter_row">
-                                                <span class="tank_filter">gris</span>
-                                            </td>
-                                            <td class="filter_row">
-                                                <span class="tank_filter">25 kg</span>
-                                            </td>
-                                            <td class="filter_row">
-                                                <span class="tank_filter">25</span>
-                                            </td>
+                                    @foreach ($resources as $resource)
+                                        <tr>
+                                            <td>{{$resource->name}}</td>
+                                            <td>{{$resource->provider_name}}</td>
+                                            <td>{{$resource->category_name}}</td>
+                                            <td >{{$resource->presentation_name}}</td>
+                                            <td>{{$resource->quantity}}-{{$resource->unity}}</td>
+                                            <td>{{$resource->price}}</td>
                                             <td class="text-center">
                                                 <div class="actions btn btn-group-sm">
                                                     <button id="#edit" data-toggle="modal"
@@ -88,6 +61,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
 
@@ -114,6 +88,7 @@
                                 <table class="table table-striped table-hover bg-white text-center" id="provider_table"
                                     style="width:99.9%;">
                                     <thead class="thead-primary">
+                                    
                                         <tr>
                                             <th class="" scope="col">
                                                 <div class="tablesorter-header-inner">Nombre del Proveedor</div>
