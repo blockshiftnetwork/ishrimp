@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Provider;
 use Illuminate\Database\Eloquent\Model;
 
 class Resource extends Model

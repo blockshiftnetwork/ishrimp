@@ -50,7 +50,6 @@ class CultivationController extends Controller
      */
    public function store(Request $request)
     {
-        
         $request->validate([
             'pool_id' => 'required',
             'resource_id' => 'required',

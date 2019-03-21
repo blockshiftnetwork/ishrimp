@@ -78,7 +78,7 @@ $(document).ready(function() {
 
     $('.btn-abw').popover({title: "Muestras", html: true, placement: "left"});
     //$('.btn-abw').children().click(false); 
-});
+}); 
 
 function showPopover(event){
     var tr = $(event.target).parent().parent();
@@ -136,7 +136,8 @@ function select(event){
    
 };
 
-function saveData(){
+//save resource used
+function saveDataResourceUsed(){
 
    $(this).addClass('disabled');
 
@@ -156,19 +157,20 @@ function saveData(){
         //if exits inputs inside tr
         if(exitsData){
             var form = $('#data').serialize();
-            $.post("{{route('cultivation.store')}}",form,function(resp){
-              console.log(resp);
-             }).done(function(){
-               clearTimeout(timeout);
-               timeout = setTimeout(function(){
-                $('#alert').addClass('show');
-                $('#alert').on('closed.bs.alert',function(){
-                    location.reload();
-                });
-               }, 2000)
-             }).fail(function(resp){
-                console.log('error',resp);
-             });
+            console.log(form);
+             $.post("{{route('cultivation.store')}}",form,function(resp){
+               console.log(resp);
+              }).done(function(){
+                clearTimeout(timeout);
+                timeout = setTimeout(function(){
+                 $('#alert').addClass('show');
+                 $('#alert').on('closed.bs.alert',function(){
+                     location.reload();
+                 });
+                }, 2000)
+              }).fail(function(resp){
+                 console.log('error',resp);
+              });
              
         }
     })

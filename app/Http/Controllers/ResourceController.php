@@ -6,13 +6,22 @@ use Illuminate\Http\Request;
 use App\Resource;
 use App\Provider;
 use App\Http\Controllers\ProviderController;
+use Illuminate\Support\Facades\DB;
 
 class ResourceController extends Controller
 {
     public function index()
     {
         $team_id = auth()->user()->currentTeam->id;
-        $resources = Resource::where('team_id', $team_id)->get();
+        $resources = DB::table('resources')
+                    ->join('presentation_resources as presentation','resources.id','=','presentation.resource_id')
+                    ->join('category_resources as category', 'resources.category_id','=', 'category.id' )
+                    ->join('providers','resources.provider_id','=','providers.id')
+                    ->select('resources.*', 'presentation.name as presentation_name', 'presentation.quantity',
+                            'presentation.price','presentation.unity', 'category.name as category_name',
+                            'providers.name as provider_name')
+                    ->get();
+        // $resources = Resource::where('team_id', $team_id)->get();
         $providers = Provider::all();
         return view('vendor.spark.resource-settings')->with(['resources' => $resources, 'providers' => $providers]);
     }
