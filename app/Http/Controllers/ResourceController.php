@@ -5,25 +5,33 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Resource;
 use App\Provider;
+use App\PresentationResource;
+use App\Laboratory;
 use App\Http\Controllers\ProviderController;
 use Illuminate\Support\Facades\DB;
-
 class ResourceController extends Controller
 {
     public function index()
     {
         $team_id = auth()->user()->currentTeam->id;
         $resources = DB::table('resources')
-                    ->join('presentation_resources as presentation','resources.id','=','presentation.resource_id')
                     ->join('category_resources as category', 'resources.category_id','=', 'category.id' )
                     ->join('providers','resources.provider_id','=','providers.id')
-                    ->select('resources.*', 'presentation.name as presentation_name', 'presentation.quantity',
-                            'presentation.price','presentation.unity', 'category.name as category_name',
+                    ->select('resources.*', 'category.name as category_name',
                             'providers.name as provider_name')
                     ->get();
-        // $resources = Resource::where('team_id', $team_id)->get();
+        $presentations = DB::table('presentation_resources as presentation')
+                        ->join('resources', 'presentation.resource_id','=','resources.id')
+                        ->select('resources.name as resource_name','presentation.*')
+                        ->get();
+        $categories = DB::table('category_resources')->where('team_id', $team_id)->get();
         $providers = Provider::all();
-        return view('vendor.spark.resource-settings')->with(['resources' => $resources, 'providers' => $providers]);
+        $laboratories = Laboratory::all();
+        return view('vendor.spark.resource-settings')->with(['resources' => $resources,
+                                                            'providers' => $providers,
+                                                            'categories' => $categories,
+                                                            'presentations' => $presentations,
+                                                            'laboratories' => $laboratories]);
     }
 
     public function store(Request $request)
@@ -45,7 +53,7 @@ class ResourceController extends Controller
         return Resource::findOrFail($id);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
             'name' => 'required',
@@ -53,16 +61,20 @@ class ResourceController extends Controller
             'provider_id' => 'required',
             'team_id' => 'required'
         ]);
-    
+
         $resource = Resource::find($request->id);
         $resource->update($request->except('_token','_method'));
         
         return redirect()->back()->with('message', 'Recurso Actualizado!');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $resource = Resource::findOrFail($id);
+        $resource = Resource::findOrFail($request->id);
+        $resource_used = DB::table('pools_resources_used')->where('resource_id',$request->id);
+        $presentation = DB::table('presentation_resources')->where('resource_id',$request->id);
+        $presentation->delete();
+        $resource_used ->delete();
         $resource->delete();
 
         return redirect()->back()->with('message', 'Recurso Eliminado!');
@@ -111,4 +123,95 @@ class ResourceController extends Controller
 
         return redirect()->back()->with('message', 'Proveedor Eliminado!');
     }
+
+    /*##### Presentation Methods #####*/
+
+    public function storePresentation(Request $request)
+    {
+     
+        $request->validate([
+            'resource_id'=> 'required',
+            'name' => 'required',
+            'quantity' => 'required',
+            'price' => 'required',
+            'unity' => 'required'
+        ]);
+        $presentation = PresentationResource::create($request->all());
+
+        return redirect()->back()->with('message', 'Presentación Guardada!');
+    }
+
+    public function showPresentation($id)
+    {
+        return PresentationResource::findOrFail($id);
+    }
+
+
+    public function updatePresentation(Request $request)
+    { 
+        $request->validate([
+            'resource_id'=> 'required',
+            'name' => 'required',
+            'quantity' => 'required',
+            'price' => 'required',
+            'unity' => 'required'
+        ]);
+        $presentation = PresentationResource::find($request->id);
+        $presentation->update($request->except('_token','_method'));
+        
+        return redirect()->back()->with('message', 'Presentación Actualizada!');
+    }
+
+    public function destroyPresentation(Request $request)
+    {
+        $presentation = PresentationResource::findOrFail($request->id);
+        $presentation->delete();
+
+        return redirect()->back()->with('message', 'Presentación Eliminada!');
+    }
+
+     /*##### Laboratories Methods #####*/
+
+     public function storeLaboratory(Request $request)
+     {
+      
+         $request->validate([
+             'name' => 'required',
+             'phone' => 'required',
+             'address' => 'required',
+             'email' => 'required'
+         ]);
+         $laboratory = Laboratory::create($request->all());
+ 
+         return redirect()->back()->with('message', 'Laboratorio Guardado!');
+     }
+ 
+     public function showLaboratory($id)
+     {
+         return laboratory::findOrFail($id);
+     }
+ 
+ 
+     public function updateLaboratory(Request $request)
+     { 
+         
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'email' => 'required'
+        ]);
+         $laboratory = Laboratory::find($request->id);
+         $laboratory->update($request->except('_token','_method'));
+         
+         return redirect()->back()->with('message', 'Laboratorio Actualizado!');
+     }
+ 
+     public function destroyLaboratory(Request $request)
+     {
+         $laboratory = Laboratory::findOrFail($request->id);
+         $laboratory->delete();
+ 
+         return redirect()->back()->with('message', 'Laboratorio Eliminado!');
+     }
 }

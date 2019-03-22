@@ -17,7 +17,7 @@
                         <tr>
                             <th
                             data-sortable="true"
-                            data-fild="name">Nombre Piscina</th>
+                            data-field="name">Nombre Piscina</th>
                             <th
                             data-sortable="true"
                             data-field="doc">DOC (Días)</th>

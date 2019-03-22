@@ -13426,3 +13426,8 @@ div#btn-createpool {
 .dayly-parameters-table .input-row td input:focus {
     background: #eee;
 }
+.btn-tools-bar {
+  position: relative !important;
+  top: 45px;
+  left: -45px;
+}

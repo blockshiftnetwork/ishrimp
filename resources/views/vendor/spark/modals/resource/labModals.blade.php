@@ -9,7 +9,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="form-group" action="" method="post">
+            <form class="form-group" action="{{route('storeLaboratory')}}" method="post">
+            {{csrf_field()}}
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Nombre del Laboratorio</label>
@@ -47,10 +48,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="form-group" action="" method="post">
+            <form class="form-group" action="{{route('updateLaboratory','lab_id')}}" method="post">
                 <div class="modal-body">
                     @method('PATCH')
                     {{ csrf_field() }}
+                    <input type="hidden" id="id" name="id">
                     <div class="form-group">
                         <label for="name">Nombre del Laboratorio</label>
                         <input class="form-control" type="text" name="name" id="name" required>
@@ -88,8 +90,8 @@
                         aria-hidden="true">&times;</span></button>
 
             </div>
-            <form action="" method="post">
-                {{method_field('delete')}}
+            <form action="{{route('destroyLaboratory','lab_id')}}" method="post">
+                @method('delete')
                 {{csrf_field()}}
                 <div class="modal-body">
                     <p class="text-center">

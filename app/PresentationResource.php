@@ -9,7 +9,7 @@ class PresentationResource extends Model
     protected $table = 'presentation_resources';
 
     protected $fillable = [
-    
+		'resource_id',
    		'name',
    		'quantity',
    		'price',
