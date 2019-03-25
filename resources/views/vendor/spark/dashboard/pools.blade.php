@@ -111,27 +111,28 @@
                     data-toggle="table"
                     data-classes="table table-striped table-hover table-borderless"
                     data-pagination="true"
+                    data-locale="es-ES"
                     data-search="true"
                     data-unique-id="true" style="width:99.9%;">
                         <thead class="thead-primary">
                             <tr>
-                                <th data-field="days" data-sortable="true">Días</th>
-                                <th data-field="event_date" >Fecha del Evento</th>
-                                <th data-field="balanced">Nombre del Balanceado</th>
-                                <th data-field="total_day" >Total del Día<br>(Kg)</th>
-                                <th data-field="cn">Consumo Neto<br> Kg)</th>
-                                <th data-field="actions">Acciones</th>
+                                <th data-field="days" data-sortable="true" data-align="center">Días</th>
+                                <th data-field="event_date"data-align="center" >Fecha del Evento</th>
+                                <th data-field="balanced" data-align="center">Nombre del Balanceado</th>
+                                <th data-field="total_day" data-align="center">Total del Día<br>(Kg)</th>
+                                <th data-field="cn" data-align="center">Consumo Neto<br> Kg)</th>
+                                <th data-field="actions" data-align="center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             <tr>
-                                <td class="text-center" rowspan="1">60</td>
-                                <td class="text-center" rowspan="1">21-Jan 19</td>
-                                <td class="text-center">Optiline 35% #5 - Gisis</td>
-                                <td class="text-center">5075</td>
-                                <td class="text-center">5075</td>
-                                <td class="text-center">
+                                <td>60</td>
+                                <td>21-Jan 19</td>
+                                <td>Optiline 35% #5 - Gisis</td>
+                                <td>5075</td>
+                                <td>5075</td>
+                                <td>
                                     <div class="actions btn btn-group-sm">
                                         <a href="" class="btn btn-success btn-xs mr-4">
                                             <i class="fa fa-edit"></i></a>
@@ -140,53 +141,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="text-center" rowspan="1">58</td>
-                                <td class="text-center" rowspan="1">20-Jan 19</td>
-                                <td class="text-center">Optiline 35% </td>
-                                <td class="text-center">5075</td>
-                                <td class="text-center">5075</td>
-                                <td class="text-center">
-                                    <div class="actions btn btn-group-sm">
-                                        <a href="" class="btn btn-success btn-xs mr-4">
-                                            <i class="fa fa-edit"></i></a>
-                                        <a href="" class="btn btn-xs btn-danger">
-                                            <i class="fa fa-trash-o"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center" rowspan="1">58</td>
-                                <td class="text-center" rowspan="1">19-Jan 19</td>
-                                <td class="text-center">Optiline 35% </td>
-                                <td class="text-center">5075</td>
-                                <td class="text-center">5075</td>
-                                <td class="text-center">
-                                    <div class="actions btn btn-group-sm">
-                                        <a href="" class="btn btn-success btn-xs mr-4">
-                                            <i class="fa fa-edit"></i></a>
-                                        <a href="" class="btn btn-xs btn-danger">
-                                            <i class="fa fa-trash-o"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center" rowspan="1">57</td>
-                                <td class="text-center" rowspan="1">14-Jan 19</td>
-                                <td class="text-center">Optiline 35% </td>
-                                <td class="text-center">5075</td>
-                                <td class="text-center">5075</td>
-                                <td class="text-center">
-                                    <div class="actions btn btn-group-sm">
-                                        <a href="" class="btn btn-success btn-xs mr-4">
-                                            <i class="fa fa-edit"></i></a>
-                                        <a href="" class="btn btn-xs btn-danger">
-                                            <i class="fa fa-trash-o"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-
-                        </tbody>
+                            </tbody>
                     </table>
 
                     <div class="footer_feed_cont">
@@ -234,26 +189,27 @@
                             data-toggle="table"
                             data-classes="table table-striped table-hover table-borderless"
                             data-pagination="true"
+                            data-locale="es-ES"
                             data-search="true">
                             <thead class="thead-primary">
                                 <tr>
-                                    <th data-field="name"  data-sortable="true">Nombre del Recurso</th>
-                                    <th data-field="resource">Tipo de Recurso</th>
-                                    <th data-field="quantity">Cantidad en Inventario </th>
-                                    <th data-field="date">Fecha del Evento<br>(Kg)</th>
-                                    <th data-field="note">Notas</th>
-                                    <th>Acciones</th>
+                                    <th data-field="name"  data-sortable="true" data-align="center">Nombre del Recurso</th>
+                                    <th data-field="resource" data-align="center">Tipo de Recurso</th>
+                                    <th data-field="quantity" data-align="center">Cantidad en Inventario </th>
+                                    <th data-field="date" data-align="center">Fecha del Evento<br>(Kg)</th>
+                                    <th data-field="note" data-align="center">Notas</th>
+                                    <th data-align="center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 <tr>
-                                    <td class="text-center" rowspan="1">cal</td>
-                                    <td class="text-center" rowspan="1">Médicina</td>
-                                    <td class="text-center">250 kg</td>
-                                    <td class="text-center">30-Jan 19</td>
-                                    <td class="text-center">None</td>
-                                    <td class="text-center">
+                                    <td>cal</td>
+                                    <td>Médicina</td>
+                                    <td>250 kg</td>
+                                    <td>30-Jan 19</td>
+                                    <td>None</td>
+                                    <td>
                                         <div class="actions btn btn-group-sm">
                                             <a href="" class="btn btn-success btn-xs mr-4">
                                                 <i class="fa fa-edit"></i></a>
@@ -263,12 +219,12 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="text-center" rowspan="1">cal</td>
-                                    <td class="text-center" rowspan="1">Médicina</td>
-                                    <td class="text-center">250 kg</td>
-                                    <td class="text-center">30-Jan 19</td>
-                                    <td class="text-center">None</td>
-                                    <td class="text-center">
+                                    <td>cal</td>
+                                    <td>Médicina</td>
+                                    <td>250 kg</td>
+                                    <td>30-Jan 19</td>
+                                    <td>None</td>
+                                    <td>
                                         <div class="actions btn btn-group-sm">
                                             <a href="" class="btn btn-success btn-xs mr-4">
                                                 <i class="fa fa-edit"></i></a>
@@ -278,12 +234,12 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="text-center" rowspan="1">cal</td>
-                                    <td class="text-center" rowspan="1">Médicina</td>
-                                    <td class="text-center">250 kg</td>
-                                    <td class="text-center">30-Jan 19</td>
-                                    <td class="text-center">None</td>
-                                    <td class="text-center">
+                                    <td>cal</td>
+                                    <td>Médicina</td>
+                                    <td>250 kg</td>
+                                    <td>30-Jan 19</td>
+                                    <td>None</td>
+                                    <td>
                                         <div class="actions btn btn-group-sm">
                                             <a href="" class="btn btn-success btn-xs mr-4">
                                                 <i class="fa fa-edit"></i></a>
@@ -293,12 +249,12 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="text-center" rowspan="1">cal</td>
-                                    <td class="text-center" rowspan="1">Médicina</td>
-                                    <td class="text-center">250 kg</td>
-                                    <td class="text-center">30-Jan 19</td>
-                                    <td class="text-center">None</td>
-                                    <td class="text-center">
+                                    <td>cal</td>
+                                    <td>Médicina</td>
+                                    <td>250 kg</td>
+                                    <td>30-Jan 19</td>
+                                    <td>None</td>
+                                    <td>
                                         <div class="actions btn btn-group-sm">
                                             <a href="" class="btn btn-success btn-xs mr-4">
                                                 <i class="fa fa-edit"></i></a>
@@ -319,26 +275,27 @@
                             data-toggle="table"
                             data-classes="table table-striped table-hover table-borderless"
                             data-pagination="true"
+                            data-locale="es-ES"
                             data-search="true">
                             <thead class="thead-primary">
                                 <tr>
-                                    <th>Nombre del Recurso</th>
-                                    <th>Tipo de Recurso</th>
-                                    <th>Cantidad en Inventario</th>
-                                    <th>Fecha del Evento<br>(Kg)</th>
-                                    <th>Notas</th>
-                                    <th>Acciones</th>
+                                    <th data-align="center">Nombre del Recurso</th>
+                                    <th data-align="center">Tipo de Recurso</th>
+                                    <th data-align="center">Cantidad en Inventario</th>
+                                    <th data-align="center">Fecha del Evento<br>(Kg)</th>
+                                    <th data-align="center">Notas</th>
+                                    <th data-align="center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 <tr>
-                                    <td class="text-center" rowspan="1">cal</td>
-                                    <td class="text-center" rowspan="1">Médicina</td>
-                                    <td class="text-center">250 kg</td>
-                                    <td class="text-center">30-Jan 19</td>
-                                    <td class="text-center">None</td>
-                                    <td class="text-center">
+                                    <td>cal</td>
+                                    <td>Médicina</td>
+                                    <td>250 kg</td>
+                                    <td>30-Jan 19</td>
+                                    <td>None</td>
+                                    <td>
                                         <div class="actions btn btn-group-sm">
                                             <a href="" class="btn btn-success btn-xs mr-4">
                                                 <i class="fa fa-edit"></i></a>
@@ -347,36 +304,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="text-center" rowspan="1">cal</td>
-                                    <td class="text-center" rowspan="1">Médicina</td>
-                                    <td class="text-center">250 kg</td>
-                                    <td class="text-center">30-Jan 19</td>
-                                    <td class="text-center">None</td>
-                                    <td class="text-center">
-                                        <div class="actions btn btn-group-sm">
-                                            <a href="" class="btn btn-success btn-xs mr-4">
-                                                <i class="fa fa-edit"></i></a>
-                                            <a href="" class="btn btn-xs btn-danger">
-                                                <i class="fa fa-trash-o"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center" rowspan="1">cal</td>
-                                    <td class="text-center" rowspan="1">Médicina</td>
-                                    <td class="text-center">250 kg</td>
-                                    <td class="text-center">30-Jan 19</td>
-                                    <td class="text-center">None</td>
-                                    <td class="text-center">
-                                        <div class="actions btn btn-group-sm">
-                                            <a href="" class="btn btn-success btn-xs mr-4">
-                                                <i class="fa fa-edit"></i></a>
-                                            <a href="" class="btn btn-xs btn-danger">
-                                                <i class="fa fa-trash-o"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                            
 
                             </tbody>
                         </table>
@@ -387,33 +315,34 @@
                             data-toggle="table"
                             data-classes="table table-striped table-hover table-borderless"
                             data-pagination="true"
+                            data-locale="es-ES"
                             data-search="true"
                             style="width:99.9%;">
                             <thead class="thead-primary">
                                 <tr>
-                                    <th>Muestras (g)</th>
-                                    <th>ABW (g)</th>
-                                    <th>AGW (g)</th>
-                                    <th>Tasa Balanceado (Kg)</th>
-                                    <th>Bio-masa (Kg)</th>
-                                    <th>Supervivencia (%)</th>
-                                    <th>FCR</th>
-                                    <th>Fecha del Evento</th>
-                                    <th>Acciones</th>
+                                    <th data-align="center">Muestras (g)</th>
+                                    <th data-align="center">ABW (g)</th>
+                                    <th data-align="center">AGW (g)</th>
+                                    <th data-align="center">Tasa Balanceado (Kg)</th>
+                                    <th data-align="center">Bio-masa (Kg)</th>
+                                    <th data-align="center">Supervivencia (%)</th>
+                                    <th data-align="center">FCR</th>
+                                    <th data-align="center">Fecha del Evento</th>
+                                    <th data-align="center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 <tr>
-                                    <td class="text-center" rowspan="1">0</td>
-                                    <td class="text-center" rowspan="1">13.45</td>
-                                    <td class="text-center">1.64</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">70</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">28-Juan 19</td>
-                                    <td class="text-center">
+                                    <td>0</td>
+                                    <td>13.45</td>
+                                    <td>1.64</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>70</td>
+                                    <td>0</td>
+                                    <td>28-Juan 19</td>
+                                    <td>
                                         <div class="actions btn btn-group-sm">
                                             <a href="" class="btn btn-success btn-xs mr-4">
                                                 <i class="fa fa-edit"></i></a>
@@ -422,61 +351,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="text-center" rowspan="1">0</td>
-                                    <td class="text-center" rowspan="1">13.45</td>
-                                    <td class="text-center">1.64</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">70</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">28-Juan 19</td>
-                                    <td class="text-center">
-                                        <div class="actions btn btn-group-sm">
-                                            <a href="" class="btn btn-success btn-xs mr-4">
-                                                <i class="fa fa-edit"></i></a>
-                                            <a href="" class="btn btn-xs btn-danger">
-                                                <i class="fa fa-trash-o"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center" rowspan="1">0</td>
-                                    <td class="text-center" rowspan="1">13.45</td>
-                                    <td class="text-center">1.64</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">70</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">28-Juan 19</td>
-                                    <td class="text-center">
-                                        <div class="actions btn btn-group-sm">
-                                            <a href="" class="btn btn-success btn-xs mr-4">
-                                                <i class="fa fa-edit"></i></a>
-                                            <a href="" class="btn btn-xs btn-danger">
-                                                <i class="fa fa-trash-o"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center" rowspan="1">0</td>
-                                    <td class="text-center" rowspan="1">13.45</td>
-                                    <td class="text-center">1.64</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">70</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">28-Juan 19</td>
-                                    <td class="text-center">
-                                        <div class="actions btn btn-group-sm">
-                                            <a href="" class="btn btn-success btn-xs mr-4">
-                                                <i class="fa fa-edit"></i></a>
-                                            <a href="" class="btn btn-xs btn-danger">
-                                                <i class="fa fa-trash-o"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-
+                            
                             </tbody>
                         </table>
                    
@@ -492,38 +367,39 @@
                             data-toggle="table"
                             data-classes="table table-striped table-hover table-borderless"
                             data-pagination="true"
+                            data-locale="es-ES"
                             data-search="true">
                             <thead class="thead-primary">
-                                <th>factor de conversión</th>
-                                <th>Salinidad (PPT)</th>
-                                <th>DO</th>
-                                <th>CO3</th>
-                                <th>HCO3</th>
-                                <th>total</th>
-                                <th>Dureza (PPM)</th>
-                                <th>Amoníaco (NH4 +)</th>
-                                <th>Hierro</th>
-                                <th>Colonias verdes</th>
-                                <th>Colonias amarillas</th>
-                                <th>Fecha de la prueba</th>
-                                <th>Acciones</th>
+                                <th data-align="center">factor de conversión</th>
+                                <th data-align="center">Salinidad (PPT)</th>
+                                <th data-align="center">DO</th>
+                                <th data-align="center">CO3</th>
+                                <th data-align="center">HCO3</th>
+                                <th data-align="center">total</th>
+                                <th data-align="center">Dureza (PPM)</th>
+                                <th data-align="center">Amoníaco (NH4 +)</th>
+                                <th data-align="center">Hierro</th>
+                                <th data-align="center">Colonias verdes</th>
+                                <th data-align="center">Colonias amarillas</th>
+                                <th data-align="center">Fecha de la prueba</th>
+                                <th data-align="center">Acciones</th>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="text-center" rowspan="1">0</td>
-                                    <td class="text-center" rowspan="1">0</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">30-Jan 19</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>30-Jan 19</td>
 
-                                    <td class="text-center">
+                                    <td>
                                         <div class="actions btn btn-group-sm" style="width: max-content;">
                                             <a href="" class="btn btn-success btn-xs mr-4">
                                                 <i class="fa fa-edit"></i></a>

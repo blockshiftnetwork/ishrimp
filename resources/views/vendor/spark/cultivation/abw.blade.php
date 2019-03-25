@@ -9,6 +9,7 @@ class="bg-white"
 data-toggle="table"
 data-classes="table table-striped table-hover table-borderless"
 data-pagination="true"
+data-locale="es-ES"
 data-search="true"
 data-unique-id="true">
     <thead>
