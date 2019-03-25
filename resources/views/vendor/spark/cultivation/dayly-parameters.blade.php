@@ -6,29 +6,30 @@
 		</div>
 		<div class="card-body p-0">
 			<form>
-				<table class="table mb-0 bg-white">
+				<table id="bar-table" class="table mb-0 bg-white">
 					<thead class="thead-primary">
 						<tr>
 							<th colspan="12">
 								<div class="form-inline justify-content-lg-around">
 									<label class="mr-2">Fecha</label>
-									<input class="form-control col-3 mr-2" type="text" id="dateField" name="date">
+									<input class="form-control col-2 mr-4 dateField" type="text" id="dateDp" name="date">
 									<label class="mr-2">Hora</label>
-									<input class="form-control col-2 mr-4" type="text" id="timeField" name="field">
-									<label class="mr-2">Laboratorio</label>
+									<input class="form-control col-2 mr-4 " type="text" id="timeDp" name="time">
+									<label class="mr-2">Laboratorios</label>
 									<select name="lab" class="custom-select">
 										<option value="" selected>Seleccione</option>
 										<option value="1">Laboratorio 1</option>
 										<option value="2">Laboratorio 2</option>
 										<option value="3">Laboratorio 3</option>
 									</select>
-									<input type="submit" value="Guardar" class="btn btn-light ml-auto dayly-parameters-submit">
+									<input type="button" onclick="saveDaylyParameters()" value="Guardar" class="btn btn-light ml-auto dayly-parameters-submit">
 								</div>
 							</th>
 						</tr>
 					</thead>
 				</table>
-				<table class="table table-bordered dayly-parameters-table table-responsive-lg text-center mb-0" style="font-size: 10px">
+				<table id="paramaters-table" class="table table-bordered dayly-parameters-table table-responsive-lg text-center mb-0"
+				style="font-size: 10px">
 					<tbody>
 						<tr>
 							<td rowspan="3">Nombre Piscina</td>
@@ -53,177 +54,40 @@
 							<td>Colonias Verdes</td>
 							<td>Colonias Amarillas</td>
 						</tr>
+						@foreach($pools as $pool)
 						<tr class="input-row">
-							<td><span>Piscina 1</span></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
+							<td><span>{{$pool->name}}</span> <input type="hidden" name="id" value="{{$pool->id}}"> </td>
+							<td><input type="text" name="ph" id="ph" class="form-control"></td>
+							<td><input type="text" name="ppt" id="ppt" class="form-control"></td>
+							<td><input type="text" name="ppm" id="ppm" class="form-control"></td>
+							<td><input type="text" name="temperature" id="" class="form-control"></td>
+							<td><input type="text" name="co3" id="co3" class="form-control"></td>
+							<td><input type="text" name="hc03" id="hco3" class="form-control"></td>
+							<td><input type="text" name="total" id="total" class="form-control"></td>
+							<td><input type="text" name="ppm_d" id="ppm_d" class="form-control"></td>
+							<td><input type="text" name="ppm_a" id="ppm_a" class="form-control"></td>
+							<td><input type="text" name="ppm_h" id="ppm_h" class="form-control"></td>
+							<td><input type="text" name="green_colonies" id="green_colonies" class="form-control"></td>
+							<td><input type="text" name="yellow_colonies" id="yellow_colonies" class="form-control"></td>		
 						</tr>
-						<tr class="input-row">
-							<td><span>Piscina 2</span></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-						</tr>
-						<tr class="input-row">
-							<td><span>Piscina 3</span></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-						</tr>
-						<tr class="input-row">
-							<td><span>Piscina 4</span></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-						</tr>
-						<tr class="input-row">
-							<td><span>Piscina 5</span></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-						</tr>
-						<tr class="input-row">
-							<td><span>Piscina 6</span></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-						</tr>
-						<tr class="input-row">
-							<td><span>Piscina 7</span></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-						</tr>
-						<tr class="input-row">
-							<td><span>Piscina 8</span></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-						</tr>
-						<tr class="input-row">
-							<td><span>Piscina 9</span></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-						</tr>
-						<tr class="input-row">
-							<td><span>Piscina 10</span></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-							<td><input type="text" name="" id="" class="form-control"></td>
-						</tr>
+						@endforeach
 					</tbody>
 				</table>
 			</form>
 		</div>
+		<form id="formDayly" action="" method="post">
+		<input type="hidden" id="id_s" name="id" required>
+		<input type="hidden" id="ph_s" name="ph" required>
+		<input type="hidden" id="ppt_s" name="ppt" required>
+		<input type="hidden" id="ppm_s" name="ppm" required>
+		<input type="hidden" id="temperature_s" name="temperature" required>
+		<input type="hidden" id="co3_s" name="co3" required>
+		<input type="hidden" id="hco3_s" name="hco3" required>
+		<input type="hidden" id="ppm_d_s" name="ppm_d" required>
+		<input type="hidden" id="ppm_a_s" name="ppm_a" required>
+		<input type="hidden" id="ppm_h_s" name="ppm_h" required>
+		<input type="hidden" id="green_colonies_s" name="green_colonies" required>
+		<input type="hidden" id="yellow_colonies_s" name="yellow_colonies" required>
+		</form>
 	</div>
 </div>
-
-@section('custom-scripts')
-<script>
-	$(document).ready(function() {
-		$('#dateField').flatpickr({
-			altInput: true,
-			altFormat: 'F j, Y',
-			dateFormat: 'Y-m-d'
-		});
-
-		$('#timeField').flatpickr({
-			enableTime: true,
-			noCalendar: true,
-			dateFormat: 'h:i K'
-		});
-	});
-</script>
-@endsection

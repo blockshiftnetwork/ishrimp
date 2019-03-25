@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\PoolSowing;
+use App\Pool;
+use App\Sowing;
+use App\Resource;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class PoolSowingController extends Controller
@@ -12,14 +16,27 @@ class PoolSowingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $id)
+    public function index()
     {
-         $pools_sowed = PoolSowing::where('pool_id', $id)->get();
-        
-        return response()->json([
-            'status' => '200',
-            'data' => $pools_sowed
-        ]);
+        $team_id = auth()->user()->currentTeam->id;
+        $pools_sowed = DB::table('pools_sowing')
+                            ->join('pools', 'pools_sowing.pool_id','=','pools.id')
+                            ->select('pools_sowing.*','pools.name as pool_name')
+                            ->get();
+
+        $pools = Pool::where('team_id', $team_id)->get();
+        $resources = Resource::where('team_id', $team_id)->get();
+        $presentations = DB::table('presentation_resources')->get();
+        $inventory = DB::table('inventory_resources as inventory')
+                            ->join('resources','inventory.resource_id','=','resources.id')
+                            ->join('presentation_resources as presentation','inventory.presentation_id','=','presentation.id')
+                            ->select('inventory.*','resources.name as resource_name','presentation.name as presentation_name','presentation.unity as presentation_unity')
+                            ->get();
+        return view('vendor.spark.sowing')->with(['pools_sowed' => $pools_sowed,
+                                                    'pools' => $pools,
+                                                    'inventory' => $inventory,
+                                                    'resources' => $resources,
+                                                    'presentations' => $presentations]);
     }
 
     /**
@@ -80,7 +97,7 @@ class PoolSowingController extends Controller
      * @param  \App\PoolSowing  $poolSowing
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PoolSowing $poolSowing)
+    public function update(Request $request)
     {
         $request->validate([
             'pool_id' => 'required',
@@ -88,9 +105,8 @@ class PoolSowingController extends Controller
             'larvae_type' => 'required',
             'planted_at' => 'required'
         ]);
-
-        PoolSowing::where('id', $request->id)->update($request->all());
-        
+        $poolSowed = PoolSowing::find($request->id);
+        $poolSowed->update($request->except('_token','_method'));   
         return redirect()->back()->with('message', 'Siembra de Piscina Actualizada!');
     }
 
@@ -100,11 +116,53 @@ class PoolSowingController extends Controller
      * @param  \App\PoolSowing  $poolSowing
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PoolSowing $poolSowing)
+    public function destroy(Request $request )
     {
-        $pool_sowed = PoolSowing::findOrFail($poolSowing);
+        $pool_sowed = PoolSowing::findOrFail($request->id);
         $pool_sowed->delete();
 
         return redirect()->back()->with('message', 'Siembra de Piscina Eliminada!');
+    }
+
+    //Inventory methods
+
+    public function storeInventory(Request $request)
+    {
+        $request->validate([
+            'resource_id' => 'required',
+            'quantity' => 'required',
+            'presentation_id' => 'required',
+            'team_id' => 'required'
+        ]);
+        $inventory = Sowing::create($request->all());
+
+        return redirect()->back()->with('message', 'Agregado al inventario!');
+    }
+
+ 
+    public function showInventory(PoolSowing $poolSowing)
+    {
+        return Sowing::findOrFail($poolSowing);
+    }
+
+    public function updateInventory(Request $request)
+    {
+        $request->validate([
+            'resource_id' => 'required',
+            'quantity' => 'required',
+            'presentation_id' => 'required',
+            'team_id' => 'required'
+        ]);
+        $inventory = Sowing::find($request->id);
+        $inventory->update($request->except('_token','_method'));   
+        return redirect()->back()->with('message', 'Inventario Actualizado!');
+    }
+
+    public function destroyInventory(Request $request )
+    {
+        $inventory = Sowing::findOrFail($request->id);
+        $inventory->delete();
+
+        return redirect()->back()->with('message', 'Eliminado del Inventario!');
     }
 }

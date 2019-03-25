@@ -14,7 +14,7 @@ class ResourceController extends Controller
     public function index()
     {
         $team_id = auth()->user()->currentTeam->id;
-        $resources = DB::table('resources')
+        $resources = DB::table('resources')->where('resources.team_id','=', $team_id)
                     ->join('category_resources as category', 'resources.category_id','=', 'category.id' )
                     ->join('providers','resources.provider_id','=','providers.id')
                     ->select('resources.*', 'category.name as category_name',

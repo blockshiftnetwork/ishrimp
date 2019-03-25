@@ -12,30 +12,32 @@
                 data-toggle="table"
                 data-classes="table table-striped table-hover table-borderless"
                 data-pagination="true"
+                data-page-size="10"
+                data-locale="es-ES"
                 data-search="true">
                     <thead class="thead-primary">
                         <tr>
                             <th
                             data-sortable="true"
-                            data-field="name">Nombre Piscina</th>
+                            data-field="name" data-align="center">Nombre Piscina</th>
                             <th
                             data-sortable="true"
-                            data-field="doc">DOC (Días)</th>
+                            data-field="doc" data-align="center">DOC (Días)</th>
                             <th
                             data-sortable="true"
-                            data-field="abw">ABW</th>
+                            data-field="abw" data-align="center">ABW</th>
                             <th
                             data-sortable="true"
-                            data-field="awg">AWG</th>
+                            data-field="awg" data-align="center">AWG</th>
                             <th
                             data-sortable="true"
-                            data-field="balaced">Balanceado<br>acumulado (Kg)</th>
+                            data-field="balaced" data-align="center">Balanceado<br>acumulado (Kg)</th>
                             <th
                             data-sortable="true"
-                            data-field="do">DO<br>(mg / L)</th>
+                            data-field="do" data-align="center">DO<br>(mg / L)</th>
                             <th
                             data-sortable="true"
-                            data-field="ratio">Ratio <br> Conversion<br></th>
+                            data-field="ratio" data-align="center">Ratio <br> Conversion<br></th>
                         </tr>
                     </thead>
                     <tbody>

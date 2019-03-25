@@ -16,7 +16,7 @@
                         <div class="col-12">
                             <div class="form-inline py-2">
                                 <label class="mr-2">Fecha</label>
-                                <input type="text" class="form-control" id="dateField" name="date">
+                                <input type="text" class="form-control " id="dateRs" name="date">
                             </div>
                         </div>
                     </div>

@@ -29,16 +29,16 @@
                                     data-toggle="table"
                                     data-classes="table table-striped table-hover table-borderless"
                                     data-pagination="true"
+                                    data-locale="es-ES"
                                     data-search="true"
                                     style="width:99.9%;">
                                     <thead class="thead-primary">
 
                                         <tr>
-                                            <th data-sortable="true"
-                                                data-field="name">Nombre del Recurso</th>
-                                            <th class="">Proveedor</th>
-                                            <th class="">Tipo</th>
-                                            <th class="">Acciones</th>
+                                            <th data-sortable="true" data-field="name" data-align="center">Nombre del Recurso</th>
+                                            <th data-align="center">Proveedor</th>
+                                            <th data-align="center">Tipo</th>
+                                            <th data-align="center">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody class="results" aria-live="polite" aria-relevant="all">
@@ -87,16 +87,17 @@
                                     data-toggle="table"
                                     data-classes="table table-striped table-hover table-borderless"
                                     data-pagination="true"
+                                    data-locale="es-ES"
                                     data-search="true">
                                     <thead class="thead-primary">
 
                                         <tr>
                                             <th data-sortable="true"
-                                                data-field="name" >Nombre de recurso</th>
-                                            <th class="">Presentación</th>
-                                            <th class="">Cantidad</th>
-                                            <th class="">Precio</th>
-                                            <th class="">Acciones</th>
+                                                data-field="name" data-align="center" >Nombre de recurso</th>
+                                            <th data-align="center">Presentación</th>
+                                            <th data-align="center">Cantidad</th>
+                                            <th data-align="center">Precio</th>
+                                            <th data-align="center">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody class="results" aria-live="polite" aria-relevant="all">
@@ -150,25 +151,16 @@
                                     data-toggle="table"
                                     data-classes="table table-striped table-hover table-borderless"
                                     data-pagination="true"
+                                    data-locale="es-ES"
                                     data-search="true">
                                     <thead class="thead-primary">
                                     
                                         <tr>
-                                            <th class="" scope="col">
-                                                <div class="tablesorter-header-inner">Nombre del Proveedor</div>
-                                            </th>
-                                            <th class="">
-                                                <div class="tablesorter-header-inner">Teléfono</div>
-                                            </th>
-                                            <th class="">
-                                                <div class="tablesorter-header-inner">Email</div>
-                                            </th>
-                                            <th class="">
-                                                <div class="tablesorter-header-inner">Dirección</div>
-                                            </th>
-                                            <th class="">
-                                                <div class="tablesorter-header-inner">Acciones</div>
-                                            </th>
+                                            <th data-align="center">Nombre del Proveedor</th>
+                                            <th data-align="center">Teléfono</th>
+                                            <th data-align="center">Email</th>
+                                            <th data-align="center">Dirección</th>
+                                            <th data-align="center">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody class="results" aria-live="polite" aria-relevant="all">
@@ -228,14 +220,15 @@
                                     data-toggle="table"
                                     data-classes="table table-striped table-hover table-borderless"
                                     data-pagination="true"
+                                    data-locale="es-ES"
                                     data-search="true">
                                     <thead class="thead-primary">
                                         <tr>
-                                            <th>Nombre del Laboratorio</th>
-                                            <th>Teléfono</th>
-                                            <th>Email</th>
-                                            <th>Dirección</th>
-                                            <th>Acciones</th>
+                                            <th data-align="center">Nombre del Laboratorio</th>
+                                            <th data-align="center">Teléfono</th>
+                                            <th data-align="center">Email</th>
+                                            <th data-align="center">Dirección</th>
+                                            <th data-align="center">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody class="results" aria-live="polite" aria-relevant="all">
