@@ -116,6 +116,7 @@
         });
       </script>
     @yield('cultivation-scripts')
+    @yield('sowing-scripts')
     @yield('custom-scripts')
 </body>
 </html>

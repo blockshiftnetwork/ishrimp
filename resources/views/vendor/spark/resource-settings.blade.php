@@ -7,7 +7,7 @@
                 {{ session()->get('message') }}
         </div>
 @endif 
-    <spark-settings :user="user" :teams="teams" inline-template>
+    <div>
         <div class="spark-screen container">
             <div class="row">
                 <!-- Tabs -->
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-    </spark-settings>
+    </div>
 @endsection
 @section('custom-scripts')
 <script>

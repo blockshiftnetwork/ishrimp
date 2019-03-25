@@ -32,7 +32,7 @@
         @yield('Cultivo_options')
     </aside>
     <aside>
-        <a class="nav-link" href="/sowing">
+        <a class="nav-link" href="/pools_sowing">
         <h3 class="nav-heading ">
             {{__('Siembra')}}
         </h3></a>

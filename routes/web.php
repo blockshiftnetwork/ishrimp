@@ -14,12 +14,16 @@
 Route::get('/', 'WelcomeController@show');
 Route::get('/home', 'HomeController@show');
 Route::resource('/pools', 'PoolController');
+
 Route::resource('/pools_sowing', 'PoolSowingController');
+Route::post('/pools_sowing/inventorty', 'PoolSowingController@storeInventory')->name('storeInventory');
+Route::get('/pools_sowing/inventorty', 'PoolSowingController@showInventory')->name('showInventory');
+Route::patch('/pools_sowing/inventorty/{inventorty_id}', 'PoolSowingController@updateInventory')->name('updateInventory');
+Route::delete('/pools_sowing/inventorty/{inventorty_id}', 'PoolSowingController@destroyInventory')->name('destroyInventory');
+
 Route::resource('/cultivation', 'CultivationController');
 Route::get('presentation/{resource_id}','CultivationController@getPresentationResource');
-Route::resource('/sowing', 'SowingController');
 Route::resource('/resource', 'ResourceController');
-
 Route::post('/resource/providers', 'ResourceController@storeProvider')->name('storeProvider');
 Route::get('/resource/providers', 'ResourceController@showProvider')->name('showProvider');
 Route::patch('/resource/providers/{provider_id}', 'ResourceController@updateProvider')->name('updateProvider');
