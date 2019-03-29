@@ -27,14 +27,9 @@ class PoolSowingController extends Controller
         $pools = Pool::where('team_id', $team_id)->get();
         $resources = Resource::where('team_id', $team_id)->get();
         $presentations = DB::table('presentation_resources')->get();
-        $inventory = DB::table('inventory_resources as inventory')
-                            ->join('resources','inventory.resource_id','=','resources.id')
-                            ->join('presentation_resources as presentation','inventory.presentation_id','=','presentation.id')
-                            ->select('inventory.*','resources.name as resource_name','presentation.name as presentation_name','presentation.unity as presentation_unity')
-                            ->get();
+        
         return view('vendor.spark.sowing')->with(['pools_sowed' => $pools_sowed,
                                                     'pools' => $pools,
-                                                    'inventory' => $inventory,
                                                     'resources' => $resources,
                                                     'presentations' => $presentations]);
     }
@@ -124,45 +119,5 @@ class PoolSowingController extends Controller
         return redirect()->back()->with('message', 'Siembra de Piscina Eliminada!');
     }
 
-    //Inventory methods
-
-    public function storeInventory(Request $request)
-    {
-        $request->validate([
-            'resource_id' => 'required',
-            'quantity' => 'required',
-            'presentation_id' => 'required',
-            'team_id' => 'required'
-        ]);
-        $inventory = Sowing::create($request->all());
-
-        return redirect()->back()->with('message', 'Agregado al inventario!');
-    }
-
- 
-    public function showInventory(PoolSowing $poolSowing)
-    {
-        return Sowing::findOrFail($poolSowing);
-    }
-
-    public function updateInventory(Request $request)
-    {
-        $request->validate([
-            'resource_id' => 'required',
-            'quantity' => 'required',
-            'presentation_id' => 'required',
-            'team_id' => 'required'
-        ]);
-        $inventory = Sowing::find($request->id);
-        $inventory->update($request->except('_token','_method'));   
-        return redirect()->back()->with('message', 'Inventario Actualizado!');
-    }
-
-    public function destroyInventory(Request $request )
-    {
-        $inventory = Sowing::findOrFail($request->id);
-        $inventory->delete();
-
-        return redirect()->back()->with('message', 'Eliminado del Inventario!');
-    }
+  
 }

@@ -16,14 +16,7 @@
             </h3></a>
             @yield("overview_options")
     </aside>
-    <aside>
-        <a class="nav-link" href="/resource">
-        <h3 class="nav-heading ">
-            {{__('Configuración de Recursos')}}
-        </h3></a>
-        @yield('resource_options')
-
-    </aside>
+   
     <aside>
         <a class="nav-link" href="/cultivation">
         <h3 class="nav-heading ">
@@ -37,6 +30,14 @@
             {{__('Siembra')}}
         </h3></a>
         @yield('Sowing_options')
+
+    </aside>
+    <aside>
+        <a class="nav-link" href="/resource">
+        <h3 class="nav-heading ">
+            Gestión de Recursos
+        </h3></a>
+        @yield('resource_options')
 
     </aside>
         <aside>

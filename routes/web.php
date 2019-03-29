@@ -16,13 +16,10 @@ Route::get('/home', 'HomeController@show');
 Route::resource('/pools', 'PoolController');
 
 Route::resource('/pools_sowing', 'PoolSowingController');
-Route::post('/pools_sowing/inventorty', 'PoolSowingController@storeInventory')->name('storeInventory');
-Route::get('/pools_sowing/inventorty', 'PoolSowingController@showInventory')->name('showInventory');
-Route::patch('/pools_sowing/inventorty/{inventorty_id}', 'PoolSowingController@updateInventory')->name('updateInventory');
-Route::delete('/pools_sowing/inventorty/{inventorty_id}', 'PoolSowingController@destroyInventory')->name('destroyInventory');
 
 Route::resource('/cultivation', 'CultivationController');
 Route::get('presentation/{resource_id}','CultivationController@getPresentationResource');
+
 Route::resource('/resource', 'ResourceController');
 Route::post('/resource/providers', 'ResourceController@storeProvider')->name('storeProvider');
 Route::get('/resource/providers', 'ResourceController@showProvider')->name('showProvider');
@@ -38,6 +35,11 @@ Route::post('/resource/laboratories', 'ResourceController@storeLaboratory')->nam
 Route::get('/resource/laboratories', 'ResourceController@showLaboratory')->name('showLaboratory');
 Route::patch('/resource/laboratories/{lab_id}', 'ResourceController@updateLaboratory')->name('updateLaboratory');
 Route::delete('/resource/laboratories/{lab_id}', 'ResourceController@destroyLaboratory')->name('destroyLaboratory');
+
+Route::post('/resource/inventorty', 'ResourceController@storeInventory')->name('storeInventory');
+Route::get('/resource/inventorty', 'ResourceController@showInventory')->name('showInventory');
+Route::patch('/resource/inventorty/{inventorty_id}', 'ResourceController@updateInventory')->name('updateInventory');
+Route::delete('/resource/inventorty/{inventorty_id}', 'ResourceController@destroyInventory')->name('destroyInventory');
 
 
 

@@ -1,14 +1,14 @@
 
 <div class="card">
 <div class="card-header">
-Balanceado para la Siembra
+Inventario para la Siembra
 </div>
 <div class="card-body">
     <section class="section">
         <div class=" " id="feed_table" style="overflow: hidden;">
             <div  class="btn-tools-bar">
                 <button type="button" id="addBalanced" class="btn btn-info ml-5" data-toggle="modal"
-                    data-target="#addInventoryModal"><i class="fa fa-plus" aria-hidden="true"></i> Añadir Balanceado</button>
+                    data-target="#addInventoryModal"><i class="fa fa-plus" aria-hidden="true"></i> Añadir al Inventario</button>
             </div>
                 <table class="bg-white" id="balanced_tbl"
                 class="bg-white"
@@ -66,4 +66,4 @@ Balanceado para la Siembra
     </div>
 </div>
    <!-- Modals Sowing Balanced -->
-@include('spark::modals.sowing.inventoryModal')
+@include('spark::modals.resource.inventoryModal')

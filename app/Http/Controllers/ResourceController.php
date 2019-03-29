@@ -7,6 +7,7 @@ use App\Resource;
 use App\Provider;
 use App\PresentationResource;
 use App\Laboratory;
+use App\Sowing;
 use App\Http\Controllers\ProviderController;
 use Illuminate\Support\Facades\DB;
 class ResourceController extends Controller
@@ -20,10 +21,18 @@ class ResourceController extends Controller
                     ->select('resources.*', 'category.name as category_name',
                             'providers.name as provider_name')
                     ->get();
+
         $presentations = DB::table('presentation_resources as presentation')
                         ->join('resources', 'presentation.resource_id','=','resources.id')
                         ->select('resources.name as resource_name','presentation.*')
                         ->get();
+
+        $inventory = DB::table('inventory_resources as inventory')
+                        ->join('resources','inventory.resource_id','=','resources.id')
+                        ->join('presentation_resources as presentation','inventory.presentation_id','=','presentation.id')
+                        ->select('inventory.*','resources.name as resource_name','presentation.name as presentation_name','presentation.unity as presentation_unity')
+                        ->get();
+
         $categories = DB::table('category_resources')->where('team_id', $team_id)->get();
         $providers = Provider::all();
         $laboratories = Laboratory::all();
@@ -31,6 +40,7 @@ class ResourceController extends Controller
                                                             'providers' => $providers,
                                                             'categories' => $categories,
                                                             'presentations' => $presentations,
+                                                            'inventory' => $inventory,
                                                             'laboratories' => $laboratories]);
     }
 
@@ -45,7 +55,7 @@ class ResourceController extends Controller
 
         $Resource = Resource::create($request->all());
 
-        return redirect()->back()->with('message', 'Recurso Guardado!');
+        return redirect()->back()->with('message', '¡Recurso Guardado!');
     }
 
     public function show($id)
@@ -65,7 +75,7 @@ class ResourceController extends Controller
         $resource = Resource::find($request->id);
         $resource->update($request->except('_token','_method'));
         
-        return redirect()->back()->with('message', 'Recurso Actualizado!');
+        return redirect()->back()->with('message', '¡Recurso Actualizado!');
     }
 
     public function destroy(Request $request)
@@ -77,7 +87,7 @@ class ResourceController extends Controller
         $resource_used ->delete();
         $resource->delete();
 
-        return redirect()->back()->with('message', 'Recurso Eliminado!');
+        return redirect()->back()->with('message', '¡Recurso Eliminado!');
     }
 
     /*##### Providers Methods #####*/
@@ -93,7 +103,7 @@ class ResourceController extends Controller
 
         $Provider = Provider::create($request->all());
 
-        return redirect()->back()->with('message', 'Proveedor Guardado!');
+        return redirect()->back()->with('message', '¡Proveedor Guardado!');
     }
 
     public function showProvider($id)
@@ -113,7 +123,7 @@ class ResourceController extends Controller
         $provider = Provider::find($request->id);
         $provider->update($request->except('_token','_method'));
         
-        return redirect()->back()->with('message', 'Proveedor Actualizado!');
+        return redirect()->back()->with('message', '¡Proveedor Actualizado!');
     }
 
     public function destroyProvider(Request $request)
@@ -121,7 +131,7 @@ class ResourceController extends Controller
         $Provider = Provider::findOrFail($request->id);
         $Provider->delete();
 
-        return redirect()->back()->with('message', 'Proveedor Eliminado!');
+        return redirect()->back()->with('message', '¡Proveedor Eliminado!');
     }
 
     /*##### Presentation Methods #####*/
@@ -138,7 +148,7 @@ class ResourceController extends Controller
         ]);
         $presentation = PresentationResource::create($request->all());
 
-        return redirect()->back()->with('message', 'Presentación Guardada!');
+        return redirect()->back()->with('message', '¡Presentación Guardada!');
     }
 
     public function showPresentation($id)
@@ -159,7 +169,7 @@ class ResourceController extends Controller
         $presentation = PresentationResource::find($request->id);
         $presentation->update($request->except('_token','_method'));
         
-        return redirect()->back()->with('message', 'Presentación Actualizada!');
+        return redirect()->back()->with('message', '¡Presentación Actualizada!');
     }
 
     public function destroyPresentation(Request $request)
@@ -167,7 +177,7 @@ class ResourceController extends Controller
         $presentation = PresentationResource::findOrFail($request->id);
         $presentation->delete();
 
-        return redirect()->back()->with('message', 'Presentación Eliminada!');
+        return redirect()->back()->with('message', '¡Presentación Eliminada!');
     }
 
      /*##### Laboratories Methods #####*/
@@ -183,7 +193,7 @@ class ResourceController extends Controller
          ]);
          $laboratory = Laboratory::create($request->all());
  
-         return redirect()->back()->with('message', 'Laboratorio Guardado!');
+         return redirect()->back()->with('message', '¡Laboratorio Guardado!');
      }
  
      public function showLaboratory($id)
@@ -204,7 +214,7 @@ class ResourceController extends Controller
          $laboratory = Laboratory::find($request->id);
          $laboratory->update($request->except('_token','_method'));
          
-         return redirect()->back()->with('message', 'Laboratorio Actualizado!');
+         return redirect()->back()->with('message', '¡Laboratorio Actualizado!');
      }
  
      public function destroyLaboratory(Request $request)
@@ -212,6 +222,48 @@ class ResourceController extends Controller
          $laboratory = Laboratory::findOrFail($request->id);
          $laboratory->delete();
  
-         return redirect()->back()->with('message', 'Laboratorio Eliminado!');
+         return redirect()->back()->with('message', '¡Laboratorio Eliminado!');
      }
+
+       ##Inventory methods###
+
+    public function storeInventory(Request $request)
+    {
+        $request->validate([
+            'resource_id' => 'required',
+            'quantity' => 'required',
+            'presentation_id' => 'required',
+            'team_id' => 'required'
+        ]);
+        $inventory = Sowing::create($request->all());
+
+        return redirect()->back()->with('message', '¡Agregado al inventario!');
+    }
+
+ 
+    public function showInventory(PoolSowing $poolSowing)
+    {
+        return Sowing::findOrFail($poolSowing);
+    }
+
+    public function updateInventory(Request $request)
+    {
+        $request->validate([
+            'resource_id' => 'required',
+            'quantity' => 'required',
+            'presentation_id' => 'required',
+            'team_id' => 'required'
+        ]);
+        $inventory = Sowing::find($request->id);
+        $inventory->update($request->except('_token','_method'));   
+        return redirect()->back()->with('message', 'Inventario Actualizado!');
+    }
+
+    public function destroyInventory(Request $request )
+    {
+        $inventory = Sowing::findOrFail($request->id);
+        $inventory->delete();
+
+        return redirect()->back()->with('message', 'Eliminado del Inventario!');
+    }
 }

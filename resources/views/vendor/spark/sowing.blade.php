@@ -19,12 +19,7 @@
                                     {{__('Sembrar piscina')}}
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#balanced" aria-controls="pools" role="tab" data-toggle="tab">
-                            <i class="fa fa-spinner icon"></i>
-                            {{__('Balanceado para la Siembra')}}
-                        </a>
-                    </li>                        
+                                           
                 </ul>
                     @endsection
 
@@ -34,9 +29,6 @@
                     <div role="tabcard" class="tab-pane active" id="pool_sowing">
                             @include('spark::sowing.pool_sowing')
                     </div>
-                        <div role="tabcard" class="tab-pane" id="balanced">
-                            @include('spark::sowing.balanced_sowing')
-                        </div>
                         
                     </div>
                 </div>
@@ -78,27 +70,6 @@ $(document).ready(function() {
             modal.find('.modal-body #id').val(id);
            })
 
-    //Inventory actions
- $('#editInventoryModal').on('shown.bs.modal',function(event){
-         var button = $(event.relatedTarget);
-         var modal = $(this);
-         var id = button.data('id');
-         var team_id = button.data('team_id');
-         var resource_id = button.data('resource_id');
-         var quantity = button.data('quantity')
-         var presentation_id = button.data('presentation_id');
-         modal.find('.modal-body #id').val(id);
-         modal.find('.modal-body #team_id').val(team_id);
-         modal.find('.modal-body #resource_id').val(resource_id);
-         modal.find('.modal-body #quantity').val(quantity);
-         modal.find('.modal-body #presentation_id').val(presentation_id);
-        })
-
-        $('#deleteInventoryModal').on('shown.bs.modal',function(event){
-            var button = $(event.relatedTarget);
-            var modal = $(this);
-            var id = button.data('id');
-            modal.find('.modal-body #id').val(id);
-           })
+ 
 </script>
 @endsection
