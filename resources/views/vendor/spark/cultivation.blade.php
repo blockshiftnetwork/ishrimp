@@ -53,11 +53,21 @@
 <script>
 $(document).ready(function() {
     var j = 0;
-    $('#dateField').flatpickr({
+    $('#dateRs').flatpickr({
         altInput: true,
         altFormat: 'F j, Y',
         dateFormat: 'Y-m-d'
     });
+    $('#dateDp').flatpickr({
+        altInput: true,
+        altFormat: 'F j, Y',
+        dateFormat: 'Y-m-d'
+    });
+    $('#timeDp').flatpickr({
+			enableTime: true,
+			noCalendar: true,
+			dateFormat: 'h:i K'
+		});
 
     $('#medicine-table').on('click', '.btn-duplicate', function() {
         let current_row = $(this).parent().parent(),
@@ -77,7 +87,21 @@ $(document).ready(function() {
     })
 
     $('.btn-abw').popover({title: "Muestras", html: true, placement: "left"});
-    //$('.btn-abw').children().click(false); 
+
+    $('input').on('change',function(){
+        if($(this).prop('name') === 'hc03' || $(this).prop('name') === 'co3'){
+            var alcals = $(this).parent().parent().find('input');
+            var co3 = parseInt($(alcals[5]).val(), 10);
+            var hco3 = parseInt($(alcals[6]).val(), 10);
+            var total = $(alcals[7]);
+            co3 = co3 > 0 ? co3 : 0;
+            hco3 = hco3 > 0 ? hco3 : 0;
+            total.val(co3 + hco3);
+        }
+        
+        
+       
+    })
 }); 
 
 function showPopover(event){
@@ -116,6 +140,7 @@ function hiddenPopover(tag){
     tag.popover('hide');
     tag.popover('enable');
 }
+
 function select(event){
     var id = event.target.value;
     var presentation = $(event.target).parent().next().children();
@@ -151,7 +176,7 @@ function saveDataResourceUsed(){
             textVal = this.value;
             inputName = $(this).attr("name");
             $('#'+inputName+'_s').val(textVal);
-           exitsData= true;
+             exitsData= true;
 
         });
         //if exits inputs inside tr
@@ -171,17 +196,31 @@ function saveDataResourceUsed(){
               }).fail(function(resp){
                  console.log('error',resp);
               });
-             
-        }
+            }else{
+                alert("Debe agregar datos");
+            }
     })
    
 }
-    function calabw(){
-      
-        console.log('cal');
-        console.log($('#tbl_abw').bootstrapTable('getSelections'))
-  
-    }
+
+function saveDaylyParameters(){
+
+    var table = $('#paramaters-table');
+    var exitsData = false;
+    var timeout = null;
+    table.find('tr').each(function(){
+        $(this).find('input').each(function(){
+            if($(this).val() != ""){
+            var textVal = $(this).val();
+            inputName = $(this).attr("name");
+            $('#'+inputName+'_s').val(textVal);
+            }
+            var form = $('#formDayly').serialize();
+            console.log(form)
+    
+        });
+});
+}
    
 </script>
 

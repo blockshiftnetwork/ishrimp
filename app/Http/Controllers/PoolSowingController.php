@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\PoolSowing;
+use App\Pool;
+use App\Sowing;
+use App\Resource;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class PoolSowingController extends Controller
@@ -12,14 +16,22 @@ class PoolSowingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $id)
+    public function index()
     {
-         $pools_sowed = PoolSowing::where('pool_id', $id)->get();
+        $team_id = auth()->user()->currentTeam->id;
+        $pools_sowed = DB::table('pools_sowing')
+                            ->join('pools', 'pools_sowing.pool_id','=','pools.id')
+                            ->select('pools_sowing.*','pools.name as pool_name')
+                            ->get();
+
+        $pools = Pool::where('team_id', $team_id)->get();
+        $resources = Resource::where('team_id', $team_id)->get();
+        $presentations = DB::table('presentation_resources')->get();
         
-        return response()->json([
-            'status' => '200',
-            'data' => $pools_sowed
-        ]);
+        return view('vendor.spark.sowing')->with(['pools_sowed' => $pools_sowed,
+                                                    'pools' => $pools,
+                                                    'resources' => $resources,
+                                                    'presentations' => $presentations]);
     }
 
     /**
@@ -80,7 +92,7 @@ class PoolSowingController extends Controller
      * @param  \App\PoolSowing  $poolSowing
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PoolSowing $poolSowing)
+    public function update(Request $request)
     {
         $request->validate([
             'pool_id' => 'required',
@@ -88,9 +100,8 @@ class PoolSowingController extends Controller
             'larvae_type' => 'required',
             'planted_at' => 'required'
         ]);
-
-        PoolSowing::where('id', $request->id)->update($request->all());
-        
+        $poolSowed = PoolSowing::find($request->id);
+        $poolSowed->update($request->except('_token','_method'));   
         return redirect()->back()->with('message', 'Siembra de Piscina Actualizada!');
     }
 
@@ -100,11 +111,13 @@ class PoolSowingController extends Controller
      * @param  \App\PoolSowing  $poolSowing
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PoolSowing $poolSowing)
+    public function destroy(Request $request )
     {
-        $pool_sowed = PoolSowing::findOrFail($poolSowing);
+        $pool_sowed = PoolSowing::findOrFail($request->id);
         $pool_sowed->delete();
 
         return redirect()->back()->with('message', 'Siembra de Piscina Eliminada!');
     }
+
+  
 }

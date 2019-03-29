@@ -1,6 +1,6 @@
 <div class="card card-table card-default">
     <div class="card-header">
-        <h5>Insumos y Minerales</h5>
+        <h5>ABW</h5>
     </div>
     <div class="card-body">
 <table
@@ -9,11 +9,13 @@ class="bg-white"
 data-toggle="table"
 data-classes="table table-striped table-hover table-borderless"
 data-pagination="true"
+data-locale="es-ES"
 data-search="true"
 data-unique-id="true">
-    <thead>
+    <thead class="thead-primary">
         <tr>
-            <th class="col-xs-2" data-checkbox="true" data-field="name_pool">Nombre piscina</th>
+            <th class="col-xs-2" data-checkbox="true" data-field="id_pool">id piscina</th>
+            <th class="col-xs-2" data-field="name_pool">Nombre piscina</th>
             <th class="col-xs-1 text-left" data-field="last_abw">Última ABW</th>
             <th class="col-xs-2" data-field="last_date">Última Fecha ABW</th>
             <th class="col-xs-1 text-left" >Muestras</th>
@@ -24,6 +26,9 @@ data-unique-id="true">
     </thead>
     <tbody style="height: 228px !important;">
         <tr>
+        <td class="col-xs-2">
+        <input type="text" class="pool_id" name="pool_id" id="pool_id">
+            </td>
             <td class="col-xs-2">
                 <span class="clsPondName">Piscina 10</span>
             </td>
@@ -60,6 +65,9 @@ data-unique-id="true">
             </td>
         </tr>
         <tr>
+        <td class="col-xs-2">
+        <input type="text" class="pool_id" name="pool_id" id="pool_id">
+            </td>
             <td class="col-xs-2">
                 <span class="clsPondName">Piscina 10</span>
             </td>
@@ -74,7 +82,7 @@ data-unique-id="true">
                 <span id="lastabwDate">28-Jan 19 11:06 AM</span>
             </td>
             <td class="col-xs-1 text-center">
-                <button class="btn btn-light btn-duplicate btn-abw" role="button"  onclick="showPopover(event)" style="border-radius: 50px; border: 1px solid #ccc;">+</button>
+                <button class="btn btn-light btn-duplicate btn-abw" role="button" onclick="showPopover(event)" style="border-radius: 50px; border: 1px solid #ccc;">+</button>
             </td>
             <td class="col-xs-1" style="width:100px;">
                 <input type="hidden" name="harvestDate" id="harvestDate" value="0000-00-00 00:00:00">

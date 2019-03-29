@@ -7,7 +7,7 @@
                 {{ session()->get('message') }}
         </div>
 @endif 
-    <spark-settings :user="user" :teams="teams" inline-template>
+    <div>
         <div class="spark-screen container">
             <div class="row">
                 <!-- Tabs -->
@@ -19,6 +19,12 @@
                             {{__('Resources')}}
                         </a>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#inventory" aria-controls="inventory" role="tab" data-toggle="tab">
+                            <i class="fa fa-eyedropper icon"></i>
+                            {{__('Inventory')}}
+                        </a>
+                    </li>
                 </ul>
               
                 @endsection
@@ -26,14 +32,17 @@
                 <!-- Tab Cards -->
                 <div class="col-12">
                     <div class="tab-content">
-                        <div role="tabcard" class="tab-pane active" id="medicine">
+                        <div role="tabcard" class="tab-pane active" id="resource">
                             @include('spark::resource.resource')
+                        </div>
+                        <div role="tabcard" class="tab-pane" id="inventory">
+                            @include('spark::resource.inventory')
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </spark-settings>
+    </div>
 @endsection
 @section('custom-scripts')
 <script>
@@ -125,6 +134,28 @@
         })
 
         $('#deleteLabModal').on('shown.bs.modal',function(event){
+            var button = $(event.relatedTarget);
+            var modal = $(this);
+            var id = button.data('id');
+            modal.find('.modal-body #id').val(id);
+           })
+              //Inventory actions
+ $('#editInventoryModal').on('shown.bs.modal',function(event){
+         var button = $(event.relatedTarget);
+         var modal = $(this);
+         var id = button.data('id');
+         var team_id = button.data('team_id');
+         var resource_id = button.data('resource_id');
+         var quantity = button.data('quantity')
+         var presentation_id = button.data('presentation_id');
+         modal.find('.modal-body #id').val(id);
+         modal.find('.modal-body #team_id').val(team_id);
+         modal.find('.modal-body #resource_id').val(resource_id);
+         modal.find('.modal-body #quantity').val(quantity);
+         modal.find('.modal-body #presentation_id').val(presentation_id);
+        })
+
+        $('#deleteInventoryModal').on('shown.bs.modal',function(event){
             var button = $(event.relatedTarget);
             var modal = $(this);
             var id = button.data('id');

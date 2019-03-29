@@ -159,7 +159,7 @@ function listenerOverlay(){
              var size = google.maps.geometry.spherical.computeArea(npoly.getPath());
               closeDrawingTools();
               cancelDraw(npoly, event.overlay);
-              loadFormpool((size/10000).toFixed(2), JSON.stringify(npoly.getPath().getArray()));
+              loadFormpool((size/10000).toFixed(3), JSON.stringify(npoly.getPath().getArray()));
             });
 
 }
@@ -195,12 +195,17 @@ function  listenerMouserOver(poly, pool) {
            '<img class="card-img-top" src="/images/top-login-header.svg" alt="Card image cap">'+
            '<div class="card-body">'+
              '<h5 class="card-title text-uppercase">'+dataPool.name+'</h5>'+
-             '<ul class="list-group-flush">'+
-                '<li class="list-group-item d-flex justify-content-between align-items-center">'+
-                    'Tamaño (Hectáreas): '+
-                  '<span class="badge badge-primary badge-pill">'+dataPool.size+'</span>'+
-                '</li>'+
-              '</ul>'+
+            '<table class="table table-responsive">'+
+    '<tbody>'+
+    '<tr><td>78 Dias</td><td></td><td> '+dataPool.size+' Hectareas</td></tr>'+
+    '<tr><td>15.00 ABW</td><td></td><td>7.18 g</td>'+
+    '</tr>'+
+    '<tr><td>4 NA</td><td></td><td>0 mg/L</td>'+
+    '</tr>'+
+    '<tr><td>23 RC</td><td></td><td>0 DO/mg/L</td>'+
+    '</tr>'+
+    '</tbody>'+
+    '</table>'+ 
           '</div>'+
         '</div>'
 
