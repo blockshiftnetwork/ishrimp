@@ -243,8 +243,7 @@ function saveDaylyParameters(){
               }).fail(function(resp){                                                 
                         });
          }
-        }                                                                                                            
-       
+        }
         });
 }
    
