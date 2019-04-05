@@ -18,6 +18,7 @@ Route::resource('/pools', 'PoolController');
 Route::resource('/pools_sowing', 'PoolSowingController');
 
 Route::resource('/cultivation', 'CultivationController');
+Route::post('/cultivation/daylyParam', 'CultivationController@storeDaylyParam')->name('storeDaylyParam');
 Route::get('presentation/{resource_id}','CultivationController@getPresentationResource');
 
 Route::resource('/resource', 'ResourceController');
