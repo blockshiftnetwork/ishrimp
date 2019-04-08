@@ -4,10 +4,10 @@
             <div role="tabpanel" id="pond-detail-pills">
                 <!-- Nav tabs -->
                 <ul class="nav nav-pills nav-tabs" role="tablist">
-                    <li role="resource" class=" nav-item"><a class="btn btn-light nav-link active" href="#resource"
-                            aria-controls="resource_section" role="tab" data-toggle="tab">Recursos</a></li>
-                    <li role="presentation" class=" nav-item"><a class="btn btn-light nav-link" href="#presentation"
-                            aria-controls="resource_section" role="tab" data-toggle="tab">Presentaciones</a></li>
+                    <li role="resource"><a class="btn btn-light active" href="#resource-tab" aria-controls="resource_section"
+                            role="tab" data-toggle="tab">Recursos</a></li>
+                    <li role="presentation"><a class="btn btn-light " href="#presentation"
+                            aria-controls="presentation_section" role="tab" data-toggle="tab">Presentaciones</a></li>
                    
                     <li role="providers"><a class="btn btn-light" href="#providers" aria-controls="providers_section"
                             role="tab" data-toggle="tab">Proveedores</a></li>
@@ -17,7 +17,7 @@
             </div>
             <div class="tab-content">
                 <!-- tab resource-->
-                <div role="tabpanel" class="tab-pane active" id="resource">
+                <div role="tabpanel" class="tab-pane active" id="resource-tab">
                     <div class="mid_container">
                         <section class="section">
                                 <div class="btn-tools-bar">
@@ -71,7 +71,7 @@
                         </section>
                     </div>
                     <!-- Modals resources -->
-                    @include('spark::modals.resource.ResourceModals')
+                    @include('spark::modals.resource.resourceModals')
                 </div>
                  <!-- tab presentation-->
                 <div role="tabpanel" class="tab-pane" id="presentation">
