@@ -97,6 +97,7 @@
         <input id="resource_id_s" name="resource_id" type="hide" required="">
         <input id="presentation_id_s" name="presentation_id" type="hide" required="">
         <input id="quantity_s" name="quantity" class="form-control" type="hide" required="">
-        <input id="note_s" name="note" class="form-control" type="hide" required="">
+        <input id="note_s" name="note" class="form-control" type="hide">
+        <input id="date_s" name="date" class="form-control" type="hide" required="">
 
 </form>

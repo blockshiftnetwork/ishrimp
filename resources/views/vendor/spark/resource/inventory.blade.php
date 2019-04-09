@@ -29,7 +29,7 @@ Inventario para la Siembra
                     @foreach($inventory as $item )
                         <tr>
                             <td>{{$item->resource_name}}</td>
-                            <td>{{$item->quantity}} {{$item->presentation_unity}}</td>
+                            <td>{{$item->presentation_quantity * $item->quantity }} {{$item->presentation_unity}}</td>
                             <td>{{$item->updated_at}}</td>
                             <td>
                             <div class="actions btn btn-group-sm">

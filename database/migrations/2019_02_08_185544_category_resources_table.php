@@ -17,8 +17,8 @@ class CategoryResourcesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('parent_id')->default(0);
-            $table->integer('team_id')->unsigned();
-            $table->foreign('team_id')->references('id')->on('teams');
+            // $table->integer('team_id')->unsigned();
+            // $table->foreign('team_id')->references('id')->on('teams');
             $table->timestamps();
         });
     }

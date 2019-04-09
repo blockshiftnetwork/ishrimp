@@ -56,17 +56,22 @@ $(document).ready(function() {
     $('#dateRs').flatpickr({
         altInput: true,
         altFormat: 'F j, Y',
-        dateFormat: 'Y-m-d'
+        dateFormat: 'Y-m-d',
+        maxDate:"today",
+        defaultDate:["today"]
     });
     $('#dateDp').flatpickr({
         altInput: true,
         altFormat: 'F j, Y',
-        dateFormat: 'Y-m-d'
+        dateFormat: 'Y-m-d',
+        maxDate:"today",
+        defaultDate:["today"]
     });
     $('#timeDp').flatpickr({
 			enableTime: true,
 			noCalendar: true,
-			dateFormat: 'h:i K'
+			dateFormat: 'h:i K',
+            defaultDate:"9:00"
 		});
 
     $('#medicine-table').on('click', '.btn-duplicate', function() {
@@ -168,20 +173,27 @@ function saveDataResourceUsed(){
    $(this).addClass('disabled');
 
     var table = $('#medicine-table');
-    var exitsData = false;
     var timeout = null;
-
-    table.find('tr').each(function(){
-        //Find inputs
-        $(this).find('.form-control').each(function(){
-            textVal = this.value;
-            inputName = $(this).attr("name");
+    var date = $('#dateRs').val();
+    var trs = table.find('tr');
+    $('#date_s').val(date);
+    for (let j = 1; j < trs.length; j++) {
+        var dataValid = false;
+         //Find inputs
+         var inputs = $( trs[j]).find('.form-control');
+        for (let i = 0; i < inputs.length; i++) {
+            var textVal = $(inputs[i]).val();
+           if(textVal.length !== 0){
+            dataValid = true;
+           }else{
+            dataValid = false;
+           }
+          inputName = $(inputs[i]).attr("name");
             $('#'+inputName+'_s').val(textVal);
-             exitsData= true;
-
-        });
+        }
+        
         //if exits inputs inside tr
-        if(exitsData){
+        if(dataValid){
             var form = $('#data').serialize();
             console.log(form);
              $.post("{{route('cultivation.store')}}",form,function(resp){
@@ -200,7 +212,9 @@ function saveDataResourceUsed(){
             }else{
                 alert("Debe agregar datos");
             }
-    })
+    } 
+       
+  
    
 }
 
