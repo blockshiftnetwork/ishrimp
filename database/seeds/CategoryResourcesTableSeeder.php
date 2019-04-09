@@ -11,21 +11,19 @@ class CategoryResourcesTableSeeder extends Seeder
      */
     public function run()
     {
-     $categoryResource = array([ 
-     	'name' => 'Medicina',
-     	'parent_id' => '1',
-     	'team_id' => '1'
-     ],
-     [
-     	'name' => 'Alimento',
-     	'parent_id' => '1',
-     	'team_id' => '1'
-     ],
-     [
-     	'name' => 'Suplemento',
-     	'parent_id' => '1',
-     	'team_id' => '1'
-     ]);
+     $categoryResource = array(
+        [
+            'name' => 'Balanceado',
+            'parent_id' => '1'
+        ],
+        [ 
+     	    'name' => 'Medicina',
+     	    'parent_id' => '1'
+        ],
+        [
+     	    'name' => 'Suplemento',
+     	    'parent_id' => '1'
+        ]);
        /* $user = array_where($user, function ($value, $key) {
             return !DB::table('users')->where('code', $value['code'])->exists();
         });*/

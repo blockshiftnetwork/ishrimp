@@ -20,7 +20,7 @@ class TeamTableSeeder extends Seeder
      	'team_id' => '1',
      	'user_id' => '1',
      	'role' => 'owner'
-     ]
+     ];
        /* $user = array_where($user, function ($value, $key) {
             return !DB::table('users')->where('code', $value['code'])->exists();
         });*/

@@ -30,10 +30,10 @@ class ResourceController extends Controller
         $inventory = DB::table('inventory_resources as inventory')
                         ->join('resources','inventory.resource_id','=','resources.id')
                         ->join('presentation_resources as presentation','inventory.presentation_id','=','presentation.id')
-                        ->select('inventory.*','resources.name as resource_name','presentation.name as presentation_name','presentation.unity as presentation_unity')
+                        ->select('inventory.*','resources.name as resource_name','presentation.name as presentation_name','presentation.unity as presentation_unity','presentation.quantity as presentation_quantity')
                         ->get();
 
-        $categories = DB::table('category_resources')->where('team_id', $team_id)->get();
+        $categories = DB::table('category_resources')->get();
         $providers = Provider::all();
         $laboratories = Laboratory::all();
         return view('vendor.spark.resource-settings')->with(['resources' => $resources,

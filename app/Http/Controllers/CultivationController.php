@@ -56,7 +56,8 @@ class CultivationController extends Controller
             'pool_id' => 'required',
             'resource_id' => 'required',
             'quantity' => 'required',
-            'presentation_id' => 'required'
+            'presentation_id' => 'required',
+            'date' => 'required'
         ]);
 
         $cultivation = new Cultivation;
@@ -65,7 +66,7 @@ class CultivationController extends Controller
         $cultivation->quantity = $request->quantity;
         $cultivation->presentation_id = $request->presentation_id;
         $cultivation->note = $request->note;
-
+        $cultivation->date = $request->date;
         $cultivation->save();
 
         return response()->json([

@@ -8,7 +8,7 @@
     @endif
 
 @endpush
-<div class="spark-settings-tabs sidebar bg-white">
+<div class="spark-settings-tabs sidebar bg-white" >
     <aside>
     <a class="nav-link home" href="/home">
             <h3 class="nav-heading ">
@@ -48,6 +48,11 @@
             @yield('settings_options')
 
         </aside>
+
+        <aside>
+        
+                   @yield('settings_teams')
+                </aside>
 
         <!-- Billing Tabs -->
         @if (Spark::canBillCustomers())

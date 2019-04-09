@@ -16,12 +16,17 @@
 									<label class="mr-2">Hora</label>
 									<input class="form-control col-2 mr-4 " type="text" id="timeDp" name="time">
 									<label class="mr-2">Laboratorios</label>
+								
+									@if(count($laboratories) > 0)
 									<select id="lab" name="lab" class="custom-select">
 										<option value="" selected>Seleccione</option>
 										@foreach($laboratories as $lab)
 										<option value="{{$lab->id}}" >{{$lab->name}}</option>
 										@endforeach
 									</select>
+									@else
+										<a class=" text-wieght-bold text-white btn btn-inline" href="/resource">Debe registrar uno o más, aquí</a>
+									@endif
 									<input type="button" onclick="saveDaylyParameters()" value="Guardar" class="btn btn-light ml-auto dayly-parameters-submit">
 								</div>
 							</th>
