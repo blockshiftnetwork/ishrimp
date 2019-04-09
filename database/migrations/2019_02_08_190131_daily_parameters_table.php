@@ -17,6 +17,8 @@ class DailyParametersTable extends Migration
             $table->increments('id');
             $table->integer('pool_id')->unsigned();
             $table->foreign('pool_id')->references('id')->on('pools');
+            $table->integer('laboratory_id')->unsigned();
+            $table->foreign('laboratory_id')->references('id')->on('laboratories');
             $table->integer('ph')->comment('Acidez entre 7.5-8.5');
             $table->integer('ppt')->comment('Salinidad 15-25');
             $table->integer('ppm')->comment('Do >3.0');
@@ -28,6 +30,8 @@ class DailyParametersTable extends Migration
             $table->integer('ppm_h')->comment('Hierro <1.0');
             $table->integer('green_colonies')->comment('');
             $table->integer('yellow_colonies')->comment('');
+            $table->date('date');
+            $table->dateTime('hour');
             $table->timestamps();
         });
     }
