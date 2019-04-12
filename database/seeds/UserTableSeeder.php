@@ -24,9 +24,9 @@ class UserTableSeeder extends Seeder
         'password' => bcrypt('123456')
      ]
     );
-       /* $user = array_where($user, function ($value, $key) {
-            return !DB::table('users')->where('code', $value['code'])->exists();
-        });*/
+       $users = array_where($users, function ($value, $key) {
+            return !DB::table('users')->where('email', $value['email'])->exists();
+        });
         
         /****************************************************************************
         * Do the bulk insert with the remaining (non-existant) countries

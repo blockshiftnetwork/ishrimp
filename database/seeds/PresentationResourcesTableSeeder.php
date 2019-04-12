@@ -60,9 +60,9 @@ class PresentationResourcesTableSeeder extends Seeder
      	    'price' => '100',
      	    'unity' => 'Gr'
         ]);
-       /* $user = array_where($user, function ($value, $key) {
-            return !DB::table('users')->where('code', $value['code'])->exists();
-        });*/
+       $presentationResources = array_where($presentationResources, function ($value, $key) {
+            return !DB::table('presentation_resources')->where('id', $value['id'])->exists();
+        });
         
         /****************************************************************************
         * Do the bulk insert with the remaining (non-existant) countries

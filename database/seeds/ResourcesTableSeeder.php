@@ -32,7 +32,7 @@ class ResourcesTableSeeder extends Seeder
      	    'category_id' => '2',
      	    'provider_id' => '2',
      	    'team_id' => '1'
-        ]/*,
+        ],
         [
             'id' => '4',
             'name' => 'Lorica - Gisis',
@@ -53,10 +53,10 @@ class ResourcesTableSeeder extends Seeder
      	    'category_id' => '2',
      	    'provider_id' => '2',
      	    'team_id' => '2'
-        ]*/);
-       /* $user = array_where($user, function ($value, $key) {
-            return !DB::table('users')->where('code', $value['code'])->exists();
-        });*/
+        ]);
+       $resources = array_where($resources, function ($value, $key) {
+            return !DB::table('resources')->where('id', $value['id'])->exists();
+        });
         
         /****************************************************************************
         * Do the bulk insert with the remaining (non-existant) countries

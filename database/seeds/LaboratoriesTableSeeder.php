@@ -26,9 +26,9 @@ class LaboratoriesTableSeeder extends Seeder
      	    'address' => 'Venezuela',
      	    'email' => 'terlab@gmail.com'
         ]);
-       /* $user = array_where($user, function ($value, $key) {
-            return !DB::table('users')->where('code', $value['code'])->exists();
-        });*/
+       $laboratories = array_where($laboratories, function ($value, $key) {
+            return !DB::table('laboratories')->where('id', $value['id'])->exists();
+        });
         
         /****************************************************************************
         * Do the bulk insert with the remaining (non-existant) countries

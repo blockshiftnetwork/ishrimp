@@ -33,9 +33,10 @@
      	    'size' => '10.25',
      	    'coordinates' => '[{"lat":-2.291877279996732,"lng":-79.78167786007638}]'
         ]);
-       /* $user = array_where($user, function ($value, $key) {
-            return !DB::table('users')->where('code', $value['code'])->exists();
-        });*/
+     
+       $pools = array_where($pools, function ($value, $key) {
+            return !DB::table('pools')->where('id', $value['id'])->exists();
+       });
         
         /****************************************************************************
         * Do the bulk insert with the remaining (non-existant) countries
