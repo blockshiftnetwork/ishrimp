@@ -12,11 +12,18 @@ class UserTableSeeder extends Seeder
     public function run()
 
     {
-     $user = [ 
+     $users = array (
+        [ 
      	'name' => 'admin',
      	'email' => 'admin@gmail.com',
      	'password' => bcrypt('123456')
-     ];
+     ],
+     [
+        'name' => 'user',
+        'email' => 'user@gmail.com',
+        'password' => bcrypt('123456')
+     ]
+    );
        /* $user = array_where($user, function ($value, $key) {
             return !DB::table('users')->where('code', $value['code'])->exists();
         });*/
@@ -24,6 +31,6 @@ class UserTableSeeder extends Seeder
         /****************************************************************************
         * Do the bulk insert with the remaining (non-existant) countries
         ****************************************************************************/
-        DB::table('users')->insert($user);
+        DB::table('users')->insert($users);
     }
 }
