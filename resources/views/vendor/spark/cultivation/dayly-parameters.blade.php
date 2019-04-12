@@ -12,9 +12,9 @@
 							<th colspan="12">
 								<div class="form-inline justify-content-lg-around">
 									<label class="mr-2">Fecha</label>
-									<input class="form-control col-2 mr-4 dateField" type="text" id="dateDp" name="date">
+									<input class="form-control col-2 mr-4 dateField" type="number" id="dateDp" name="date">
 									<label class="mr-2">Hora</label>
-									<input class="form-control col-2 mr-4 " type="text" id="timeDp" name="time">
+									<input class="form-control col-2 mr-4 " type="number" id="timeDp" name="time">
 									<label class="mr-2">Laboratorios</label>
 								
 									@if(count($laboratories) > 0)
@@ -64,39 +64,41 @@
 						<tr class="input-row">
 							<td><input type="checkbox" id="check" name="checke"></td>
 							<td><span>{{$pool->name}}</span> <input type="hidden" name="id" value="{{$pool->id}}"> </td>
-							<td><input type="text" name="ph" id="ph" class="form-control" value="0"></td>
-							<td><input type="text" name="ppt" id="ppt" class="form-control" value="0"></td>
-							<td><input type="text" name="ppm" id="ppm" class="form-control" value="0"></td>
-							<td><input type="text" name="temperature" id="" class="form-control" value="0"></td>
-							<td><input type="text" name="co3" id="co3" class="form-control" value="0"></td>
-							<td><input type="text" name="hc03" id="hco3" class="form-control" value="0"></td>
-							<td><input type="text" name="total" id="total" class="form-control" value="0" readonly></td>
-							<td><input type="text" name="ppm_d" id="ppm_d" class="form-control" value="0"></td>
-							<td><input type="text" name="ppm_a" id="ppm_a" class="form-control" value="0"></td>
-							<td><input type="text" name="ppm_h" id="ppm_h" class="form-control" value="0"></td>
-							<td><input type="text" name="green_colonies" id="green_colonies" class="form-control" value="0"></td>
-							<td><input type="text" name="yellow_colonies" id="yellow_colonies" class="form-control" value="0"></td>		
+							<td><input type="number" name="ph" id="ph" class="form-control" value="0"></td>
+							<td><input type="number" name="ppt" id="ppt" class="form-control" value="0"></td>
+							<td><input type="number" name="ppm" id="ppm" class="form-control" value="0"></td>
+							<td><input type="number" name="temperature" id="" class="form-control" value="0"></td>
+							<td><input type="number" name="co3" id="co3" class="form-control" value="0"></td>
+							<td><input type="number" name="hco3" id="hco3" class="form-control" value="0"></td>
+							<td><input type="number" name="total" id="total" class="form-control" value="0" readonly></td>
+							<td><input type="number" name="ppm_d" id="ppm_d" class="form-control" value="0"></td>
+							<td><input type="number" name="ppm_a" id="ppm_a" class="form-control" value="0"></td>
+							<td><input type="number" name="ppm_h" id="ppm_h" class="form-control" value="0"></td>
+							<td><input type="number" name="green_colonies" id="green_colonies" class="form-control" value="0"></td>
+							<td><input type="number" name="yellow_colonies" id="yellow_colonies" class="form-control" value="0"></td>		
 						</tr>
 						@endforeach
 					</tbody>
 				</table>
 			</form>
 		</div>
-		<form id="formDayly" action="" method="post">
-		<input type="hidden" id="id_s" name="id" required>
-		<input type="hidden" id="ph_s" name="ph" required>
-		<input type="hidden" id="ppt_s" name="ppt" required>
-		<input type="hidden" id="ppm_s" name="ppm" required>
-		<input type="hidden" id="temperature_s" name="temperature" required>
-		<input type="hidden" id="co3_s" name="co3" required>
+		<form id="formDayly" action="{{route('storeDaylyParam')}}" method="post">
+		{{ csrf_field() }}
+		<input type="hidden" id="id_s" name="pool_id" value="3" required>
+		<input type="hidden" id="ph_s" name="ph" value="3" required>
+		<input type="hidden" id="ppt_s" name="ppt" value="3" required>
+		<input type="hidden" id="ppm_s" name="ppm" value="3" required>
+		<input type="hidden" id="temperature_s" name="temperature" value="3" required>
+		<input type="hidden" id="co3_s" name="co3" value="3" required>
 		<input type="hidden" id="hco3_s" name="hco3" required>
 		<input type="hidden" id="ppm_d_s" name="ppm_d" required>
 		<input type="hidden" id="ppm_a_s" name="ppm_a" required>
 		<input type="hidden" id="ppm_h_s" name="ppm_h" required>
 		<input type="hidden" id="green_colonies_s" name="green_colonies" required>
-		<input type="hidden" id="yellow_colonies_s" name="yellow_colonies" required>
-		<input type="hidden" id="dateDp_s" name="dateDp_s" required>
-		<input type="hidden" id="lab_s" name="lab_s" required>
+		<input type="hidden" id="yellow_colonies_s" name="yellow_colonies"  required>
+		<input type="hidden" id="dateDp_s" name="date"  required>
+		<input type="hidden" id="hour_s" name="hour"  required>
+		<input type="hidden" id="lab_s" name="laboratory_id"  required>
 		</form>
 	</div>
 </div>

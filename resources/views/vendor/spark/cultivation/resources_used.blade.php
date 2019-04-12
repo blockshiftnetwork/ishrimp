@@ -1,10 +1,5 @@
 
 <div>
-    <div id="alert" class="alert alert-success alert-dismissible fade in">
-                <strong>Success!</strong> Insumos Agregados con exito
-                <button class="btn btn-sm btn-success" data-dismiss="alert" aria-label="close">Continuar</button>
-
-    </div>
     <div class="card card-default">
         <div class="card-header">
             <h5>Insumos y Minerales</h5>
