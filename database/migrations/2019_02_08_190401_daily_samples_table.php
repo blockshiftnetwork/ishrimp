@@ -19,9 +19,11 @@ class DailySamplesTable extends Migration
             $table->foreign('pool_id')->references('id')->on('pools');
             $table->float('weight');
             $table->float('quantity');
-            $table->float('agw')->comment('peso promedio del camaron(g)');
+            $table->float('abw')->comment('peso promedio del camaron(g)');
             $table->float('wg')->comment('diferencia con respecto al average anterior(g)');
             $table->float('survival_percent');
+            $table->date('abw_date');
+            $table->time('abw_hour');
             $table->timestamps();
         });
     }

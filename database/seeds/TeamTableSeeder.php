@@ -32,10 +32,14 @@ class TeamTableSeeder extends Seeder
         'role' => 'owner'
      ]
  );
-       /* $user = array_where($user, function ($value, $key) {
-            return !DB::table('users')->where('code', $value['code'])->exists();
-        });*/
+       $fincas = array_where($fincas, function ($value, $key) {
+            return !DB::table('teams')->where('name', $value['name'])->exists();
+        });
         
+
+        $team_users = array_where($team_users, function ($value, $key) {
+            return !DB::table('team_users')->where('user_id', $value['user_id'])->exists();
+        });
         /****************************************************************************
         * Do the bulk insert with the remaining (non-existant) countries
         ****************************************************************************/
