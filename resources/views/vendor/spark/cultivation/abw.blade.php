@@ -3,16 +3,29 @@
         <h5>ABW</h5>
     </div>
     <div class="card-body">
+    <table id="bar-table" class="table mb-0 bg-white">
+					<thead class="thead-primary">
+						<tr>
+							<th colspan="12">
+								<div class="form-inline justify-content-lg-around">
+									<label class="mr-2">Fecha</label>
+									<input class="form-control col-2 mr-4" type="text" id="dateABW" name="date">
+									<label class="mr-2">Hora</label>
+									<input class="form-control col-2 mr-4 " type="text" id="timeABW" name="time">
+									<input type="button" onclick="saveDaylyAbw()" value="Guardar" class="btn btn-light ml-auto">
+								</div>
+							</th>
+						</tr>
+					</thead>
+				</table>
 <table
 id="tbl_abw"
 class="bg-white"
 data-toggle="table"
 data-classes="table table-striped table-hover table-borderless"
 data-pagination="true"
-data-locale="es-ES"
-data-search="true"
-data-unique-id="true">
-    <thead class="thead-primary">
+data-locale="es-ES">
+    <thead class="">
         <tr>
             <th class="col-xs-2" data-checkbox="true" data-field="id_pool">id piscina</th>
             <th class="col-xs-2" data-field="name_pool">Nombre piscina</th>
@@ -25,32 +38,26 @@ data-unique-id="true">
         </tr>
     </thead>
     <tbody style="height: 228px !important;">
-        <tr>
+    @forelse($dailySamples as $sample)
+    <tr id="1">
         <td class="col-xs-2">
-        <input type="text" class="pool_id" name="pool_id" id="pool_id">
             </td>
             <td class="col-xs-2">
-                <span class="clsPondName">Piscina 10</span>
+                <span class="clsPondName">{{$sample->pool_name}}</span>
+                <input class="form-control" type="hidden" id="newpoolid" value="{{$sample->pool_id}}" >
             </td>
             <td class="col-xs-1">
-                <span style="width:45px;display:inline-block;" id="lastABW">14.22</span><span>Gramo</span>
-                <input type="text" class="clsAbwDate" name="abwdate" id="abwdate" value="2019-03-14"
-                    style="width:120px;display:none;">
-                <input type="text" name="abwtime" id="abwtime" value="01:30 PM" class="clsAbwTime"
-                    style="display:none;">
+                <span style="width:45px;display:inline-block;">{{$sample->abw}}</span><span>Gramo</span>
+                <input class="form-control" type="hidden" id="lastabw" value="{{$sample->abw}}" >
+
             </td>
             <td class="col-xs-2">
-                <span id="lastabwDate">28-Jan 19 11:06 AM</span>
+                <span>{{$sample->abw_date}} {{$sample->abw_hour}} </span>
             </td>
             <td class="col-xs-1 text-center">
                 <button class="btn btn-light btn-duplicate btn-abw" role="button" onclick="showPopover(event)" style="border-radius: 50px; border: 1px solid #ccc;">+</button>
             </td>
             <td class="col-xs-1" style="width:100px;">
-                <input type="hidden" name="harvestDate" id="harvestDate" value="0000-00-00 00:00:00">
-                <input type="hidden" name="sampleWt" id="sampleWt" value="23">
-                <input type="hidden" name="total_weight" id="total_weight" value="23">
-                <input type="hidden" name="total_shrimps" id="total_shrimps" value="100">
-                <input type="hidden" name="last_abw_1266" id="last_abw_1266"  value="14.22">
                 <div class="input-group">
                     <input type="text" id="abw" name="abw" value="" class="form-control clsABW abw_1266" style="width:100px !important;">
                 </div>
@@ -61,35 +68,30 @@ data-unique-id="true">
             </td>
             <td class="col-xs-3">
                 <div class="input-group">
-                    <input type="text" id="survival_rate" name="survival_rate" style="width:113px;" value="100" class="form-control survival_1266"></div>
+                    <input type="text" id="survival_percent" name="survival_percent" style="width:113px;" value="100" class="form-control survival_1266"></div>
             </td>
         </tr>
+        @empty
+        @foreach($pools as $pool)
         <tr>
         <td class="col-xs-2">
-        <input type="text" class="pool_id" name="pool_id" id="pool_id">
             </td>
             <td class="col-xs-2">
-                <span class="clsPondName">Piscina 10</span>
+                <span class="clsPondName">{{$pool->name}}</span>
+                <input class="form-control" type="hidden" id="newpoolid" value="1" >
             </td>
             <td class="col-xs-1">
-                <span style="width:45px;display:inline-block;" id="lastABW">14.22</span><span>Gramo</span>
-                <input type="text" class="clsAbwDate" name="abwdate" id="abwdate" value="2019-03-14"
-                    style="width:120px;display:none;">
-                <input type="text" name="abwtime" id="abwtime" value="01:30 PM" class="clsAbwTime"
-                    style="display:none;">
+                <span style="width:45px;display:inline-block;">0</span><span>Gramo</span>
+                <input class="form-control" type="hidden" id="lastabw" value="0" >
+
             </td>
             <td class="col-xs-2">
-                <span id="lastabwDate">28-Jan 19 11:06 AM</span>
+                <span>N/A</span>
             </td>
             <td class="col-xs-1 text-center">
                 <button class="btn btn-light btn-duplicate btn-abw" role="button" onclick="showPopover(event)" style="border-radius: 50px; border: 1px solid #ccc;">+</button>
             </td>
             <td class="col-xs-1" style="width:100px;">
-                <input type="hidden" name="harvestDate" id="harvestDate" value="0000-00-00 00:00:00">
-                <input type="hidden" name="sampleWt" id="sampleWt" value="23">
-                <input type="hidden" name="total_weight" id="total_weight" value="23">
-                <input type="hidden" name="total_shrimps" id="total_shrimps" value="100">
-                <input type="hidden" name="last_abw_1266" id="last_abw_1266"  value="14.22">
                 <div class="input-group">
                     <input type="text" id="abw" name="abw" value="" class="form-control clsABW abw_1266" style="width:100px !important;">
                 </div>
@@ -100,12 +102,24 @@ data-unique-id="true">
             </td>
             <td class="col-xs-3">
                 <div class="input-group">
-                    <input type="text" id="survival_rate" name="survival_rate" style="width:113px;" value="100" class="form-control survival_1266"></div>
+                    <input type="text" id="survival_percent" name="survival_percent" style="width:113px;" value="100" class="form-control survival_1266"></div>
             </td>
         </tr>
+        @endforeach
+       @endforelse
           </tbody>
           
 </table>
 </div>
-
+<form id="form_Abw" action="" method="post">
+		{{ csrf_field() }}
+        <input type="hidden" id="newpoolid_s" name="pool_id" required>
+        <input type="hidden" id="abw_s" name="abw" required>
+        <input type="hidden" id="wg_s" name="wg"required>
+        <input type="hidden" id="weight" name="weight" value="0" >
+        <input type="hidden" id="quantity" name="quantity" value="0" >
+        <input type="hidden" id="survival_percent_s" name="survival_percent" required>
+        <input type="hidden" id="dateABW_s" name="abw_date" required>
+		<input type="hidden" id="timeABW_s" name="abw_hour"  required>
+		</form>
 </div>

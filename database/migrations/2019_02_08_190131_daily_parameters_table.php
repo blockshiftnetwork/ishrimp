@@ -31,7 +31,7 @@ class DailyParametersTable extends Migration
             $table->integer('green_colonies')->comment('');
             $table->integer('yellow_colonies')->comment('');
             $table->date('date');
-            $table->dateTime('hour');
+            $table->time('hour');
             $table->timestamps();
         });
     }

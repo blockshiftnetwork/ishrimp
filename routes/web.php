@@ -19,7 +19,10 @@ Route::resource('/pools_sowing', 'PoolSowingController');
 
 Route::resource('/cultivation', 'CultivationController');
 Route::post('/cultivation/daylyParam', 'CultivationController@storeDaylyParam')->name('storeDaylyParam');
+Route::post('/cultivation/daylyabw', 'CultivationController@storeDaylyABW')->name('storeDaylyABW');
+
 Route::get('presentation/{resource_id}','CultivationController@getPresentationResource');
+Route::get('existence/{resource_id}/{presentation_id}','CultivationController@verifyExistence');
 
 Route::resource('/resource', 'ResourceController');
 Route::post('/resource/providers', 'ResourceController@storeProvider')->name('storeProvider');
