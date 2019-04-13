@@ -42,6 +42,18 @@ class CultivationController extends Controller
         ]);
     }
 
+    public function verifyExistence($resource_id, $presentation_id){
+
+        $existence = DB::table('inventory_resources')->where([
+                                ['resource_id', '=', $resource_id],
+                                ['presentation_id', '=', $presentation_id],
+                                ])
+                                ->select('inventory_resources.quantity')->get();
+        return response()->json([
+                'status' => '200',
+                'data' => $existence,
+                ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -173,4 +185,5 @@ class CultivationController extends Controller
           'data' => '!Datos guardados!',
       ]); 
       }
+
 }

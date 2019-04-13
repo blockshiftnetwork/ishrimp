@@ -54,6 +54,7 @@
 <script>
     $(document).ready(function () {
         var j = 0;
+        var timeout = null;
         $('#dateRs').flatpickr({
             altInput: true,
             altFormat: 'F j, Y',
@@ -118,72 +119,97 @@
                 co3 = co3 > 0 ? co3 : 0;
                 hco3 = hco3 > 0 ? hco3 : 0;
                 total.val(co3 + hco3);
-                if($(this).val() > 300 || !verEmpty(this)) {
+                if ($(this).val() > 300 || !verEmpty(this)) {
                     $(this).removeClass('border border-success');
                     $(this).addClass('border border-danger');
-                }else{
+                } else {
                     $(this).removeClass('border border-danger');
                     $(this).addClass('border border-success');
                 }
             }
             if ($(this).prop('name') === 'ph') {
-                if($(this).val() < 7.5 || $(this).val() > 8.5 ) {
+                if ($(this).val() < 7.5 || $(this).val() > 8.5) {
                     $(this).removeClass('border border-success');
                     $(this).addClass('border border-danger');
-                }else{
+                } else {
                     $(this).removeClass('border border-danger');
                     $(this).addClass('border border-success');
                 }
             }
 
             if ($(this).prop('name') === 'ppt') {
-                if($(this).val() < 15 || $(this).val() > 25 ) {
+                if ($(this).val() < 15 || $(this).val() > 25) {
                     $(this).removeClass('border border-success');
                     $(this).addClass('border border-danger');
-                }else{
+                } else {
                     $(this).removeClass('border border-danger');
                     $(this).addClass('border border-success');
                 }
             }
             if ($(this).prop('name') === 'ppm') {
-                if($(this).val() < 3.0 ) {
+                if ($(this).val() < 3.0) {
                     $(this).removeClass('border border-success');
                     $(this).addClass('border border-danger');
-                }else{
+                } else {
                     $(this).removeClass('border border-danger');
                     $(this).addClass('border border-success');
                 }
             }
-            if ($(this).prop('name') === 'temperature' || $(this).prop('name') === 'ppm_d' || $(this).prop('name') === 'green_colonies' ||  $(this).prop('name') === 'yellow_colonies') {
-                if(!verEmpty(this) ) {
+            if ($(this).prop('name') === 'temperature' || $(this).prop('name') === 'ppm_d' || $(this).prop('name') === 'green_colonies' || $(this).prop('name') === 'yellow_colonies') {
+                if (!verEmpty(this)) {
                     $(this).removeClass('border border-success');
                     $(this).addClass('border border-danger');
-                }else{
+                } else {
                     $(this).removeClass('border border-danger');
                     $(this).addClass('border border-success');
                 }
             }
-         
-            if ($(this).prop('name') === 'ppm_a') {
-                if($(this).val() > 1.0){
-                    $(this).removeClass('border border-success');
-                    $(this).addClass('border border-danger');
-                }else{
-                    $(this).removeClass('border border-danger');
-                    $(this).addClass('border border-success');
-                }
-            }
-                if ($(this).prop('name') === 'ppm_h' ) {
-                if($(this).val() > 0.1){
-                    $(this).removeClass('border border-success');
-                    $(this).addClass('border border-danger');
-                }else{
-                    $(this).removeClass('border border-danger');
-                    $(this).addClass('border border-success');
-                }
-            }
-        })
 
+            if ($(this).prop('name') === 'ppm_a') {
+                if ($(this).val() > 1.0) {
+                    $(this).removeClass('border border-success');
+                    $(this).addClass('border border-danger');
+                } else {
+                    $(this).removeClass('border border-danger');
+                    $(this).addClass('border border-success');
+                }
+            }
+            if ($(this).prop('name') === 'ppm_h') {
+                if ($(this).val() > 0.1) {
+                    $(this).removeClass('border border-success');
+                    $(this).addClass('border border-danger');
+                } else {
+                    $(this).removeClass('border border-danger');
+                    $(this).addClass('border border-success');
+                }
+            }
+
+            if ($(this).prop('name') === 'quantity') {
+                var tr = $(this).parent().parent();
+                var input = this;
+                var value = $(this).val();
+                var inputs = tr.find('.form-control');
+                var resource_id = $(inputs[1]).val();
+                var presentation_id = $(inputs[2]).val();
+              
+                clearTimeout(timeout);
+                timeout = setTimeout(function () {
+                    $.get('existence/' + resource_id + '/' + presentation_id, function(data){
+                        var existence = data.data[0].quantity;
+                        var message = 'Excedió la cantidad disponible, restan <strong>'+existence+'</strong> unidades';
+                        console.log(existence, parseInt(value));
+                        if(existence < parseInt(value) ){
+                            $(input).removeClass('border border-success');
+                            $(input).addClass('border border-danger');
+                            showAlert('#alert-cultivate', 'Warning', message, 'alert-warning', 5000, false)
+                        }else {
+                            $(input).removeClass('border border-danger');
+                            $(input).addClass('border border-success');
+                            }
+                    });                      
+                }, 1500);
+             }
+        });
     });
 
     function showPopover(event) {
@@ -211,7 +237,6 @@
             } else {
                 alert('revise los campos');
             }
-
         });
         $('#btn-gr').on('click', '#close-pop', function () {
             hiddenPopover(tag);
@@ -239,9 +264,8 @@
                 }
             }
         });
-
-
     };
+
 
     //save resource used
     function saveDataResourceUsed() {
@@ -276,12 +300,12 @@
                 }).done(function (resp) {
                     clearTimeout(timeout);
                     timeout = setTimeout(function () {
-                        showAlert('#alert-cultivate','Success', resp.data,'alert-success',2000, true)
-                     }, 2000)
+                        showAlert('#alert-cultivate', 'Success', resp.data, 'alert-success', 2000, true)
+                    }, 2000)
                 }).fail(function (resp) {
                     clearTimeout(timeout);
-                        timeout = setTimeout(function () {
-                        showAlert('#alert-cultivate','Error','Verifique los datos','alert-danger',3000,false)
+                    timeout = setTimeout(function () {
+                        showAlert('#alert-cultivate', 'Error', 'Verifique los datos', 'alert-danger', 3000, false)
                     }, 2000)
                 });
             } else {
@@ -293,6 +317,7 @@
 
     }
 
+  //save Dayly Parameters
     function saveDaylyParameters() {
         var table = $('#paramaters-table');
         var valid = true;
@@ -304,63 +329,59 @@
             if (inputs.length > 0) {
                 for (let i = 0; i < inputs.length; i++) {
                     if ($(inputs[0]).prop('checked')) {
-
                         var textVal = $(inputs[i]).val();
                         inputName = $(inputs[i]).attr("name");
                         $('#' + inputName + '_s').val(textVal);
-
                     } else {
                         valid = false;
                     }
                 }
+            if (valid) {
+                $('#dateDp_s').val($('#dateDp').val());
+                $('#hour_s').val($('#timeDp').val());
+                $('#lab_s').val($('#lab').val());
+                var form = $('#formDayly').serialize();
+                $.post("{{route('storeDaylyParam')}}", form, function (resp) {
 
-                if (valid) {
-
-                    $('#dateDp_s').val($('#dateDp').val());
-                    $('#hour_s').val($('#timeDp').val());
-                    $('#lab_s').val($('#lab').val());
-                    var form = $('#formDayly').serialize();
-                    $.post("{{route('storeDaylyParam')}}", form, function (resp) {
-
-                    }).done(function (resp) {
-                        clearTimeout(timeout);
-                        timeout = setTimeout(function () {
-                        showAlert('#alert-cultivate','Success', resp.data,'alert-success',3000, false)
+                }).done(function (resp) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(function () {
+                        showAlert('#alert-cultivate', 'Success', resp.data, 'alert-success', 3000, false)
                     }, 2000)
-                    }).fail(function (resp) {
-                        clearTimeout(timeout);
-                        timeout = setTimeout(function () {
-                        showAlert('#alert-cultivate','Error','Verifique los datos','alert-danger',3000,false)
+                }).fail(function (resp) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(function () {
+                        showAlert('#alert-cultivate', 'Error', 'Verifique los datos', 'alert-danger', 3000, false)
                     }, 2000)
-                    });
-                }
+                });
+            }
             }
         });
     }
 
-function saveDaylyAbw() {
-    var timeout = null;
-    var table = $('#tbl_abw');
-    var date = $('#dateABW').val();
-    var time = $('#timeABW').val();
-    var trs = table.find('tr');
-    var dataValid = false;
-    $('#dateABW_s').val(date);
-    $('#timeABW_s').val(time);
-    for (let j = 1; j < trs.length; j++) {
-        //Find inputs
-        var inputs = $(trs[j]).find('input');
-        console.log('inputs', inputs);
-        for (let i = 0; i < inputs.length; i++) {
-            var textVal = $(inputs[i]).val();
-            inputName = $(inputs[i]).attr("id");
-            console.log(inputName,textVal );
-            $('#' + inputName + '_s').val(textVal);
-            console.log('#' + inputName + '_s', $('#' + inputName + '_s').val());
-        }
-        
-        //if exits inputs inside tr
-            if($(inputs[0]).prop('checked')){
+      //save ABW
+    function saveDaylyAbw() {
+        var timeout = null;
+        var table = $('#tbl_abw');
+        var date = $('#dateABW').val();
+        var time = $('#timeABW').val();
+        var trs = table.find('tr');
+        var dataValid = false;
+        $('#dateABW_s').val(date);
+        $('#timeABW_s').val(time);
+        for (let j = 1; j < trs.length; j++) {
+            //Find inputs
+            var inputs = $(trs[j]).find('input');
+            console.log('inputs', inputs);
+            for (let i = 0; i < inputs.length; i++) {
+                var textVal = $(inputs[i]).val();
+                inputName = $(inputs[i]).attr("id");
+                console.log(inputName, textVal);
+                $('#' + inputName + '_s').val(textVal);
+                console.log('#' + inputName + '_s', $('#' + inputName + '_s').val());
+            }
+
+            if ($(inputs[0]).prop('checked')) {
                 dataValid = true;
                 var form = $('#form_Abw').serialize();
                 console.log(form);
@@ -368,42 +389,42 @@ function saveDaylyAbw() {
 
                 }).done(function (resp) {
                     clearTimeout(timeout);
-                        timeout = setTimeout(function () {
-                        showAlert('#alert-cultivate','Success', resp.data,'alert-success',2000, true)
+                    timeout = setTimeout(function () {
+                        showAlert('#alert-cultivate', 'Success', resp.data, 'alert-success', 2000, true)
                     }, 2000)
                 }).fail(function (resp) {
                     clearTimeout(timeout);
-                        timeout = setTimeout(function () {
-                        showAlert('#alert-cultivate','Error','Verifique los datos','alert-danger',3000, false)
+                    timeout = setTimeout(function () {
+                        showAlert('#alert-cultivate', 'Error', 'Verifique los datos', 'alert-danger', 3000, false)
                     }, 2000)
                 });
             }
         }
-        if(!dataValid){
-            showAlert('#alert-cultivate','Error','Seleccione una o más filas','alert-danger',3000, false)
+        if (!dataValid) {
+            showAlert('#alert-cultivate', 'Error', 'Seleccione una o más filas', 'alert-danger', 3000, false)
 
         }
-}
+    }
 
-    function showAlert(target,title, message, type, duration, reload){
-       
+    function showAlert(target, title, message, type, duration, reload) {
+
         $(target).addClass(type);
         $(target).addClass('show');
-        $(target).append('<strong>' + title +':'+'</strong> '+message);
+        $(target).append('<strong>' + title + ':' + '</strong> ' + message);
         setTimeout(function () {
             $(target).removeClass('show');
             $(target).removeClass(type);
             $(target).empty();
-            if(reload){
+            if (reload) {
                 location.reload();
             }
         }, duration)
-                   
+
     }
 
-    function verEmpty(element){
-       let input = $(element).val();
-       return input.length > 0;
+    function verEmpty(element) {
+        let input = $(element).val();
+        return input.length > 0;
     }
 </script>
 
