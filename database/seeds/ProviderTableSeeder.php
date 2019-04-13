@@ -33,9 +33,9 @@ class ProviderTableSeeder extends Seeder
      	    'address' => 'Bogota',
      	    'email' => 'jb@gmail.com'
         ]);
-       /* $user = array_where($user, function ($value, $key) {
-            return !DB::table('users')->where('code', $value['code'])->exists();
-        });*/
+        $providers = array_where($providers, function ($value, $key) {
+            return !DB::table('providers')->where('id', $value['id'])->exists();
+        });
         
         /****************************************************************************
         * Do the bulk insert with the remaining (non-existant) countries

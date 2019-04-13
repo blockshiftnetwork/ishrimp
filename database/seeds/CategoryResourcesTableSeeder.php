@@ -24,9 +24,9 @@ class CategoryResourcesTableSeeder extends Seeder
      	    'name' => 'Suplemento',
      	    'parent_id' => '1'
         ]);
-       /* $user = array_where($user, function ($value, $key) {
-            return !DB::table('users')->where('code', $value['code'])->exists();
-        });*/
+       $categoryResource = array_where($categoryResource, function ($value, $key) {
+            return !DB::table('category_resources')->where('name', $value['name'])->exists();
+        });
         
         /****************************************************************************
         * Do the bulk insert with the remaining (non-existant) countries

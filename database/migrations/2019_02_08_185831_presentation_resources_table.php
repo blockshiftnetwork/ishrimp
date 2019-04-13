@@ -17,6 +17,8 @@ class PresentationResourcesTable extends Migration
             $table->increments('id');
             $table->integer('resource_id')->unsigned();
             $table->foreign('resource_id')->references('id')->on('resources');
+            $table->integer('team_id')->unsigned()->nullable();
+            $table->foreign('team_id')->references('id')->on('teams');
             $table->string('name');
             $table->integer('quantity');
             $table->float('price', 8, 2);
