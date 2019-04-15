@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pool;
 use App\DaylySample;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class PoolController extends Controller
@@ -17,10 +18,11 @@ class PoolController extends Controller
     {
         $team_id = auth()->user()->currentTeam->id;
         $pools = Pool::where('team_id', $team_id)->get();
-        
+        $summarypools = DB::table('daily_samples')->latest('daily_samples.abw_date')->join('pools','pools.id','=','daily_samples.pool_id')->select('pools.id','pools.name','pools.size','pools.coordinates',DB::raw('DATEDIFF( CURDATE(), pools.created_at) as days'),'daily_samples.abw','daily_samples.wg','daily_samples.abw_date')->get();
+
         return response()->json([
             'status' => '200',
-            'data' => $pools
+            'data' => $summarypools
         ]);
     }
 

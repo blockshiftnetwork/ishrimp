@@ -18,7 +18,7 @@
                         <th data-sortable="true" data-field="name" data-align="center">Piscina</th>
                             <th data-align="center">Larvas Sembradas</th>
                             <th data-align="center">Tipo de Larvas</th>
-                            <th data-align="center">Sembranda en</th>
+                            <th data-align="center">Fecha de Siembra</th>
                             <th data-align="center">Acciones</th>
                     </tr>
                 </thead>

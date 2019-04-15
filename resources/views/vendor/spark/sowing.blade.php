@@ -45,9 +45,8 @@ $(document).ready(function() {
         altFormat: 'F j, Y',
         dateFormat: 'Y-m-d'
     });
-});
 
- // sowed Pool  actions
+    // sowed Pool  actions
  $('#editSowingPoolModal').on('shown.bs.modal',function(event){
          var button = $(event.relatedTarget);
          var modal = $(this);
@@ -70,6 +69,9 @@ $(document).ready(function() {
             modal.find('.modal-body #id').val(id);
            })
 
+});
+
+ 
  
 </script>
 @endsection
