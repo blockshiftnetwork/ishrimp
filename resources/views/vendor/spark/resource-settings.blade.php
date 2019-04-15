@@ -148,11 +148,30 @@
          var resource_id = button.data('resource_id');
          var quantity = button.data('quantity')
          var presentation_id = button.data('presentation_id');
+         var present_input = modal.find('.modal-body #presentation_id');
+         console.log('presentation',present_input)
+         $.ajax({
+            url: "presentation/" + resource_id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                var resp = response.data;
+                 present_input.empty();
+                 present_input.append('<option value="" selected>Presentación</option>');
+                for (var i = 0; i < resp.length; i++) {
+                    modal.find('.modal-body #presentation_id').append('<option value="' + resp[i].id + '">' + resp[i].name + '</option>');
+                }
+                
+                present_input.val(presentation_id);
+            }
+        });
+
          modal.find('.modal-body #id').val(id);
          modal.find('.modal-body #team_id').val(team_id);
          modal.find('.modal-body #resource_id').val(resource_id);
          modal.find('.modal-body #quantity').val(quantity);
-         modal.find('.modal-body #presentation_id').val(presentation_id);
+         
+        
         })
 
         $('#deleteInventoryModal').on('shown.bs.modal',function(event){
@@ -161,5 +180,24 @@
             var id = button.data('id');
             modal.find('.modal-body #id').val(id);
            })
+
+    function select(event) {
+        let id = event.target.value;
+        let presentation = $(event.target).parent().next().next().children().next()
+        console.log(presentation);
+        $(presentation[0]).empty();
+        $(presentation[0]).append('<option value="" selected>Presentación</option>');
+        $.ajax({
+            url: "presentation/" + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                var resp = response.data;
+                for (var i = 0; i < resp.length; i++) {
+                    $(presentation[0]).append('<option value="' + resp[i].id + '">' + resp[i].name + '</option>');
+                }
+            }
+        });
+    };
      </script>
 @endsection

@@ -195,14 +195,21 @@
                 clearTimeout(timeout);
                 timeout = setTimeout(function () {
                     $.get('existence/' + resource_id + '/' + presentation_id, function(data){
-                        var existence = data.data[0].quantity;
-                        var message = 'Excedió la cantidad disponible, restan <strong>'+existence+'</strong> unidades';
-                        console.log(existence, parseInt(value));
-                        if(existence < parseInt(value) ){
+                        var existence = data.data[0];
+                        var message = '';
+                        if(typeof existence != 'undefined' && existence.quantity < parseInt(value) ){
+                            message = 'Excedió la cantidad disponible';
                             $(input).removeClass('border border-success');
                             $(input).addClass('border border-danger');
                             showAlert('#alert-cultivate', 'Warning', message, 'alert-warning', 5000, false)
-                        }else {
+                        }
+                        if(typeof existence === 'undefined'){
+                            message = 'No hay recursos en el inventario <a class="btn btn-warning" href="/resource">Agregar</a>';
+                            $(input).removeClass('border border-success');
+                            $(input).addClass('border border-danger');
+                            $(input).val(null);
+                            showAlert('#alert-cultivate', 'Warning', message, 'alert-warning', 10000, false)
+                        } else {
                             $(input).removeClass('border border-danger');
                             $(input).addClass('border border-success');
                             }
@@ -282,10 +289,10 @@
             var inputs = $(trs[j]).find('.form-control');
             for (let i = 0; i < inputs.length; i++) {
                 var textVal = $(inputs[i]).val();
-                if (textVal.length !== 0) {
+                if (textVal.length !== 0 ) {
                     dataValid = true;
                 } else {
-                    dataValid = false;
+                  dataValid = $(inputs[i]).attr("name") === 'note';
                 }
                 inputName = $(inputs[i]).attr("name");
                 $('#' + inputName + '_s').val(textVal);
@@ -407,7 +414,7 @@
     }
 
     function showAlert(target, title, message, type, duration, reload) {
-
+        $(target).empty();
         $(target).addClass(type);
         $(target).addClass('show');
         $(target).append('<strong>' + title + ':' + '</strong> ' + message);

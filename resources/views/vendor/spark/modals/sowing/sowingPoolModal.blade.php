@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group">
                         <label for="planted_at">Fecha de Siembra</label>
-                        <input type="text" class="form-control" name="planted_at" id="planted_date" required >
+                        <input type="text" class="form-control" name="planted_at" id="planted_at" required >
                     </div>
                 </div>
                 <div class="modal-footer">

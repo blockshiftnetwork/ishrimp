@@ -15,7 +15,7 @@
                     <input type="hidden" name="team_id" value="{{Auth::user()->current_team_id}}">
                     <div class="form-group">
                         <label for="resource_id">Recurso</label>
-                        <select class="form-control" name="resource_id" id="resource_id" required>
+                        <select class="form-control" name="resource_id" id="resource_id" onchange="select(event)"> required>
                             <option value="" selected>Recurso</option>
                             @foreach($resources as $resource)
                             <option value="{{$resource->id}}">{{$resource->name}}</option>
@@ -30,9 +30,7 @@
                         <label for="presentation_id">Presentación</label>
                         <select class="form-control" name="presentation_id" id="presentation_id" required>
                             <option value="" selected>Presentación</option>
-                            @foreach($presentations as $pres)
-                            <option value="{{$pres->id}}">{{$pres->name}}</option>
-                            @endforeach
+                            
                         </select>
                     </div>
                 </div>
@@ -64,7 +62,7 @@
 
                     <div class="form-group">
                         <label for="resource_id">Recurso</label>
-                        <select class="form-control" name="resource_id" id="resource_id" required>
+                        <select class="form-control" name="resource_id" id="resource_id" onchange="select(event)" required>
                             <option value="" selected>Recurso</option>
                             @foreach($resources as $resource)
                             <option value="{{$resource->id}}">{{$resource->name}}</option>
@@ -79,9 +77,7 @@
                         <label for="presentation_id">Presentación</label>
                         <select class="form-control" name="presentation_id" id="presentation_id" required>
                             <option value="" selected>Presentación</option>
-                            @foreach($presentations as $pres)
-                            <option value="{{$pres->id}}">{{$pres->name}}</option>
-                            @endforeach
+                           
                         </select>
                     </div>
                 </div>

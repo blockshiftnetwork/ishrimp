@@ -176,9 +176,9 @@ class CultivationController extends Controller
       ]);
       $very = DB::table('daily_samples')->where('pool_id', $request->pool_id)->get();
       if(count($very) > 0){
-        $daylySample = DB::table('daily_samples')->where('pool_id', $request->pool_id)->update($request->except('_token'));
+        $daylySample = DaylySample::where('pool_id', $request->pool_id)->update($request->except('_token'));
       }else{
-        $daylySample = DB::table('daily_samples')->insert($request->except('_token'));
+        $daylySample = DaylySample::create($request->except('_token'));
       }
       return response()->json([
           'status' => '200',

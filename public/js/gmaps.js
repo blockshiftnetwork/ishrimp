@@ -197,8 +197,8 @@ function  listenerMouserOver(poly, pool) {
              '<h5 class="card-title text-uppercase">'+dataPool.name+'</h5>'+
             '<table class="table table-responsive">'+
     '<tbody>'+
-    '<tr><td>78 Dias</td><td></td><td> '+dataPool.size+' Hectareas</td></tr>'+
-    '<tr><td>15.00 ABW</td><td></td><td>7.18 g</td>'+
+    '<tr><td>'+dataPool.days+' Dias</td><td></td><td> '+dataPool.size+' Hectareas</td></tr>'+
+    '<tr><td>'+dataPool.abw+' ABW</td><td></td><td>'+dataPool.wg+' g</td>'+
     '</tr>'+
     '<tr><td>4 NA</td><td></td><td>0 mg/L</td>'+
     '</tr>'+
