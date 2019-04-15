@@ -1,26 +1,14 @@
 <div class="dsh_board_main_body_cont">
     <div class="col-lg-12 border pondsDetailsTop nav nav-bar bg-white">
         <div class="col-lg-3 right_border ">
-            <li class="dropdown ponds-dropdown ui search dropdown">
-                <a href="#" class="dropdown-toggle toggle-dropdown ponds_pondname" data-toggle="dropdown" role="button"
-                    aria-expanded="false"><span class="pond-name">Piscina 2</span><span class="caret"></span></a>
-                <div class="dropdown-menu pond_menu_li ">
-                    <input type="text" class="form-control" id="search_pond" name="search"
-                        placeholder="Buscar Piscina ..." style="width: 98%;margin: 0 1%;">
-                    <ul class="menu-dropdown search-list" role="menu"
-                        style="margin: 5px 0 0;line-height: 30px; width: 100%;">
-                        <li class="nodata dropdown-item" style="display:none;">No se encontraron coincidencias</li>
-                        <li class="searchlist_li dropdown-item"><a href="javascript: void(0)"
-                                class="pond-dropdown">Piscina 2</a></li>
-                        <li class="searchlist_li dropdown-item"><a href="javascript: void(0)"
-                                class="pond-dropdown">Piscina 3</a></li>
-                        <li class="searchlist_li dropdown-item"><a href="javascript: void(0)"
-                                class="pond-dropdown">Piscina 4</a></li>
-                    </ul>
-                </div>
-            </li>
+          <select>
+            @foreach($pools as $pool)
+            <option data-tokens="{{$pool->id}}">{{$pool->name}}</option>
+            @endforeach
+</select>
+
         </div>
-        <div class="col-lg-2 right_border">
+        <div class="col-lg-2 right_border mx-1">
             <p>DOC : <br><b class="pond_doc">83 Dias</b></p>
         </div>
         <div class="col-lg-2 right_border">
@@ -31,14 +19,7 @@
             <p>Extensión : <br><b class="pond_wsa">4.26 hectareas</b></p>
         </div>
         <div class="col-lg-3">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle toggle-dropdown ponds_pondname" data-toggle="dropdown" role="button"
-                    aria-expanded="false"><span class="button_name">Cultivo Actual</span> <span
-                        class="caret"></span></a>
-                <ul class="dropdown-menu menu-dropdown harvest-dropdown" role="menu">
-                    <li><a href="" id="current" class="harvests">Cultivo Actual</a></li>
-                </ul>
-            </li>
+           
         </div>
     </div>
 
