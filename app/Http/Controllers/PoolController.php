@@ -17,12 +17,17 @@ class PoolController extends Controller
     public function index()
     {
         $team_id = auth()->user()->currentTeam->id;
-        $pools = Pool::where('team_id', $team_id)->get();
-        $summarypools = DB::table('daily_samples')->latest('daily_samples.abw_date')->join('pools','pools.id','=','daily_samples.pool_id')->select('pools.id','pools.name','pools.size','pools.coordinates',DB::raw('DATEDIFF( CURDATE(), pools.created_at) as days'),'daily_samples.abw','daily_samples.wg','daily_samples.abw_date')->get();
+      
+        $pools_summary = DB::table('pools')->where('pools.team_id', $team_id)
+                            ->join('daily_samples as samples','samples.pool_id','=','pools.id')
+                            ->leftJoin('pools_sowing as sowing', 'pools.id','=', 'sowing.pool_id' )
+                            ->select('pools.*',DB::raw('(DATEDIFF(CURDATE(),sowing.planted_at)) as days'),'sowing.planted_larvae',
+                                DB::raw('(SELECT SUM(pools_resources_used.quantity) FROM pools_resources_used, resources WHERE pools_resources_used.pool_id = pools.id and pools_resources_used.resource_id = resources.id and resources.category_id = 1 ) as balanced'),'samples.abw','samples.wg','samples.survival_percent as survival')->get();
 
+                            //dd($pools_summary);
         return response()->json([
             'status' => '200',
-            'data' => $summarypools
+            'data' => $pools_summary
         ]);
     }
 
