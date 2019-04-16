@@ -200,9 +200,7 @@ function  listenerMouserOver(poly, pool) {
     '<tr><td>'+dataPool.days+' Dias</td><td></td><td> '+dataPool.size+' Hectareas</td></tr>'+
     '<tr><td>'+dataPool.abw+' ABW</td><td></td><td>'+dataPool.wg+' g</td>'+
     '</tr>'+
-    '<tr><td>4 NA</td><td></td><td>0 mg/L</td>'+
-    '</tr>'+
-    '<tr><td>23 RC</td><td></td><td>0 DO/mg/L</td>'+
+    '<tr><td>'+((dataPool.balanced*2.2)/((dataPool.abw*2.2/1000)*(dataPool.survival/100)*(dataPool.planted_larvae))).toFixed(3)+' Lbs. RC</td><td></td><td>0 DO/mg/L</td>'+
     '</tr>'+
     '</tbody>'+
     '</table>'+ 

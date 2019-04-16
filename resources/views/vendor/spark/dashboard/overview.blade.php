@@ -36,13 +36,13 @@
                             data-field="do" data-align="center">DO<br>(mg / L)</th>
                             <th
                             data-sortable="true"
-                            data-field="ratio" data-align="center">Ratio <br> Conversion<br></th>
+                            data-field="ratio" data-align="center">Factor de <br> Conversión (Lb)<br></th>
                         </tr>
                     </thead>
                     <tbody>
                         @php
                         $doc = 0;
-                        $awc = 0;
+                        $abw = 0;
                         $awg = 0.0;
                         $ba = 0.00;
                         $do = 0;
@@ -52,12 +52,12 @@
                         <tr>
 
                             <td><a class="text-muted" href="">{{$item->name}}</a></td>
-                            <td><a class="text-muted" href="">{{$doc}}</a></td>
-                            <td><a class="text-muted" href="">{{$awc}}</a></td>
-                            <td><a class="text-muted" href="">{{$awg}}</a></td>
-                            <td><a class="text-muted" href="">{{$ba}}</a></td>
-                            <td><a class="text-muted" href="">{{$do}}</a></td>
-                            <td><a class="text-muted" href="">{{$rc}}</a></td>
+                            <td><a class="text-muted" href="">{{$item->days}}</a></td>
+                            <td><a class="text-muted" href="">{{$item->abw}}</a></td>
+                            <td><a class="text-muted" href="">{{$item->awg}}</a></td>
+                            <td><a class="text-muted" href="">{{$item->balanced}}</a></td>
+                            <td><a class="text-muted" href="">0</a></td>
+                            <td><a class="text-muted" href="">{{round(($item->balanced*2.2)/((($item->abw/1000)*2.2)*($item->survival/100)*($item->planted_larvae)),3)}}</a></td>
                         </tr>
                         @endforeach
 

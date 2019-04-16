@@ -3,7 +3,7 @@
         <div class="col-lg-3 right_border ">
           <select>
             @foreach($pools as $pool)
-            <option data-tokens="{{$pool->id}}">{{$pool->name}}</option>
+            <option data-tokens="{{$pool->pool_id}}">{{$pool->name}}</option>
             @endforeach
 </select>
 

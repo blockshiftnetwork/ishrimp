@@ -34,9 +34,10 @@ class HomeController extends Controller
         $pools = DB::table('pools')->where('team_id','=', $team_id)
                     ->join('pools_sowing as sowing', 'pools.id','=', 'sowing.pool_id' )
                     ->leftJoin('daily_samples as samples', 'pools.id','=', 'samples.pool_id' )
-                    ->select('pools.id as pool_id', 'pools.name as name', 'sowing.planted_at as planted_at', 'samples.abw as abw', 'samples.wg as awg')
+                    ->select('pools.id as pool_id', 'pools.name as name', 'sowing.planted_at as planted_at', 'samples.abw as abw', 'samples.wg as awg','samples.survival_percent as survival',DB::raw('(DATEDIFF(CURDATE(),sowing.planted_at)) as days'),'sowing.planted_larvae',
+                                DB::raw('(SELECT SUM(pools_resources_used.quantity) FROM pools_resources_used, resources WHERE pools_resources_used.pool_id = pools.id and pools_resources_used.resource_id = resources.id and resources.category_id = 1 ) as balanced'))
                     ->get();
-                   //dd($pools);
+                  // dd($pools);
         return view('home')->with(['pools' => $pools]);
     }
 }
