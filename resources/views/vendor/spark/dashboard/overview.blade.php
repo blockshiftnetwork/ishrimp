@@ -56,7 +56,7 @@
                             <td><a class="text-muted" href="">{{$item->abw}}</a></td>
                             <td><a class="text-muted" href="">{{$item->awg}}</a></td>
                             <td><a class="text-muted" href="">{{$item->balanced}}</a></td>
-                            <td><a class="text-muted" href="">0</a></td>
+                            <td><a class="text-muted" href="">{{$item->do}}</a></td>
                             <td><a class="text-muted" href="">
                                         @if ($item->abw == 0 || $item->survival == 0)
                                                                     0
