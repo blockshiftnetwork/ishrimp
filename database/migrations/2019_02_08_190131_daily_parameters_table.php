@@ -20,7 +20,7 @@ class DailyParametersTable extends Migration
             $table->integer('laboratory_id')->unsigned();
             $table->foreign('laboratory_id')->references('id')->on('laboratories');
             $table->float('ph',3,1)->comment('Acidez entre 7.5-8.5');
-            $table->float('ppt',3,2)->comment('Salinidad 15-25');
+            $table->float('ppt',3,)2->comment('Salinidad 15-25');
             $table->float('ppm',3,2)->comment('Do >3.0');
             $table->float('temperature')->comment('');
             $table->float('co3')->comment('');
