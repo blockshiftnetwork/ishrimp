@@ -14,7 +14,8 @@
 Route::get('/', 'WelcomeController@show');
 Route::get('/home', 'HomeController@show');
 Route::resource('/pools', 'PoolController');
-
+Route::get('/pools/bio/{pool_id}','PoolController@statisticBiomasa');
+Route::get('/pools/balancedused/{pool_id}','PoolController@StaticBalanced');
 Route::resource('/pools_sowing', 'PoolSowingController');
 
 Route::resource('/cultivation', 'CultivationController');

@@ -26,7 +26,7 @@ class CultivationController extends Controller
         $laboratories = Laboratory::select('id', 'name')->get();
         $dailySamples = DB::table('pools')
                             ->join('daily_samples','pools.id','=','daily_samples.pool_id')
-                            ->select('daily_samples.*','pools.name as pool_name')
+                            ->select('daily_samples.*','pools.name as pool_name')->latest()
                             ->get();
                             
         return view('vendor.spark.cultivation')->with(['pools' => $pools, 'resources' => $resources,

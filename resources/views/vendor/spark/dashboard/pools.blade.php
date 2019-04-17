@@ -1,9 +1,10 @@
 <div class="dsh_board_main_body_cont">
     <div class="col-lg-12 border pondsDetailsTop nav nav-bar bg-white">
         <div class="col-lg-3 right_border ">
-          <select>
+          <select id="select_pool">
+          <option >Seleccione</option>
             @foreach($pools as $pool)
-            <option data-tokens="{{$pool->pool_id}}">{{$pool->name}}</option>
+            <option data-tokens="{{$pool->pool_id}}" value="{{$pool->pool_id}}">{{$pool->name}}</option>
             @endforeach
 </select>
 

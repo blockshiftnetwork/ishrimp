@@ -1,16 +1,55 @@
 var ctx = document.getElementById("myChart").getContext('2d');
 var data = [1,4,20, 223, 155,65,100]
+var pool_id;
+var bioChart;
+$(function (){
+pool_id = $('#select_pool').on('click',function(){
+pool_id = $(this).val();
+ let urlBio = '/pools/bio/'+pool_id;
+ console.log(urlBio);
+  loadDataBio(urlBio);
+});
 
-var myChart =new Chart(ctx, {
+});
+
+function loadDataBio(url) {
+  $.get(url, function(resp){
+    console.log('response', resp);
+    let labels =  loadlabelCreatAt(resp.data)
+    let abw = createData(resp.data, 'abw');
+    let agw = createData(resp.data,'wg');
+    console.log('data',abw,'labels',labels);
+    bioChart = createBioChart(abw,agw,[],labels);
+    
+  });
+}
+
+function createData(data, prop){
+  let values = [];
+  for (let i = 0; i < data.length; i++) {
+    values.push(data[i][prop]);
+  }
+  return values;
+}
+function loadlabelCreatAt(data){
+  let labels = [];
+  for (let i = 0; i < data.length; i++) {
+    labels.push(data[i].updated_at);
+  }
+  return labels;
+}
+
+function createBioChart(data1, data2, data3, labels){ 
+   return new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['enero 23','enero 24','enero 25','enero 26','enero 27','enero 28'],
+      labels: labels,
       datasets: [
         {
           type: 'line',
           label: 'Biomasa',
           fill: true,
-          data: data,
+          data: [],
           backgroundColor: '#168ede69',
           borderColor: '#168ede'
         },
@@ -18,7 +57,7 @@ var myChart =new Chart(ctx, {
 
           label: 'crecimiento',
           fill: false,
-          data:  [122,500,100,230,434],
+          data:  data2,
           backgroundColor: '#FF0040',
           borderColor: '#FF0040',
 
@@ -27,7 +66,7 @@ var myChart =new Chart(ctx, {
           type: 'line',
           label: 'ABW',
           fill: true,
-          data:  [23,43,32,12,32,123],
+          data:  data1,
           backgroundColor: '#1eca4970',
           borderColor: '#1eca49'
         }
@@ -63,6 +102,10 @@ var myChart =new Chart(ctx, {
       }
     }
   });
+
+}
+
+
 
   var ctx2 = document.getElementById("myChart2").getContext('2d');
   var myChart2 =new Chart(ctx2, {
