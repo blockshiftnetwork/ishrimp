@@ -23,7 +23,9 @@ class CultivationController extends Controller
         $team_id = auth()->user()->currentTeam->id;
         $pools = Pool::select('id', 'name')->where('team_id', $team_id)->get();
         $resources = Resource::select('id', 'name')->where('team_id', $team_id)->get();
+        
         $laboratories = Laboratory::select('id', 'name')->get();
+
         $dailySamples = DB::table('daily_samples')->latest()
                             ->join('pools','pools.id','=','daily_samples.pool_id')->where('pools.team_id',$team_id)
                             ->select('daily_samples.*','pools.name as pool_name')

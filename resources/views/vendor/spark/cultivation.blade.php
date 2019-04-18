@@ -166,7 +166,7 @@
             }
 
             if ($(this).prop('name') === 'ppm_a') {
-                if ($(this).val() > 1.0) {
+                if ($(this).val() > 1.0 || $(this).val() < 0.001) {
                     $(this).removeClass('border border-success');
                     $(this).addClass('border border-danger');
                 } else {
@@ -175,7 +175,7 @@
                 }
             }
             if ($(this).prop('name') === 'ppm_h') {
-                if ($(this).val() > 0.1) {
+                if ($(this).val() > 0.1 || $(this).val() < 0.001) {
                     $(this).removeClass('border border-success');
                     $(this).addClass('border border-danger');
                 } else {

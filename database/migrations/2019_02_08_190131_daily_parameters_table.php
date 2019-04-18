@@ -20,14 +20,14 @@ class DailyParametersTable extends Migration
             $table->integer('laboratory_id')->unsigned();
             $table->foreign('laboratory_id')->references('id')->on('laboratories');
             $table->float('ph',3,1)->comment('Acidez entre 7.5-8.5');
-            $table->float('ppt',3,2)->comment('Salinidad 15-25');
-            $table->float('ppm',3,2)->comment('Do >3.0');
+            $table->float('ppt',4,2)->comment('Salinidad 15-25');
+            $table->float('ppm',5,4)->comment('Do >3.0');
             $table->float('temperature')->comment('');
             $table->float('co3')->comment('');
             $table->float('hco3')->comment('');
             $table->float('ppm_d')->comment('Dureza 300');
-            $table->float('ppm_a',3,2)->comment('Amoniaco nh4+ <1.0');
-            $table->float('ppm_h',3,2)->comment('Hierro <0.1');
+            $table->float('ppm_a',4,3)->comment('Amoniaco nh4+ <1.0');
+            $table->float('ppm_h',4,3)->comment('Hierro <0.1');
             $table->float('green_colonies')->comment('');
             $table->float('yellow_colonies')->comment('');
             $table->date('date');
