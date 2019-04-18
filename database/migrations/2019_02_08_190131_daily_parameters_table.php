@@ -27,7 +27,7 @@ class DailyParametersTable extends Migration
             $table->float('hco3')->comment('');
             $table->float('ppm_d')->comment('Dureza 300');
             $table->float('ppm_a',3,2)->comment('Amoniaco nh4+ <1.0');
-            $table->float('ppm_h',3,2)->comment('Hierro <1.0');
+            $table->float('ppm_h',3,2)->comment('Hierro <0.1');
             $table->float('green_colonies')->comment('');
             $table->float('yellow_colonies')->comment('');
             $table->date('date');

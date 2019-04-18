@@ -5,19 +5,19 @@
           <option >Seleccione</option>
             @foreach($pools as $pool)
             <option data-tokens="{{$pool->pool_id}}" value="{{$pool->pool_id}}">{{$pool->name}}</option>
-            @endforeach
+            @endforeach 
 </select>
 
         </div>
         <div class="col-lg-2 right_border mx-1">
-            <p>DOC : <br><b class="pond_doc">83 Dias</b></p>
+            <p>DOC : <br><b class="pond_doc">NA</b></p>
         </div>
         <div class="col-lg-2 right_border">
-            <p>PLs Sembrados : <br><b class="pond_pls">751900</b></p>
+            <p>PLs Sembrados : <br><b class="pond_pls">NA</b></p>
         </div>
         <div class="col-lg-2 right_border">
 
-            <p>Extensión : <br><b class="pond_wsa">4.26 hectareas</b></p>
+            <p>Extensión : <br><b class="pond_wsa">NA</b></p>
         </div>
         <div class="col-lg-3">
            
@@ -65,14 +65,14 @@
                     </div>
                 </div>
                 <div class="row mt-5">
-                    <div class="col-6">
+                    <!--<div class="col-6">
                         <div class="card">
                             <h4 class="card-title">
                                 PM Balanceado por Hora
                             </h4>
                             <canvas id="myChart3" width="700" height="600"></canvas>
                         </div>
-                    </div>
+                    </div>-->
 
                     <div class="col-6">
                         <div class="card">
