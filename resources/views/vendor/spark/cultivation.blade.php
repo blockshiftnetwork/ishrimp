@@ -201,14 +201,14 @@
                             message = 'Excedió la cantidad disponible';
                             $(input).removeClass('border border-success');
                             $(input).addClass('border border-danger');
-                            showAlert('#alert-cultivate', 'Warning', message, 'alert-warning', 5000, false)
+                            showAlert('#alert-cultivate', 'Advertencia', message, 'alert-warning', 5000, false)
                         }
                         if(typeof existence === 'undefined'){
-                            message = 'No hay recursos en el inventario <a class="btn btn-warning" href="/resource">Agregar</a>';
+                            message = 'No hay recursos en el inventario <a class="btn btn-warning" href="/resource?inventory=1">Agregar</a>';
                             $(input).removeClass('border border-success');
                             $(input).addClass('border border-danger');
                             $(input).val(null);
-                            showAlert('#alert-cultivate', 'Warning', message, 'alert-warning', 10000, false)
+                            showAlert('#alert-cultivate', 'Advertencia', message, 'alert-warning', 10000, false)
                         } else {
                             $(input).removeClass('border border-danger');
                             $(input).addClass('border border-success');
@@ -307,7 +307,7 @@
                 }).done(function (resp) {
                     clearTimeout(timeout);
                     timeout = setTimeout(function () {
-                        showAlert('#alert-cultivate', 'Success', resp.data, 'alert-success', 2000, true)
+                        showAlert('#alert-cultivate', 'Èxito', resp.data, 'alert-success', 2000, true)
                     }, 2000)
                 }).fail(function (resp) {
                     clearTimeout(timeout);
@@ -353,7 +353,7 @@
                 }).done(function (resp) {
                     clearTimeout(timeout);
                     timeout = setTimeout(function () {
-                        showAlert('#alert-cultivate', 'Success', resp.data, 'alert-success', 3000, false)
+                        showAlert('#alert-cultivate', 'Èxito', resp.data, 'alert-success', 3000, false)
                     }, 2000)
                 }).fail(function (resp) {
                     clearTimeout(timeout);
@@ -397,7 +397,7 @@
                 }).done(function (resp) {
                     clearTimeout(timeout);
                     timeout = setTimeout(function () {
-                        showAlert('#alert-cultivate', 'Success', resp.data, 'alert-success', 2000, true)
+                        showAlert('#alert-cultivate', 'Èxito', resp.data, 'alert-success', 2000, true)
                     }, 2000)
                 }).fail(function (resp) {
                     clearTimeout(timeout);

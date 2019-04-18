@@ -56,8 +56,16 @@
                             <td><a class="text-muted" href="">{{$item->abw}}</a></td>
                             <td><a class="text-muted" href="">{{$item->awg}}</a></td>
                             <td><a class="text-muted" href="">{{$item->balanced}}</a></td>
-                            <td><a class="text-muted" href="">0</a></td>
-                            <td><a class="text-muted" href="">{{round(($item->balanced*2.2)/((($item->abw/1000)*2.2)*($item->survival/100)*($item->planted_larvae)),3)}}</a></td>
+                            <td><a class="text-muted" href="">{{$item->do}}</a></td>
+                            <td><a class="text-muted" href="">
+                                        @if ($item->abw == 0 || $item->survival == 0)
+                                                                    0
+                                        @else
+                                    {{round(($item->balanced*2.2)/((($item->abw/1000)*2.2)*($item->survival/100)*($item->planted_larvae)),3)}}
+                                @endif
+
+
+                            </a></td>
                         </tr>
                         @endforeach
 

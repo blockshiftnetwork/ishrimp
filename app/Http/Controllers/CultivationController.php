@@ -24,8 +24,8 @@ class CultivationController extends Controller
         $pools = Pool::select('id', 'name')->where('team_id', $team_id)->get();
         $resources = Resource::select('id', 'name')->where('team_id', $team_id)->get();
         $laboratories = Laboratory::select('id', 'name')->get();
-        $dailySamples = DB::table('pools')
-                            ->join('daily_samples','pools.id','=','daily_samples.pool_id')
+        $dailySamples = DB::table('daily_samples')->latest()
+                            ->join('pools','pools.id','=','daily_samples.pool_id')->where('pools.team_id',$team_id)
                             ->select('daily_samples.*','pools.name as pool_name')
                             ->get();
                             
@@ -174,12 +174,12 @@ class CultivationController extends Controller
           'abw_date' => 'required',
           'abw_hour' => 'required',
       ]);
-      $very = DB::table('daily_samples')->where('pool_id', $request->pool_id)->get();
-      if(count($very) > 0){
-        $daylySample = DaylySample::where('pool_id', $request->pool_id)->update($request->except('_token'));
-      }else{
+      //$very = DB::table('daily_samples')->where('pool_id', $request->pool_id)->get();
+      //if(count($very) > 0){
+        //$daylySample = DaylySample::where('pool_id', $request->pool_id)->update($request->except('_token'));
+      //}else{
         $daylySample = DaylySample::create($request->except('_token'));
-      }
+      //}
       return response()->json([
           'status' => '200',
           'data' => '!Datos guardados!',
