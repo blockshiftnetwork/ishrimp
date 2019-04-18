@@ -204,7 +204,7 @@
                             showAlert('#alert-cultivate', 'Warning', message, 'alert-warning', 5000, false)
                         }
                         if(typeof existence === 'undefined'){
-                            message = 'No hay recursos en el inventario <a class="btn btn-warning" href="/resource">Agregar</a>';
+                            message = 'No hay recursos en el inventario <a class="btn btn-warning" href="/resource?inventory=1">Agregar</a>';
                             $(input).removeClass('border border-success');
                             $(input).addClass('border border-danger');
                             $(input).val(null);

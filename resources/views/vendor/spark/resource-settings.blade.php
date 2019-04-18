@@ -14,13 +14,13 @@
                 @section('resource_options')
                 <ul class="nav flex-column mb-4">
                     <li class="nav-item ">
-                        <a class="nav-link active" href="#resource" aria-controls="resource" role="tab" data-toggle="tab">
+                        <a id="resource" class="nav-link active" href="#resource" aria-controls="resource" role="tab" data-toggle="tab">
                             <i class="fa fa-eyedropper icon"></i>
                             {{__('Resources')}}
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="#inventory" aria-controls="inventory" role="tab" data-toggle="tab">
+                        <a id="tab_inventory" class="nav-link" href="#inventory" aria-controls="inventory" role="tab" data-toggle="tab">
                             <i class="fa fa-eyedropper icon"></i>
                             {{__('Inventory')}}
                         </a>
@@ -46,6 +46,21 @@
 @endsection
 @section('custom-scripts')
 <script>
+
+    $(function(){
+      var act =  getParameterByName('inventory');
+      if(act === '1'){
+        $('#tab_inventory').tab('show');
+      }
+      console.log(act);
+    });
+
+    function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
       // provider actios
         $('#editProviderModal').on('shown.bs.modal',function(event){
          var button = $(event.relatedTarget);
