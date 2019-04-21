@@ -14,12 +14,15 @@ class PoolController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    
     public function index()
     {
         $pools_summary = [];
+        $pool_id = Pool::get()->last();
         $team_id = auth()->user()->currentTeam->id;
         $isExistsParam = DB::table('daily_parameters')->
-            join('pools','daily_parameters.pool_id','=','pools.id')->where('pools.team_id', $team_id)->exists();
+            join('pools','daily_parameters.pool_id','=','pools.id')->where('pools.id',$pool_id)->where('pools.team_id', $team_id)->exists();
 
         if($isExistsParam){
             $pools_summary = DB::table('pools')->where('team_id','=', $team_id)
@@ -151,8 +154,8 @@ class PoolController extends Controller
         $pool->size = $request->size;
         $pool->coordinates = $request->coordinates;
         $pool->save();
-        $pool_id = Pool::get()->last(); 
-       $this->saveSampleToPool($pool_id);
+        $pool_id = Pool::get()->last();
+        $this->saveSampleToPool($pool_id);
         return redirect()->back()->with('message', 'Piscina Guardada!');
     }
 
