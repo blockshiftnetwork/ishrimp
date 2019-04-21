@@ -27,10 +27,10 @@
               var polygon = new google.maps.Polygon({
                path: latLng,
                map: map,
-               strokeColor: defaultColor,
+               strokeColor: pools[i].days != null ? defaultColor : '#FE2E2E',
                strokeWeight: 3,
                strokeOpacity: 0.5,
-               fillColor: defaultColor,
+               fillColor: pools[i].days != null ? defaultColor : '#FE2E2E',
                fillOpacity: 0.3,
                clickable: true,
              });
@@ -54,24 +54,7 @@
       drawTools();
     });
 
-          //ShowDrawingTools(myDrawingManager,true); 
-       
-         
-          //para dibujar el poligono
-          polygon = new google.maps.Polygon({});
-          listenerMouserOver(polygon);
-          var area = google.maps.geometry.spherical.computeArea(polygon.getPath());
-          console.log('area', area);
-          //asigna colores a cada poligono
-          polygon.currentColor = makeColor();
-          polygon.setOptions({
-            strokeColor: polygon.currentColor,
-             fillColor: polygon.currentColor,
-             clickable: true,
-          });
-       
-       
-    
+  
       });
           
 function makeColor(){
@@ -144,19 +127,19 @@ function listenerOverlay(){
     var npoly;
           google.maps.event.addListener(myDrawingManager, 'overlaycomplete', function(event) {
           console.log(event);
-            polygon.currentColor = makeColor();
+          
              npoly = new google.maps.Polygon({
                   path: event.overlay.getPath(),
                    map: map,
-                   strokeColor: polygon.currentColor,
+                   strokeColor: makeColor(),
                    strokeWeight: 3,
                    strokeOpacity: 0.5,
-                   fillColor: polygon.currentColor,
+                   fillColor: makeColor(),
                    fillOpacity: 0.3,
                    clickable: false,
               });
-               polygon.setMap(map);
-             var size = google.maps.geometry.spherical.computeArea(npoly.getPath());
+               npoly.setMap(map);
+              var size = google.maps.geometry.spherical.computeArea(npoly.getPath());
               closeDrawingTools();
               cancelDraw(npoly, event.overlay);
               loadFormpool((size/10000).toFixed(3), JSON.stringify(npoly.getPath().getArray()));
@@ -191,21 +174,35 @@ function  listenerMouserOver(poly, pool) {
 })
 
   function strInfoPools(dataPool){
+ 
+ if(dataPool.days!== null){
+
  return '<div class="card bg-white text-justify" style="width: 18rem;">'+
            '<img class="card-img-top" src="/images/top-login-header.svg" alt="Card image cap">'+
            '<div class="card-body">'+
              '<h5 class="card-title text-uppercase">'+dataPool.name+'</h5>'+
             '<table class="table table-responsive">'+
     '<tbody>'+
-    '<tr><td>'+dataPool.days+' Dias</td><td></td><td> '+dataPool.size+' Hectareas</td></tr>'+
-    '<tr><td>'+dataPool.abw+' ABW</td><td></td><td>'+dataPool.wg+' g</td>'+
+    '<tr><td>'+dataPool.days+' Dias</td><td></td><td> '+(dataPool.size).toFixed(2)+' Hectareas</td></tr>'+
+    '<tr><td> abw: '+(dataPool.abw).toFixed(2)+'g</td><td></td><td> awg: '+(dataPool.awg).toFixed(2)+'g</td>'+
     '</tr>'+
-    '<tr><td>'+((dataPool.balanced*2.2)/((dataPool.abw*2.2/1000)*(dataPool.survival/100)*(dataPool.planted_larvae))).toFixed(3)+' Lbs. RC</td><td></td><td>0 DO/mg/L</td>'+
+    '<tr><td> RC: '+((dataPool.balanced*2.2)/((dataPool.abw*2.2/1000)*(dataPool.survival/100)*(dataPool.planted_larvae))).toFixed(2)+'Lbs</td><td></td><td>'+(dataPool.do).toFixed(2)+' DO/mg/L</td>'+
     '</tr>'+
     '</tbody>'+
     '</table>'+ 
           '</div>'+
         '</div>'
+
+  }else{
+    return '<div class="card bg-white text-justify" style="width: 18rem;">'+
+           '<img class="card-img-top" src="/images/top-login-header.svg" alt="Card image cap">'+
+           '<div class="card-body">'+
+             '<h5 class="card-title text-uppercase">'+dataPool.name+'</h5>'+     
+              '<div><h6 class="text-danger" >Aun no se ha realizado la siembra: </h6><div style="margin:0 24% 0 30%"><a href="/pools_sowing" class="btn btn-danger">Sembrar</a></div></div>'+
+
+          '</div>'+
+        '</div>'
+  }
 
   }
 

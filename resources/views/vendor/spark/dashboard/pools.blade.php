@@ -215,37 +215,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>cal</td>
-                                    <td>Médicina</td>
-                                    <td>250 kg</td>
-                                    <td>30-Jan 19</td>
-                                    <td>None</td>
-                                    <td>
-                                        <div class="actions btn btn-group-sm">
-                                            <a href="" class="btn btn-success btn-xs mr-4">
-                                                <i class="fa fa-edit"></i></a>
-                                            <a href="" class="btn btn-xs btn-danger">
-                                                <i class="fa fa-trash-o"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>cal</td>
-                                    <td>Médicina</td>
-                                    <td>250 kg</td>
-                                    <td>30-Jan 19</td>
-                                    <td>None</td>
-                                    <td>
-                                        <div class="actions btn btn-group-sm">
-                                            <a href="" class="btn btn-success btn-xs mr-4">
-                                                <i class="fa fa-edit"></i></a>
-                                            <a href="" class="btn btn-xs btn-danger">
-                                                <i class="fa fa-trash-o"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-
+                              
                             </tbody>
                         </table>
                 

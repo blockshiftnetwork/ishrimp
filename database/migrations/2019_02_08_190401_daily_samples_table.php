@@ -22,7 +22,7 @@ class DailySamplesTable extends Migration
             $table->float('abw')->comment('peso promedio del camaron(g)');
             $table->float('wg')->comment('diferencia con respecto al average anterior(g)');
             $table->float('survival_percent');
-            $table->date('abw_date');
+            $table->dateTime('abw_date');
             $table->time('abw_hour');
             $table->timestamps();
         });
