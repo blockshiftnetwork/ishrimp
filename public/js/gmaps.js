@@ -127,18 +127,18 @@ function listenerOverlay(){
     var npoly;
           google.maps.event.addListener(myDrawingManager, 'overlaycomplete', function(event) {
           console.log(event);
-            polygon.currentColor = makeColor();
+          
              npoly = new google.maps.Polygon({
                   path: event.overlay.getPath(),
                    map: map,
-                   strokeColor: polygon.currentColor,
+                   strokeColor: makeColor(),
                    strokeWeight: 3,
                    strokeOpacity: 0.5,
-                   fillColor: polygon.currentColor,
+                   fillColor: makeColor(),
                    fillOpacity: 0.3,
                    clickable: false,
               });
-               polygon.setMap(map);
+               npoly.setMap(map);
               var size = google.maps.geometry.spherical.computeArea(npoly.getPath());
               closeDrawingTools();
               cancelDraw(npoly, event.overlay);

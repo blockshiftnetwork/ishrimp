@@ -30,7 +30,7 @@ class DailyParametersTable extends Migration
             $table->float('ppm_h',4,3)->comment('Hierro <0.1');
             $table->float('green_colonies')->comment('');
             $table->float('yellow_colonies')->comment('');
-            $table->date('date');
+            $table->dateTime('date');
             $table->time('hour');
             $table->timestamps();
         });

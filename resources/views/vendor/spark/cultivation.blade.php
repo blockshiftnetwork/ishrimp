@@ -54,6 +54,8 @@
 <script>
     $(document).ready(function () {
         var j = 0;
+        var t = new Date();
+        console.log(t.getHours(), t.getMinutes());
         var timeout = null;
         $('#dateRs').flatpickr({
             altInput: true,
@@ -74,7 +76,7 @@
             noCalendar: true,
             dateFormat: "H:i",
             time_24hr: true,
-            defaultDate: "9:00"
+            defaultDate: t.getHours()+':'+t.getMinutes()
         });
         $('#dateABW').flatpickr({
             altInput: true,
@@ -88,7 +90,7 @@
             noCalendar: true,
             dateFormat: "H:i",
             time_24hr: true,
-            defaultDate: "9:00"
+            defaultDate: t.getHours()+':'+t.getMinutes()
         });
 
         $('#medicine-table').on('click', '.btn-duplicate', function () {
@@ -344,7 +346,7 @@
                     }
                 }
             if (valid) {
-                $('#dateDp_s').val($('#dateDp').val());
+                $('#dateDp_s').val($('#dateDp').val() +' '+ $('#timeDp').val());
                 $('#hour_s').val($('#timeDp').val());
                 $('#lab_s').val($('#lab').val());
                 var form = $('#formDayly').serialize();
@@ -374,7 +376,7 @@
         var time = $('#timeABW').val();
         var trs = table.find('tr');
         var dataValid = false;
-        $('#dateABW_s').val(date);
+        $('#dateABW_s').val(date + ' ' +time);
         $('#timeABW_s').val(time);
         for (let j = 1; j < trs.length; j++) {
             //Find inputs

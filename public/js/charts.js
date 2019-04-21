@@ -16,6 +16,9 @@ $('#select_pool').on('change',function(){
   let urlBio = '/pools/bio/'+pool_id;
   let urlBalanced = '/pools/balancedused/'+pool_id;
   let urlParam = '/pools/parameters/'+pool_id;
+  clearCharts(bioChart);
+  clearCharts(balacedChart);
+  clearCharts(paramChart);
   loadPool(urlPool)
   loadDataBio(urlBio);
   loadDataBalanced(urlBalanced);
@@ -42,11 +45,10 @@ function loadPool(url){
 function loadDataBio(url) {
   $.get(url, function(resp){
     console.log('response', resp);
-    let labels =  loadlabelCreatAt(resp.data,'planted_at')
+    let labels =  loadlabelCreatAt(resp.data,'abw_date')
     let abw = createData(resp.data, 'abw');
     let agw = createData(resp.data,'awg');
     let rc = calRC(resp.data, 'balanced', 'abw', 'survival','planted_larvae');
-    console.log('data',agw,'labels',labels);
     bioChart = createBioChart(abw,agw,rc,labels);
     
   });
@@ -55,11 +57,9 @@ function loadDataBio(url) {
 function loadDataBalanced(url){
     $.get(url, function(resp){
     console.log('response', resp);
-    let labels =  loadlabelCreatAt(resp.data, 'created_at')
-    let r1 = createDataBalanced(resp.data, 'quantity');
-    let r2 = createDataBalanced(resp.data, 'quantity');
-    let r3 = createDataBalanced(resp.data, 'quantity');
-    balacedChart = createbalancedChart(r1,r2,r3,labels);
+    let labels =  loadlabelCreatAt(resp.data, 'date')
+    let r1 = createDataBalanced(resp.data, 'quantity',);
+    balacedChart = createbalancedChart(r1, [], [], labels, resp.resources_name);
     
   });
 }
@@ -67,7 +67,7 @@ function loadDataBalanced(url){
 function loadDataParam(url){
     $.get(url, function(resp){
     console.log('response', resp);
-    let labels =  loadlabelCreatAt(resp.data, 'created_at')
+    let labels =  loadlabelCreatAt(resp.data, 'date')
     let pH = createData(resp.data, 'ph');
     let dO = createData(resp.data, 'ppm');
     let temperature = createData(resp.data, 'temperature');
@@ -75,6 +75,8 @@ function loadDataParam(url){
     
   });
 }
+
+
 
 function createData(data, prop){
   let values = [];
@@ -92,17 +94,17 @@ function createDataBalanced(data, prop){
   return values;
 }
 
-function calRC(data, prop1, abw, survival, planted){
+function calRC(data, balanced, abw, survival, planted){
   let values = [];
   for (let i = 0; i < data.length; i++) {
-    values.push(data[i][prop1]*2.2/(((data[i][abw]/1000)*2.2)*(data[i][survival]/100)*(data[i][planted])));
+    values.push((data[i][balanced]*2.2)/(((data[i][abw]/1000)*2.2)*(data[i][survival]/1)*(data[i][planted])));
   }
   return values;
 }
 function loadlabelCreatAt(data, prop){
   let labels = [];
   for (let i = 0; i < data.length; i++) {
-    labels.push(data[i][prop]);
+    labels.push(getDate(data[i][prop]));
   }
   return labels;
 }
@@ -173,28 +175,28 @@ function createBioChart(data1, data2, data3, labels){
 
 }
 
-function createbalancedChart(data1, data2, data3, labels){ 
-   new Chart(ctx2, {
+function createbalancedChart(data1, data2, data3, labels, sublabel){ 
+   return new Chart(ctx2, {
     type: 'bar',
     data: {
       labels: labels,
       datasets: [
         {
-          label: 'Nature Wellness 42% #1-Gisis',
+          label: sublabel[0].name,
           fill: false,
           data: data1,
           backgroundColor: '#168ede',
           borderColor: '#168ede'
         },
         {
-          label: 'Nature Wellness 42% #1-Gisis',
+          label: sublabel[1].name,
           fill: false,
           data:  data2,
           backgroundColor: '#FF0040',
           borderColor: '#FF0040'
         },
         {
-          label: 'Optiline 35% #5-Gisis',
+          label: '',
           fill: false,
           data:  data3,
           backgroundColor: '#1eca49',
@@ -361,4 +363,13 @@ function createParamChart(data1, data2, data3, labels){
     }
   });*/
 
+function clearCharts(chart){
+  if(chart instanceof Chart){
+  chart.destroy();
+  }
   
+  }
+
+  function getDate(date){
+  return $.format.date(date, 'dd MMM yyyy');
+  }
