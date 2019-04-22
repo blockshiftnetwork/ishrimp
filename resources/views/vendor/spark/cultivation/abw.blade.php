@@ -32,9 +32,9 @@ data-locale="es-ES">
             <th class="col-xs-1 text-left" data-field="last_abw">Última ABW</th>
             <th class="col-xs-2" data-field="last_date">Última Fecha ABW</th>
             <th class="col-xs-1 text-left" >Muestras</th>
-            <th class="col-xs-2" data-field="abw">ABW (g)</th>
-            <th class="col-xs-1" data-field="wg">WG (g)</th>
-            <th class="col-xs-2" data-field="survival">Supervivencia (%)</th>
+            <th class="col-xs-2 text-center" data-field="abw">ABW (g)</th>
+            <th class="col-xs-2 text-center" data-field="wg">WG (g)</th>
+            <th class="col-xs-2 text-center" data-field="survival">Supervivencia (%)</th>
         </tr>
     </thead>
     <tbody style="height: 228px !important;">
@@ -62,9 +62,9 @@ data-locale="es-ES">
                     <input type="text" id="abw" name="abw" value="" class="form-control clsABW abw_1266" style="width:100px !important;">
                 </div>
             </td>
-            <td class="col-xs-1">
+            <td class="col-xs-1" style="width:100px;" >
                 <div class="input-group">
-                    <input type="text" id="wg" name="wg" value="" class="form-control clsWG wg_1266" readonly=""> </div>
+                    <input type="text" id="wg" name="wg" value="" class="form-control clsWG wg_1266" style="width:100px !important;" readonly=""> </div>
             </td>
             <td class="col-xs-3">
                 <div class="input-group">
@@ -96,9 +96,9 @@ data-locale="es-ES">
                     <input type="text" id="abw" name="abw" value="" class="form-control clsABW abw_1266" style="width:100px !important;">
                 </div>
             </td>
-            <td class="col-xs-1">
+            <td class="col-xs-2" style="width:100px;" >
                 <div class="input-group">
-                    <input type="text" id="wg" name="wg" value="" class="form-control clsWG wg_1266" readonly=""> </div>
+                    <input type="text" id="wg" name="wg" value="" class="form-control clsWG wg_1266" style="width:100px !important;" readonly=""> </div>
             </td>
             <td class="col-xs-3">
                 <div class="input-group">
