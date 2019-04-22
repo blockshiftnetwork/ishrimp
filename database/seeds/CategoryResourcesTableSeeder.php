@@ -23,6 +23,10 @@ class CategoryResourcesTableSeeder extends Seeder
         [
      	    'name' => 'Suplemento',
      	    'parent_id' => '1'
+        ],
+        [
+            'name' => 'Otros',
+            'parent_id' => '1'
         ]);
        $categoryResource = array_where($categoryResource, function ($value, $key) {
             return !DB::table('category_resources')->where('name', $value['name'])->exists();
