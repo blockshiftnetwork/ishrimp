@@ -332,6 +332,7 @@
         var dataValid = false;
         var timeout = null;
         var trs =  table.find('tr')
+        if( $('#lab').val() > 0){
         for (let j = 0; j < trs.length; j++) {
 
             var inputs = $(trs[j]).find('input');
@@ -370,6 +371,10 @@
             showAlert('#alert-cultivate', 'Error', 'Seleccione una o más filas', 'alert-danger', 3000, false)
 
         }
+    }else{
+        showAlert('#alert-cultivate', 'Error', 'Seleccione un laboratorio', 'alert-danger', 3000, false)
+
+    }
     }
 
       //save ABW
