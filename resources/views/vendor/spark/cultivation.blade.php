@@ -329,23 +329,23 @@
   //save Dayly Parameters
     function saveDaylyParameters() {
         var table = $('#paramaters-table');
-        var valid = true;
+        var dataValid = false;
         var timeout = null;
+        var trs =  table.find('tr')
+        for (let j = 0; j < trs.length; j++) {
 
-        table.find('tr').each(function () {
-            var inputs = $(this).find('input');
+            var inputs = $(trs[j]).find('input');
 
             if (inputs.length > 0) {
                 for (let i = 0; i < inputs.length; i++) {
-                    if ($(inputs[0]).prop('checked')) {
+                   
                         var textVal = $(inputs[i]).val();
                         inputName = $(inputs[i]).attr("name");
                         $('#' + inputName + '_s').val(textVal);
-                    } else {
-                        valid = false;
-                    }
+
                 }
-            if (valid) {
+                if ($(inputs[0]).prop('checked')) {
+                dataValid = true;
                 $('#dateDp_s').val($('#dateDp').val() +' '+ $('#timeDp').val());
                 $('#hour_s').val($('#timeDp').val());
                 $('#lab_s').val($('#lab').val());
@@ -365,7 +365,11 @@
                 });
             }
             }
-        });
+        }
+        if (!dataValid) {
+            showAlert('#alert-cultivate', 'Error', 'Seleccione una o más filas', 'alert-danger', 3000, false)
+
+        }
     }
 
       //save ABW

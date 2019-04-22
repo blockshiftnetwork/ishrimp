@@ -53,7 +53,6 @@
 @section('custom-scripts')
 <script src="{{ asset('js/gmaps.js') }}"> </script>
 <script src="{{ asset('js/pools_summary.js') }}"> </script>
-</script>
 <script>
     $(function () {
     $('select').selectpicker({
