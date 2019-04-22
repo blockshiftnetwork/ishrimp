@@ -31,7 +31,7 @@
             <ul class="nav nav-pills nav-tabs" role="tablist">
                 <li role="presentation" class=" nav-item"><a class="btn btn-light nav-link active" href="#graphs_pill"
                         aria-controls="graphs_section" role="tab" data-toggle="tab">Gráficos</a></li>
-                <li role="presentation"><a class="btn btn-light" href="#feed_chart_pill"
+                <li role="presentation"><a class="btn btn-light" href="#balanced_table_chart"
                         aria-controls="feed_chart_section" role="tab" data-toggle="tab">Alimentación</a></li>
                 <li role="presentation"><a class="btn btn-light" href="#inputs_pill" aria-controls="inputs_section"
                         role="tab" data-toggle="tab">Entradas</a></li>
@@ -87,44 +87,9 @@
 
 
             <!-- tab table  -->
-            <div role="tabpanel" class="tab-pane" id="feed_chart_pill">
+            <div role="tabpanel" class="tab-pane" id="balanced_table_chart">
                 <div class="fixed-table-container mt-5">
-                    <table id="ponds-snap-tbl" class="bg-white"
-                    data-toggle="table"
-                    data-classes="table table-striped table-hover table-borderless"
-                    data-pagination="true"
-                    data-locale="es-ES"
-                    data-search="true"
-                    data-unique-id="true" style="width:99.9%;">
-                        <thead class="thead-primary">
-                            <tr>
-                                <th data-field="days" data-sortable="true" data-align="center">Días</th>
-                                <th data-field="event_date"data-align="center" >Fecha del Evento</th>
-                                <th data-field="balanced" data-align="center">Nombre del Balanceado</th>
-                                <th data-field="total_day" data-align="center">Total del Día<br>(Kg)</th>
-                                <th data-field="cn" data-align="center">Consumo Neto<br> Kg)</th>
-                                <th data-field="actions" data-align="center">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr>
-                                <td>60</td>
-                                <td>21-Jan 19</td>
-                                <td>Optiline 35% #5 - Gisis</td>
-                                <td>5075</td>
-                                <td>5075</td>
-                                <td>
-                                    <div class="actions btn btn-group-sm">
-                                        <a href="" class="btn btn-success btn-xs mr-4">
-                                            <i class="fa fa-edit"></i></a>
-                                        <a href="" class="btn btn-xs btn-danger">
-                                            <i class="fa fa-trash-o"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                    </table>
+                    <table id="table_staticstic_balanced" class="bg-white"></table>
 
                     <div class="footer_feed_cont">
                         <div class="row">
@@ -167,59 +132,10 @@
                         <h4 class="text-title mt-4">Medicamentos y Minerales</h4>
                     </div>
 
-                        <table id="ponds-snap-tbl" class="bg-white"
-                            data-toggle="table"
-                            data-classes="table table-striped table-hover table-borderless"
-                            data-pagination="true"
-                            data-locale="es-ES"
-                            data-search="true">
-                            <thead class="thead-primary">
-                                <tr>
-                                    <th data-field="name"  data-sortable="true" data-align="center">Nombre del Recurso</th>
-                                    <th data-field="resource" data-align="center">Tipo de Recurso</th>
-                                    <th data-field="quantity" data-align="center">Cantidad en Inventario </th>
-                                    <th data-field="date" data-align="center">Fecha del Evento<br>(Kg)</th>
-                                    <th data-field="note" data-align="center">Notas</th>
-                                    <th data-align="center">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <tr>
-                                    <td>cal</td>
-                                    <td>Médicina</td>
-                                    <td>250 kg</td>
-                                    <td>30-Jan 19</td>
-                                    <td>None</td>
-                                    <td>
-                                        <div class="actions btn btn-group-sm">
-                                            <a href="" class="btn btn-success btn-xs mr-4">
-                                                <i class="fa fa-edit"></i></a>
-                                            <a href="" class="btn btn-xs btn-danger">
-                                                <i class="fa fa-trash-o"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>cal</td>
-                                    <td>Médicina</td>
-                                    <td>250 kg</td>
-                                    <td>30-Jan 19</td>
-                                    <td>None</td>
-                                    <td>
-                                        <div class="actions btn btn-group-sm">
-                                            <a href="" class="btn btn-success btn-xs mr-4">
-                                                <i class="fa fa-edit"></i></a>
-                                            <a href="" class="btn btn-xs btn-danger">
-                                                <i class="fa fa-trash-o"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                              
-                            </tbody>
+                        <table id="table_statistic_resource" class="bg-white">
                         </table>
                 
-                    <div class="fixed-table-header">
+                    <!-- <div class="fixed-table-header">
                         <h4 class="text-title mt-4">Otras entradas</h4>
                     </div>
                    
@@ -259,7 +175,7 @@
                             
 
                             </tbody>
-                        </table>
+                        </table> -->
               </div>
             <!-- abw -->
             <div role="tabpanel" class="tab-pane" id="abw_pill">
