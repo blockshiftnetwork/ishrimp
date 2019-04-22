@@ -14,12 +14,15 @@ class PoolController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    
     public function index()
     {
         $pools_summary = [];
+        $pool_id = Pool::get()->last();
         $team_id = auth()->user()->currentTeam->id;
         $isExistsParam = DB::table('daily_parameters')->
-            join('pools','daily_parameters.pool_id','=','pools.id')->where('pools.team_id', $team_id)->exists();
+            join('pools','daily_parameters.pool_id','=','pools.id')->where('pools.id',$pool_id)->where('pools.team_id', $team_id)->exists();
 
         if($isExistsParam){
             $pools_summary = DB::table('pools')->where('team_id','=', $team_id)
@@ -95,7 +98,9 @@ class PoolController extends Controller
                             ->leftJoin('resources','resources.id','=','balanced.resource_id')
                             ->leftJoin('category_resources as category','category.id','=','resources.category_id')
                             ->where('category.id', 1)->groupBy('balanced.date')
-                            ->select('balanced.quantity as quantity','balanced.date','balanced.resource_id','resources.name as resource_name')->get();
+                            ->select(DB::raw('(SUM(balanced.quantity)) as quantity'),'balanced.date','balanced.resource_id','resources.name as resource_name',
+                            DB::raw('(SELECT (DATEDIFF(balanced.date,pools_sowing.planted_at)) FROM pools_sowing WHERE pools_sowing.pool_id = pools.id) as days'))
+                            ->get();
 
         $resources = DB::table('resources')->where('resources.category_id', 1)->select('resources.name')->get();
         //dd($pools_balanced);
@@ -120,6 +125,23 @@ class PoolController extends Controller
                                 'data' => $parameter,
                             ]);
     }
+
+    public function statisticResourceUsed($pool_id){
+        $resource_used = DB::table('pools')->where('pools.id', $pool_id)
+        ->join('pools_resources_used as used','used.pool_id','=','pools.id')
+        ->leftJoin('resources','resources.id','=','used.resource_id')
+        ->leftJoin('category_resources as category','category.id','=','resources.category_id')
+        ->where('category.id','>', 1)->groupBy('used.date')
+        ->select(DB::raw('(SUM(used.quantity)) as quantity'),'used.date','used.resource_id','used.note','resources.name as resource_name','category.name as category')
+        ->get();
+
+        return response()->json([
+            'status' => '200',
+            'data' => $resource_used,
+        ]);
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -151,8 +173,8 @@ class PoolController extends Controller
         $pool->size = $request->size;
         $pool->coordinates = $request->coordinates;
         $pool->save();
-        $pool_id = Pool::get()->last(); 
-       $this->saveSampleToPool($pool_id);
+        $pool_id = Pool::get()->last();
+        $this->saveSampleToPool($pool_id);
         return redirect()->back()->with('message', 'Piscina Guardada!');
     }
 

@@ -32,9 +32,10 @@ class HomeController extends Controller
     public function show()
     {
         $pools = [];
+        $pool_id = Pool::get()->last();
         $team_id = auth()->user()->currentTeam->id;
         $isExistsParam = DB::table('daily_parameters')->
-            join('pools','daily_parameters.pool_id','=','pools.id')->where('pools.team_id', $team_id)->exists();
+            join('pools','daily_parameters.pool_id','=','pools.id')->where('pools.id',$pool_id)->where('pools.team_id', $team_id)->exists();
             
         if($isExistsParam){
         $pools = DB::table('pools')->where('team_id','=', $team_id)

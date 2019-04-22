@@ -16,13 +16,15 @@ $('#select_pool').on('change',function(){
   let urlBio = '/pools/bio/'+pool_id;
   let urlBalanced = '/pools/balancedused/'+pool_id;
   let urlParam = '/pools/parameters/'+pool_id;
+  let urlUsed = '/pools/resourcesused/'+pool_id;
   clearCharts(bioChart);
   clearCharts(balacedChart);
   clearCharts(paramChart);
   loadPool(urlPool)
   loadDataBio(urlBio);
   loadDataBalanced(urlBalanced);
-  loadDataParam(urlParam)
+  loadDataParam(urlParam);
+  getResourceUsed(urlUsed);
 });
 
 });
@@ -60,9 +62,10 @@ function loadDataBalanced(url){
     let labels =  loadlabelCreatAt(resp.data, 'date')
     let r1 = createDataBalanced(resp.data, 'quantity',);
     balacedChart = createbalancedChart(r1, [], [], labels, resp.resources_name);
-    
+    loadDataToTableBalanced('#table_staticstic_balanced',resp.data);
   });
 }
+
 
 function loadDataParam(url){
     $.get(url, function(resp){
@@ -75,8 +78,6 @@ function loadDataParam(url){
     
   });
 }
-
-
 
 function createData(data, prop){
   let values = [];
@@ -109,6 +110,132 @@ function loadlabelCreatAt(data, prop){
   return labels;
 }
 
+function loadDataToTableBalanced(table, data){
+
+  $(table).bootstrapTable('destroy').bootstrapTable({
+
+    classes:"table table-striped table-hover table-borderless",
+    theadClasses:"thead-primary",
+    pagination:"true",
+    locale:"es-ES",
+    search:"true",
+    data: data,
+    columns: [
+      [{
+        field: 'days',
+        title: 'Dias',
+        sortable: true,
+        align: 'center'
+      },
+      {
+        field: 'date',
+        title: 'Fecha del Evento',
+        sortable: true,
+        align: 'center',
+      },
+      {
+        field: 'resource_name',
+        title: 'Nombre del Balanceado',
+        sortable: true,
+        align: 'center',
+      },
+      {
+        field: 'quantity',
+        title: 'Total del Dia (Kg)',
+        sortable: true,
+        align: 'center',
+      },
+      {
+        field: 'quantity',
+        title: 'Consumo Neto (Kg)',
+        sortable: true,
+        align: 'center',
+      },
+      {
+        field: 'operate',
+        title: 'Acciones',
+        align: 'center',
+        events: window.operateEvents,
+        formatter: operateFormatter
+      }]
+    ]
+  });
+}
+
+
+function getResourceUsed(url){
+  $.get(url, function(resp){
+    loadDataToTableResource('#table_statistic_resource',resp.data);
+  });
+}
+
+function loadDataToTableResource(table, data){
+
+    $(table).bootstrapTable('destroy').bootstrapTable({
+  
+      classes:"table table-striped table-hover table-borderless",
+      theadClasses:"thead-primary",
+      pagination:"true",
+      locale:"es-ES",
+      search:"true",
+      data: data,
+      columns: [
+        [{
+          field: 'resource_name',
+          title: 'Nombre del Recurso',
+          sortable: true,
+          align: 'center'
+        },
+        {
+          field: 'category',
+          title: 'Tipo de Recurso',
+          sortable: true,
+          align: 'center',
+        },
+       
+        {
+          field: 'quantity',
+          title: 'Total del Dia (Kg)',
+          sortable: true,
+          align: 'center',
+        },
+        {
+          field: 'date',
+          title: 'Fecha del Evento',
+          sortable: true,
+          align: 'center',
+        },
+        {
+          field: 'operate',
+          title: 'Acciones',
+          align: 'center',
+          events: window.operateEvents,
+          formatter: operateFormatter
+        }]
+      ]
+    });
+ 
+  window.operateEvents = {
+    'click .edit': function (e, value, row, index) {
+      alert('You click like action, row: ' + JSON.stringify(row))
+    },
+    'click .remove': function (e, value, row, index) {
+      $table.bootstrapTable('remove', {
+        field: 'id',
+        values: [row.id]
+      })
+    }
+  }
+  }
+
+function operateFormatter(value, row, index) {
+  return [
+    '<a  href="" class="edit btn btn-success btn-xs mr-4">'+
+    '<i class="fa fa-edit"></i></a>'+
+    '<a  href="" class="remove btn btn-xs btn-danger">'+
+     '<i class="fa fa-trash-o"></i></a>'
+  ].join('')
+}
 function createBioChart(data1, data2, data3, labels){ 
    return new Chart(ctx, {
     type: 'bar',
