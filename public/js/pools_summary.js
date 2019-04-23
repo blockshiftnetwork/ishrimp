@@ -9,9 +9,15 @@ var balacedChart;
 var paramChart;
 
 $(function (){
-
+pool_id = $('#select_pool').val();
+iniSummarypool(pool_id);
 $('#select_pool').on('change',function(){
   pool_id = $(this).val();
+  iniSummarypool(pool_id);
+});
+
+});
+function iniSummarypool(pool_id){
   let urlPool= '/pools/summary/'+pool_id;
   let urlBio = '/pools/bio/'+pool_id;
   let urlBalanced = '/pools/balancedused/'+pool_id;
@@ -25,10 +31,7 @@ $('#select_pool').on('change',function(){
   loadDataBalanced(urlBalanced);
   loadDataParam(urlParam);
   getResourceUsed(urlUsed);
-});
-
-});
-
+}
 function loadPool(url){
     $.get(url, function(resp){
     let pool = resp.data[0];

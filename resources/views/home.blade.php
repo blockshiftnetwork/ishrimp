@@ -14,7 +14,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                                <a class="nav-link" href="#maps" aria-controls="maps" role="tab" data-toggle="tab">
+                                <a id="tab_maps" class="nav-link" href="#maps" aria-controls="maps" role="tab" data-toggle="tab">
                                     <i class="fa fa-map icon"></i>
                                     {{__('Mapas')}}
                                 </a>
@@ -60,10 +60,23 @@
 <script src="{{ asset('js/pools_summary.js') }}"> </script>
 <script>
     $(function () {
+
     $('#select_pool').selectpicker({
         'liveSearch': true,
     });    
+
+     var tab =  getParameterByName('tab');
+    if(tab === '2'){
+        $('#tab_maps').tab('show');
+      } 
 });
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 
 function selectpresentation(event) {
         let id = event.target.value;
