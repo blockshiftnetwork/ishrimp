@@ -4,14 +4,14 @@
             <div role="tabpanel" id="pond-detail-pills">
                 <!-- Nav tabs -->
                 <ul class="nav nav-pills nav-tabs" role="tablist">
-                    <li role="resource"><a class="btn btn-light active" href="#resource-tab" aria-controls="resource_section"
+                    <li role="resource"><a id="link-recources" class="btn btn-light active" href="#resource-tab" aria-controls="resource_section"
                             role="tab" data-toggle="tab">Recursos</a></li>
                     <li role="presentation"><a class="btn btn-light " href="#presentation"
                             aria-controls="presentation_section" role="tab" data-toggle="tab">Presentaciones</a></li>
                    
                     <li role="providers"><a class="btn btn-light" href="#providers" aria-controls="providers_section"
                             role="tab" data-toggle="tab">Proveedores</a></li>
-                    <li role="labs"><a class="btn btn-light" href="#labs" aria-controls="labs_section"
+                    <li role="labs"><a id="link-lab" class="btn btn-light" href="#labs" aria-controls="labs_section"
                             role="tab" data-toggle="tab">Laboratorios</a></li>
                 </ul>
             </div>

@@ -25,7 +25,7 @@
 										@endforeach
 									</select>
 									@else
-										<a class=" text-wieght-bold text-white btn btn-inline" href="/resource">Debe registrar uno o más, aquí</a>
+										<a class="text-weight-bold text-danger btn btn-inline btn-light" href="/resource?tab=4">Debe registrar uno o más, aquí</a>
 									@endif
 									<input type="button" onclick="saveDaylyParameters()" value="Guardar" class="btn btn-light ml-auto dayly-parameters-submit">
 								</div>

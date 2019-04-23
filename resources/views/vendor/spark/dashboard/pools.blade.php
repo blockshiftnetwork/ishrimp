@@ -1,13 +1,15 @@
 <div class="dsh_board_main_body_cont">
     <div class="col-lg-12 border pondsDetailsTop nav nav-bar bg-white">
         <div class="col-lg-3 right_border ">
+        @if(count($pools) > 0)
             <select id="select_pool">
-                <option>Seleccione</option>
                 @foreach($pools as $pool)
                 <option data-tokens="{{$pool->pool_id}}" value="{{$pool->pool_id}}">{{$pool->name}}</option>
                 @endforeach
             </select>
-
+            @else
+			<a class="text-weight-bold text-danger btn btn-inline btn-light" href="/home?tab=2">Debe agregar piscinas</a>
+			@endif
         </div>
         <div class="col-lg-2 right_border mx-1">
             <p>DOC : <br><b class="pond_doc">NA</b></p>
