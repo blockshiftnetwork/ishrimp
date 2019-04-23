@@ -52,6 +52,8 @@
     @include('spark::modals.dashboard.modalPool')
     @include('spark::modals.dashboard.modalResourcesUsed')
     @include('spark::modals.dashboard.modalBalancedPool')
+    @include('spark::modals.dashboard.modalAbwPool')
+    @include('spark::modals.dashboard.modalLabsPool')
 
 @endsection
 
@@ -60,7 +62,52 @@
 <script src="{{ asset('js/pools_summary.js') }}"> </script>
 <script>
     $(function () {
-
+        var j = 0;
+        var t = new Date();
+        console.log(t.getHours(), t.getMinutes());
+        var timeout = null;
+        $('#used_date').flatpickr({
+            altInput: true,
+            altFormat: 'F j, Y',
+            dateFormat: 'Y-m-d',
+            maxDate: "today",
+            defaultDate: ["today"]
+        });
+        $('#balanced_date').flatpickr({
+            altInput: true,
+            altFormat: 'F j, Y',
+            dateFormat: 'Y-m-d',
+            maxDate: "today",
+            defaultDate: ["today"]
+        });
+        $('#param_date').flatpickr({
+            altInput: true,
+            altFormat: 'F j, Y',
+            dateFormat: 'Y-m-d',
+            maxDate: "today",
+            defaultDate: ["today"]
+        });
+        $('#param_hour').flatpickr({
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            time_24hr: true,
+            defaultDate: t.getHours()+':'+t.getMinutes()
+        });
+        $('#abw_date').flatpickr({
+            altInput: true,
+            altFormat: 'F j, Y',
+            dateFormat: 'Y-m-d',
+            maxDate: "today",
+            defaultDate: ["today"]
+        });
+        $('#abw_hour').flatpickr({
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            time_24hr: true,
+            defaultDate: t.getHours()+':'+t.getMinutes()
+        });
     $('#select_pool').selectpicker({
         'liveSearch': true,
     });    

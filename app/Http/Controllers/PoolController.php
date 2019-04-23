@@ -75,11 +75,12 @@ class PoolController extends Controller
         $pools_bio = DB::table('pools')->where('pools.id',$pools_id)
                     ->leftjoin('pools_sowing as sowing', 'pools.id','=', 'sowing.pool_id' )
                     ->leftJoin('daily_samples as samples', 'pools.id','=', 'samples.pool_id')
-                    ->select('pools.id as pool_id', 'pools.name as name',
+                    ->select('pools.id as pool_id', 'pools.name as name','samples.id as sample_id',
                     DB::raw('(IFNULL(samples.abw,0)) as abw'),
                     DB::raw('(IFNULL(samples.wg, 0)) as awg'),
                     DB::raw('(IFNULL(samples.survival_percent, 0)) as survival'),
                     DB::raw('(IFNULL(samples.abw_date, 0)) as abw_date'),
+                    DB::raw('(IFNULL(samples.abw_hour, 0)) as abw_hour'),
                     DB::raw('(IFNULL(sowing.planted_larvae, 0)) as planted_larvae'),
                     DB::raw('(SELECT (IFNULL(SUM(pools_resources_used.quantity),0)) FROM pools_resources_used, resources WHERE pools_resources_used.pool_id = pools.id and pools_resources_used.resource_id = resources.id and resources.category_id = 1 and samples.abw_date >= pools_resources_used.date) as balanced'))
                     ->get();

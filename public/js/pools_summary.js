@@ -122,7 +122,7 @@ window.operateEvents = {
     $('#resource_id').val(row.resource_id);
     $('#note').val(row.note);
     $('#quantity').val(row.quantity);
-    $('#date').val(row.date);
+    $('#used_date').val(row.date);
     $('#presentation_id').empty();
     $.ajax({
         url: "presentation/" + row.resource_id,
@@ -157,7 +157,6 @@ window.operateEvents = {
   },
 //action balanced used
   'click .edit-balanced': function (e, value, row, index) {
-    console.log(row);
     $('#editbalancedPoolModal').modal('show');
     $('#balanced_id').val(row.balanced_id);
     $('#balanced_pool_id').val(row.pool_id);
@@ -198,16 +197,42 @@ window.operateEvents = {
     $('#balanced_id').val(row.balanced_id);
   },
   'click .edit-abw': function (e, value, row, index) {
-    $('#editResourcesUsedPoolModal').modal('show');
+    $('#editAbwPoolModal').modal('show');
+    $('#abw_id').val(row.sample_id);
+    $('#abw_pool_id').val(row.pool_id);
+    $('#pool_abw').val(row.abw);
+    $('#pool_awg').val(row.awg);
+    $('#pool_survival').val(row.survival);
+    $('#abw_date').val(row.abw_date);
+    $('#abw_hour').val(row.abw_hour);
   },
   'click .remove-abw': function (e, value, row, index) {
-    $('#deleteResourcesUsedPoolModal').modal('show');
+    $('#deleteAbwPoolModal').modal('show');
+    $('#abwe_id').val(row.sample_id);
   },
-  'click .edit-paramet': function (e, value, row, index) {
-    $('#editResourcesUsedPoolModal').modal('show');
+  'click .edit-parameter': function (e, value, row, index) {
+    $('#editlabPoolModal').modal('show');
+    $('#param_id').val(row.id);
+    $('#param_pool_id').val(row.pool_id);
+    $('#laboratory_id').val(row.laboratory_id);
+    $('#ph').val(row.ph);
+    $('#ppt').val(row.ppt);
+    $('#temperature').val(row.temperature);
+    $('#co3').val(row.co3);
+    $('#hco3').val(row.hco3);
+    $('#ppm').val(row.ppm);
+    $('#ppm_a').val(row.ppm_a);
+    $('#ppm_h').val(row.ppm_h);
+    $('#ppm_d').val(row.ppm_d);
+    $('#green_colonies').val(row.green_colonies);
+    $('#yellow_colonies').val(row.yellow_colonies);
+    $('#param_date').val(row.date);
+    $('#param_hour').val(row.hour);
   },
-  'click .remove-parame': function (e, value, row, index) {
-    $('#deleteResourcesUsedPoolModal').modal('show');
+  'click .remove-parameter': function (e, value, row, index) {
+    $('#deletelabPoolModal').modal('show');
+    $('#parame_id').val(row.id);
+
   }
 }
 function loadDataToTableBalanced(table, data){
@@ -386,13 +411,20 @@ function operateFormatterResource(value, row, index) {
             title: 'Acciones',
             align: 'center',
             events: window.operateEvents,
-            formatter: operateFormatter
+            formatter: operateFormatterAbw
           }]
         ]
       });
    
   }
-
+  function operateFormatterAbw(value, row, index) {
+    return [
+      '<a   href="javascript:void(0)" class="edit-abw btn btn-success btn-xs mr-4">'+
+      '<i class="fa fa-edit"></i></a>'+
+      '<a  href="javascript:void(0)" class="remove-abw btn btn-xs btn-danger">'+
+       '<i class="fa fa-trash-o"></i></a>'
+    ].join('')
+  }
   function operateCalBio(value,row,index){
     return (row.abw != 0 && row.survival != 0 && row.planted_larvae != 0) ? (row.balanced/(row.abw/1000 * row.survival/100 * row.planted_larvae)).toFixed(2) : 0;
   }
@@ -480,7 +512,7 @@ function operateFormatterResource(value, row, index) {
           title: 'Acciones',
           align: 'center',
           events: window.operateEvents,
-          formatter: operateFormatter
+          formatter: operateFormatterParameter
         }]
       ]
     });
@@ -490,15 +522,14 @@ function operateFormatterResource(value, row, index) {
     return (row.co3 + row.hco3);
   }
 
-function operateFormatter(value, row, index) {
-  return [
-    '<a  href="javascript:void(0)" class="edit-resources btn btn-success btn-xs mr-4">'+
-    '<i class="fa fa-edit"></i></a>'+
-    '<a  href="javascript:void(0)" class="remove btn btn-xs btn-danger">'+
-     '<i class="fa fa-trash-o"></i></a>'
-  ].join('')
-}
-
+  function operateFormatterParameter(value, row, index) {
+    return [
+      '<a   href="javascript:void(0)" class="edit-parameter btn btn-success btn-xs mr-4">'+
+      '<i class="fa fa-edit"></i></a>'+
+      '<a  href="javascript:void(0)" class="remove-parameter btn btn-xs btn-danger">'+
+       '<i class="fa fa-trash-o"></i></a>'
+    ].join('')
+  }
 function createBioChart(data1, data2, data3, labels){ 
    return new Chart(ctx, {
     type: 'bar',
