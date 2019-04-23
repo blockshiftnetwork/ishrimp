@@ -148,7 +148,7 @@ class CultivationController extends Controller
      * @param  \App\Pool  $pool
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pool $pool)
+    public function destroy(Request $request)
     {
        $used = DB::table('pools_resources_used')->where('pools_resources_used.id',$request->id)
                 ->delete();
@@ -182,6 +182,41 @@ class CultivationController extends Controller
         ]); 
         }
 
+    public function updateDaylyParam(Request $request)
+        {
+            $request->validate([
+                'pool_id' => 'required',
+                'ph' => 'required',
+                'ppt' => 'required',
+                'ppm' => 'required',
+                'temperature' => 'required',
+                'co3' => 'required',
+                'hco3' => 'required',
+                'ppm_d' => 'required',
+                'ppm_a' => 'required',
+                'ppm_h' => 'required',
+                'green_colonies' => 'required',
+                'yellow_colonies' => 'required',
+                'laboratory_id' => 'required',
+                'date' => 'required',
+                'hour' => 'required'
+            ]);
+           // dd($request);
+            $dayly = DB::table('daily_parameters')->where('daily_parameters.id',$request->id)
+                        ->update($request->except('_token','_method'));
+    
+            return redirect()->back()->with('message', 'Datos Actualizados!');
+    
+        }
+    
+        
+    public function destroyDaylyParam(Request $request)
+        {
+            $dayly = DB::table('daily_parameters')->where('daily_parameters.id',$request->id)
+                        ->delete();
+    
+            return redirect()->back()->with('message', 'Datos Eliminados!');
+        }
   ###Dayly ABW##
   public function storeDaylyABW(Request $request)
   {
@@ -203,6 +238,34 @@ class CultivationController extends Controller
           'status' => '200',
           'data' => '!Datos guardados!',
       ]); 
+      }
+
+      public function updateDaylyABW(Request $request)
+      {
+       
+        $request->validate([
+            'pool_id' => 'required',
+            'abw' => 'required',
+            'wg' => 'required',
+            'survival_percent' => 'required',
+            'abw_date' => 'required',
+            'abw_hour' => 'required',
+        ]);
+        
+          $dayly = DB::table('daily_samples')->where('daily_samples.id',$request->id)
+                      ->update($request->except('_token','_method'));
+  
+          return redirect()->back()->with('message', 'Datos Actualizados!');
+  
+      }
+  
+      
+  public function destroyDaylyABW(Request $request)
+      {
+          $dayly = DB::table('daily_samples')->where('daily_samples.id',$request->id)
+                      ->delete();
+  
+          return redirect()->back()->with('message', 'Datos Eliminados!');
       }
 
 }

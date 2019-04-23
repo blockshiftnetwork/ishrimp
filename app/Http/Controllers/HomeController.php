@@ -61,8 +61,9 @@ class HomeController extends Controller
             }
         $resources = DB::table('resources')->where('resources.category_id','>', 1)->get();
         $balanceds = DB::table('resources')->where('resources.category_id','=', 1)->get();
+        $laboratories = DB::table('laboratories')->get();
 
             //dd($resources);
-        return view('home')->with(['pools' => $pools, 'resources' => $resources,'balanceds' => $balanceds]);
+        return view('home')->with(['pools' => $pools, 'resources' => $resources,'balanceds' => $balanceds,'laboratories' => $laboratories]);
     }
 }

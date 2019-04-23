@@ -49,7 +49,7 @@
 
                     <div class="form-group">
                         <label for="quantity">Fecha</label>
-                        <input class="form-control" type="text" name="date" id="date" required>
+                        <input class="form-control" type="text" name="date" id="used_date" required>
                     </div>
                    
                 </div>
