@@ -15,8 +15,8 @@ class PoolsSowingTable extends Migration
     {
         Schema::create('pools_sowing', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('pool_id')->unsigned();
-            $table->foreign('pool_id')->references('id')->on('pools');
+            $table->integer('pool_id')->unsigned()->nullable();
+            $table->foreign('pool_id')->references('id')->on('pools')->onDelete('cascade');
             $table->integer('planted_larvae')->comment('Quantity of larvaes planted');
             $table->string('larvae_type');
             $table->datetime('planted_at');

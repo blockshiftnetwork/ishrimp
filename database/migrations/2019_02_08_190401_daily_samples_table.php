@@ -15,12 +15,12 @@ class DailySamplesTable extends Migration
     {
         Schema::create('daily_samples', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('pool_id')->unsigned();
-            $table->foreign('pool_id')->references('id')->on('pools');
+            $table->integer('pool_id')->unsigned()->nullable();
+            $table->foreign('pool_id')->references('id')->on('pools')->onDelete('cascade');
             $table->float('weight');
             $table->float('quantity');
-            $table->float('abw')->comment('peso promedio del camaron(g)');
-            $table->float('wg')->comment('diferencia con respecto al average anterior(g)');
+            $table->float('abw',6,3)->comment('peso promedio del camaron(g)');
+            $table->float('wg',6,3)->comment('diferencia con respecto al average anterior(g)');
             $table->float('survival_percent');
             $table->dateTime('abw_date');
             $table->time('abw_hour');
