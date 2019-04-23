@@ -125,8 +125,21 @@ class CultivationController extends Controller
      * @param  \App\Pool  $pool
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pool $pool)
+    public function update(Request $request)
     {
+        $request->validate([
+            'pool_id' => 'required',
+            'resource_id' => 'required',
+            'quantity' => 'required',
+            'presentation_id' => 'required',
+            'date' => 'required'
+        ]);
+
+        $used = DB::table('pools_resources_used')->where('pools_resources_used.id',$request->id)
+                    ->update($request->except('_token','_method'));
+        
+        return redirect()->back()->with('message', '¡Recurso Actualizado!');
+
     }
 
     /**
@@ -137,6 +150,10 @@ class CultivationController extends Controller
      */
     public function destroy(Pool $pool)
     {
+       $used = DB::table('pools_resources_used')->where('pools_resources_used.id',$request->id)
+                ->delete();
+
+        return redirect()->back()->with('message', '¡Recurso Eliminado!');
     }
     ###Dayly Parameters##
     public function storeDaylyParam(Request $request)

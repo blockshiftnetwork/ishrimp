@@ -98,7 +98,7 @@ class PoolController extends Controller
                             ->leftJoin('resources','resources.id','=','balanced.resource_id')
                             ->leftJoin('category_resources as category','category.id','=','resources.category_id')
                             ->where('category.id', 1)->groupBy('balanced.date')
-                            ->select(DB::raw('(SUM(balanced.quantity)) as quantity'),'balanced.date','balanced.resource_id','resources.name as resource_name',
+                            ->select('pools.id as pool_id',DB::raw('(SUM(balanced.quantity)) as quantity'),'balanced.id as balanced_id','balanced.date','balanced.resource_id','balanced.presentation_id','balanced.note','resources.name as resource_name',
                             DB::raw('(SELECT (DATEDIFF(balanced.date,pools_sowing.planted_at)) FROM pools_sowing WHERE pools_sowing.pool_id = pools.id) as days'))
                             ->get();
 
@@ -132,7 +132,7 @@ class PoolController extends Controller
         ->leftJoin('resources','resources.id','=','used.resource_id')
         ->leftJoin('category_resources as category','category.id','=','resources.category_id')
         ->where('category.id','>', 1)->groupBy('used.date')
-        ->select(DB::raw('(SUM(used.quantity)) as quantity'),'used.date','used.resource_id','used.note','resources.name as resource_name','category.name as category')
+        ->select('pools.id as pool_id',DB::raw('(SUM(used.quantity)) as quantity'),'used.id as used_id','used.date','used.resource_id','used.presentation_id','used.note','resources.name as resource_name','category.name as category')
         ->get();
 
         return response()->json([
@@ -140,8 +140,6 @@ class PoolController extends Controller
             'data' => $resource_used,
         ]);
     }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -244,9 +242,9 @@ class PoolController extends Controller
      * @param  \App\Pool  $pool
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pool $pool)
+    public function destroy(Request $request)
     {
-        $pool = Pool::findOrFail($pool);
+        $pool = Pool::findOrFail($request->id);
         $pool->delete();
 
         return redirect()->back()->with('message', 'Piscina Eliminada!');

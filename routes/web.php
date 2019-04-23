@@ -29,10 +29,13 @@ Route::resource('/pools_sowing', 'PoolSowingController');
 Route::resource('/cultivation', 'CultivationController');
 Route::post('/cultivation/daylyParam', 'CultivationController@storeDaylyParam')->name('storeDaylyParam');
 Route::post('/cultivation/daylyabw', 'CultivationController@storeDaylyABW')->name('storeDaylyABW');
+Route::patch('cultivation/used/{used_id}','CultivationController@update')->name('updateUsed');
+Route::delete('cultivation/used/{used_id}','CultivationController@destroy')->name('destroyUsed');
 
 //check existence
 Route::get('presentation/{resource_id}','CultivationController@getPresentationResource');
 Route::get('existence/{resource_id}/{presentation_id}','CultivationController@verifyExistence');
+
 //resources controller
 Route::resource('/resource', 'ResourceController');
 Route::post('/resource/providers', 'ResourceController@storeProvider')->name('storeProvider');
