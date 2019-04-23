@@ -59,7 +59,10 @@ class HomeController extends Controller
                         DB::raw('(SELECT (IFNULL(SUM(pools_resources_used.quantity),0)) FROM pools_resources_used, resources WHERE pools_resources_used.pool_id = pools.id and pools_resources_used.resource_id = resources.id and resources.category_id = 1 ) as balanced'), DB::raw('(IFNULL(parameters.ppm, 0)) as do'))
                     ->get(); 
             }
-                   //dd($pools);
-        return view('home')->with(['pools' => $pools]);
+        $resources = DB::table('resources')->where('resources.category_id','>', 1)->get();
+        $balanceds = DB::table('resources')->where('resources.category_id','=', 1)->get();
+
+            //dd($resources);
+        return view('home')->with(['pools' => $pools, 'resources' => $resources,'balanceds' => $balanceds]);
     }
 }

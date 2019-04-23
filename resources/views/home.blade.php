@@ -45,8 +45,13 @@
                         </div>
                     </div>
             </div>
+           
         </div>
+       
     </home>
+    @include('spark::modals.dashboard.modalPool')
+    @include('spark::modals.dashboard.modalResourcesUsed')
+    @include('spark::modals.dashboard.modalBalancedPool')
 
 @endsection
 
@@ -55,9 +60,35 @@
 <script src="{{ asset('js/pools_summary.js') }}"> </script>
 <script>
     $(function () {
-    $('select').selectpicker({
+    $('#select_pool').selectpicker({
         'liveSearch': true,
-    });
+    });    
 });
+
+function selectpresentation(event) {
+        let id = event.target.value;
+        let presentation = $(event.target).parent().next().next().children().next()
+        console.log(presentation);
+        $(presentation[0]).empty();
+        $(presentation[0]).append('<option value="" selected>Presentación</option>');
+        $.ajax({
+            url: "presentation/" + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                var resp = response.data;
+                for (var i = 0; i < resp.length; i++) {
+                    $(presentation[0]).append('<option value="' + resp[i].id + '">' + resp[i].name + '</option>');
+                }
+            }
+        });
+    }
+    $('#deletePoolModal').on('shown.bs.modal',function(event){
+        console.log('show')
+            var button = $(event.relatedTarget);
+            var modal = $(this);
+            var id = button.data('id');
+            modal.find('.modal-body #pool_id').val(id);
+           })
 </script>
 @endsection

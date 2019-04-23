@@ -15,8 +15,8 @@ class PoolsResourcesUsedTable extends Migration
     {
         Schema::create('pools_resources_used', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('pool_id')->unsigned();
-            $table->foreign('pool_id')->references('id')->on('pools')->nullable();
+            $table->integer('pool_id')->unsigned()->nullable();
+            $table->foreign('pool_id')->references('id')->on('pools')->onDelete('set null');
             $table->integer('resource_id')->unsigned();
             $table->foreign('resource_id')->references('id')->on('resources');
             $table->integer('presentation_id')->unsigned();

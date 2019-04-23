@@ -16,9 +16,9 @@ class DailyParametersTable extends Migration
         Schema::create('daily_parameters', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pool_id')->unsigned();
-            $table->foreign('pool_id')->references('id')->on('pools');
-            $table->integer('laboratory_id')->unsigned();
-            $table->foreign('laboratory_id')->references('id')->on('laboratories');
+            $table->foreign('pool_id')->references('id')->on('pools')->onDelete('cascade');
+            $table->integer('laboratory_id')->unsigned()->nullable();
+            $table->foreign('laboratory_id')->references('id')->on('laboratories')->onDelete('set null');
             $table->float('ph',3,1)->comment('Acidez entre 7.5-8.5');
             $table->float('ppt',4,2)->comment('Salinidad 15-25');
             $table->float('ppm',5,4)->comment('Do >3.0');
