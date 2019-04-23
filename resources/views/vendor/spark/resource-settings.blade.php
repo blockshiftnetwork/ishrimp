@@ -14,7 +14,7 @@
                 @section('resource_options')
                 <ul class="nav flex-column mb-4">
                     <li class="nav-item ">
-                        <a id="resource" class="nav-link active" href="#resource" aria-controls="resource" role="tab" data-toggle="tab">
+                        <a id="resource" class="nav-link active" href="#resources" aria-controls="resource" role="tab" data-toggle="tab">
                             <i class="fa fa-eyedropper icon"></i>
                             {{__('Resources')}}
                         </a>
@@ -32,7 +32,7 @@
                 <!-- Tab Cards -->
                 <div class="col-12">
                     <div class="tab-content">
-                        <div role="tabcard" class="tab-pane active" id="resource">
+                        <div role="tabcard" class="tab-pane active" id="resources">
                             @include('spark::resource.resource')
                         </div>
                         <div role="tabcard" class="tab-pane" id="inventory">
@@ -49,8 +49,16 @@
 
     $(function(){
       var act =  getParameterByName('inventory');
+      var config =  getParameterByName('tab');
       if(act === '1'){
         $('#tab_inventory').tab('show');
+      }
+      if(config == '4'){
+        $('#resource-tab').removeClass('active');
+        $('#link-recources').removeClass('active')
+        $('#link-lab').addClass('active');
+        $('#labs').addClass('active');
+        $('#labs').tab('show');
       }
       console.log(act);
     });
