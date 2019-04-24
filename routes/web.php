@@ -28,11 +28,20 @@ Route::resource('/pools_sowing', 'PoolSowingController');
 //cultivation
 Route::resource('/cultivation', 'CultivationController');
 Route::post('/cultivation/daylyParam', 'CultivationController@storeDaylyParam')->name('storeDaylyParam');
+Route::patch('/cultivation/daylyParam/{param_id}', 'CultivationController@updateDaylyParam')->name('updateDaylyParam');
+Route::delete('/cultivation/daylyParam/{param_id}', 'CultivationController@destroyDaylyParam')->name('destroyDaylyParam');
+
 Route::post('/cultivation/daylyabw', 'CultivationController@storeDaylyABW')->name('storeDaylyABW');
+Route::patch('/cultivation/daylyabw/{abw_id}', 'CultivationController@updateDaylyABW')->name('updateDaylyABW');
+Route::delete('/cultivation/daylyabw/{abw_id}', 'CultivationController@destroyDaylyABW')->name('destroyDaylyABW');
+
+Route::patch('cultivation/used/{used_id}','CultivationController@update')->name('updateUsed');
+Route::delete('cultivation/used/{used_id}','CultivationController@destroy')->name('destroyUsed');
 
 //check existence
 Route::get('presentation/{resource_id}','CultivationController@getPresentationResource');
 Route::get('existence/{resource_id}/{presentation_id}','CultivationController@verifyExistence');
+
 //resources controller
 Route::resource('/resource', 'ResourceController');
 Route::post('/resource/providers', 'ResourceController@storeProvider')->name('storeProvider');

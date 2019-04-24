@@ -9,9 +9,15 @@ var balacedChart;
 var paramChart;
 
 $(function (){
-
+pool_id = $('#select_pool').val();
+iniSummarypool(pool_id);
 $('#select_pool').on('change',function(){
   pool_id = $(this).val();
+  iniSummarypool(pool_id);
+});
+
+});
+function iniSummarypool(pool_id){
   let urlPool= '/pools/summary/'+pool_id;
   let urlBio = '/pools/bio/'+pool_id;
   let urlBalanced = '/pools/balancedused/'+pool_id;
@@ -25,10 +31,7 @@ $('#select_pool').on('change',function(){
   loadDataBalanced(urlBalanced);
   loadDataParam(urlParam);
   getResourceUsed(urlUsed);
-});
-
-});
-
+}
 function loadPool(url){
     $.get(url, function(resp){
     let pool = resp.data[0];
@@ -52,7 +55,7 @@ function loadDataBio(url) {
     let agw = createData(resp.data,'awg');
     let rc = calRC(resp.data, 'balanced', 'abw', 'survival','planted_larvae');
     bioChart = createBioChart(abw,agw,rc,labels);
-    
+    loadDataToTableAbw('#table_statistic_abw',resp.data);
   });
 }
 
@@ -75,7 +78,7 @@ function loadDataParam(url){
     let dO = createData(resp.data, 'ppm');
     let temperature = createData(resp.data, 'temperature');
     paramChart = createParamChart(pH,dO,temperature,labels);
-    
+    loadDataToTableParameters('#statistic_table_param',resp.data);
   });
 }
 
@@ -110,6 +113,128 @@ function loadlabelCreatAt(data, prop){
   return labels;
 }
 
+window.operateEvents = {
+  // action resources used
+  'click .edit-used': function (e, value, row, index) {
+    $('#editResourcesUsedPoolModal').modal('show');
+    $('#id').val(row.used_id);
+    $('#pool_id').val(row.pool_id);
+    $('#resource_id').val(row.resource_id);
+    $('#note').val(row.note);
+    $('#quantity').val(row.quantity);
+    $('#used_date').val(row.date);
+    $('#presentation_id').empty();
+    $.ajax({
+        url: "presentation/" + row.resource_id,
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            var resp = response.data;
+            for (var i = 0; i < resp.length; i++) {
+                $('#presentation_id').append('<option value="' + resp[i].id + '">' + resp[i].name + '</option>');
+            }
+            $('#presentation_id').val(row.presentation_id);
+        }
+    });
+    $('#resource_id').on('change', function(){
+      $('#presentation_id').empty();
+      $.ajax({
+        url: "presentation/" + $(this).val(),
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            var resp = response.data;
+            for (var i = 0; i < resp.length; i++) {
+                $('#presentation_id').append('<option value="' + resp[i].id + '">' + resp[i].name + '</option>');
+            }
+        }
+    });
+    });
+  },
+  'click .remove-used': function (e, value, row, index) {
+    $('#deleteResourcesUsedPoolModal').modal('show');
+    $('#id').val(row.used_id);
+  },
+//action balanced used
+  'click .edit-balanced': function (e, value, row, index) {
+    $('#editbalancedPoolModal').modal('show');
+    $('#balanced_id').val(row.balanced_id);
+    $('#balanced_pool_id').val(row.pool_id);
+    $('#balanced_resource_id').val(row.resource_id);
+    $('#balanced_note').val(row.note);
+    $('#balanced_quantity').val(row.quantity);
+    $('#balanced_date').val(row.date);
+    $('#balanced_presentation_id').empty();
+    $.ajax({
+        url: "presentation/" + row.resource_id,
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            var resp = response.data;
+            for (var i = 0; i < resp.length; i++) {
+                $('#balanced_presentation_id').append('<option value="' + resp[i].id + '">' + resp[i].name + '</option>');
+            }
+            $('#balanced_presentation_id').val(row.presentation_id);
+        }
+    });
+    $('#balanced_resource_id').on('change', function(){
+      $('#balanced_presentation_id').empty();
+      $.ajax({
+        url: "presentation/" + $(this).val(),
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            var resp = response.data;
+            for (var i = 0; i < resp.length; i++) {
+                $('#balanced_presentation_id').append('<option value="' + resp[i].id + '">' + resp[i].name + '</option>');
+            }
+        }
+    });
+    });
+  },
+  'click .remove-balanced': function (e, value, row, index) {
+    $('#deletebalancedPoolModal').modal('show');
+    $('#balanced_id').val(row.balanced_id);
+  },
+  'click .edit-abw': function (e, value, row, index) {
+    $('#editAbwPoolModal').modal('show');
+    $('#abw_id').val(row.sample_id);
+    $('#abw_pool_id').val(row.pool_id);
+    $('#pool_abw').val(row.abw);
+    $('#pool_awg').val(row.awg);
+    $('#pool_survival').val(row.survival);
+    $('#abw_date').val(row.abw_date);
+    $('#abw_hour').val(row.abw_hour);
+  },
+  'click .remove-abw': function (e, value, row, index) {
+    $('#deleteAbwPoolModal').modal('show');
+    $('#abwe_id').val(row.sample_id);
+  },
+  'click .edit-parameter': function (e, value, row, index) {
+    $('#editlabPoolModal').modal('show');
+    $('#param_id').val(row.id);
+    $('#param_pool_id').val(row.pool_id);
+    $('#laboratory_id').val(row.laboratory_id);
+    $('#ph').val(row.ph);
+    $('#ppt').val(row.ppt);
+    $('#temperature').val(row.temperature);
+    $('#co3').val(row.co3);
+    $('#hco3').val(row.hco3);
+    $('#ppm').val(row.ppm);
+    $('#ppm_a').val(row.ppm_a);
+    $('#ppm_h').val(row.ppm_h);
+    $('#ppm_d').val(row.ppm_d);
+    $('#green_colonies').val(row.green_colonies);
+    $('#yellow_colonies').val(row.yellow_colonies);
+    $('#param_date').val(row.date);
+    $('#param_hour').val(row.hour);
+  },
+  'click .remove-parameter': function (e, value, row, index) {
+    $('#deletelabPoolModal').modal('show');
+    $('#parame_id').val(row.id);
+
+  }
+}
 function loadDataToTableBalanced(table, data){
 
   $(table).bootstrapTable('destroy').bootstrapTable({
@@ -156,12 +281,19 @@ function loadDataToTableBalanced(table, data){
         title: 'Acciones',
         align: 'center',
         events: window.operateEvents,
-        formatter: operateFormatter
+        formatter: operateFormatterBalanced
       }]
     ]
   });
 }
-
+function operateFormatterBalanced(value, row, index) {
+  return [
+    '<a   href="javascript:void(0)" class="edit-balanced btn btn-success btn-xs mr-4">'+
+    '<i class="fa fa-edit"></i></a>'+
+    '<a  href="javascript:void(0)" class="remove-balanced btn btn-xs btn-danger">'+
+     '<i class="fa fa-trash-o"></i></a>'
+  ].join('')
+}
 
 function getResourceUsed(url){
   $.get(url, function(resp){
@@ -210,32 +342,194 @@ function loadDataToTableResource(table, data){
           title: 'Acciones',
           align: 'center',
           events: window.operateEvents,
-          formatter: operateFormatter
+          formatter: operateFormatterResource
         }]
       ]
     });
- 
-  window.operateEvents = {
-    'click .edit': function (e, value, row, index) {
-      alert('You click like action, row: ' + JSON.stringify(row))
-    },
-    'click .remove': function (e, value, row, index) {
-      $table.bootstrapTable('remove', {
-        field: 'id',
-        values: [row.id]
-      })
-    }
-  }
-  }
+}
 
-function operateFormatter(value, row, index) {
+function operateFormatterResource(value, row, index) {
   return [
-    '<a  href="" class="edit btn btn-success btn-xs mr-4">'+
+    '<a   href="javascript:void(0)" class="edit-used btn btn-success btn-xs mr-4">'+
     '<i class="fa fa-edit"></i></a>'+
-    '<a  href="" class="remove btn btn-xs btn-danger">'+
+    '<a  href="javascript:void(0)" class="remove-used btn btn-xs btn-danger">'+
      '<i class="fa fa-trash-o"></i></a>'
   ].join('')
 }
+
+    function loadDataToTableAbw(table, data){
+
+      $(table).bootstrapTable('destroy').bootstrapTable({
+    
+        classes:"table table-striped table-hover table-borderless",
+        theadClasses:"thead-primary",
+        pagination:"true",
+        locale:"es-ES",
+        search:"true",
+        data: data,
+        columns: [
+          [{
+            field: 'abw',
+            title: 'ABW (g)',
+            sortable: true,
+            align: 'center'
+          },
+          {
+            field: 'awg',
+            title: 'AWG (g)',
+            sortable: true,
+            align: 'center',
+          },
+         
+          {
+            field: 'balanced',
+            title: 'Tasa de Balanceado (Kg)',
+            sortable: true,
+            align: 'center',
+          },
+          {
+            field: 'bio_masa',
+            title: 'Bio-Masa',
+            sortable: true,
+            align: 'center',
+            formatter: operateCalBio
+          },
+          {
+            field: 'survival',
+            title: 'Supervivencia (%)',
+            sortable: true,
+            align: 'center',
+          },
+          {
+            field: 'abw_date',
+            title: 'Fecha del Evento',
+            sortable: true,
+            align: 'center',
+          },
+          {
+            field: 'operate',
+            title: 'Acciones',
+            align: 'center',
+            events: window.operateEvents,
+            formatter: operateFormatterAbw
+          }]
+        ]
+      });
+   
+  }
+  function operateFormatterAbw(value, row, index) {
+    return [
+      '<a   href="javascript:void(0)" class="edit-abw btn btn-success btn-xs mr-4">'+
+      '<i class="fa fa-edit"></i></a>'+
+      '<a  href="javascript:void(0)" class="remove-abw btn btn-xs btn-danger">'+
+       '<i class="fa fa-trash-o"></i></a>'
+    ].join('')
+  }
+  function operateCalBio(value,row,index){
+    return (row.abw != 0 && row.survival != 0 && row.planted_larvae != 0) ? (row.balanced/(row.abw/1000 * row.survival/100 * row.planted_larvae)).toFixed(2) : 0;
+  }
+
+  function loadDataToTableParameters(table, data){
+
+    $(table).bootstrapTable('destroy').bootstrapTable({
+  
+      classes:"table table-striped table-hover table-borderless",
+      theadClasses:"thead-primary",
+      pagination:"true",
+      locale:"es-ES",
+      search:"true",
+      data: data,
+      columns: [
+        [{
+          field: 'ppt',
+          title: 'Salinidad (PPT)',
+          sortable: true,
+          align: 'center'
+        },
+        {
+          field: 'ppm',
+          title: 'DO',
+          sortable: true,
+          align: 'center',
+        },
+        {
+          field: 'co3',
+          title: 'CO3',
+          sortable: true,
+          align: 'center',
+        },
+        {
+          field: 'hco3',
+          title: 'HCO3',
+          sortable: true,
+          align: 'center',
+        },
+        {
+          field: 'total',
+          title: 'Total',
+          sortable: true,
+          align: 'center',
+          formatter:operationCalTotal
+        },
+        {
+          field: 'ppm_d',
+          title: 'Dureza (PPM-D)',
+          sortable: true,
+          align: 'center',
+        },
+        {
+          field: 'ppm_a',
+          title: 'Amoníaco (NH4 +)',
+          sortable: true,
+          align: 'center',
+        },
+        {
+          field: 'ppm_h',
+          title: 'Hierro',
+          sortable: true,
+          align: 'center',
+        },
+        {
+          field: 'green_colonies',
+          title: 'Colonias Verdes',
+          sortable: true,
+          align: 'center',
+        },
+        {
+          field: 'yellow_colonies',
+          title: 'Colonias Amarillas',
+          sortable: true,
+          align: 'center',
+        },
+        {
+          field: 'date',
+          title: 'Fecha de la Prueba',
+          sortable: true,
+          align: 'center',
+        },
+        {
+          field: 'operate',
+          title: 'Acciones',
+          align: 'center',
+          events: window.operateEvents,
+          formatter: operateFormatterParameter
+        }]
+      ]
+    });
+  }
+
+  function operationCalTotal(value, row, index){
+    return (row.co3 + row.hco3);
+  }
+
+  function operateFormatterParameter(value, row, index) {
+    return [
+      '<a   href="javascript:void(0)" class="edit-parameter btn btn-success btn-xs mr-4">'+
+      '<i class="fa fa-edit"></i></a>'+
+      '<a  href="javascript:void(0)" class="remove-parameter btn btn-xs btn-danger">'+
+       '<i class="fa fa-trash-o"></i></a>'
+    ].join('')
+  }
 function createBioChart(data1, data2, data3, labels){ 
    return new Chart(ctx, {
     type: 'bar',

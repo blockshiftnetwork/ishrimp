@@ -37,6 +37,10 @@
                             <th
                             data-sortable="true"
                             data-field="ratio" data-align="center">Factor de <br> Conversión (Lb)<br></th>
+                            <th
+                            data-sortable="true"
+                            data-field="action" data-align="center">Acciones</th>
+                        
                         </tr>
                     </thead>
                     <tbody>
@@ -51,14 +55,14 @@
                         @foreach ($pools as $item)
                         <tr>
 
-                            <td><a class="text-muted" href="">{{$item->name}}</a></td>
-                            <td><a class="text-muted" href="">{{$item->days}}</a></td>
-                            <td><a class="text-muted" href="">{{$item->abw}}</a></td>
-                            <td><a class="text-muted" href="">{{$item->awg}}</a></td>
-                            <td><a class="text-muted" href="">{{$item->balanced}}</a></td>
-                            <td><a class="text-muted" href="">{{$item->do}}</a></td>
-                            <td><a class="text-muted" href="">
-                                        @if ($item->abw == 0 || $item->survival == 0)
+                            <td><a class="text-muted" href="javascript:void(0)">{{$item->name}}</a></td>
+                            <td><a class="text-muted" href="javascript:void(0)">{{$item->days}}</a></td>
+                            <td><a class="text-muted" href="javascript:void(0)">{{$item->abw}}</a></td>
+                            <td><a class="text-muted" href="javascript:void(0)">{{$item->awg}}</a></td>
+                            <td><a class="text-muted" href="javascript:void(0)">{{$item->balanced}}</a></td>
+                            <td><a class="text-muted" href="javascript:void(0)">{{$item->do}}</a></td>
+                            <td><a class="text-muted" href="javascript:void(0)">
+                                        @if ($item->abw == 0 || $item->survival == 0 || $item->planted_larvae  == 0)
                                                                     0
                                         @else
                                     {{round(($item->balanced*2.2)/((($item->abw/1000)*2.2)*($item->survival/100)*($item->planted_larvae)),3)}}
@@ -66,6 +70,14 @@
 
 
                             </a></td>
+                            <td>
+                            <a
+                            data-toggle="modal"
+                            data-target="#deletePoolModal"
+                            data-id="{{$item->pool_id}}" href="javascript:void(0)" class="remove-pool btn btn-xs btn-danger">
+                            <i class="fa fa-trash-o"></i></a>
+                            </td>
+
                         </tr>
                         @endforeach
 

@@ -1,13 +1,15 @@
 <div class="dsh_board_main_body_cont">
     <div class="col-lg-12 border pondsDetailsTop nav nav-bar bg-white">
         <div class="col-lg-3 right_border ">
-          <select id="select_pool">
-          <option >Seleccione</option>
-            @foreach($pools as $pool)
-            <option data-tokens="{{$pool->pool_id}}" value="{{$pool->pool_id}}">{{$pool->name}}</option>
-            @endforeach 
-</select>
-
+        @if(count($pools) > 0)
+            <select id="select_pool">
+                @foreach($pools as $pool)
+                <option data-tokens="{{$pool->pool_id}}" value="{{$pool->pool_id}}">{{$pool->name}}</option>
+                @endforeach
+            </select>
+            @else
+			<a class="text-weight-bold text-danger btn btn-inline btn-light" href="/home?tab=2">Debe agregar piscinas</a>
+			@endif
         </div>
         <div class="col-lg-2 right_border mx-1">
             <p>DOC : <br><b class="pond_doc">NA</b></p>
@@ -20,7 +22,7 @@
             <p>Extensión : <br><b class="pond_wsa">NA</b></p>
         </div>
         <div class="col-lg-3">
-           
+
         </div>
     </div>
 
@@ -128,14 +130,14 @@
             </div>
             <!-- inputs -->
             <div role="tabpanel" class="tab-pane" id="inputs_pill">
-                    <div class="fixed-table-header">
-                        <h4 class="text-title mt-4">Medicamentos y Minerales</h4>
-                    </div>
+                <div class="fixed-table-header">
+                    <h4 class="text-title mt-4">Medicamentos y Minerales</h4>
+                </div>
 
-                        <table id="table_statistic_resource" class="bg-white">
-                        </table>
-                
-                    <!-- <div class="fixed-table-header">
+                <table id="table_statistic_resource" class="bg-white">
+                </table>
+
+                <!-- <div class="fixed-table-header">
                         <h4 class="text-title mt-4">Otras entradas</h4>
                     </div>
                    
@@ -176,110 +178,21 @@
 
                             </tbody>
                         </table> -->
-              </div>
+            </div>
             <!-- abw -->
             <div role="tabpanel" class="tab-pane" id="abw_pill">
-                        <table id="ponds-snap-tbl" class="bg-white"
-                            data-toggle="table"
-                            data-classes="table table-striped table-hover table-borderless"
-                            data-pagination="true"
-                            data-locale="es-ES"
-                            data-search="true"
-                            style="width:99.9%;">
-                            <thead class="thead-primary">
-                                <tr>
-                                    <th data-align="center">Muestras (g)</th>
-                                    <th data-align="center">ABW (g)</th>
-                                    <th data-align="center">AGW (g)</th>
-                                    <th data-align="center">Tasa Balanceado (Kg)</th>
-                                    <th data-align="center">Bio-masa (Kg)</th>
-                                    <th data-align="center">Supervivencia (%)</th>
-                                    <th data-align="center">FCR</th>
-                                    <th data-align="center">Fecha del Evento</th>
-                                    <th data-align="center">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <tr>
-                                    <td>0</td>
-                                    <td>13.45</td>
-                                    <td>1.64</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>70</td>
-                                    <td>0</td>
-                                    <td>28-Juan 19</td>
-                                    <td>
-                                        <div class="actions btn btn-group-sm">
-                                            <a href="" class="btn btn-success btn-xs mr-4">
-                                                <i class="fa fa-edit"></i></a>
-                                            <a href="" class="btn btn-xs btn-danger">
-                                                <i class="fa fa-trash-o"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            
-                            </tbody>
-                        </table>
-                   
-                    <div class="fixed-table-pagination" style="display: none;">
-                    </div>
+                <table id="table_statistic_abw" class="bg-white">
+                </table>
             </div>
             <!-- Labs -->
             <div role="tabpanel" class="tab-pane" id="lab_pill">
-                    <div class="fixed-table-header">
-                        <h4 class="text-title mt-4">Otras entradas</h4>
-                    </div>
-                        <table id="ponds-snap-tbl" class="bg-white"
-                            data-toggle="table"
-                            data-classes="table table-striped table-hover table-borderless"
-                            data-pagination="true"
-                            data-locale="es-ES"
-                            data-search="true">
-                            <thead class="thead-primary">
-                                <th data-align="center">factor de conversión</th>
-                                <th data-align="center">Salinidad (PPT)</th>
-                                <th data-align="center">DO</th>
-                                <th data-align="center">CO3</th>
-                                <th data-align="center">HCO3</th>
-                                <th data-align="center">total</th>
-                                <th data-align="center">Dureza (PPM)</th>
-                                <th data-align="center">Amoníaco (NH4 +)</th>
-                                <th data-align="center">Hierro</th>
-                                <th data-align="center">Colonias verdes</th>
-                                <th data-align="center">Colonias amarillas</th>
-                                <th data-align="center">Fecha de la prueba</th>
-                                <th data-align="center">Acciones</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>30-Jan 19</td>
-
-                                    <td>
-                                        <div class="actions btn btn-group-sm" style="width: max-content;">
-                                            <a href="" class="btn btn-success btn-xs mr-4">
-                                                <i class="fa fa-edit"></i></a>
-                                            <a href="" class="btn btn-xs btn-danger">
-                                                <i class="fa fa-trash-o"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="fixed-table-header">
+                    <h4 class="text-title mt-4">Pruebas de laboratorio</h4>
+                </div>
+                <table id="statistic_table_param" class="bg-white">
+                </table>
+            </div>
         </div>
     </div>
-</div>
-
+    
 </div>
