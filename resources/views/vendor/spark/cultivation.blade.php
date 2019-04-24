@@ -198,8 +198,9 @@
                 timeout = setTimeout(function () {
                     $.get('existence/' + resource_id + '/' + presentation_id, function(data){
                         var existence = data.data[0];
+                      
                         var message = '';
-                        if(typeof existence != 'undefined' && existence.quantity < parseInt(value) ){
+                        if(typeof existence != 'undefined' && (existence.quantity*existence.presentation_quantity-existence.used_quatity) < parseInt(value) ){
                             message = 'Excedió la cantidad disponible';
                             $(input).removeClass('border border-success');
                             $(input).addClass('border border-danger');
@@ -209,7 +210,6 @@
                             message = 'No hay recursos en el inventario <a class="btn btn-warning" href="/resource?inventory=1">Agregar</a>';
                             $(input).removeClass('border border-success');
                             $(input).addClass('border border-danger');
-                            $(input).val(null);
                             showAlert('#alert-cultivate', 'Advertencia', message, 'alert-warning', 10000, false)
                         } else {
                             $(input).removeClass('border border-danger');

@@ -31,7 +31,7 @@ Inventario para la Siembra
                         <tr>
                             <td>{{$item->resource_name}}</td>
                             <td>{{$item->presentation_name}}</td>
-                            <td>{{$item->presentation_quantity * $item->quantity }} {{$item->presentation_unity}}</td>
+                            <td>{{($item->presentation_quantity * $item->quantity) - $item->used_quatity}} {{$item->presentation_unity}}</td>
                             <td>{{$item->updated_at}}</td>
                             <td>
                             <div class="actions btn btn-group-sm">

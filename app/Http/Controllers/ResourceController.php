@@ -27,11 +27,12 @@ class ResourceController extends Controller
                         ->select('resources.name as resource_name','presentation.*')
                         ->get();
 
-        $inventory = DB::table('inventory_resources as inventory')
+        $inventory = DB::table('inventory_resources as inventory')->where('inventory.id', DB::raw('(SELECT MAX(inventory.id) FROM inventory_resources as inventory WHERE inventory.resource_id = resources.id)'))
                         ->join('resources','inventory.resource_id','=','resources.id')
                         ->join('presentation_resources as presentation','inventory.presentation_id','=','presentation.id')
-                        ->select('inventory.*','resources.name as resource_name','presentation.name as presentation_name','presentation.unity as presentation_unity','presentation.quantity as presentation_quantity')
+                        ->select('inventory.*','resources.name as resource_name','presentation.name as presentation_name','presentation.unity as presentation_unity','presentation.quantity as presentation_quantity', DB::raw('(SELECT IFNULL(SUM(used.quantity),0) from pools_resources_used as used where used.resource_id = inventory.resource_id) as used_quatity' ))->groupBy('resource_id')
                         ->get();
+                    //dd($inventory);
 
         $categories = DB::table('category_resources')->get();
         $providers = Provider::all();
