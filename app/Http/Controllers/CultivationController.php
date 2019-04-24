@@ -46,11 +46,17 @@ class CultivationController extends Controller
 
     public function verifyExistence($resource_id, $presentation_id){
 
-        $existence = DB::table('inventory_resources')->where([
+        $existence = DB::table('inventory_resources as inventory')->where('inventory.id', DB::raw('(SELECT MAX(inventory.id) FROM inventory_resources as inventory WHERE inventory.resource_id = resources.id)'))
+                        ->join('resources','inventory.resource_id','=','resources.id')->where('inventory.resource_id',$resource_id)
+                        ->join('presentation_resources as presentation','inventory.presentation_id','=','presentation.id')->where('inventory.presentation_id',$presentation_id)
+                        ->select('inventory.quantity','inventory.id','resources.name as resource_name','presentation.name as presentation_name','presentation.unity as presentation_unity','presentation.quantity as presentation_quantity', DB::raw('(SELECT IFNULL(SUM(used.quantity),0) from pools_resources_used as used where used.resource_id = inventory.resource_id) as used_quatity' ))->groupBy('presentation_quantity')->get();
+
+                        //dd($existence);
+        /*DB::table('inventory_resources')->where([
                                 ['resource_id', '=', $resource_id],
                                 ['presentation_id', '=', $presentation_id],
                                 ])
-                                ->select('inventory_resources.quantity')->get();
+                                ->select('inventory_resources.quantity', DB::raw('(SELECT IFNULL(SUM(used.quantity),0) from pools_resources_used as used where used.resource_id = inventory_resources.resource_id) as used_quatity' ))->get();*/
         return response()->json([
                 'status' => '200',
                 'data' => $existence,
