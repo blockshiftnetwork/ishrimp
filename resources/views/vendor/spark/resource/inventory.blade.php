@@ -21,6 +21,7 @@ Inventario para la Siembra
                         <tr>
                             <th data-align="center">Nombre del Recurso</th>
                             <th data-align="center">Presentación</th>
+                            <th data-align="center">Cantidad de Siembra</th>
                             <th data-align="center">Última Cantidad Comprada</th>
                             <th data-align="center">Última Actualización</th>
                             <th data-align="center">Acciones</th>
@@ -31,6 +32,7 @@ Inventario para la Siembra
                         <tr>
                             <td>{{$item->resource_name}}</td>
                             <td>{{$item->presentation_name}}</td>
+                            <td>{{--$item->qty_sowing--}} 0</td>
                             <td>{{($item->presentation_quantity * $item->quantity) - $item->used_quatity}} {{$item->presentation_unity}}</td>
                             <td>{{$item->updated_at}}</td>
                             <td>
