@@ -61,9 +61,11 @@ class HomeController extends Controller
             }
         $resources = DB::table('resources')->where('resources.category_id','>', 1)->get();
         $balanceds = DB::table('resources')->where('resources.category_id','=', 1)->get();
+        $presentatios = DB::table('resources')->where('resources.category_id','=', 1) ->join('presentation_resources as presentation', 'presentation.resource_id','=','resources.id')->select('presentation.id as presentation','presentation.name as presentation_name')->get();
+
         $laboratories = DB::table('laboratories')->get();
 
-            //dd($resources);
-        return view('home')->with(['pools' => $pools, 'resources' => $resources,'balanceds' => $balanceds,'laboratories' => $laboratories]);
+            //dd($presentatios);
+        return view('home')->with(['pools' => $pools, 'resources' => $resources,'balanceds' => $balanceds,'laboratories' => $laboratories, 'presentatios' => $presentatios]);
     }
 }
