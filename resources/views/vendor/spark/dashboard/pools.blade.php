@@ -96,31 +96,15 @@
                     <div class="footer_feed_cont">
                         <div class="row">
                             <div class="one col-md-6">
-                                <span>
-                                    <i class="fa fa-square" style="color: #1065E6">
-                                    </i> Nature Wellness 42% </span>
-                                <span><i class="fa fa-square" style="color: #D3402A">
-                                    </i> Nature Wellness 42%</span>
-                                <span><i class="fa fa-square" style="color: #FFB708">
-                                    </i> Nature Wellness 38% </span>
-                                <span><i class="fa fa-square" style="color: #008299">
-                                    </i> Nature Wellness 35% </span>
-                                <span><i class="fa fa-square" style="color: #009856">
-                                    </i> Lorica 2 - Gisis: 290.00 Kg</span><span>
-                                    <i class="fa fa-square" style="color: #DC4FAD">
-                                    </i> Lorica 4 - Gisis: 670.00 Kg</span><span>
-                                    <i class="fa fa-square" style="color: #FF8F32">
-                                    </i> Optiline 35% </span>
-                                <span><i class="fa fa-square" style="color: #5DB2FF">
-                                    </i> Optiline 35%</span>
+                            
                             </div>
-                            <div class="two col-md-2 list-group">
-                                <li class="list-group-item"><b>9240.00 Kgs</b></li>
-                                <li class="list-group-item">Total de Alimento</li>
+                            <div class="two col-md-3 list-group">
+                                <li id="totalBalanced" class="list-group-item text-center"></li>
+                                <li class="list-group-item text-center">Total de Balanceado</li>
                             </div>
-                            <div class="three col-md-2 list-group">
-                                <li class="list-group-item"><b>5075 Kgs</b></li>
-                                <li class="list-group-item">Mayor alimentar</li>
+                            <div class="three col-md-3 list-group">
+                                <li id="maxBalanced" class="list-group-item text-center"></li>
+                                <li class="list-group-item text-center">Mayor Cantidad Usada</li>
                             </div>
                         </div>
 

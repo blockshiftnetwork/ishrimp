@@ -38,12 +38,19 @@ function loadPool(url){
     let doc = $('.pond_doc');
     let pls = $('.pond_pls');
     let size = $('.pond_wsa');
+    let totalBalanced = $('#totalBalanced');
+    let maxBalanced = $('#maxBalanced');
     doc.empty();
     pls.empty();
     size.empty();
+    totalBalanced.empty();
+    maxBalanced.empty();
     doc.append(pool.days+' Dias');
     pls.append(pool.planted_larvae+' ');
     size.append(pool.size+' Hectareas');
+    totalBalanced.append('<b>'+ pool.balanced +' Kgs</b>');
+    maxBalanced.append('<b>'+ pool.maxbalanced +' Kgs</b>');
+
   });
 }
 
@@ -288,10 +295,11 @@ function loadDataToTableBalanced(table, data){
 }
 function operateFormatterBalanced(value, row, index) {
   return [
+  '<div class="btn btn-group action" >'+
     '<a   href="javascript:void(0)" class="edit-balanced btn btn-success btn-xs mr-4">'+
     '<i class="fa fa-edit"></i></a>'+
     '<a  href="javascript:void(0)" class="remove-balanced btn btn-xs btn-danger">'+
-     '<i class="fa fa-trash-o"></i></a>'
+     '<i class="fa fa-trash-o"></i></a>' + '</div>'
   ].join('')
 }
 
@@ -350,10 +358,11 @@ function loadDataToTableResource(table, data){
 
 function operateFormatterResource(value, row, index) {
   return [
+    '<div class="btn btn-group action" >'+
     '<a   href="javascript:void(0)" class="edit-used btn btn-success btn-xs mr-4">'+
     '<i class="fa fa-edit"></i></a>'+
     '<a  href="javascript:void(0)" class="remove-used btn btn-xs btn-danger">'+
-     '<i class="fa fa-trash-o"></i></a>'
+     '<i class="fa fa-trash-o"></i></a>' + '</div>'
   ].join('')
 }
 
@@ -419,10 +428,11 @@ function operateFormatterResource(value, row, index) {
   }
   function operateFormatterAbw(value, row, index) {
     return [
+    '<div class="btn btn-group action" >'+
       '<a   href="javascript:void(0)" class="edit-abw btn btn-success btn-xs mr-4">'+
       '<i class="fa fa-edit"></i></a>'+
       '<a  href="javascript:void(0)" class="remove-abw btn btn-xs btn-danger">'+
-       '<i class="fa fa-trash-o"></i></a>'
+       '<i class="fa fa-trash-o"></i></a>'+ '</div>'
     ].join('')
   }
   function operateCalBio(value,row,index){
@@ -524,10 +534,11 @@ function operateFormatterResource(value, row, index) {
 
   function operateFormatterParameter(value, row, index) {
     return [
+    '<div class="btn btn-group action" >'+
       '<a   href="javascript:void(0)" class="edit-parameter btn btn-success btn-xs mr-4">'+
       '<i class="fa fa-edit"></i></a>'+
       '<a  href="javascript:void(0)" class="remove-parameter btn btn-xs btn-danger">'+
-       '<i class="fa fa-trash-o"></i></a>'
+       '<i class="fa fa-trash-o"></i></a>'+ '</div>'
     ].join('')
   }
 function createBioChart(data1, data2, data3, labels){ 
