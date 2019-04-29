@@ -30,12 +30,10 @@ Inventario para la Siembra
                     <tbody>
                     @foreach($inventory as $item )
                         <tr>
-                            <td>{{$item->resource_name}}</td>
+                            <td>{{$item->name}}</td>
                             <td>{{$item->presentation_name}}</td>
-                            <td>{{--$item->qty_sowing--}} 0</td>
-                            <!-- Por ahora no me da los resultados correctos. -->
-                            <!-- <td>{{($item->presentation_quantity * $item->quantity) - $item->used_quatity}} {{$item->presentation_unity}}</td> -->
-                            <td>{{ $item->quantity }}</td>
+                            <td>{{$item->qty_used_in_pools}}</td>
+                            <td>{{ $item->existence_qty }}</td>
                             <td>{{$item->updated_at}}</td>
                             <td>
                             <div class="actions btn btn-group-sm">

@@ -27,16 +27,63 @@ class ResourceController extends Controller
                         ->select('resources.name as resource_name','presentation.*')
                         ->get();
 
-        $inventory = DB::table('inventory_resources as inventory')
+       /* $inventory = DB::table('inventory_resources as inventory')
                          ->where('inventory.id',
                             DB::raw('(SELECT MAX(inventory.id) FROM inventory_resources as inventory WHERE inventory.resource_id = resources.id)')
                           )
                          ->join('resources','inventory.resource_id','=','resources.id')
                          ->join('presentation_resources as presentation','inventory.presentation_id','=','presentation.id')
-                        ->select('inventory.*','resources.name as resource_name','presentation.name as presentation_name','presentation.unity as presentation_unity','presentation.quantity as presentation_quantity', DB::raw('(SELECT IFNULL(SUM(used.quantity),0) from pools_resources_used as used where used.resource_id = inventory.resource_id) as used_quatity' ))->groupBy('resource_id')
+                        ->select('inventory.*','resources.name as resource_name','presentation.name as presentation_name','presentation.unity as presentation_unity','presentation.quantity as presentation_quantity', DB::raw('(SELECT IFNULL(SUM(used.quantity),0) from pools_resources_used as used where used.resource_id = inventory.resource_id) as used_quatity' ))->groupBy('resource_id', 'presentation_id')
                         ->get();
                     //    $item = $inventory[0];
-                    // dd([$item->presentation_quantity, $item->quantity, $item->used_quatity]);
+                    // dd([$item->presentation_quantity, $item->quantity, $item->used_quatity]);*/
+                        $inventory = DB::select('SELECT
+                            t1.name,
+                            t1.presentation_name,
+                            t1.unity,
+                            t1.presentation_qty,
+                            t1.price,
+                            IFNULL(t1.inv_qty, 0) AS inventory_qty,
+                            IFNULL(pru.quantity, 0) AS qty_used_in_pools,
+                            (IFNULL(t1.inv_qty, 0) - IFNULL(pru.quantity, 0)) AS existence_qty
+                            FROM
+                            (
+                            SELECT
+                            rs.id AS resource_id,
+                            pr.id AS presentation_id,
+                            rs.name,
+                            pr.name AS presentation_name,
+                            pr.unity,
+                            pr.quantity AS presentation_qty,
+                            pr.price,
+                            SUM(ir.quantity) * pr.quantity AS inv_qty
+                            FROM
+                            `resources` rs
+                            LEFT JOIN presentation_resources pr ON
+                            rs.id = pr.resource_id
+                            LEFT JOIN inventory_resources ir ON
+                            ir.resource_id = rs.id AND ir.presentation_id = pr.id
+                            WHERE
+                            rs.team_id = $team_id
+                            GROUP BY
+                            rs.id,
+                            pr.id,
+                            ir.resource_id,
+                            ir.presentation_id
+                        ) t1
+                        LEFT JOIN pools_resources_used pru ON
+                        t1.resource_id = pru.resource_id AND t1.presentation_id = pru.presentation_id AND pru.pool_id IN(
+                        SELECT
+                        id
+                        FROM
+                        `pools`
+                        WHERE
+                        team_id = $team_id
+                    )
+                    GROUP BY
+                    t1.resource_id,
+                    t1.presentation_id');      
+                    dd($inventory);                  
 
         $categories = DB::table('category_resources')->get();
         $providers = Provider::all();
