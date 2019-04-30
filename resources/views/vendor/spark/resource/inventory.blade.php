@@ -21,8 +21,8 @@ Inventario para la Siembra
                         <tr>
                             <th data-align="center">Nombre del Recurso</th>
                             <th data-align="center">Presentación</th>
-                            <th data-align="center">Cantidad de Siembra</th>
-                            <th data-align="center">Última Cantidad Comprada</th>
+                            <th data-align="center">Cantidad Sembrada</th>
+                            <th data-align="center">Existencia en inventario</th>
                             <th data-align="center">Última Actualización</th>
                             <th data-align="center">Acciones</th>
                         </tr>
@@ -33,22 +33,22 @@ Inventario para la Siembra
                             <td>{{$item->name}}</td>
                             <td>{{$item->presentation_name}}</td>
                             <td>{{$item->qty_used_in_pools}}</td>
-                            <td>{{ $item->existence_qty }}</td>
+                            <td>{{$item->existence_qty}}</td>
                             <td>{{$item->updated_at}}</td>
                             <td>
                             <div class="actions btn btn-group-sm">
                                 <button id="#edit" data-toggle="modal"
                                 data-target="#editInventoryModal"
-                                    data-id="{{$item->id}}"
+                                    data-id="{{$item->inventory_resource_id}}"
                                     data-resource_id="{{$item->resource_id}}"
-                                    data-quantity="{{$item->quantity}}"
+                                    data-quantity="{{$item->existence_qty}}"
                                     data-presentation_id="{{$item->presentation_id}}"
                                     data-team_id="{{$item->team_id}}"
                                     class="btn btn-success btn-xs mr-4">
                                     <i class="fa fa-edit"></i></button>
                                     <button data-toggle="modal"
                                     data-target="#deleteInventoryModal"
-                                    data-id="{{$item->id}}"
+                                    data-id="{{$item->inventory_resource_id}}"
                                                         class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash-o"></i></button>
                                                 </div>
