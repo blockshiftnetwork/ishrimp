@@ -250,7 +250,6 @@ function loadDataToTableBalanced(table, data){
     theadClasses:"thead-primary",
     pagination:"true",
     locale:"es-ES",
-    search:"true",
     data: data,
     columns: [
       [{
@@ -317,7 +316,6 @@ function loadDataToTableResource(table, data){
       theadClasses:"thead-primary",
       pagination:"true",
       locale:"es-ES",
-      search:"true",
       data: data,
       columns: [
         [{
@@ -374,7 +372,6 @@ function operateFormatterResource(value, row, index) {
         theadClasses:"thead-primary",
         pagination:"true",
         locale:"es-ES",
-        search:"true",
         data: data,
         columns: [
           [{
@@ -447,7 +444,6 @@ function operateFormatterResource(value, row, index) {
       theadClasses:"thead-primary",
       pagination:"true",
       locale:"es-ES",
-      search:"true",
       data: data,
       columns: [
         [{
@@ -805,3 +801,12 @@ function clearCharts(chart){
   function getDate(date){
   return $.format.date(date, 'dd MMM yyyy');
   }
+
+// STYLES FOR TABLES 
+   $(document).ready(function(){
+      // overview
+      $holder = $("#dashboard > div > div.card-body > div > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
+      $("#dashboard > div > div.card-body > div > div.bootstrap-table > div.fixed-table-toolbar").hide();
+      $("#dashboard > div > div.card-header > div.search").append($holder);          
+   
+    });

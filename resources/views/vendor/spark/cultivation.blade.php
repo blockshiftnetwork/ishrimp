@@ -130,7 +130,7 @@
                 }
             }
             if ($(this).prop('name') === 'ph') {
-                if ($(this).val() < 7.5 || $(this).val() > 8.5) {
+                if (($(this).val() < 7.5 || $(this).val() > 8.5) && $(this).val() !== 0) {
                     $(this).removeClass('border border-success');
                     $(this).addClass('border border-danger');
                 } else {

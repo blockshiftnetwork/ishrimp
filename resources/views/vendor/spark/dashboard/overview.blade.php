@@ -1,10 +1,12 @@
 <div class="card card-default card-table">
     <div class="card-header">
 
-        {{__('Visión General')}}
+       <span class="font-weight-bold" style="line-height: 2.3em;vertical-align: -webkit-baseline-middle;"> {{__('Visión General')}}</span>
+       <div class="float-right search ">
+       </div>
     </div>
 
-    <div class="card-body">
+    <div class="card-body" style="padding-top: 0;">
             <div class="table-container">
                 <table id="ponds-snap-tbl"
                 class="bg-white"
@@ -84,5 +86,17 @@
                     </tbody>
                 </table>
             </div>
+            <script>
+    $(document).ready(function(){
+       /* $(".btnDetach").click(function(){
+            $holder = $(".detach").detach();
+        });
+        $(".btnAttach").click(function(){
+            $(".menu").append($holder);
+        });*/
+        console.log('habla perro');
+
+    });
+            </script>
     </div>
 </div>
