@@ -2,14 +2,14 @@
 <div>
     <div class="card card-default">
         <div class="card-header">
-            <h5>Insumos y Minerales</h5>
+            <h5 style="margin:0;">Insumos y Minerales</h5>
         </div>
         <div class="card-body p-0">
             
                 <div class="container p-0 m-0">
-                    <div class="row bg-primary text-light m-0" style="width: 100%">
+                    <div class="row bg-primary text-light m-0" style="width: 100%; background: #4396ce !important;">
                         <div class="col-12">
-                            <div class="form-inline py-2">
+                            <div class="form-inline py-3">
                                 <label class="mr-2">Fecha</label>
                                 <input type="text" class="form-control " id="dateRs" name="date">
                             </div>
