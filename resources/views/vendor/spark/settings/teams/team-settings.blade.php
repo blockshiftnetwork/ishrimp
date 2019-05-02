@@ -14,24 +14,25 @@
         <div class="row">
             <!-- Tabs -->
             <div class="col-md-3 spark-settings-tabs">
-                <aside>
+                @section('settings_teams')
+                <a class="nav-link" href="">
                     <h3 class="nav-heading ">
-                        {{__('teams.team_settings')}}
-                    </h3>
+                        {{__('Configuración de Finca')}}
+                    </h3></a>
                     <ul class="nav flex-column mb-4 ">
                         @if (Auth::user()->ownsTeam($team))
                             <li class="nav-item ">
-                                <a class="nav-link" href="#owner" aria-controls="owner" role="tab" data-toggle="tab">
+                                <a class="nav-link active" href="#owner" aria-controls="owner" role="tab" data-toggle="tab">
                                     <svg class="icon-20 " viewBox="0 0 20 20 " xmlns="http://www.w3.org/2000/svg ">
                                         <path d="M10 20C4.4772 20 0 15.5228 0 10S4.4772 0 10 0s10 4.4772 10 10-4.4772 10-10 10zm0-17C8.343 3 7
                   4.343 7 6v2c0 1.657 1.343 3 3 3s3-1.343 3-3V6c0-1.657-1.343-3-3-3zM3.3472 14.4444C4.7822 16.5884 7.2262 18 10
                   18c2.7737 0 5.2177-1.4116 6.6528-3.5556C14.6268 13.517 12.3738 13 10 13s-4.627.517-6.6528 1.4444z "></path>
                                     </svg>
-                                    {{__('teams.team_profile')}}
+                                    {{__('Perfil de la finca')}}
                                 </a>
                             </li>
                         @endif
-
+<!-- 
                         <li class="nav-item ">
                             <a class="nav-link" href="#membership" aria-controls="membership" role="tab" data-toggle="tab">
                                 <svg class="icon-20 " viewBox="0 0 20 20 " xmlns="http://www.w3.org/2000/svg ">
@@ -61,50 +62,10 @@
                                         {{__('Your Settings')}}
                                     </a>
                                 </li>
-                            @endif
+                            @endif -->
                     </ul>
-                </aside>
+                @endsection
 
-                @if (Spark::canBillTeams() && Auth::user()->ownsTeam($team))
-                    <aside>
-                        <h3 class="nav-heading ">
-                            {{__('teams.team_billing')}}
-                        </h3>
-                        <ul class="nav flex-column mb-4 ">
-                            @if (Spark::hasPaidTeamPlans())
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="#subscription" aria-controls="subscription" role="tab" data-toggle="tab">
-                                        <svg class="icon-20 " xmlns="http://www.w3.org/2000/svg " viewBox="0 0 14 20 ">
-                                            <path d="M7 3v2c-2.8 0-5 2.2-5 5 0 1.4.6 2.6 1.5 3.5L2 15c-1.2-1.3-2-3-2-5 0-4 3-7 7-7zm5 2c1.2 1.3 2 3
-              2 5 0 4-3 7-7 7v-2c2.8 0 5-2.2 5-5 0-1.4-.6-2.6-1.5-3.5L12 5zM7 20l-4-4 4-4v8zM7 8V0l4 4-4 4z"></path>
-                                        </svg>
-                                        {{__('Subscription')}}
-                                    </a>
-                                </li>
-
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="#payment-method" aria-controls="payment-method" role="tab" data-toggle="tab">
-                                        <svg class="icon-20 " xmlns="http://www.w3.org/2000/svg " viewBox="0 0 20 16 ">
-                                            <path d="M18 4V2H2v2h16zm0 4H2v6h16V8zM0 2c0-1 1-2 2-2h16c1 0 2 1 2 2v12c0 1-1 2-2 2H2c-1 0-2-1-2-2V2zm4
-              8h4v2H4v-2z"></path>
-                                        </svg>
-                                        {{__('Payment Method')}}
-                                    </a>
-                                </li>
-
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="#invoices" aria-controls="invoices" role="tab" data-toggle="tab">
-                                        <svg class="icon-20 " xmlns="http://www.w3.org/2000/svg " viewBox="0 0 20 20 ">
-                                            <path d="M4 2h16l-3 9H4c-.6 0-1 .4-1 1s.5 1 1 1h13v2H4c-1.7 0-3-1.3-3-3s1.3-3 3-3h.3L3 5 2 2H0V0h3c.5 0
-              1 .5 1 1v1zm1 18c-1 0-2-1-2-2s1-2 2-2 2 1 2 2-1 2-2 2zm10 0c-1 0-2-1-2-2s1-2 2-2 2 1 2 2-1 2-2 2z"></path>
-                                        </svg>
-                                        {{__('Invoices')}}
-                                    </a>
-                                </li>
-                            @endif
-                        </ul>
-                    </aside>
-                @endif
             </div>
 
             <!-- Tab cards -->
@@ -116,14 +77,19 @@
                             @include('spark::settings.teams.team-profile')
                         </div>
                     @endif
-
+               <!-- Category Resource -->
+               <!-- <div role="tabcard" class="tab-pane {{ Auth::user()->ownsTeam($team) ? 'active' : '' }}" id="category-resource">
+                        <div v-if="team">
+                        @include('spark::settings.teams.team-category-resource')
+                        </div>
+                    </div> -->
                     <!-- Membership -->
                     <div role="tabcard" class="tab-pane {{ Auth::user()->ownsTeam($team) ? 'active' : '' }}" id="membership">
                         <div v-if="team">
                             @include('spark::settings.teams.team-membership')
                         </div>
                     </div>
-
+  
                     <!-- Billing Tab Panes -->
                     @if (Spark::canBillTeams() && Auth::user()->ownsTeam($team))
                         @if (Spark::hasPaidTeamPlans())

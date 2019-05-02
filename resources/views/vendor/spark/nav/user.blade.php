@@ -8,7 +8,11 @@
         inline-template>
 
     <nav class="navbar navbar-light navbar-expand-md navbar-spark">
-        <div class="container" v-if="user">
+        <div class="container-fluid" v-if="user">
+                <button id="sidebarcollapse" class="sidebar-toggler mr-2" type="button">
+                        <span class="navbar-toggler-icon"></span>
+                         </button>
+            
             <!-- Branding Image -->
             @include('spark::nav.brand')
 
@@ -19,7 +23,7 @@
 
             <div id="navbarSupportedContent" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
-                    @includeIf('spark::nav.user-left')
+
                 </ul>
 
                 <a @click="showNotifications" class="notification-pill mx-auto mb-3 mb-md-0 mr-md-0 ml-md-auto">
