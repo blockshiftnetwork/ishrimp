@@ -86,17 +86,5 @@
                     </tbody>
                 </table>
             </div>
-            <script>
-    $(document).ready(function(){
-       /* $(".btnDetach").click(function(){
-            $holder = $(".detach").detach();
-        });
-        $(".btnAttach").click(function(){
-            $(".menu").append($holder);
-        });*/
-        console.log('habla perro');
-
-    });
-            </script>
     </div>
 </div>
