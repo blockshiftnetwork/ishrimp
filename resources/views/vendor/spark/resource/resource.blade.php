@@ -3,7 +3,7 @@
         <div class="mid_container top_space">
             <div role="tabpanel" id="pond-detail-pills">
                 <!-- Nav tabs -->
-                <ul class="nav nav-pills nav-tabs" role="tablist">
+                <ul class="nav nav-pills nav-tabs" role="tablist" style="float: left;">
                     <li role="resource"><a id="link-recources" class="btn btn-light active" href="#resource-tab" aria-controls="resource_section"
                             role="tab" data-toggle="tab">Recursos</a></li>
                     <li role="presentation"><a class="btn btn-light " href="#presentation"
@@ -14,17 +14,13 @@
                     <li role="labs"><a id="link-lab" class="btn btn-light" href="#labs" aria-controls="labs_section"
                             role="tab" data-toggle="tab">Laboratorios</a></li>
                 </ul>
+                <div class="search" style="float: right;"></div>
             </div>
             <div class="tab-content">
                 <!-- tab resource-->
                 <div role="tabpanel" class="tab-pane active" id="resource-tab">
                     <div class="mid_container">
                         <section class="section">
-                                <div class="btn-tools-bar">
-                                    <button type="button" id="addfood" class="btn btn-info ml-5" data-toggle="modal"
-                                        data-target="#addResourceModal"><i class="fa fa-plus" aria-hidden="true"></i>
-                                        Añadir Recurso</button>
-                                </div>
                                 <table class="bg-white"
                                     data-toggle="table"
                                     data-classes="table table-striped table-hover table-borderless"
@@ -68,6 +64,11 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <div class="btn-tools-bar">
+                                    <button type="button" id="addfood" class="btn btn-primary ml-1 mt-3" data-toggle="modal"
+                                        data-target="#addResourceModal"><i class="fa fa-plus" aria-hidden="true"></i>
+                                        Añadir Recurso</button>
+                                </div>
                         </section>
                     </div>
                     <!-- Modals resources -->
@@ -78,11 +79,6 @@
                     <div class="mid_container">
                         <section class="section">
                             <div class=" " id="feed_table" style="overflow: hidden;">
-                                <div class="btn-tools-bar">
-                                    <button type="button" id="addfood" class="btn btn-info ml-5" data-toggle="modal"
-                                        data-target="#addPresentationModal"><i class="fa fa-plus" aria-hidden="true"></i>
-                                        Añadir presentación</button>
-                                </div>
                                 <table class="bg-white"
                                     data-toggle="table"
                                     data-classes="table table-striped table-hover table-borderless"
@@ -131,7 +127,11 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
+                                <div class="btn-tools-bar">
+                                    <button type="button" id="addfood" class="btn btn-primary ml-1 mt-3" data-toggle="modal"
+                                        data-target="#addPresentationModal"><i class="fa fa-plus" aria-hidden="true"></i>
+                                        Añadir presentación</button>
+                                </div>
                             </div>
                         </section>
                     </div>
@@ -142,11 +142,6 @@
                 <div role="tabpanel" class="tab-pane" id="providers">
                     <div class="mid_container">
                         <section class="section">
-                                <div class="btn-tools-bar">
-                                    <button type="button" id="addProvider" class="btn btn-info ml-5" data-toggle="modal"
-                                        data-target="#addProviderModal"><i class="fa fa-plus" aria-hidden="true"></i>
-                                        Añadir Proveedor</button>
-                                </div>
                                 <table class="bg-white" id="provider_table"
                                     data-toggle="table"
                                     data-classes="table table-striped table-hover table-borderless"
@@ -201,6 +196,11 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <div class="btn-tools-bar">
+                                    <button type="button" id="addProvider" class="btn btn-primary ml-1 mt-3" data-toggle="modal"
+                                        data-target="#addProviderModal"><i class="fa fa-plus" aria-hidden="true"></i>
+                                        Añadir Proveedor</button>
+                                </div>
                         </section>
                     </div>
                     <!-- Modals Providers -->
@@ -211,11 +211,6 @@
                 <div role="tabpanel" class="tab-pane" id="labs">
                     <div class="mid_container">
                         <section class="section">
-                                <div class="btn-tools-bar">
-                                    <button type="button" id="addLab" class="btn btn-info ml-5" data-toggle="modal"
-                                        data-target="#addLabModal"><i class="fa fa-plus" aria-hidden="true"></i>
-                                        Añadir Laboratorio</button>
-                                </div>
                                 <table class="bg-white" id="Labs-table"
                                     data-toggle="table"
                                     data-classes="table table-striped table-hover table-borderless"
@@ -260,6 +255,11 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <div class="btn-tools-bar">
+                                    <button type="button" id="addLab" class="btn btn-primary ml-1 mt-3" data-toggle="modal"
+                                        data-target="#addLabModal"><i class="fa fa-plus" aria-hidden="true"></i>
+                                        Añadir Laboratorio</button>
+                                </div>
                         </section>
                     </div>
                     <!-- Modals Labs -->

@@ -222,5 +222,27 @@
             }
         });
     };
-     </script>
+
+            //modify of search field
+        $( document ).ready(function() {
+           
+        $resource_tab = $("#resource-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
+        $presentations_tab = $("#feed_table > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
+        $providers_tab = $("#providers > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
+        $lab_tab = $("#labs > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
+           
+        $("#resource-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbarr").hide();
+        $("#feed_table > div.bootstrap-table > div.fixed-table-toolbar > div > input").hide();
+        $("#providers > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").hide();
+        $("#labs > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").hide();
+        
+        $("#pond-detail-pills > div").append($resource_tab);
+        $("#pond-detail-pills > div").append($presentations_tab);
+        $("#pond-detail-pills > div").append($providers_tab);
+        $("#pond-detail-pills > div").append($lab_tab);  
+            
+     });
+
+        //console.log('es'+active);
+         </script>
 @endsection
