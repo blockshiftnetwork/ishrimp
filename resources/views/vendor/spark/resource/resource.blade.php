@@ -78,7 +78,7 @@
                 <div role="tabpanel" class="tab-pane" id="presentation">
                     <div class="mid_container">
                         <section class="section">
-                            <div class=" " id="feed_table" style="overflow: hidden;">
+                           <!-- <div class=" " id="feed_table" style="overflow: hidden;">-->
                                 <table class="bg-white"
                                     data-toggle="table"
                                     data-classes="table table-striped table-hover table-borderless"
@@ -132,7 +132,7 @@
                                         data-target="#addPresentationModal"><i class="fa fa-plus" aria-hidden="true"></i>
                                         Añadir presentación</button>
                                 </div>
-                            </div>
+                            <!--</div> -->
                         </section>
                     </div>
                     <!-- Modals presentation -->

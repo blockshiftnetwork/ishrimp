@@ -227,12 +227,12 @@
         $( document ).ready(function() {
            
         $resource_tab = $("#resource-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
-        $presentations_tab = $("#feed_table > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
+        $presentations_tab = $("#presentation > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
         $providers_tab = $("#providers > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
         $lab_tab = $("#labs > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
            
-        $("#resource-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbarr").hide();
-        $("#feed_table > div.bootstrap-table > div.fixed-table-toolbar > div > input").hide();
+        $("#resource-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").hide();
+        $("#presentation > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").hide();
         $("#providers > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").hide();
         $("#labs > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").hide();
         
@@ -240,9 +240,19 @@
         $("#pond-detail-pills > div").append($presentations_tab);
         $("#pond-detail-pills > div").append($providers_tab);
         $("#pond-detail-pills > div").append($lab_tab);  
-            
+            $("#pond-detail-pills").tabs({
+    select: function(event, ui) {
+        alert("PRESSED TAB!");
+    }
+});
      });
 
         //console.log('es'+active);
+    /*#resource-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input
+    #presentation > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input
+       #providers > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input
+            #labs > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input
+
+      #feed_table >                               div.bootstrap-table > div.fixed-table-toolbar > div > input    */     
          </script>
 @endsection
