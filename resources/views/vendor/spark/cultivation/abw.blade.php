@@ -1,8 +1,8 @@
 <div class="card card-table card-default">
     <div class="card-header">
-        <h5>ABW</h5>
+        <h5 style="margin:0;">ABW</h5>
     </div>
-    <div class="card-body">
+    <div class="card-body p-0">
     <table id="bar-table" class="table mb-0 bg-white">
 					<thead class="thead-primary">
 						<tr>

@@ -4,7 +4,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Sembrar Piscina</h5>
+                <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Sembrar Piscina</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -34,9 +34,9 @@
                         <input type="text" class="form-control" name="planted_at" id="planted_at" required >
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" style="padding-bottom: 0;">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
-                    <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
+                    <button type="submit" id="envi" class="btn btn-primary">{{__('Save')}}</button>
                 </div>
             </form>
         </div>
@@ -76,8 +76,8 @@
                         <input type="text" class="form-control" name="larvae_type" id="larvae_type" required >
                     </div>
                     <div class="form-group">
-                        <label for="planted_at">Fecha de Siembra</label>
-                        <input type="text" class="form-control" name="planted_at" id="planted_at" required >
+                        <label for="planted_at_update">Fecha de Siembra</label>
+                        <input type="text" class="form-control" name="planted_at" id="planted_at_update" required >
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -95,7 +95,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title text-center" id="myModalLabel">{{__('Delete Confirmation')}} </h4>
+                <h4 class="modal-title text-center font-weight-normal" id="myModalLabel">{{__('Delete Confirmation')}} </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
 
@@ -104,15 +104,15 @@
                 @method('delete')
                 {{csrf_field()}}
                 <div class="modal-body">
-                    <p class="text-center">
+                    <p class="text-center mb-0">
                         ¿Está seguro de querer eliminar esta siembra?
                     </p>
                     <input type="hidden" name="id" id="id" value="">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">{{__('No, Cancel')}}</button>
-                    <button type="submit" class="btn btn-warning">{{__('Yes, Delete')}}</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">{{__('No, Cancel')}}</button>
+                    <button type="submit" class="btn btn-danger">{{__('Yes, Delete')}}</button>
                 </div>
             </form>
         </div>

@@ -2,7 +2,7 @@
 <div>
 	<div class="card card-default">
 		<div class="card-header">
-			<h5>Parámetros Diarios</h5>
+			<h5 style="margin:0;">Parámetros Diarios</h5>
 		</div>
 		<div class="card-body p-0">
 			<form>

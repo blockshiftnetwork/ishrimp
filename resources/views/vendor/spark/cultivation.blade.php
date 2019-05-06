@@ -309,7 +309,7 @@
                 }).done(function (resp) {
                     clearTimeout(timeout);
                     timeout = setTimeout(function () {
-                        showAlert('#alert-cultivate', 'Èxito', resp.data, 'alert-success', 2000, true)
+                        showAlert('#alert-cultivate', 'Éxito', resp.data, 'alert-success', 2000, true)
                     }, 2000)
                 }).fail(function (resp) {
                     clearTimeout(timeout);
@@ -356,7 +356,7 @@
                 }).done(function (resp) {
                     clearTimeout(timeout);
                     timeout = setTimeout(function () {
-                        showAlert('#alert-cultivate', 'Èxito', resp.data, 'alert-success', 3000, false)
+                        showAlert('#alert-cultivate', 'Éxito', resp.data, 'alert-success', 3000, false)
                     }, 2000)
                 }).fail(function (resp) {
                     clearTimeout(timeout);

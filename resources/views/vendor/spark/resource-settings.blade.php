@@ -222,5 +222,55 @@
             }
         });
     };
-     </script>
+
+            //modify of search field
+        $( document ).ready(function() {
+           /* resources */
+        $resource_tab = $("#resource-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
+        $presentations_tab = $("#presentation > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
+        $providers_tab = $("#providers > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
+        $lab_tab = $("#labs > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
+           
+        $("#resource-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar").hide();
+        $("#presentation > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar").hide();
+        $("#providers > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar").hide();
+        $("#labs > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar ").hide();
+        
+        $("#pond-detail-pills > div#s_res").append($resource_tab);
+        $("#pond-detail-pills > div#s_pres").append($presentations_tab);
+        $("#pond-detail-pills > div#s_prov").append($providers_tab);
+        $("#pond-detail-pills > div#s_labs").append($lab_tab);
+
+        function mostrar_campo_buscar(id_to_show) {
+            let ids = ['#s_res', '#s_pres', '#s_prov', '#s_labs'];
+            
+            return function() {
+                for (let id of ids) {
+                    if (id == id_to_show) {
+                        $(id).show();
+                    } else {
+                        $(id).hide();
+                    }
+                }
+            }
+        }        
+        $( "#s_res" ).show();  
+        
+        $( "#res" ).click(mostrar_campo_buscar("#s_res"));
+
+        $( "#pres" ).click(mostrar_campo_buscar("#s_pres"));
+
+        $( "#prov" ).click(mostrar_campo_buscar("#s_prov"));
+
+        $( "#lab" ).click(mostrar_campo_buscar("#s_labs"));
+
+        /* inventory */
+        $invent_search = $("#feed_table > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
+           
+        $("#feed_table > div.bootstrap-table > div.fixed-table-toolbar").hide();
+        
+        $("#inventory > div.card > div.card-header > div").append($invent_search);
+     });
+   
+         </script>
 @endsection
