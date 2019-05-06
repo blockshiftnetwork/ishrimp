@@ -44,7 +44,7 @@
                                     @foreach ($resources as $resource)
                                         <tr>
                                             <td>{{$resource->name}}</td>
-                                            <td>{{$resource->provider_name}}</td>
+                                            <td>{{$resource->provider_name ?? 'No Establecido'}}</td>
                                             <td>{{$resource->category_name}}</td>
                                             <td class="text-center">
                                                 <div class="actions btn btn-group-sm">
