@@ -336,3 +336,33 @@ div#btn-createpool {
 #pools > div > div.col-lg-12.border.pondsDetailsTop.nav.nav-bar.py-3 > div:nth-child(1) > div > button{
     margin-top:.59em;
 }
+
+.alert {
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.alert-warning, .alert-success {
+    padding: .75rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff !important;
+    background-color: #42a2dc !important;
+    border: #42a2dc;
+}
+
+.btn-light:not(:disabled):not(.disabled).active, .btn-light:not(:disabled):not(.disabled):active, .show>.btn-light.dropdown-toggle {
+    color: #ffffff !important;
+    background-color: #4396ce !important;
+    border-color: #4396ce !important;
+}
+.nav-tabs {
+    border-bottom: 0;
+}
+.list-group-item {
+    color: #fff;
+    background-color: #4396ce;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
