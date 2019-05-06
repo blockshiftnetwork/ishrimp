@@ -1,14 +1,14 @@
 
 <div class="card">
 <div class="card-header">
-Inventario para la Siembra
+    <span class="font-weight-bold" style="line-height: 2.3em; vertical-align: -webkit-baseline-middle;">Inventario para la Siembra</span>
+    <div class="float-right search "></div>
 </div>
-<div class="card-body">
+<div class="card-body" style="padding-top: 0;">
     <section class="section">
         <div class=" " id="feed_table" style="overflow: hidden;">
             <div  class="btn-tools-bar">
-                <button type="button" id="addBalanced" class="btn btn-info ml-5" data-toggle="modal"
-                    data-target="#addInventoryModal"><i class="fa fa-plus" aria-hidden="true"></i> Añadir al Inventario</button>
+
             </div>
                 <table class="bg-white" id="balanced_tbl"
                 class="bg-white"
@@ -57,7 +57,8 @@ Inventario para la Siembra
                      @endforeach
                     </tbody>
                 </table>
-
+                <button type="button" id="addBalanced" class="btn btn-primary ml-1 mb-2" data-toggle="modal"
+                    data-target="#addInventoryModal"><i class="fa fa-plus" aria-hidden="true"></i> Añadir al Inventario</button>
             <div class="footer">
                 <div class="row">
                     <div class="one col-md-6">

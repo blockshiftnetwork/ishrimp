@@ -1,5 +1,5 @@
 <div class="dsh_board_main_body_cont">
-    <div class="col-lg-12 border pondsDetailsTop nav nav-bar bg-white">
+    <div class="col-lg-12 pondsDetailsTop nav nav-bar bg-white">
         <div class="mid_container top_space">
             <div role="tabpanel" id="pond-detail-pills">
                 <!-- Nav tabs -->
