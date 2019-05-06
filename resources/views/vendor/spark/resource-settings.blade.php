@@ -236,23 +236,34 @@
         $("#providers > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").hide();
         $("#labs > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").hide();
         
-        $("#pond-detail-pills > div").append($resource_tab);
-        $("#pond-detail-pills > div").append($presentations_tab);
-        $("#pond-detail-pills > div").append($providers_tab);
-        $("#pond-detail-pills > div").append($lab_tab);  
-            $("#pond-detail-pills").tabs({
-    select: function(event, ui) {
-        alert("PRESSED TAB!");
-    }
-});
+        $("#pond-detail-pills > div#s_res").append($resource_tab);
+        $("#pond-detail-pills > div#s_pres").append($presentations_tab);
+        $("#pond-detail-pills > div#s_prov").append($providers_tab);
+        $("#pond-detail-pills > div#s_labs").append($lab_tab);
+
+        function mostrar_campo_buscar(id_to_show) {
+            let ids = ['#s_res', '#s_pres', '#s_prov', '#s_labs'];
+            
+            return function() {
+                for (let id of ids) {
+                    if (id == id_to_show) {
+                        $(id).show();
+                    } else {
+                        $(id).hide();
+                    }
+                }
+            }
+        }        
+        $( "#s_res" ).show();  
+        
+        $( "#res" ).click(mostrar_campo_buscar("#s_res"));
+
+        $( "#pres" ).click(mostrar_campo_buscar("#s_pres"));
+
+        $( "#prov" ).click(mostrar_campo_buscar("#s_prov"));
+
+        $( "#lab" ).click(mostrar_campo_buscar("#s_labs"));
      });
-
-        //console.log('es'+active);
-    /*#resource-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input
-    #presentation > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input
-       #providers > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input
-            #labs > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input
-
-      #feed_table >                               div.bootstrap-table > div.fixed-table-toolbar > div > input    */     
+   
          </script>
 @endsection
