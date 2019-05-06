@@ -278,8 +278,7 @@
 
     //save resource used
     function saveDataResourceUsed() {
-
-        $(this).addClass('disabled');
+    
         var timeout = null;
         var table = $('#medicine-table');
         var date = $('#dateRs').val();
@@ -304,18 +303,20 @@
             if (dataValid) {
                 var form = $('#data').serialize();
                 console.log(form);
+                $('#btn_res_used').attr("disabled", true);
                 $.post("{{route('cultivation.store')}}", form, function (resp) {
-
                 }).done(function (resp) {
                     clearTimeout(timeout);
                     timeout = setTimeout(function () {
                         showAlert('#alert-cultivate', 'Éxito', resp.data, 'alert-success', 2000, true)
                     }, 2000)
+                    $('#btn_res_used').attr("disabled", false);
                 }).fail(function (resp) {
                     clearTimeout(timeout);
                     timeout = setTimeout(function () {
                         showAlert('#alert-cultivate', 'Error', 'Verifique los datos', 'alert-danger', 3000, false)
                     }, 2000)
+                    $('#btn_res_used').attr("disabled", false);
                 });
             } else {
                 alert("Debe agregar datos");
