@@ -19,7 +19,7 @@ class InventoryResourcesTable extends Migration
             $table->foreign('resource_id')->references('id')->on('resources');
             $table->integer('quantity');
             $table->integer('presentation_id')->unsigned();
-            $table->foreign('presentation_id')->references('id')->on('presentation_resources');
+            $table->foreign('presentation_id')->references('id')->on('presentation_resources')->onDelete('no action');
             $table->integer('team_id')->unsigned();
             $table->foreign('team_id')->references('id')->on('teams');
             $table->timestamps();

@@ -20,7 +20,7 @@ class PoolsResourcesUsedTable extends Migration
             $table->integer('resource_id')->unsigned();
             $table->foreign('resource_id')->references('id')->on('resources');
             $table->integer('presentation_id')->unsigned();
-            $table->foreign('presentation_id')->references('id')->on('presentation_resources');
+            $table->foreign('presentation_id')->references('id')->on('presentation_resources')->onDelete('no action');
             $table->float('quantity', 21, 2);
             $table->string('note')->nullable();
             $table->dateTime('date');
