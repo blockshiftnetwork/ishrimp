@@ -71,7 +71,7 @@
                         <hr>
                         <div class="row m-0 p-2">
                             <div class="col-12">
-                                <button  onclick="saveDataResourceUsed()" class="btn btn-primary">Guardar</button>
+                                <button  id="btn_res_used" onclick="saveDataResourceUsed()" class="btn btn-primary">Guardar</button>
                             </div>
                         </div>
                     </form>

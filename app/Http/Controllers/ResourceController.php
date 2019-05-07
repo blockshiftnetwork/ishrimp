@@ -17,7 +17,7 @@ class ResourceController extends Controller
         $team_id = auth()->user()->currentTeam->id;
         $resources = DB::table('resources')->where('resources.team_id','=', $team_id)
                     ->join('category_resources as category', 'resources.category_id','=', 'category.id' )
-                    ->join('providers','resources.provider_id','=','providers.id')
+                    ->leftjoin('providers','resources.provider_id','=','providers.id')
                     ->select('resources.*', 'category.name as category_name',
                             'providers.name as provider_name')
                     ->get();

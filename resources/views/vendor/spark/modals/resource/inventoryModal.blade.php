@@ -15,7 +15,7 @@
                     <input type="hidden" name="team_id" value="{{Auth::user()->current_team_id}}">
                     <div class="form-group">
                         <label for="resource_id">Recurso</label>
-                        <select class="form-control" name="resource_id" id="resource_id" onchange="select(event)"> required>
+                        <select class="form-control" name="resource_id" id="resource_id" onchange="select(event)" required>
                             <option value="" selected>Recurso</option>
                             @foreach($resources as $resource)
                             <option value="{{$resource->id}}">{{$resource->name}}</option>

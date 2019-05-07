@@ -28,7 +28,7 @@
         <div role="tabpanel" id="pond-detail-pills">
             <!-- Nav tabs -->
             <ul class="nav nav-pills nav-tabs" role="tablist">
-                <li role="presentation" class=" nav-item"><a class="btn btn-light nav-link active" href="#graphs_pill"
+                <li role="presentation" class=" nav-item"><a class="btn btn-light active" href="#graphs_pill"
                         aria-controls="graphs_section" role="tab" data-toggle="tab">Gráficos</a></li>
                 <li role="presentation"><a class="btn btn-light" href="#balanced_table_chart"
                         aria-controls="feed_chart_section" role="tab" data-toggle="tab">Alimentación</a></li>
