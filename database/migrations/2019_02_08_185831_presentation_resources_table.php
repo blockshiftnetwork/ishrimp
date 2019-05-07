@@ -34,6 +34,11 @@ class PresentationResourcesTable extends Migration
      */
     public function down()
     {
+        Schema::table('presentation_resources', function(Blueprint $table){
+            $table->dropForeign('presentation_resources_resource_id_foreign');
+            $table->dropColumn('resource_id');
+        });
+        
         Schema::dropIfExists('presentation_resources');
     }
 }

@@ -35,6 +35,10 @@ class PoolsResourcesUsedTable extends Migration
      */
     public function down()
     {
+        Schema::table('pools_resources_used', function(Blueprint $table){
+            $table->dropForeign('pools_resources_used_resource_id_foreign');
+            $table->dropColumn('resource_id');
+        });
         Schema::dropIfExists('pools_resources_used');
     }
 }

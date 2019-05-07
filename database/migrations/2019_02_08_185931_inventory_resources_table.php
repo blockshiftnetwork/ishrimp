@@ -33,6 +33,10 @@ class InventoryResourcesTable extends Migration
      */
     public function down()
     {
+        Schema::table('inventory_resources', function(Blueprint $table){
+            $table->dropForeign('inventory_resources_resource_id_foreign');
+            $table->dropColumn('resource_id');
+        });
         Schema::dropIfExists('inventory_resources');
     }
 }
