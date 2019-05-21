@@ -15,7 +15,7 @@
             <p class="my-1">PLs Sembrados: <br><b class="pond_pls">NA</b></p>
         </div>
         <div class="col-lg-2 right_border">
-            <p class="my-1">DOC: <br><b class="pond_doc">NA</b></p>
+            <p class="my-1">Días: <br><b class="pond_doc">NA</b></p>
         </div>
         <div class="col-lg-2 right_border">
 
@@ -33,9 +33,9 @@
                 <li role="presentation"><a class="btn btn-light" href="#balanced_table_chart"
                         aria-controls="feed_chart_section" role="tab" data-toggle="tab">Alimentación</a></li>
                 <li role="presentation"><a class="btn btn-light" href="#inputs_pill" aria-controls="inputs_section"
-                        role="tab" data-toggle="tab">Entradas</a></li>
+                        role="tab" data-toggle="tab">Insumos</a></li>
                 <li role="presentation"><a class="btn btn-light" href="#abw_pill" aria-controls="abw_section" role="tab"
-                        data-toggle="tab">ABW</a></li>
+                        data-toggle="tab">Peso Promedio</a></li>
                 <li role="presentation"><a class="btn btn-light" href="#lab_pill" aria-controls="lab_section" role="tab"
                         data-toggle="tab">Pruebas de Laboratorio</a></li>
             </ul>
