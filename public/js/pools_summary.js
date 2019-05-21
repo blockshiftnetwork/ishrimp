@@ -688,14 +688,7 @@ function createParamChart(data1, data2, data3, labels){
           borderColor: '#FF0040',
 
         },
-        {
-
-          label: 'pH',
-          fill: true,
-          data:  data1,
-          backgroundColor: '#1eca4970',
-          borderColor: '#1eca49'
-        }
+      
       ]
     },
     options: {

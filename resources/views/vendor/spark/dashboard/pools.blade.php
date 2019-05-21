@@ -76,7 +76,7 @@
                     <div class="col-6">
                         <div class="card">
                             <h4 class="card-title">
-                                pH vs DO vs Temp
+                                Oxígeno vs Temperatura
                             </h4>
                             <canvas id="myChart4" width="700" height="600"></canvas>
                         </div>
