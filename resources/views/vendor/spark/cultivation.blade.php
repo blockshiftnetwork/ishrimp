@@ -25,7 +25,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#abw" aria-controls="abw" role="tab" data-toggle="tab">
                         <i class="fa fa-bar-chart icon"></i>
-                        {{__('ABW')}}
+                        {{__('Peso Promedio')}}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projections" aria-controls="projections" role="tab" data-toggle="tab">
+                        <i class="fa fa-bar-chart icon"></i>
+                        {{__('Proyecciones Semanales')}}
                     </a>
                 </li>
             </ul>
@@ -42,6 +48,9 @@
                     </div>
                     <div role="tabcard" class="tab-pane" id="abw">
                         @include('spark::cultivation.abw')
+                    </div>
+                    <div role="tabcard" class="tab-pane" id="projections">
+                        @include('spark::cultivation.projections')
                     </div>
                 </div>
             </div>
@@ -109,7 +118,24 @@ $(function () {
 
         $('#medicine-table').on('click', '.btn-delete', function () {
             $(this).parent().parent().remove();
-        })
+        });
+
+        $('#projection-table').on('click', '.btn-duplicate', function () {
+            let current_row = $(this).parent().parent(),
+                new_row = current_row.clone(),
+                table_body = current_row.parent();
+
+            $(this).off('click');
+            $(this).removeClass('btn-duplicate');
+            $(this).addClass('btn-delete');
+            $(this).html('<b>-</b>');
+
+            table_body.append(new_row.attr('id', ++j));
+        });
+
+        $('#projection-table').on('click', '.btn-delete', function () {
+            $(this).parent().parent().remove();
+        });
 
         $('.btn-abw').popover({ title: "Muestras", html: true, placement: "left" });
 
