@@ -15,6 +15,8 @@ class CreateProjectionsDataTable extends Migration
     {
         Schema::create('projections_data', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('pool_id')->unsigned()->nullable();
+            $table->foreign('pool_id')->references('id')->on('pools')->onDelete('cascade');
             $table->integer('parameter');
             $table->float('theoretical')->nullable();
             $table->float('real')->nullable();
