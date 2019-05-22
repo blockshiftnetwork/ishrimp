@@ -343,7 +343,6 @@ $(function () {
             //if exits inputs inside tr
             if (dataValid) {
                 var form = $('#data').serialize();
-                console.log(form);
                 $('#btn_res_used').attr("disabled", true);
                 $.post("{{route('cultivation.store')}}", form, function (resp) {
                 }).done(function (resp) {
@@ -432,7 +431,6 @@ $(function () {
         for (let j = 1; j < trs.length; j++) {
             //Find inputs
             var inputs = $(trs[j]).find('input');
-            console.log('inputs', inputs);
             for (let i = 0; i < inputs.length; i++) {
                 var textVal = $(inputs[i]).val();
                 inputName = $(inputs[i]).attr("id");
@@ -444,7 +442,7 @@ $(function () {
             if ($(inputs[0]).prop('checked')) {
                 dataValid = true;
                 var form = $('#form_Abw').serialize();
-                console.log(form);
+        
                 $.post("{{route('storeDaylyABW')}}", form, function (resp) {
 
                 }).done(function (resp) {
@@ -466,6 +464,52 @@ $(function () {
         }
     }
 
+function saveDataProjections() {    
+    var timeout = null;
+    var table = $('#projection-table');
+    var pool = $('#pool').val();
+    console.log('pool',pool);
+    var parameter = $('#parameter_id').val();
+    var trs = table.find('tr');
+    var dataValid = true;
+
+    $('#pool_s').val(pool);
+    $('#parameter_id_s').val(parameter);
+    for (let j = 1; j < trs.length; j++) {
+        //Find inputs
+        var inputs = $(trs[j]).find('.form-control');
+        for (let i = 0; i < inputs.length; i++) {
+            var inputVal = $(inputs[i]).val();
+            inputName = $(inputs[i]).attr("name");
+            $('#' + inputName + '_s').val(inputVal);
+        }
+
+        //if exits inputs inside tr
+        if (dataValid) {
+            
+            var form = $('#projection-data').serialize();
+            console.log(form);
+            $('#btn-projection').attr("disabled", true);
+            $.post("{{route('storeProjections')}}", form, function (resp) {
+
+            }).done(function (resp) {
+                clearTimeout(timeout);
+                timeout = setTimeout(function () {
+                    showAlert('#alert-cultivate', 'Éxito', resp.data, 'alert-success', 2000, true)
+                }, 2000)
+                $('#btn-projection').attr("disabled", false);
+            }).fail(function (resp) {
+                clearTimeout(timeout);
+                timeout = setTimeout(function () {
+                    showAlert('#alert-cultivate', 'Error', 'Verifique los datos', 'alert-danger', 3000, false)
+                }, 2000)
+                $('#btn_res_used').attr("disabled", false);
+            });
+        } else {
+            alert("Debe agregar datos");
+        }
+    }
+}
     function showAlert(target, title, message, type, duration, reload) {
         $(target).empty();
         $(target).addClass(type);
@@ -486,6 +530,7 @@ $(function () {
         let input = $(element).val();
         return input.length > 0;
     }
+
 </script>
 
 @endsection

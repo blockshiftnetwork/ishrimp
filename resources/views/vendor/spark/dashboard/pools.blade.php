@@ -82,6 +82,34 @@
                         </div>
                     </div>
                 </div>
+                <!--Proyecciones -->
+                <div class="row mt-5">
+                    <div class="col-4">
+                        <div class="card">
+                            <h4 class="card-title">
+            Balanceado Proyectado vs Balanceado Real 
+                            </h4>
+                            <canvas id="myChart5" width="500" height="400"></canvas>
+                        </div>
+                    </div>-
+
+                    <div class="col-4">
+                        <div class="card">
+                            <h4 class="card-title">
+                                Peso Proyectado vs Peso Real
+                            </h4>
+                            <canvas id="myChart6" width="700" height="600"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card">
+                            <h4 class="card-title">
+                                Sobrevivencia Proyectada vs Sobreviviencia Real
+                            </h4>
+                            <canvas id="myChart7" width="700" height="600"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 

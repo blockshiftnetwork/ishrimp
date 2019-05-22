@@ -1,12 +1,18 @@
 var ctx = document.getElementById("myChart").getContext('2d');
 var ctx2 = document.getElementById("myChart2").getContext('2d');
 var ctx4 = document.getElementById("myChart4").getContext('2d');
+var ctx5 = document.getElementById("myChart5").getContext('2d');
+var ctx6 = document.getElementById("myChart6").getContext('2d');
+var ctx7 = document.getElementById("myChart7").getContext('2d');
 
 var data = [1,4,20, 223, 155,65,100]
 var pool_id;
 var bioChart;
 var balacedChart;
 var paramChart;
+var projectBalancedChart;
+var projectSurvivalChart;
+var projectAbwChart;
 
 $(function (){
 pool_id = $('#select_pool').val();
@@ -23,6 +29,7 @@ function iniSummarypool(pool_id){
   let urlBalanced = '/pools/balancedused/'+pool_id;
   let urlParam = '/pools/parameters/'+pool_id;
   let urlUsed = '/pools/resourcesused/'+pool_id;
+  let urlPro = '/cultivation/projections/4/2'
   clearCharts(bioChart);
   clearCharts(balacedChart);
   clearCharts(paramChart);
@@ -30,7 +37,9 @@ function iniSummarypool(pool_id){
   loadDataBio(urlBio);
   loadDataBalanced(urlBalanced);
   loadDataParam(urlParam);
+  loadDataProject(urlPro);
   getResourceUsed(urlUsed);
+  
 }
 function loadPool(url){
     $.get(url, function(resp){
@@ -56,7 +65,6 @@ function loadPool(url){
 
 function loadDataBio(url) {
   $.get(url, function(resp){
-    console.log('response', resp);
     let labels =  loadlabelCreatAt(resp.data,'abw_date')
     let abw = createData(resp.data, 'abw');
     let agw = createData(resp.data,'awg');
@@ -68,7 +76,6 @@ function loadDataBio(url) {
 
 function loadDataBalanced(url){
     $.get(url, function(resp){
-    console.log('response', resp);
     let labels =  loadlabelCreatAt(resp.data, 'date')
     let r1 = createDataBalanced(resp.data, 'quantity',);
     balacedChart = createbalancedChart(r1, [], [], labels, resp.resources_name);
@@ -79,7 +86,6 @@ function loadDataBalanced(url){
 
 function loadDataParam(url){
     $.get(url, function(resp){
-    console.log('response', resp);
     let labels =  loadlabelCreatAt(resp.data, 'date')
     let pH = createData(resp.data, 'ph');
     let dO = createData(resp.data, 'ppm');
@@ -87,6 +93,16 @@ function loadDataParam(url){
     paramChart = createParamChart(pH,dO,temperature,labels);
     loadDataToTableParameters('#statistic_table_param',resp.data);
   });
+}
+
+
+function loadDataProject(url){
+  $.get(url, function(resp){
+  let labels =  loadlabelWeek(resp.data, 'week')
+  let theoretical = createData(resp.data, 'theoretical');
+  let real = createData(resp.data, 'quantity');
+  projectBalancedChart = createbalancedProjecChart(theoretical,real,labels);
+});
 }
 
 function createData(data, prop){
@@ -116,6 +132,14 @@ function loadlabelCreatAt(data, prop){
   let labels = [];
   for (let i = 0; i < data.length; i++) {
     labels.push(getDate(data[i][prop]));
+  }
+  return labels;
+}
+
+function loadlabelWeek(data, prop){
+  let labels = [];
+  for (let i = 0; i < data.length; i++) {
+    labels.push(data[i][prop]);
   }
   return labels;
 }
@@ -260,7 +284,7 @@ function loadDataToTableBalanced(table, data){
       },
       {
         field: 'date',
-        title: 'Fecha del Evento',
+        title: 'Fecha de Registro',
         sortable: true,
         align: 'center',
       },
@@ -272,13 +296,7 @@ function loadDataToTableBalanced(table, data){
       },
       {
         field: 'quantity',
-        title: 'Total del Dia (Kg)',
-        sortable: true,
-        align: 'center',
-      },
-      {
-        field: 'quantity',
-        title: 'Consumo Neto (Kg)',
+        title: 'Total Aplicado (Kg)',
         sortable: true,
         align: 'center',
       },
@@ -724,33 +742,30 @@ function createParamChart(data1, data2, data3, labels){
 
 }
 
-  /*var ctx3 = document.getElementById("myChart3").getContext('2d');
-  var myChart3 =new Chart(ctx3, {
-    type: 'bar',
+function createbalancedProjecChart(data1, data2, labels){
+  return new Chart(ctx5, {
+    type: 'line',
     data: {
-      labels: ['8:00','10:30','11:50','13:25','14:30','15:32','16:14','18:45', '20:24'],
+      labels: labels,
       datasets: [
         {
-          label: 'Biomasa',
-          fill: false,
-          data: data,
-          backgroundColor: '#168ede',
+
+          label: 'Balanceado Real',
+          fill: true,
+          data: data2,
+          backgroundColor: '#168ede69',
           borderColor: '#168ede'
         },
         {
-          label: 'crecimiento',
+
+          label: 'Balanceado Proyec.',
           fill: false,
-          data:  [122,900,100,230,434,23,444,112,44,535],
+          data:  data1,
           backgroundColor: '#FF0040',
-          borderColor: '#FF0040'
+          borderColor: '#FF0040',
+
         },
-        {
-          label: 'ABW',
-          fill: false,
-          data:  [23,43,32,12,32,423,21,23,535,124],
-          backgroundColor: '#1eca49',
-          borderColor: '#1eca49'
-        }
+      
       ]
     },
     options: {
@@ -782,7 +797,9 @@ function createParamChart(data1, data2, data3, labels){
         }]
       }
     }
-  });*/
+  });
+
+}
 
 function clearCharts(chart){
   if(chart instanceof Chart){

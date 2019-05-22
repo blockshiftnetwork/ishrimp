@@ -23,7 +23,7 @@ class PoolsResourcesUsedTable extends Migration
             $table->foreign('presentation_id')->references('id')->on('presentation_resources');
             $table->float('quantity', 21, 2);
             $table->string('note')->nullable();
-            $table->dateTime('date');
+            $table->date('date');
             $table->timestamps();
         });
     }

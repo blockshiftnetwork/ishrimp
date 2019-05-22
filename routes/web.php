@@ -38,6 +38,8 @@ Route::delete('/cultivation/daylyabw/{abw_id}', 'CultivationController@destroyDa
 Route::patch('cultivation/used/{used_id}','CultivationController@update')->name('updateUsed');
 Route::delete('cultivation/used/{used_id}','CultivationController@destroy')->name('destroyUsed');
 
+Route::post('/cultivation/projections', 'CultivationController@storeProjections')->name('storeProjections');
+Route::get('/cultivation/projections/{pool_id}/{parameter_id}', 'CultivationController@getProjections')->name('getProjections');
 //check existence
 Route::get('presentation/{resource_id}','CultivationController@getPresentationResource');
 Route::get('existence/{resource_id}/{presentation_id}','CultivationController@verifyExistence');

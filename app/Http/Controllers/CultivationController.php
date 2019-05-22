@@ -274,4 +274,43 @@ class CultivationController extends Controller
           return redirect()->back()->with('message', 'Datos Eliminados!');
       }
 
+ ## Projections ##
+    public function storeProjections(Request $request)
+    {
+         $request->validate([
+         'pool_id' => 'required',
+         'parameter' => 'required',
+         'theoretical' => 'required',
+        ]);
+    
+        $projection = DB::table('projections_data')->insert($request->except('_token'));
+         return response()->json([
+            'status' => '200',
+            'data' => '!Datos guardados!',
+        ]); 
+    }
+
+    public function getProjections($pool_id, $parameter_id)
+    {
+        if($parameter_id == 1){
+            $projection = DB::table('projections_data as projection')->where('projection.pool_id', $pool_id)->where('projection.parameter', $parameter_id)
+                                    ->join('daily_samples as sample','sample.pool_id', 'projection.pool_id')
+                                    ->select('projection.*','sample.abw', DB::raw('(SELECT (IFNULL(SUM(pools_resources_used.quantity),0)) FROM pools_resources_used, resources WHERE pools_resources_used.pool_id = pools.id and pools_resources_used.resource_id = resources.id and resources.category_id = 1 ) as balanced'))->orderBy('week')->get();
+        }elseif($parameter_id == 2){
+            $projection = DB::table('projections_data as projection')->where('projection.pool_id', $pool_id)->where('projection.parameter', $parameter_id)
+                                    ->join('pools_resources_used as used','used.pool_id', 'projection.pool_id')
+                                    ->select('projection.*','used.quantity')->orderBy('week')->get();
+        }else{
+            $projection = DB::table('projections_data as projection')->where('projection.pool_id', $pool_id)->where('projection.parameter', $parameter_id)
+            ->join('daily_samples as sample','sample.pool_id', 'projection.pool_id')
+            ->select('projection.*','sample.survival_percent as survival')->orderBy('week')->get();
+        }
+        
+           dd($projection);
+
+            return response()->json([
+            'status' => '200',
+            'data' => $projection,
+        ]); 
+     }
 }
