@@ -22,11 +22,15 @@ class ResourceController extends Controller
                             'providers.name as provider_name')
                     ->get();
 
-        $presentations = DB::table('presentation_resources as presentation')
-                        ->join('resources', 'presentation.resource_id','=','resources.id')
-                        ->select('resources.name as resource_name','presentation.*')
+        $balanceds = DB::table('presentation_resources as presentation')
+                        ->join('resources', 'presentation.resource_id','=','resources.id')->where('resources.category_id', 1)
+                        ->select('resources.resource_name as resource_name','presentation.*')
                         ->get();
 
+        $supplies = DB::table('presentation_resources as presentation')
+                        ->join('resources', 'presentation.resource_id','=','resources.id')->where('resources.category_id', 2)
+                        ->select('resources.resource_name as resource_name','presentation.*')
+                        ->get();
        /*$inventory = DB::table('inventory_resources as inventory')
                          ->where('inventory.id',
                             DB::raw('(SELECT MAX(inventory.id) FROM inventory_resources as inventory WHERE inventory.resource_id = resources.id)')
@@ -39,7 +43,7 @@ class ResourceController extends Controller
                             t1.inventory_resource_id,
                             t1.presentation_id,
                             t1.resource_id,
-                            t1.name,
+                            t1.resource_name,
                             t1.presentation_name,
                             t1.unity,
                             t1.presentation_qty,
@@ -54,7 +58,7 @@ class ResourceController extends Controller
                             SELECT
                             rs.id AS resource_id,
                             pr.id AS presentation_id,
-                            rs.name,
+                            rs.resource_name,
                             pr.name AS presentation_name,
                             pr.unity,
                             pr.quantity AS presentation_qty,
@@ -97,7 +101,8 @@ class ResourceController extends Controller
         return view('vendor.spark.resource-settings')->with(['resources' => $resources,
                                                             'providers' => $providers,
                                                             'categories' => $categories,
-                                                            'presentations' => $presentations,
+                                                            'balanceds' => $balanceds,
+                                                            'supplies' => $supplies,
                                                             'inventory' => $inventory,
                                                             'laboratories' => $laboratories]);
     }
@@ -105,7 +110,7 @@ class ResourceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'resource_name' => 'required',
             'category_id' => 'required',
             'provider_id' => 'required',
             'team_id' => 'required'
@@ -124,7 +129,7 @@ class ResourceController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'resource_name' => 'required',
             'category_id' => 'required',
             'provider_id' => 'required',
             'team_id' => 'required'
@@ -198,13 +203,20 @@ class ResourceController extends Controller
     {
      
         $request->validate([
-            'resource_id'=> 'required',
+            'team_id' => 'required',
+            'category_id' => 'required',
+            'resource_name' => 'required',
+            'provider_id' => 'required',
             'name' => 'required',
             'quantity' => 'required',
             'price' => 'required',
             'unity' => 'required'
         ]);
-        $presentation = PresentationResource::create($request->all());
+
+        $resource = DB::table('resources')->insert($request->only(['team_id','category_id','resource_name','provider_id']));
+        $resource_id = Resource::get()->last();
+        $request['resource_id'] = $resource_id->id;
+        $presentation = PresentationResource::create($request->except(['provider_id','resource_name','category_id']));
 
         return redirect()->back()->with('message', '¡Presentación Guardada!');
     }

@@ -22,7 +22,7 @@ class CultivationController extends Controller
     {   
         $team_id = auth()->user()->currentTeam->id;
         $pools = Pool::select('id', 'name')->where('team_id', $team_id)->get();
-        $resources = Resource::select('id', 'name')->where('team_id', $team_id)->get();
+        $resources = Resource::select('id', 'resource_name')->where('team_id', $team_id)->get();
         
         $laboratories = Laboratory::select('id', 'name')->get();
 
@@ -49,7 +49,7 @@ class CultivationController extends Controller
         $existence = DB::table('inventory_resources as inventory')->where('inventory.id', DB::raw('(SELECT MAX(inventory.id) FROM inventory_resources as inventory WHERE inventory.resource_id = resources.id)'))
                         ->join('resources','inventory.resource_id','=','resources.id')->where('inventory.resource_id',$resource_id)
                         ->join('presentation_resources as presentation','inventory.presentation_id','=','presentation.id')->where('inventory.presentation_id',$presentation_id)
-                        ->select('inventory.quantity','inventory.id','resources.name as resource_name','presentation.name as presentation_name','presentation.unity as presentation_unity','presentation.quantity as presentation_quantity', DB::raw('(SELECT IFNULL(SUM(used.quantity),0) from pools_resources_used as used where used.resource_id = inventory.resource_id) as used_quatity' ))->groupBy('presentation_quantity')->get();
+                        ->select('inventory.quantity','inventory.id','resources.resource_name as resource_name','presentation.name as presentation_name','presentation.unity as presentation_unity','presentation.quantity as presentation_quantity', DB::raw('(SELECT IFNULL(SUM(used.quantity),0) from pools_resources_used as used where used.resource_id = inventory.resource_id) as used_quatity' ))->groupBy('presentation_quantity')->get();
 
                         //dd($existence);
         /*DB::table('inventory_resources')->where([

@@ -24,17 +24,19 @@
                             <th data-align="center">Cantidad Sembrada</th>
                             <th data-align="center">Existencia en inventario</th>
                             <th data-align="center">Última Actualización</th>
+                            <th data-align="center">Costo</th>
                             <th data-align="center">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($inventory as $item )
                         <tr>
-                            <td>{{$item->name}}</td>
+                            <td>{{$item->resource_name}}</td>
                             <td>{{$item->presentation_name}}</td>
                             <td>{{$item->qty_used_in_pools}}</td>
                             <td>{{$item->existence_qty}}</td>
                             <td>{{$item->updated_at}}</td>
+                            <td>costo $</td>
                             <td>
                             <div class="actions btn btn-group-sm">
                                 <button id="#edit" data-toggle="modal"

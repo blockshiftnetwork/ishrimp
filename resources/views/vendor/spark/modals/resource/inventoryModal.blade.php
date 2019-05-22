@@ -18,7 +18,7 @@
                         <select class="form-control" name="resource_id" id="resource_id" onchange="select(event)" required>
                             <option value="" selected>Recurso</option>
                             @foreach($resources as $resource)
-                            <option value="{{$resource->id}}">{{$resource->name}}</option>
+                            <option value="{{$resource->id}}">{{$resource->resource_name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -65,7 +65,7 @@
                         <select class="form-control" name="resource_id" id="resource_id" onchange="select(event)" required>
                             <option value="" selected>Recurso</option>
                             @foreach($resources as $resource)
-                            <option value="{{$resource->id}}">{{$resource->name}}</option>
+                            <option value="{{$resource->id}}">{{$resource->resource_name}}</option>
                             @endforeach
                         </select>
                     </div>

@@ -4,24 +4,156 @@
             <div role="tabpanel" id="pond-detail-pills">
                 <!-- Nav tabs -->
                 <ul class="nav nav-pills nav-tabs" role="tablist" style="float: left;">
-                    <li role="resource" id="res"><a id="link-recources" class="btn btn-light active" href="#resource-tab" aria-controls="resource_section"
+                <li role="Balanceado" id="bal"><a id="link-Balanceado active" class="btn btn-light active" href="#balanceado-tab" aria-controls="resource_section"
+                            role="tab" data-toggle="tab">Balanceado</a></li>
+                <li role="supply" id="sup"><a class="btn btn-light " href="#supply-tab"
+                            aria-controls="supply" role="tab" data-toggle="tab">Insumos</a></li>
+                    <!--<li role="resource" id="res"><a id="link-recources" class="btn btn-light " href="#resource-tab" aria-controls="resource_section"
                             role="tab" data-toggle="tab">Recursos</a></li>
                     <li role="presentation" id="pres"><a class="btn btn-light " href="#presentation"
-                            aria-controls="presentation_section" role="tab" data-toggle="tab">Presentaciones</a></li>
+                            aria-controls="presentation_section" role="tab" data-toggle="tab">Presentaciones</a></li>-->
                    
                     <li role="providers" id="prov"><a class="btn btn-light" href="#providers" aria-controls="providers_section"
                             role="tab" data-toggle="tab">Proveedores</a></li>
                     <li role="labs" id="lab"><a id="link-lab" class="btn btn-light" href="#labs" aria-controls="labs_section"
                             role="tab" data-toggle="tab">Laboratorios</a></li>
                 </ul>
+                <div id="s_bal" class="search" style="float: right; display: none;"></div>
                 <div id="s_res" class="search" style="float: right; display: none;"></div>
                 <div id="s_pres" class="search"  style="float: right; display: none;"></div>
                 <div id="s_prov" class="search"  style="float: right; display: none;"></div>
                 <div id="s_labs" class="search"  style="float: right; display: none;"></div>
             </div>
             <div class="tab-content">
+            <!--Balanceado-->
+            <div role="tabpanel" class="tab-pane active" id="balanceado-tab">
+                    <div class="mid_container">
+                        <section class="section">
+                        <table class="bg-white"
+                                    data-toggle="table"
+                                    data-classes="table table-striped table-hover table-borderless"
+                                    data-pagination="true"
+                                    data-locale="es-ES"
+                                    data-search="true">
+                                    <thead class="thead-primary">
+
+                                        <tr>
+                                            <th data-sortable="true"
+                                                data-field="name" data-align="center" >Nombre de recurso</th>
+                                            <th data-align="center">Presentación</th>
+                                            <th data-align="center">Cantidad</th>
+                                            <th data-align="center">Precio</th>
+                                            <th data-align="center">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="results" aria-live="polite" aria-relevant="all">
+                                    @foreach ($balanceds as $balanced)
+                                        <tr>
+                                            <td>{{$balanced->resource_name}}</td>
+                                            <td >{{$balanced->resource_name}}</td>
+                                            <td>{{$balanced->quantity}} {{$balanced->unity}}</td>
+                                            <td>{{$balanced->price}}</td>
+                                            <td class="text-center">
+                                                <div class="actions btn btn-group-sm">
+                                                    <button id="#edit" data-toggle="modal"
+                                                        data-target="#editBalancedModal"
+                                                        data-id="{{$balanced->id}}"
+                                                        data-resource_id="{{$balanced->resource_id}}"
+                                                        data-name ="{{$balanced->resource_name}}"
+                                                        data-quantity="{{$balanced->quantity}}"
+                                                        data-price="{{$balanced->price}}"
+                                                        data-unity="{{$balanced->unity}}"
+                                                        class="btn btn-success btn-xs mr-4">
+                                                        <i class="fa fa-edit"></i></button>
+                                                    <button 
+                                                    data-toggle="modal"
+                                                    data-target="#deleteBalancedModal"
+                                                    data-id="{{$balanced->id}}"
+                                                    class="btn btn-xs btn-danger">
+                                                        <i class="fa fa-trash-o"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <div class="btn-tools-bar">
+                                        <div class="btn-tools-bar">
+                                                <button type="button" id="addfood" class="btn btn-primary ml-1 mt-3" data-toggle="modal"
+                                                    data-target="#addBalancedModal"><i class="fa fa-plus" aria-hidden="true"></i>
+                                                    Añadir Recurso</button>
+                                        </div>
+                        </section>
+                    </div>
+                    <!-- Modals resources -->
+                    @include('spark::modals.resource.balancedModals')
+                </div>
+                <!-- Supplies -->
+                <div role="tabpanel" class="tab-pane" id="supply-tab">
+                        <div class="mid_container">
+                            <section class="section">
+                            <table class="bg-white"
+                                        data-toggle="table"
+                                        data-classes="table table-striped table-hover table-borderless"
+                                        data-pagination="true"
+                                        data-locale="es-ES"
+                                        data-search="true">
+                                        <thead class="thead-primary">
+    
+                                            <tr>
+                                                <th data-sortable="true"
+                                                    data-field="name" data-align="center" >Nombre de recurso</th>
+                                                <th data-align="center">Presentación</th>
+                                                <th data-align="center">Cantidad</th>
+                                                <th data-align="center">Precio</th>
+                                                <th data-align="center">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="results" aria-live="polite" aria-relevant="all">
+                                        @foreach ($supplies as $supply)
+                                            <tr>
+                                                <td>{{$supply->resource_name}}</td>
+                                                <td >{{$supply->resource_name}}</td>
+                                                <td>{{$supply->quantity}} {{$supply->unity}}</td>
+                                                <td>{{$supply->price}}</td>
+                                                <td class="text-center">
+                                                    <div class="actions btn btn-group-sm">
+                                                        <button id="#edit" data-toggle="modal"
+                                                            data-target="#editSupplyModal"
+                                                            data-id="{{$supply->id}}"
+                                                            data-resource_id="{{$supply->resource_id}}"
+                                                            data-name ="{{$supply->resource_name}}"
+                                                            data-quantity="{{$supply->quantity}}"
+                                                            data-price="{{$supply->price}}"
+                                                            data-unity="{{$supply->unity}}"
+                                                            class="btn btn-success btn-xs mr-4">
+                                                            <i class="fa fa-edit"></i></button>
+                                                        <button 
+                                                        data-toggle="modal"
+                                                        data-target="#deleteSupplyModal"
+                                                        data-id="{{$supply->id}}"
+                                                        class="btn btn-xs btn-danger">
+                                                            <i class="fa fa-trash-o"></i></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    <div class="btn-tools-bar">
+                                            <div class="btn-tools-bar">
+                                                    <button type="button" id="addfood" class="btn btn-primary ml-1 mt-3" data-toggle="modal"
+                                                        data-target="#addSupplyModal"><i class="fa fa-plus" aria-hidden="true"></i>
+                                                        Añadir Recurso</button>
+                                            </div>
+                            </section>
+                        </div>
+                        <!-- Modals resources -->
+                        @include('spark::modals.resource.supplyModal')
+                    </div>
+                    
                 <!-- tab resource-->
-                <div role="tabpanel" class="tab-pane active" id="resource-tab">
+                <div role="tabpanel" class="tab-pane" id="resource-tab">
                     <div class="mid_container">
                         <section class="section">
                                 <table class="bg-white"
@@ -43,7 +175,7 @@
                                     <tbody class="results" aria-live="polite" aria-relevant="all">
                                     @foreach ($resources as $resource)
                                         <tr>
-                                            <td>{{$resource->name}}</td>
+                                            <td>{{$resource->resource_name}}</td>
                                             <td>{{$resource->provider_name ?? 'No Establecido'}}</td>
                                             <td>{{$resource->category_name}}</td>
                                             <td class="text-center">
@@ -51,7 +183,7 @@
                                                     <button id="#edit" data-toggle="modal"
                                                         data-target="#editResourceModal"
                                                         data-id="{{$resource->id}}"
-                                                        data-name="{{$resource->name}}"
+                                                        data-name="{{$resource->resource_name}}"
                                                         data-provider_id="{{$resource->provider_id}}"
                                                         data-category_id="{{$resource->category_id}}"
                                                         class="btn btn-success btn-xs mr-4">
@@ -77,70 +209,7 @@
                     <!-- Modals resources -->
                     @include('spark::modals.resource.resourceModals')
                 </div>
-                 <!-- tab presentation-->
-                <div role="tabpanel" class="tab-pane" id="presentation">
-                    <div class="mid_container">
-                        <section class="section">
-                           <!-- <div class=" " id="feed_table" style="overflow: hidden;">-->
-                                <table class="bg-white"
-                                    data-toggle="table"
-                                    data-classes="table table-striped table-hover table-borderless"
-                                    data-pagination="true"
-                                    data-locale="es-ES"
-                                    data-search="true">
-                                    <thead class="thead-primary">
-
-                                        <tr>
-                                            <th data-sortable="true"
-                                                data-field="name" data-align="center" >Nombre de recurso</th>
-                                            <th data-align="center">Presentación</th>
-                                            <th data-align="center">Cantidad</th>
-                                            <th data-align="center">Precio</th>
-                                            <th data-align="center">Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="results" aria-live="polite" aria-relevant="all">
-                                    @foreach ($presentations as $presentation)
-                                        <tr>
-                                            <td>{{$presentation->resource_name}}</td>
-                                            <td >{{$presentation->name}}</td>
-                                            <td>{{$presentation->quantity}} {{$presentation->unity}}</td>
-                                            <td>{{$presentation->price}}</td>
-                                            <td class="text-center">
-                                                <div class="actions btn btn-group-sm">
-                                                    <button id="#edit" data-toggle="modal"
-                                                        data-target="#editPresentationModal"
-                                                        data-id="{{$presentation->id}}"
-                                                        data-resource_id="{{$presentation->resource_id}}"
-                                                        data-name ="{{$presentation->name}}"
-                                                        data-quantity="{{$presentation->quantity}}"
-                                                        data-price="{{$presentation->price}}"
-                                                        data-unity="{{$presentation->unity}}"
-                                                        class="btn btn-success btn-xs mr-4">
-                                                        <i class="fa fa-edit"></i></button>
-                                                    <button 
-                                                    data-toggle="modal"
-                                                    data-target="#deletePresentationModal"
-                                                    data-id="{{$presentation->id}}"
-                                                    class="btn btn-xs btn-danger">
-                                                        <i class="fa fa-trash-o"></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                <div class="btn-tools-bar">
-                                    <button type="button" id="addfood" class="btn btn-primary ml-1 mt-3" data-toggle="modal"
-                                        data-target="#addPresentationModal"><i class="fa fa-plus" aria-hidden="true"></i>
-                                        Añadir presentación</button>
-                                </div>
-                            <!--</div> -->
-                        </section>
-                    </div>
-                    <!-- Modals presentation -->
-                    @include('spark::modals.resource.presentationModals')
-                </div>
+                
                 <!-- tab providers  -->
                 <div role="tabpanel" class="tab-pane" id="providers">
                     <div class="mid_container">
