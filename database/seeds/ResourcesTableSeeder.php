@@ -14,42 +14,42 @@ class ResourcesTableSeeder extends Seeder
      $resources = array(
         [
             'id' => '1',
-            'resource_name' => 'Lorica - Gisis',
+            'name' => 'Lorica - Gisis',
             'category_id' => '1',
             'provider_id' => '1',
             'team_id' => '1'
         ],
         [ 
      	    'id' => '2',
-     	    'resource_name' => 'Nature Wellness',
+     	    'name' => 'Nature Wellness',
      	    'category_id' => '3',
      	    'provider_id' => '3',
      	    'team_id' => '1'
         ],
         [
      	    'id' => '3',
-     	    'resource_name' => 'Optiline',
+     	    'name' => 'Optiline',
      	    'category_id' => '2',
      	    'provider_id' => '2',
      	    'team_id' => '1'
         ],
         [
             'id' => '4',
-            'resource_name' => 'Lorica - Gisis',
+            'name' => 'Lorica - Gisis',
             'category_id' => '1',
             'provider_id' => '1',
             'team_id' => '2'
         ],
         [ 
      	    'id' => '5',
-     	    'resource_name' => 'Nature Wellness',
+     	    'name' => 'Nature Wellness',
      	    'category_id' => '3',
      	    'provider_id' => '3',
      	    'team_id' => '2'
         ],
         [
      	    'id' => '6',
-     	    'resource_name' => 'Optiline 25% #2',
+     	    'name' => 'Optiline 25% #2',
      	    'category_id' => '2',
      	    'provider_id' => '2',
      	    'team_id' => '2'

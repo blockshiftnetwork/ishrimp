@@ -226,30 +226,23 @@
             //modify of search field
         $( document ).ready(function() {
            /* resources */
-        
-        $balanceado_tab = $("#balanceado-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
-        $supply_tab = $("#supply-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
         $resource_tab = $("#resource-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
         $presentations_tab = $("#presentation > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
         $providers_tab = $("#providers > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
         $lab_tab = $("#labs > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
-        
-        $("#balanceado-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar").hide();
-        $("#supply-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar").hide();
+           
         $("#resource-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar").hide();
         $("#presentation > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar").hide();
         $("#providers > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar").hide();
         $("#labs > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar ").hide();
         
-        $("#pond-detail-pills > div#s_bal").append($balanceado_tab);
-        $("#pond-detail-pills > div#s_sup").append($supply_tab);
         $("#pond-detail-pills > div#s_res").append($resource_tab);
         $("#pond-detail-pills > div#s_pres").append($presentations_tab);
         $("#pond-detail-pills > div#s_prov").append($providers_tab);
         $("#pond-detail-pills > div#s_labs").append($lab_tab);
 
         function mostrar_campo_buscar(id_to_show) {
-            let ids = ['#s_bal','#s_res', '#s_pres', '#s_prov', '#s_labs'];
+            let ids = ['#s_res', '#s_pres', '#s_prov', '#s_labs'];
             
             return function() {
                 for (let id of ids) {
@@ -261,10 +254,8 @@
                 }
             }
         }        
-        $( "#s_bal" ).show();  
-
-        $( "#bal" ).click(mostrar_campo_buscar("#s_bal"));
-
+        $( "#s_res" ).show();  
+        
         $( "#res" ).click(mostrar_campo_buscar("#s_res"));
 
         $( "#pres" ).click(mostrar_campo_buscar("#s_pres"));
