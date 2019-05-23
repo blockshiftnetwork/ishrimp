@@ -100,6 +100,84 @@
                                 </td>
                              
                             </tr>
+                            <tr>
+                                  
+                                  <td>
+                                       <span>semana 6</span>
+                                       <input id="week" name="week" class="form-control w-50" type="hidden" value ="6" required="">
+   
+                                   </td>
+                                   <td>
+                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+   
+                                   </td>
+                                
+                               </tr>
+                               <tr>
+                                  
+                                  <td>
+                                       <span>semana 7</span>
+                                       <input id="week" name="week" class="form-control w-50" type="hidden" value ="7" required="">
+   
+                                   </td>
+                                   <td>
+                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+   
+                                   </td>
+                                
+                               </tr>
+                               <tr>
+                                  
+                                  <td>
+                                       <span>semana 8</span>
+                                       <input id="week" name="week" class="form-control w-50" type="hidden" value ="8" required="">
+   
+                                   </td>
+                                   <td>
+                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+   
+                                   </td>
+                                
+                               </tr>
+                               <tr>
+                                  
+                                  <td>
+                                       <span>semana 9</span>
+                                       <input id="week" name="week" class="form-control w-50" type="hidden" value ="9" required="">
+   
+                                   </td>
+                                   <td>
+                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+   
+                                   </td>
+                                
+                               </tr>
+                               <tr>
+                                  
+                                  <td>
+                                       <span>semana 10</span>
+                                       <input id="week" name="week" class="form-control w-50" type="hidden" value ="11" required="">
+   
+                                   </td>
+                                   <td>
+                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+   
+                                   </td>
+                                
+                               </tr>
+                               <tr>
+                                  
+                                  <td>
+                                       <span>semana 12</span>
+                                       <input id="week" name="week" class="form-control w-50" type="hidden" value ="12" required="">
+   
+                                   </td>
+                                   <td>
+                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+   
+                                   </td>
+                                
+                               </tr>
                             </tbody>
                         </table>
                         <hr>

@@ -293,9 +293,20 @@ class CultivationController extends Controller
     public function getProjections($pool_id, $parameter_id)
     {
         if($parameter_id == 1){
-            $projection = DB::table('projections_data as projection')->where('projection.pool_id', $pool_id)->where('projection.parameter', $parameter_id)
-                                    ->join('daily_samples as sample','sample.pool_id', 'projection.pool_id')
-                                    ->select('projection.*','sample.abw', DB::raw('(SELECT (IFNULL(SUM(pools_resources_used.quantity),0)) FROM pools_resources_used, resources WHERE pools_resources_used.pool_id = pools.id and pools_resources_used.resource_id = resources.id and resources.category_id = 1 ) as balanced'))->orderBy('week')->get();
+            $projection = DB::select('SELECT abw, WEEK(abw_date)-WEEk(CURDATE())
+            AS week_s,
+             theoretical 
+             FROM 
+             daily_samples,
+              (SELECT week, theoretical 
+              FROM projections_data,
+               daily_samples 
+               WHERE parameter ='.$parameter_id.'
+               AND week = WEEk(CURDATE())- WEEK(daily_samples.abw_date)) 
+               AS proj 
+               WHERE abw <> 0 
+               GROUP BY week_s 
+               ORDER BY week_s ASC');
         }elseif($parameter_id == 2){
             $projection = DB::table('projections_data as projection')->where('projection.pool_id', $pool_id)->where('projection.parameter', $parameter_id)
                                     ->join('pools_resources_used as used','used.pool_id', 'projection.pool_id')
