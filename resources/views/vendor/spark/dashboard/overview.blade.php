@@ -1,6 +1,14 @@
+<div class="btn-group-md mb-3">
+<a
+    data-toggle="modal"
+    data-target="#createPoolModal"
+    href="javascript:void(0)" class="btn btn-xs btn-success"><i class="fa fa-plus"></i> Agregar Piscina
+    </a>
+</div>
+
+
 <div class="card card-default card-table">
     <div class="card-header">
-
        <span class="font-weight-bold" style="line-height: 2.3em;vertical-align: -webkit-baseline-middle;"> {{__('Visión General')}}</span>
        <div class="float-right search ">
        </div>

@@ -298,15 +298,15 @@ class CultivationController extends Controller
              theoretical 
              FROM 
              daily_samples,
-              (SELECT week, theoretical 
-              FROM projections_data,
-               daily_samples 
-               WHERE parameter ='.$parameter_id.'
-               AND week = WEEk(CURDATE())- WEEK(daily_samples.abw_date)) 
-               AS proj 
-               WHERE abw <> 0 
-               GROUP BY week_s 
-               ORDER BY week_s ASC');
+             (SELECT week, theoretical 
+             FROM projections_data,
+             daily_samples 
+             WHERE parameter ='.$parameter_id.'
+             AND week = WEEk(CURDATE())- WEEK(daily_samples.abw_date)) 
+             AS proj 
+             WHERE abw <> 0 
+             GROUP BY week_s 
+             ORDER BY week_s ASC');
         }elseif($parameter_id == 2){
             $projection = DB::table('projections_data as projection')->where('projection.pool_id', $pool_id)->where('projection.parameter', $parameter_id)
                                     ->join('pools_resources_used as used','used.pool_id', 'projection.pool_id')

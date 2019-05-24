@@ -27,6 +27,12 @@
                                 {{__('Piscinas')}}
                             </a>
                         </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#simulations" aria-controls="simulations" role="tab" data-toggle="tab">
+                                    <i class="fa fa-spinner icon"></i>
+                                {{__('Simulaciónes')}}
+                            </a>
+                        </li>
                     </ul>
                 @endsection
 
@@ -39,9 +45,12 @@
                             <div role="tabcard" class="tab-pane " id="maps" style="height:-webkit-fill-available; width: 100%;">
                                     @include('spark::dashboard.maps')
                                 </div>
-                                <div role="tabcard" class="tab-pane " id="pools" style="height: 100%; width: 100%;">
+                            <div role="tabcard" class="tab-pane " id="pools" style="height: 100%; width: 100%;">
                                     @include('spark::dashboard.pools')
-                                </div>
+                            </div>
+                            <div role="tabcard" class="tab-pane " id="simulations" style="height: 100%; width: 100%;">
+                                    @include('spark::dashboard.simulation')
+                            </div>
                         </div>
                     </div>
             </div>
@@ -49,6 +58,7 @@
         </div>
        
     </home>
+    @include('spark::modals.dashboard.modalCreatePool')
     @include('spark::modals.dashboard.modalPool')
     @include('spark::modals.dashboard.modalResourcesUsed')
     @include('spark::modals.dashboard.modalBalancedPool')

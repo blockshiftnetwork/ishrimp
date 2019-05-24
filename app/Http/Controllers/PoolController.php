@@ -164,14 +164,14 @@ class PoolController extends Controller
         $request->validate([
             'name' => 'required',
             'size' => 'required',
-            'coordinates' => 'required'
+            
         ]);
         
         $pool = new Pool;
         $pool->team_id = auth()->user()->currentTeam->id;
         $pool->name = $request->name;
         $pool->size = $request->size;
-        $pool->coordinates = $request->coordinates;
+        $pool->coordinates = '{}';
         $pool->save();
         $pool_id = Pool::get()->last();
         $this->saveSampleToPool($pool_id);
