@@ -159,7 +159,8 @@ function createDataBalanced(data, prop){
 function calRC(data, balanced, abw, survival, planted){
   let values = [];
   for (let i = 0; i < data.length; i++) {
-    values.push((data[i][balanced]*2.2)/(((data[i][abw]/1000)*2.2)*(data[i][survival]/1)*(data[i][planted])));
+    let rc =(data[i][balanced]*2.2)/(((data[i][abw]/1000)*2.2)*(data[i][survival]/1)*(data[i][planted])); 
+    values.push(rc);
   }
   return values;
 }
