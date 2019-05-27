@@ -293,7 +293,7 @@ class CultivationController extends Controller
     public function getProjections($pool_id, $parameter_id)
     {
             $theoretical = DB::table('projections_data')
-            ->where('pool_id',$pool_id)->where('parameter',$parameter_id)
+            ->where('pool_id',$pool_id)->where('parameter',$parameter_id)->orderBy('week')
             ->get();
             if($parameter_id == 1){
               $realValue = DB::select('SELECT SUM(abw) AS real_abw, WEEK(abw_date) AS week FROM daily_samples WHERE pool_id ='.$pool_id.' GROUP BY week ORDER BY week ASC');
