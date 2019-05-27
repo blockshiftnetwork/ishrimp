@@ -13,10 +13,9 @@
             <tr>
                 <td>Piscina</td>
                 <td><select class="form-control" name="" id="">
-                    <option value="1">Piscina 1</option>
-                    <option value="2">Piscina 2</option>
-                    <option value="3">Piscina 3</option>
-                    <option value="4">Piscina 4</option>
+                @foreach($pools as $pool)
+                <option value="{{$pool->pool_id}}">{{$pool->name}}</option>
+                @endforeach  
                     </select>
                 </td>
             </tr>

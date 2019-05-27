@@ -10,7 +10,7 @@ var pool_id;
 var bioChart;
 var balacedChart;
 var paramChart;
-var projectBalancedChart;
+var projectUsedChart;
 var projectSurvivalChart;
 var projectAbwChart;
 
@@ -29,18 +29,32 @@ function iniSummarypool(pool_id){
   let urlBalanced = '/pools/balancedused/'+pool_id;
   let urlParam = '/pools/parameters/'+pool_id;
   let urlUsed = '/pools/resourcesused/'+pool_id;
-  let urlPro = '/cultivation/projections/4/2'
+  let urlProAbw = '/cultivation/projections/'+pool_id+'/1';
+  let urlProUsed = '/cultivation/projections/'+pool_id+'/2';
+  let urlProSurv = '/cultivation/projections/'+pool_id+'/3';
+
+  //clear charts views
   clearCharts(bioChart);
   clearCharts(balacedChart);
   clearCharts(paramChart);
+  clearCharts(projectUsedChart);
+  clearCharts(projectSurvivalChart);
+  clearCharts(projectAbwChart);
+  //summary pools load
   loadPool(urlPool)
   loadDataBio(urlBio);
   loadDataBalanced(urlBalanced);
   loadDataParam(urlParam);
-  loadDataProject(urlPro);
+  //projections load
+  loadUsedDataProject(urlProUsed);
+  loadABWDataProject(urlProAbw);
+  loadSurvDataProject(urlProSurv);
+  //load info resource used
   getResourceUsed(urlUsed);
   
 }
+
+//definitions of function to load data
 function loadPool(url){
     $.get(url, function(resp){
     let pool = resp.data[0];
@@ -95,16 +109,37 @@ function loadDataParam(url){
   });
 }
 
-
-function loadDataProject(url){
+function loadUsedDataProject(url){
   $.get(url, function(resp){
-  let labels =  loadlabelWeek(resp.data, 'week')
-  let theoretical = createData(resp.data, 'theoretical');
-  let real = createData(resp.data, 'quantity');
-  projectBalancedChart = createbalancedProjecChart(theoretical,real,labels);
+  let labels =  loadlabelWeek(resp.theoretical, 'week')
+  let theoretical = createData(resp.theoretical, 'theoretical');
+  let real = createData(resp.real, 'real_used');
+  console.log('real',real);
+  projectUsedChart = createUsedProjecChart(theoretical,real,labels);
 });
 }
 
+function loadABWDataProject(url){
+  $.get(url, function(resp){
+  let labels =  loadlabelWeek(resp.theoretical, 'week')
+  let theoretical = createData(resp.theoretical, 'theoretical');
+  let real = createData(resp.real, 'real_abw');
+  console.log('real',real);
+  projectAbwChart = createABWProjecChart(theoretical,real,labels);
+});
+}
+
+function loadSurvDataProject(url){
+  $.get(url, function(resp){
+  let labels =  loadlabelWeek(resp.theoretical, 'week')
+  let theoretical = createData(resp.theoretical, 'theoretical');
+  let real = createData(resp.real, 'real_surv');
+  console.log('real',real);
+  projectSurvivalChart = createSurvivalProjecChart(theoretical,real,labels);
+});
+}
+
+//proceser data functions
 function createData(data, prop){
   let values = [];
   for (let i = 0; i < data.length; i++) {
@@ -128,6 +163,8 @@ function calRC(data, balanced, abw, survival, planted){
   }
   return values;
 }
+
+//proceser label from data
 function loadlabelCreatAt(data, prop){
   let labels = [];
   for (let i = 0; i < data.length; i++) {
@@ -139,10 +176,12 @@ function loadlabelCreatAt(data, prop){
 function loadlabelWeek(data, prop){
   let labels = [];
   for (let i = 0; i < data.length; i++) {
-    labels.push(data[i][prop]);
+    labels.push('Semana '+data[i][prop]);
   }
   return labels;
 }
+
+//modals actions
 
 window.operateEvents = {
   // action resources used
@@ -266,6 +305,8 @@ window.operateEvents = {
 
   }
 }
+
+//functions load data table
 function loadDataToTableBalanced(table, data){
 
   $(table).bootstrapTable('destroy').bootstrapTable({
@@ -555,6 +596,9 @@ function operateFormatterResource(value, row, index) {
        '<i class="fa fa-trash-o"></i></a>'+ '</div>'
     ].join('')
   }
+
+
+ //create charts
 function createBioChart(data1, data2, data3, labels){ 
    return new Chart(ctx, {
     type: 'bar',
@@ -742,7 +786,8 @@ function createParamChart(data1, data2, data3, labels){
 
 }
 
-function createbalancedProjecChart(data1, data2, labels){
+// Proyections Charts
+function createUsedProjecChart(data1, data2, labels){
   return new Chart(ctx5, {
     type: 'line',
     data: {
@@ -801,6 +846,126 @@ function createbalancedProjecChart(data1, data2, labels){
 
 }
 
+function createABWProjecChart(data1, data2, labels){
+  return new Chart(ctx6, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+
+          label: 'Peso Promedio Real',
+          fill: true,
+          data: data2,
+          backgroundColor: '#168ede69',
+          borderColor: '#168ede'
+        },
+        {
+
+          label: 'Peso Promedio Proyec.',
+          fill: false,
+          data:  data1,
+          backgroundColor: '#FF0040',
+          borderColor: '#FF0040',
+
+        },
+      
+      ]
+    },
+    options: {
+      tooltips: {
+        enabled: true,
+        titleFontSize: 24,
+        bodyFontSize: 24
+      },
+      legend: {
+        display: true,
+        position: 'bottom',
+        labels: {
+          fontColor: 'black',
+          boxWidth: 2
+        }
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            fontColor: 'black',
+          }
+        }],
+        xAxes: [{
+          distribution: 'linear',
+          ticks: {
+            fontColor: 'black',
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+}
+
+function createSurvivalProjecChart(data1, data2, labels){
+  return new Chart(ctx7, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+
+          label: 'Supervivencia Real',
+          fill: true,
+          data: data2,
+          backgroundColor: '#168ede69',
+          borderColor: '#168ede'
+        },
+        {
+
+          label: 'Supervivencia Proyec.',
+          fill: false,
+          data:  data1,
+          backgroundColor: '#FF0040',
+          borderColor: '#FF0040',
+
+        },
+      
+      ]
+    },
+    options: {
+      tooltips: {
+        enabled: true,
+        titleFontSize: 24,
+        bodyFontSize: 24
+      },
+      legend: {
+        display: true,
+        position: 'bottom',
+        labels: {
+          fontColor: 'black',
+          boxWidth: 2
+        }
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            fontColor: 'black',
+          }
+        }],
+        xAxes: [{
+          distribution: 'linear',
+          ticks: {
+            fontColor: 'black',
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+}
+
+
+//others functions
 function clearCharts(chart){
   if(chart instanceof Chart){
   chart.destroy();

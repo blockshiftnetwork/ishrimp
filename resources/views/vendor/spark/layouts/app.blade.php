@@ -44,12 +44,12 @@
         <div class="row">
                 @if (Auth::check())
          
-            <nav id="sidebar" class="col-md-3">
+            <nav id="sidebar" class="col-md-2">
 
                 @include('spark::nav.user-left')
             </nav>
             
-            <main class="py-4  col-md-9 mx-auto">
+            <main class="py-4  col-md-10 mx-auto">
                     @yield('content')
                 </main>
             @else

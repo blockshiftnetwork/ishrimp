@@ -292,36 +292,27 @@ class CultivationController extends Controller
 
     public function getProjections($pool_id, $parameter_id)
     {
-        if($parameter_id == 1){
-            $projection = DB::select('SELECT abw, WEEK(abw_date)-WEEk(CURDATE())
-            AS week_s,
-             theoretical 
-             FROM 
-             daily_samples,
-             (SELECT week, theoretical 
-             FROM projections_data,
-             daily_samples 
-             WHERE parameter ='.$parameter_id.'
-             AND week = WEEk(CURDATE())- WEEK(daily_samples.abw_date)) 
-             AS proj 
-             WHERE abw <> 0 
-             GROUP BY week_s 
-             ORDER BY week_s ASC');
-        }elseif($parameter_id == 2){
-            $projection = DB::table('projections_data as projection')->where('projection.pool_id', $pool_id)->where('projection.parameter', $parameter_id)
-                                    ->join('pools_resources_used as used','used.pool_id', 'projection.pool_id')
-                                    ->select('projection.*','used.quantity')->orderBy('week')->get();
-        }else{
-            $projection = DB::table('projections_data as projection')->where('projection.pool_id', $pool_id)->where('projection.parameter', $parameter_id)
-            ->join('daily_samples as sample','sample.pool_id', 'projection.pool_id')
-            ->select('projection.*','sample.survival_percent as survival')->orderBy('week')->get();
-        }
-        
-           dd($projection);
+            $theoretical = DB::table('projections_data')
+            ->where('pool_id',$pool_id)->where('parameter',$parameter_id)
+            ->get();
+            if($parameter_id == 1){
+              $realValue = DB::select('SELECT SUM(abw) AS real_abw, WEEK(abw_date) AS week FROM daily_samples WHERE pool_id ='.$pool_id.' GROUP BY week ORDER BY week ASC');
+            }
+
+            if($parameter_id == 2){
+               $realValue = DB::select('SELECT SUM(quantity) AS real_used, WEEK(date) AS week FROM pools_resources_used WHERE pool_id ='.$pool_id.' GROUP BY week ORDER BY week ASC');
+            }
+
+            if($parameter_id == 3){
+              $realValue = DB::select('SELECT AVG(survival_percent) AS real_surv, WEEK(abw_date) AS week FROM daily_samples WHERE pool_id ='.$pool_id.' GROUP BY week ORDER BY week ASC');
+            }
+            
+           //dd($theoretical);
 
             return response()->json([
             'status' => '200',
-            'data' => $projection,
+            'theoretical' => $theoretical,
+            'real' => $realValue,
         ]); 
      }
 }

@@ -43,6 +43,7 @@
         <div class="tab-content">
             <!-- tab charts-->
             <div role="tabpanel" class="tab-pane active" id="graphs_pill">
+                <div class="badge-pill border-bottom header mt-5"><h2 class="ml-2">Estadísticas</h2></div>
                 <div class="row mt-5">
                     <div class="col-6">
                         <div class="card">
@@ -64,14 +65,6 @@
                     </div>
                 </div>
                 <div class="row mt-5">
-                    <!--<div class="col-6">
-                        <div class="card">
-                            <h4 class="card-title">
-                                PM Balanceado por Hora
-                            </h4>
-                            <canvas id="myChart3" width="700" height="600"></canvas>
-                        </div>
-                    </div>-->
 
                     <div class="col-6">
                         <div class="card">
@@ -83,30 +76,31 @@
                     </div>
                 </div>
                 <!--Proyecciones -->
+                <div class="badge-pill border-bottom header"><h2 class="ml-2">Proyecciones</h2></div>
                 <div class="row mt-5">
-                    <div class="col-4">
+                    <div class="col-6">
                         <div class="card">
                             <h4 class="card-title">
             Balanceado Proyectado vs Balanceado Real 
                             </h4>
                             <canvas id="myChart5" width="500" height="400"></canvas>
                         </div>
-                    </div>-
+                    </div>
 
-                    <div class="col-4">
+                    <div class="col-6">
                         <div class="card">
                             <h4 class="card-title">
                                 Peso Proyectado vs Peso Real
                             </h4>
-                            <canvas id="myChart6" width="700" height="600"></canvas>
+                            <canvas id="myChart6" width="500" height="400"></canvas>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-6">
                         <div class="card">
                             <h4 class="card-title">
                                 Sobrevivencia Proyectada vs Sobreviviencia Real
                             </h4>
-                            <canvas id="myChart7" width="700" height="600"></canvas>
+                            <canvas id="myChart7" width="500" height="400"></canvas>
                         </div>
                     </div>
                 </div>

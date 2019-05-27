@@ -4,7 +4,7 @@
 <div id="alert-cultivate" class="alert  alert-dismissible fade in">
 </div>
 <div>
-    <div class="spark-screen container" style="min-height: fit-content; height: 100%; width: 100%;">
+    <div class="spark-screen " style="min-height: fit-content; height: 100%; width: 100%;">
         <div style="height: 100%;">
             <!-- Tabs -->
             @section('Cultivo_options')

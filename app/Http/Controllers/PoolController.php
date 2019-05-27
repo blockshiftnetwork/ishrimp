@@ -173,8 +173,6 @@ class PoolController extends Controller
         $pool->size = $request->size;
         $pool->coordinates = '{}';
         $pool->save();
-        $pool_id = Pool::get()->last();
-        $this->saveSampleToPool($pool_id);
         return redirect()->back()->with('message', 'Piscina Guardada!');
     }
 
