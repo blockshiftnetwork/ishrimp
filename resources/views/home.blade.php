@@ -70,6 +70,7 @@
 @section('custom-scripts')
 <script src="{{ asset('js/gmaps.js') }}"> </script>
 <script src="{{ asset('js/pools_summary.js') }}"> </script>
+<script type="text/javascript" src="{{asset('js/simulation.js')}}"></script>
 <script>
     $(function () {
         var j = 0;
