@@ -21,19 +21,19 @@
             </tr>
             <tr>
                 <td>Fecha de Siembra</td>
-                <td><input class="form-control" type="date" name="" id="c2" value="2019-05-01"></td>
+                <td><input class="form-control" type="date" name="" id="c2" readonly></td>
             </tr>
             <tr>
                 <td>Hectareas</td>
-                <td><input class="form-control" type="button" id="c3" value="4.2"></td>
+                <td><input class="form-control" type="text" id="c3" readonly></td>
             </tr>
             <tr>
                 <td>Precio Ponderado</td>
-                <td><input class="form-control" type="text" id="c4" value="1.4$"></td>
+                <td><input class="form-control" type="text" id="c4" readonly></td>
             </tr>
             <tr>
                 <td>Densidad Sembrada:  Larvas x HA</td>
-                <td><input class="form-control" type="text" id="c5" value="229.812"></td>
+                <td><input class="form-control" type="text" id="c5" readonly></td>
             </tr>
             <tr>
                 <td>Precio larva (millar) $</td>
@@ -41,7 +41,7 @@
             </tr>
             <tr>
                 <td>Costo Larva Piscina</td>
-                <td><input class="form-control" type="text" id="c7" value="4160$"></td>
+                <td><input class="form-control" type="text" id="c7" readonly></td>
             </tr>
             <tr>
                 <td>Días corrida</td>
@@ -49,11 +49,11 @@
             </tr>
             <tr>
                 <td>Peso cosechado en gr</td>
-                <td><input class="form-control" type="text" id="c9"></td>
+                <td><input class="form-control" type="text" id="c9" ></td>
             </tr>
             <tr>
                 <td>Incremento g (semanal)</td>
-                <td><input class="form-control" type="text" id="c10" value="1,99"></td>
+                <td><input class="form-control" type="text" id="c10" readonly></td>
             </tr>
             <tr>
                 <td>Biomasa lbs/ha</td>

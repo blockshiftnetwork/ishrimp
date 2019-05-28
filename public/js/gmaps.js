@@ -14,7 +14,7 @@
   $( document ).ready(function() {
       infoWindow = new google.maps.InfoWindow;
        iniMap();
-       $.ajax({
+       /*$.ajax({
                   url: 'pools',
                   type: 'GET',
                   dataType: 'json',
@@ -38,7 +38,7 @@
              listenerMouserOver(polygon, pool);
             }
          }
-      });
+      });*/
        
          
 

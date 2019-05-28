@@ -21,6 +21,7 @@ Route::get('/pools/balancedused/{pool_id}','PoolController@staticBalanced');
 Route::get('/pools/summary/{pool_id}','PoolController@getPoolSummary');
 Route::get('/pools/parameters/{pool_id}','PoolController@staticParameter');
 Route::get('/pools/resourcesused/{pool_id}','PoolController@statisticResourceUsed');
+Route::get('/pools/poolInfo/{pool_id}', 'PoolController@getPoolInfo');
 
 //sowing controller
 Route::resource('/pools_sowing', 'PoolSowingController');
