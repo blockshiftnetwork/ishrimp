@@ -21,7 +21,11 @@
         <input class="form-control mb-2" type="text" name="size" placeholder="10.00" id="size" pattern="^\d*\.?\d*$" required>
         </div>
         <input class="form-control mb-2" type="hidden" name="coordinates" placeholder="coordenadas" id="coordinates">
-           <button id="savePool" class="btn btn-success btn-block" type="submit">Guardar</button>
+        <div class="btn-group-md">
+            <button id="savePool" class="btn btn-primary btn-block" type="submit">Crear</button>
+            <a class="btn btn-info btn-block" href="">Crear y Sembrar</a>
+        </div>
+           
    
         </form>
         </div>

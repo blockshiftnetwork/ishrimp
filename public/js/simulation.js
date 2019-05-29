@@ -19,14 +19,34 @@ $(function() {
 		 balancedInfo = resp.balancedInfo;
 		 c2.val(poolInfo[0].planted_at);
 		 c3.val(poolInfo[0].size);
-		 c4.val("Precio ponderado")
+		 c4.val(1,2)
 		 c5.val(poolInfo[0].planted_larvae)
 		 c6.val(125);
 		 c7.val((c3.val()*c5.val()*c6.val()/1000).toFixed(3));
 		 c8.val(20);
 		 c9.val(232);
 		 c10.val((7 * c9.val()/c8.val()).toFixed(2));
-		 console.log(t);
+		 c11.val(63,2);
+		 c12.val(c5.val()*c11.val()*c9.val()/454);
+		 c13.val(c12.val()*c3.val());
+		 c14.val(c8.val()*c3.val());
+		 c15.val(1,2);
+		 c16.val(42);
+		 c17.val(c16.val()*c8.val());
+		 c18.val((c12.val()*c15.val()/2204)*c4.val());
+		 c19.val(c7.val()/c3.val());
+		 c20.val(c17.val()+c18.val()+c19.val());
+		 c21.val(c20.val()*c3.val());
+		 c22.val(c20.val()/c12.val());
+		 c23.val(4,45);
+		 c24.val(c23/2,2046);
+		 c25.val(c12.val()*c24.val());
+		 c26.val(c25.val()*c3.val());
+		 c27.val(c25.val()-c20.val());
+		 c28.val(c27.val()*c3.val());
+		 c29.val(c27.val()/(c8.val()+10));
+		 c30.val((c26.val()-c21.val())/c22.val());
+		 c31.val(c24.val()-c22.val());
 	});
 	})
 	

@@ -55,89 +55,89 @@
                 <td>Incremento g (semanal)</td>
                 <td><input class="form-control" type="text" id="c10" readonly></td>
             </tr>
+             <tr>
+                <td>% Supervivencia</td>
+                <td><input class="form-control" type="text" id="c11" value="64,3"></td>
+            </tr>
             <tr>
                 <td>Biomasa lbs/ha</td>
-                <td><input class="form-control" type="text" id="c11" value="7268"></td>
+                <td><input class="form-control" type="text" id="c12" readonly></td>
             </tr>
             <tr>
                 <td>Biomasa total x piscina</td>
-                <td><input class="form-control" type="text" id="c12" value="30961"></td>
+                <td><input class="form-control" type="text" id="c13" value="30961" readonly></td>
             </tr>
             <tr>
                 <td>Días / Ha </td>
-                <td><input class="form-control" type="text" id="c13" value="391"></td>
+                <td><input class="form-control" type="text" id="c14" value="391"readonly></td>
             </tr>
             <tr>
                 <td>FCA</td>
-                <td><input class="form-control" type="text" id="c14" value="140"></td>
+                <td><input class="form-control" type="text" id="c15" value="140" readonly></td>
             </tr>
             <tr>
                 <td>Costo Fijo (Cost/Ha/día)</td>
-                <td><input class="form-control" type="text" id="c15" value="$42,0"></td>
+                <td><input class="form-control" type="text" id="c16" value="$42,0"></td>
             </tr>
             <tr>
                 <td>Costo FIJO Total / ha (-bal-lar)</td>
-                <td><input class="form-control" type="text" id="c16" value="3330$"></td>
+                <td><input class="form-control" type="text" id="c17" value="3330$" readonly></td>
             </tr>
             <tr>
                 <td>Costo Balanceado / ha</td>
-                <td><input class="form-control" type="text" id="c17" value="5500$"></td>
+                <td><input class="form-control" type="text" id="c18" value="5500$" readonly></td>
             </tr>
             <tr>
                 <td>Costo Larva x ha</td>
-                <td><input class="form-control" type="text" id="c18" value="977$"></td>
+                <td><input class="form-control" type="text" id="c19" value="977$" readonly></td>
             </tr>
             <tr>
                 <td>Costo Total x ha</td>
-                <td><input class="form-control" type="text" id="c19" value="9873$"></td>
+                <td><input class="form-control" type="text" id="c20" value="9873$" readonly></td>
             </tr>
             <tr>
                 <td>Costo Total Piscina</td>
-                <td><input class="form-control" type="text" id="c20" value="41905$"></td>
+                <td><input class="form-control" type="text" id="c21" value="41905$" readonly></td>
             </tr>
             <tr>
                 <td>Costo/Libra de camarón</td>
-                <td><input class="form-control" type="text" id="c21" value="1,35$"></td>
+                <td><input class="form-control" type="text" id="c22" value="1,35$" readonly></td>
             </tr>
             <tr>
                 <td>Precio de Venta x KILO</td>
-                <td><input class="form-control" type="text" id="c22" value=""></td>
+                <td><input class="form-control" type="text" id="c23" value="" readonly></td>
             </tr>
             <tr>
                 <td>Precio de Venta x LIBRA</td>
-                <td><input class="form-control" type="text" id="c23" value="2,02$"></td>
+                <td><input class="form-control" type="text" id="c24" value="2,02$" readonly></td>
             </tr>
             <tr>
                 <td>Ingreso x ha</td>
-                <td><input class="form-control" type="text" id="c24" value="14660$"></td>
+                <td><input class="form-control" type="text" id="c25" value="14660$" readonly></td>
             </tr>
             <tr>
                 <td>INGRESO TOTAL CORRIDA</td>
-                <td><input class="form-control" type="text" id="c25" value="62494$"></td>
+                <td><input class="form-control" type="text" id="c26" value="62494$" readonly></td>
             </tr>
             <tr>
                 <td>Utilidad x ha</td>
-                <td><input class="form-control" type="text" id="c26" value="4863$"></td>
+                <td><input class="form-control" type="text" id="c27" value="4863$" readonly></td>
             </tr>
             <tr>
                 <td>Utilidad x piscina</td>
-                <td><input class="form-control" type="text" id="c27" value="20586$"></td>
+                <td><input class="form-control" type="text" id="c28" value="20586$" readonly></td>
             </tr>
             <tr>
                 <td>UP/Ha/día</td>
-                <td><input class="form-control" type="text" id="c28" value="20586$"></td>
-            </tr>
-            <tr>
-                <td>UP/Ha/día</td>
-                <td><input class="form-control" type="text" id="c29" value="53,7$"></td>
+                <td><input class="form-control" type="text" id="c29" value="20586$" readonly></td>
             </tr>
             <tr>
                 <td>Rentabilidad %</td>
-                <td><input class="form-control" type="text" id="c30" value="49,13%"></td>
+                <td><input class="form-control" type="text" id="c30" value="49,13%" readonly></td>
             </tr>
             <tr>
                 <td>Utilidad x libra</td>
-                <td><input class="form-control" type="text" id="c31" value="0,67$"></td>
+                <td><input class="form-control" type="text" id="c31" value="0,67$" readonly></td>
             </tr>
         </tbody>
     </table>
