@@ -13,7 +13,8 @@
  
 Route::get('/', 'WelcomeController@show');
 Route::get('/home', 'HomeController@show');
-
+Route::post('generate-pdf','HomeController@simulationProceser');
+Route::get('download-pdf', 'HomeController@generatePDF')->name('download-pdf');
 //statistic pools
 Route::resource('/pools', 'PoolController');
 Route::get('/pools/bio/{pool_id}','PoolController@statisticBiomasa');

@@ -8,6 +8,7 @@ use App\PoolSowing;
 use App\DaylySample;
 use App\DaylyParameters;
 use Illuminate\Support\Facades\DB;
+use PDF;
 class HomeController extends Controller
 {
     /**
@@ -68,5 +69,21 @@ class HomeController extends Controller
 
             //dd($presentatios);
         return view('home')->with(['pools' => $pools, 'resources' => $resources,'balanceds' => $balanceds,'laboratories' => $laboratories, 'presentatios' => $presentatios]);
+    }
+
+    public function simulationProceser(Request $request){
+
+        if($request->ajax()){
+            $data = json_decode($request->search);
+            $pdf = ['pdf' => $data];
+            $pdf = PDF::loadView('vendor.spark.dashboard.simulationPdf', $pdf);
+            return $pdf->download('simulation.pdf');
+        }
+
+    }
+
+    public function generatePDF($data)
+    {
+      
     }
 }
