@@ -59,7 +59,6 @@ function iniSummarypool(pool_id){
 function loadPool(url){
   try { 
   $.get(url, function(resp){
-    console.log(resp);
     let pool = resp.data[0];
     let used = resp.used;
     let doc = $('.pond_doc');
@@ -132,7 +131,7 @@ function loadUsedDataProject(url){
   let labels =  loadlabelWeek(resp.theoretical, 'week')
   let theoretical = createData(resp.theoretical, 'theoretical');
   let real = createData(resp.real, 'real_used');
-  console.log('real',real);
+  
   projectUsedChart = createUsedProjecChart(theoretical,real,labels);
 });
 }
@@ -142,7 +141,7 @@ function loadABWDataProject(url){
   let labels =  loadlabelWeek(resp.theoretical, 'week')
   let theoretical = createData(resp.theoretical, 'theoretical');
   let real = createData(resp.real, 'real_abw');
-  console.log('real',real);
+  
   projectAbwChart = createABWProjecChart(theoretical,real,labels);
 });
 }
@@ -152,7 +151,7 @@ function loadSurvDataProject(url){
   let labels =  loadlabelWeek(resp.theoretical, 'week')
   let theoretical = createData(resp.theoretical, 'theoretical');
   let real = createData(resp.real, 'real_surv');
-  console.log('real',real);
+  
   projectSurvivalChart = createSurvivalProjecChart(theoretical,real,labels);
 });
 }
