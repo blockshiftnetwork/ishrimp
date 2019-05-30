@@ -27,15 +27,8 @@ class ResourceController extends Controller
                         ->select('resources.name as resource_name','presentation.*')
                         ->get();
 
-       /*$inventory = DB::table('inventory_resources as inventory')
-                         ->where('inventory.id',
-                            DB::raw('(SELECT MAX(inventory.id) FROM inventory_resources as inventory WHERE inventory.resource_id = resources.id)')
-                          )
-                         ->join('resources','inventory.resource_id','=','resources.id')
-                         ->join('presentation_resources as presentation','inventory.presentation_id','=','presentation.id')
-                        ->select('inventory.*','resources.name as resource_name','presentation.name as presentation_name','presentation.unity as presentation_unity','presentation.quantity as presentation_quantity', DB::raw('(SELECT IFNULL(SUM(used.quantity),0) from pools_resources_used as used where used.resource_id = inventory.resource_id) as used_quatity' ))->groupBy('resource_id', 'presentation_id')
-                        ->get();*/
-     $inventory = DB::select('SELECT
+    
+        $inventory = DB::select('SELECT
                             t1.inventory_resource_id,
                             t1.presentation_id,
                             t1.resource_id,
@@ -44,6 +37,7 @@ class ResourceController extends Controller
                             t1.unity,
                             t1.presentation_qty,
                             t1.price,
+                            t1.ir_quantity,
                             IFNULL(t1.inv_qty, 0) AS inventory_qty,
                             IFNULL(pru.quantity, 0) AS qty_used_in_pools,
                             (IFNULL(t1.inv_qty, 0) - IFNULL(pru.quantity, 0)) AS existence_qty,
@@ -59,6 +53,7 @@ class ResourceController extends Controller
                             pr.unity,
                             pr.quantity AS presentation_qty,
                             pr.price,
+                            ir.quantity as ir_quantity,
                             ir.id AS inventory_resource_id,
                             SUM(ir.quantity) * pr.quantity AS inv_qty,
                             ir.updated_at AS updated_at,
@@ -318,7 +313,7 @@ class ResourceController extends Controller
     }
 
     public function destroyInventory(Request $request )
-    {
+    {   
         $inventory = Sowing::findOrFail($request->id);
         $inventory->delete();
 

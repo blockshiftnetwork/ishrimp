@@ -100,7 +100,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
 
-            </div>
+            </div> 
             <form action="{{route('destroyInventory','inventory_id')}}" method="post">
                 {{method_field('delete')}}
                 {{csrf_field()}}

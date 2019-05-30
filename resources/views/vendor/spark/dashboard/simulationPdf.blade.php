@@ -30,8 +30,20 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+#logo{
+    width: 253px;
+    height: 130px;
+    background-size: 225px;
+    background-repeat: no-repeat;
+    background: url("./images/top-login-header.svg");
+}
 </style>
 <body>
+    <div id="logo">
+    
+    </div>
+    
     <h1 style="text-align: center" >Resultados de la Simulación {{date("Y"."-"."m"."-"."d")}}</h1> 
     
                 <table id="table-left">

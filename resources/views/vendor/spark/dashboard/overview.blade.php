@@ -2,7 +2,7 @@
 <a
     data-toggle="modal"
     data-target="#createPoolModal"
-    href="javascript:void(0)" class="btn btn-default btn-xs text-danger"><i class="fa fa-plus"></i> Agregar Piscina
+    href="javascript:void(0)" class="btn btn-default btn-xs text-info"><i class="fa fa-plus"></i> Agregar Piscina
     </a>
 </div>
 
