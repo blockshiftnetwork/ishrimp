@@ -194,19 +194,19 @@
                     
                 </div>
                 <div class="col-md-4">
-                <div class="form-group w-75">
-                        <label for="p1">Precio Ponderado</label>
-                        <input class="form-control" type="text" name="p1" id="p1" readonly>
+                    <div class="form-group w-75">
+                            <label for="p1">Precio Ponderado</label>
+                            <input class="form-control" type="text" name="p1" id="p1" readonly>
                     </div>
-                </div>
+                    <div class="btn-group-md">
+                        <button id="pdf" class="btn btn-info btn-lg"> Generar PDF</button>
+                    </div>
+
             </div>                
             </div>
 
         </div>
 
-    </div>
-    <div class="card-footer">
-        <button id="pdf" class="btn btn-info">PDF</button>
     </div>
 
 </div>

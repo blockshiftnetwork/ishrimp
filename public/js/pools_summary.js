@@ -57,30 +57,42 @@ function iniSummarypool(pool_id){
 
 //definitions of function to load data
 function loadPool(url){
-    $.get(url, function(resp){
+  try { 
+  $.get(url, function(resp){
+    console.log(resp);
     let pool = resp.data[0];
+    let used = resp.used;
     let doc = $('.pond_doc');
     let pls = $('.pond_pls');
     let size = $('.pond_wsa');
+    let summaryUsed = $('#table-summary-used > tbody');
     let totalBalanced = $('#totalBalanced');
     let maxBalanced = $('#maxBalanced');
     doc.empty();
     pls.empty();
     size.empty();
+    summaryUsed.empty()
     totalBalanced.empty();
     maxBalanced.empty();
-    try {
+
       doc.append(pool.days+' Dias');
       pls.append(pool.planted_larvae+' ');
       size.append(pool.size+' Hectareas');
       totalBalanced.append('<b>'+ pool.balanced +' Kgs</b>');
       maxBalanced.append('<b>'+ pool.maxbalanced +' Kgs</b>');
-    } catch (error) {
-      console.log(error)
-    }
-   
-
+      for (let index = 0; index < used.length; index++) {
+        const element = used[index];
+        summaryUsed.append('<tr><td>'+element.presentation_name+
+        '</td><td>'+element.quantity_used+
+        '</td><td>'+(element.quantity_used*2.204).toFixed(2)+
+        '</td><td>'+((element.price/element.presentation_quantity)*element.quantity_used).toFixed(2)+
+        '</td></tr>')
+        
+      }
   });
+} catch (error) {
+    console.log(error)
+  }
 }
 
 function loadDataBio(url) {
@@ -256,6 +268,7 @@ window.operateEvents = {
     });
     $('#balanced_resource_id').on('change', function(){
       $('#balanced_presentation_id').empty();
+
       $.ajax({
         url: "presentation/" + $(this).val(),
         type: 'GET',

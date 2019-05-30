@@ -32,9 +32,7 @@ tr:nth-child(even) {
 }
 </style>
 <body>
-	<div>
-		 <img src="{{ asset('images/top-login-header.svg') }}" alt="logo">
-	</div>
+    <h1 style="text-align: center" >Resultados de la Simulación {{date("Y"."-"."m"."-"."d")}}</h1> 
     
                 <table id="table-left">
                  
@@ -172,48 +170,58 @@ tr:nth-child(even) {
           
         
                 <table id="table-balanced" class="">
-                    <thead class="thead-primary">
-                        <th>Producto</th>
-                        <th>$/Saco</th>
-                        <th>Saco Kg</th>
-                        <th>$/Kg</th>
-                        <th>Kilos Aplicados</th>
-                        <th>Precio Pond.</th>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
+                    <tr><td>Producto</td>
+                        <td>$/Saco</td>
+                        <td>Saco Kg</td>
+                        <td>$/Kg</td>
+                        <td>Kilos Aplicados</td>
+                        <td>Precio Pond.</td>
+                        </tr>
+                        
+                    
+                        @foreach($balanced as $item)
+                        <tr><td>{{$item->presentation_name}}</td>
+								<td>{{$item->price}} </td>
+								<td>{{$item->presentation_quantity}} </td>
+								<td>{{$item->price / $item->presentation_quantity}}</td>
+								<td>{{$item->quantity_used}}</td>
+								<td>{{$item->quantity_used * $item->price / $item->presentation_quantity}}</td></tr>
+                        @endforeach
+               
 
                 </table>
            
                     <table id="table-total" class="table table-bordered">
+                        @php 
+                            $k = 33 + (count($balanced))*5;
 
+                        @endphp
                         <tbody>
                             <tr>
                                 <td>Costo Total Balanceado</td>
-                                <td><input id="t1" class="form-control" type="text" readonly></td>
+                                <td>{{$info[$k]->val}}</td>
 
                             </tr>
                             <tr>
                                 <td>Costo Balanceado x Ha</td>
-                                <td><input id="t2" class="form-control" type="text" readonly> </td>
+                                <td>{{$info[$k+1]->val}}</td>
 
                             </tr>
                             <tr>
                                 <td>Total Kilos Alimento</td>
-                                <td><input id="t3" class="form-control" type="text" readonly ></td>
+                                <td>{{$info[$k+2]->val}}</td>
                             </tr>
                             <tr>
                                 <td>Total Libras Alimento</td>
-                                <td><input id="t4" class="form-control" type="text" readonly ></td>
+                                <td>{{$info[$k+3]->val}}</td>
                             </tr>
                             <tr>
                                 <td>Total Libras Cosechadas</td>
-                                <td><input id="t5" class="form-control" type="text" readonly ></td>
+                                <td>{{$info[$k+4]->val}}</td>
                             </tr>
                             <tr>
                                 <td>FCA</td>
-                                <td><input id="t6" class="form-control" type="text" readonly></td>
+                                <td>{{$info[$k+5]->val}}</td>
                             </tr>
                         </tbody>
 

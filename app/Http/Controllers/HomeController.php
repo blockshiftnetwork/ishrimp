@@ -71,9 +71,28 @@ class HomeController extends Controller
     }
 
     public function simulationProceser(Request $request){
-
+        
         if($request->ajax()){
-            $info = ['info' => json_decode($request->info)];
+            $r = json_decode($request->info);
+
+            $balancedInfo = DB::select('SELECT SUM(pools_resources_used.quantity) as quantity_used,
+                             presentation_resources.name AS presentation_name,
+                             presentation_resources.quantity AS presentation_quantity,
+                             presentation_resources.price, 
+                             presentation_resources.unity, 
+                             presentation_resources.id AS presentation
+                              FROM 
+                              resources, 
+                              pools_resources_used, 
+                              presentation_resources 
+                              WHERE pools_resources_used.pool_id = '.$r[0]->val.'
+                              and 
+                              pools_resources_used.resource_id = resources.id 
+                              and resources.category_id = 1 and 
+                              presentation_resources.id = pools_resources_used.presentation_id 
+                              GROUP BY presentation');
+                              
+            $info = ['info' => $r, 'balanced' => $balancedInfo ];
             $pdf = PDF::loadView('vendor.spark.dashboard.simulationPdf',$info );
             return $pdf->download('simulation.pdf');
         }

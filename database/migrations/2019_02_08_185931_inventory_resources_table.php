@@ -15,10 +15,10 @@ class InventoryResourcesTable extends Migration
     {
         Schema::create('inventory_resources', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('resource_id')->unsigned();
+            $table->integer('resource_id')->unsigned()->nullable();
             $table->foreign('resource_id')->references('id')->on('resources');
             $table->integer('quantity');
-            $table->integer('presentation_id')->unsigned();
+            $table->integer('presentation_id')->unsigned()->nullable();
             $table->foreign('presentation_id')->references('id')->on('presentation_resources');
             $table->integer('team_id')->unsigned();
             $table->foreign('team_id')->references('id')->on('teams');

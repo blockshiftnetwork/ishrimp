@@ -112,6 +112,18 @@
                 <div class="fixed-table-container">
                     <table id="table_staticstic_balanced" class="bg-white"></table>
 
+                    <table id="table-summary-used" class="bg-primary mx-auto rounded table table-borderless table-plan-text text-center text-white">
+                    <thead class="border-bottom thead-primary">
+                        <th>Presentacion</th>
+                        <th>Total Aplicado (kg)</th>
+                        <th>Total Aplicado (Lb)</th>
+                        <th>Costo total $ </th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                    </table>
+    
                     <div class="footer_feed_cont">
                         <div class="row" style="margin:0 auto;">
                              <div class="two col-md-2"></div>

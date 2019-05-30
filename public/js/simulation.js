@@ -154,10 +154,10 @@ $(function() {
 	
 				table_used.append('<tr><td id=f'+balancedInfo[i].presentation+'>'+balancedInfo[i].presentation_name+'</td>'+
 								'<td><input id=g'+balancedInfo[i].presentation+' class="form-control" type="text" value='+balancedInfo[i].price+' readonly> </td>'+
-								'<td><input id=h'+balancedInfo[i].presentation+' class="form-control" type="text" value='+balancedInfo[i].quantity+' readonly> </td>'+
-								'<td><input id=i'+balancedInfo[i].presentation+' class="form-control" type="text" value='+(balancedInfo[i].price/balancedInfo[i].quantity).toFixed(2)+' readonly></td>'+
+								'<td><input id=h'+balancedInfo[i].presentation+' class="form-control" type="text" value='+balancedInfo[i].presentation_quantity+' readonly> </td>'+
+								'<td><input id=i'+balancedInfo[i].presentation+' class="form-control" type="text" value='+(balancedInfo[i].price/balancedInfo[i].presentation_quantity).toFixed(2)+' readonly></td>'+
 								'<td><input  id=j'+balancedInfo[i].presentation+' class="form-control" type="text" value='+balancedInfo[i].quantity_used+' readonly> </td>'+
-								'<td> <input id=k'+balancedInfo[i].presentation+' class="form-control" type="text" value='+(balancedInfo[i].price/balancedInfo[i].quantity).toFixed(2) * balancedInfo[i].quantity_used +' readonly> </td></tr>');
+								'<td> <input id=k'+balancedInfo[i].presentation+' class="form-control" type="text" value='+(balancedInfo[i].price/balancedInfo[i].presentation_quantity).toFixed(2) * balancedInfo[i].quantity_used +' readonly> </td></tr>');
 				acumKl += parseFloat($('#j'+ balancedInfo[i].presentation).val());
 				acumPrice += parseFloat($('#k'+balancedInfo[i].presentation).val()); 
 			 }
