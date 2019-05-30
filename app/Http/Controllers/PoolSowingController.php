@@ -6,6 +6,7 @@ use App\PoolSowing;
 use App\Pool;
 use App\Sowing;
 use App\Resource;
+use App\DaylySample;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -59,10 +60,23 @@ class PoolSowingController extends Controller
             'planted_at' => 'required'
         ]);
         $sowing = PoolSowing::create($request->all());
-
+        $pool_id = PoolSowing::get()->last();
+        $this->saveSampleToPool($pool_id);
         return redirect()->back()->with('message', 'Siembra Guardada!');
     }
-
+ public function saveSampleToPool($pool_id)
+    {
+        $sample = new DaylySample;
+        $sample->pool_id = $pool_id->pool_id;
+        $sample->abw = 0;
+        $sample->wg = 0;
+        $sample->weight = 0;
+        $sample->quantity = 0;
+        $sample->survival_percent = 0;
+        $sample->abw_date = $pool_id->planted_at;
+        $sample->abw_hour = '0:00:00';
+        $sample->save();
+    }
     /**
      * Display the specified resource.
      *

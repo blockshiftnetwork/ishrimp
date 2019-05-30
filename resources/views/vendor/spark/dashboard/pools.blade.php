@@ -8,14 +8,14 @@
                 @endforeach
             </select>
             @else
-			<a class="text-weight-bold text-danger btn btn-inline btn-light" href="/home?tab=2">Debe agregar piscinas</a>
+			<a class="text-weight-bold text-danger btn btn-inline btn-light" href="/home?tab=1">Debe agregar piscinas</a>
 			@endif
         </div>
         <div class="col-lg-4 right_border">
             <p class="my-1">PLs Sembrados: <br><b class="pond_pls">NA</b></p>
         </div>
         <div class="col-lg-2 right_border">
-            <p class="my-1">DOC: <br><b class="pond_doc">NA</b></p>
+            <p class="my-1">Días: <br><b class="pond_doc">NA</b></p>
         </div>
         <div class="col-lg-2 right_border">
 
@@ -33,9 +33,9 @@
                 <li role="presentation"><a class="btn btn-light" href="#balanced_table_chart"
                         aria-controls="feed_chart_section" role="tab" data-toggle="tab">Alimentación</a></li>
                 <li role="presentation"><a class="btn btn-light" href="#inputs_pill" aria-controls="inputs_section"
-                        role="tab" data-toggle="tab">Entradas</a></li>
+                        role="tab" data-toggle="tab">Insumos</a></li>
                 <li role="presentation"><a class="btn btn-light" href="#abw_pill" aria-controls="abw_section" role="tab"
-                        data-toggle="tab">ABW</a></li>
+                        data-toggle="tab">Peso Promedio</a></li>
                 <li role="presentation"><a class="btn btn-light" href="#lab_pill" aria-controls="lab_section" role="tab"
                         data-toggle="tab">Pruebas de Laboratorio</a></li>
             </ul>
@@ -43,6 +43,7 @@
         <div class="tab-content">
             <!-- tab charts-->
             <div role="tabpanel" class="tab-pane active" id="graphs_pill">
+                <div class="badge-pill border-bottom header mt-5"><h2 class="ml-2">Estadísticas</h2></div>
                 <div class="row mt-5">
                     <div class="col-6">
                         <div class="card">
@@ -64,21 +65,42 @@
                     </div>
                 </div>
                 <div class="row mt-5">
-                    <!--<div class="col-6">
-                        <div class="card">
-                            <h4 class="card-title">
-                                PM Balanceado por Hora
-                            </h4>
-                            <canvas id="myChart3" width="700" height="600"></canvas>
-                        </div>
-                    </div>-->
 
                     <div class="col-6">
                         <div class="card">
                             <h4 class="card-title">
-                                pH vs DO vs Temp
+                                Oxígeno vs Temperatura
                             </h4>
                             <canvas id="myChart4" width="700" height="600"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!--Proyecciones -->
+                <div class="badge-pill border-bottom header"><h2 class="ml-2">Proyecciones</h2></div>
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <div class="card">
+                            <h4 class="card-title">
+            Balanceado Proyectado vs Balanceado Real 
+                            </h4>
+                            <canvas id="myChart5" width="500" height="400"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="card">
+                            <h4 class="card-title">
+                                Peso Proyectado vs Peso Real
+                            </h4>
+                            <canvas id="myChart6" width="500" height="400"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card">
+                            <h4 class="card-title">
+                                Sobrevivencia Proyectada vs Sobreviviencia Real
+                            </h4>
+                            <canvas id="myChart7" width="500" height="400"></canvas>
                         </div>
                     </div>
                 </div>
@@ -90,6 +112,18 @@
                 <div class="fixed-table-container">
                     <table id="table_staticstic_balanced" class="bg-white"></table>
 
+                    <table id="table-summary-used" class="bg-primary mx-auto rounded table table-borderless table-plan-text text-center text-white">
+                    <thead class="border-bottom thead-primary">
+                        <th>Presentacion</th>
+                        <th>Total Aplicado (kg)</th>
+                        <th>Total Aplicado (Lb)</th>
+                        <th>Costo total $ </th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                    </table>
+    
                     <div class="footer_feed_cont">
                         <div class="row" style="margin:0 auto;">
                              <div class="two col-md-2"></div>

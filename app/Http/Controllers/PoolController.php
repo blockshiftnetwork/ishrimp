@@ -55,6 +55,7 @@ class PoolController extends Controller
     }
 
     public function getPoolSummary($pools_id){
+
         $pools = DB::table('pools')->where('pools.id',$pools_id)
                     ->leftjoin('pools_sowing as sowing', 'pools.id','=', 'sowing.pool_id' )
                     ->leftJoin('daily_samples as samples', 'pools.id','=', 'samples.pool_id')
@@ -64,27 +65,46 @@ class PoolController extends Controller
                         DB::raw('(SELECT (IFNULL(SUM(pools_resources_used.quantity),0)) FROM pools_resources_used, resources WHERE pools_resources_used.pool_id = pools.id and pools_resources_used.resource_id = resources.id and resources.category_id = 1 ) as balanced'),
                         DB::raw('(SELECT (IFNULL(MAX(pools_resources_used.quantity),0)) FROM pools_resources_used, resources WHERE pools_resources_used.pool_id = pools.id and pools_resources_used.resource_id = resources.id and resources.category_id = 1 ) as maxbalanced'))
                     ->get();
-                    //dd($pools);
+
+        $balancedInfo = DB::select('SELECT SUM(pools_resources_used.quantity) AS quantity_used,
+                        presentation_resources.name AS presentation_name,
+                        presentation_resources.quantity AS presentation_quantity,
+                        presentation_resources.price, 
+                        presentation_resources.unity, 
+                        presentation_resources.id AS presentation
+                        FROM 
+                        resources, 
+                        pools_resources_used, 
+                        presentation_resources 
+                        WHERE pools_resources_used.pool_id ='.$pools_id.' 
+                        and 
+                        pools_resources_used.resource_id = resources.id 
+                        and resources.category_id = 1 and 
+                        presentation_resources.id = pools_resources_used.presentation_id 
+                        GROUP BY presentation');
+
+                
                  return response()->json([
                                 'status' => '200',
-                                'data' => $pools
+                                'data' => $pools,
+                                'used' =>$balancedInfo,
                             ]);
     }
 
     public function statisticBiomasa($pools_id){
       
         $pools_bio = DB::table('pools')->where('pools.id',$pools_id)
-                    ->leftjoin('pools_sowing as sowing', 'pools.id','=', 'sowing.pool_id' )
-                    ->leftJoin('daily_samples as samples', 'pools.id','=', 'samples.pool_id')
-                    ->select('pools.id as pool_id', 'pools.name as name','samples.id as sample_id',
-                    DB::raw('(IFNULL(samples.abw,0)) as abw'),
-                    DB::raw('(IFNULL(samples.wg, 0)) as awg'),
-                    DB::raw('(IFNULL(samples.survival_percent, 0)) as survival'),
-                    DB::raw('(IFNULL(samples.abw_date, 0)) as abw_date'),
-                    DB::raw('(IFNULL(samples.abw_hour, 0)) as abw_hour'),
-                    DB::raw('(IFNULL(sowing.planted_larvae, 0)) as planted_larvae'),
-                    DB::raw('(SELECT (IFNULL(SUM(pools_resources_used.quantity),0)) FROM pools_resources_used, resources WHERE pools_resources_used.pool_id = pools.id and pools_resources_used.resource_id = resources.id and resources.category_id = 1 and samples.abw_date >= pools_resources_used.date) as balanced'))
-                    ->get();
+                                ->leftjoin('pools_sowing as sowing', 'pools.id','=', 'sowing.pool_id' )
+                                ->leftJoin('daily_samples as samples', 'pools.id','=', 'samples.pool_id')
+                                ->select('pools.id as pool_id', 'pools.name as name','samples.id as sample_id',
+                                    DB::raw('(IFNULL(samples.abw,0)) as abw'),
+                                    DB::raw('(IFNULL(samples.wg, 0)) as awg'),
+                                    DB::raw('(IFNULL(samples.survival_percent, 0)) as survival'),
+                                    DB::raw('(IFNULL(samples.abw_date, 0)) as abw_date'),
+                                    DB::raw('(IFNULL(samples.abw_hour, 0)) as abw_hour'),
+                                    DB::raw('(IFNULL(sowing.planted_larvae, 0)) as planted_larvae'),
+                                    DB::raw('(SELECT (IFNULL(SUM(pools_resources_used.quantity),0)) FROM pools_resources_used, resources WHERE pools_resources_used.pool_id = pools.id and pools_resources_used.resource_id = resources.id and resources.category_id = 1 and samples.abw_date >= pools_resources_used.date) as balanced'))
+                                    ->get();
                             //dd($pools_bio);
 
                             return response()->json([
@@ -96,13 +116,13 @@ class PoolController extends Controller
     public function staticBalanced($pools_id){
       
         $pools_balanced = DB::table('pools')->where('pools.id', $pools_id)
-                            ->join('pools_resources_used as balanced','balanced.pool_id','=','pools.id')
-                            ->leftJoin('resources','resources.id','=','balanced.resource_id')
-                            ->leftJoin('category_resources as category','category.id','=','resources.category_id')
-                            ->where('category.id', 1)->groupBy('balanced.date')
-                            ->select('pools.id as pool_id',DB::raw('(SUM(balanced.quantity)) as quantity'),'balanced.id as balanced_id','balanced.date','balanced.resource_id','balanced.presentation_id','balanced.note','resources.name as resource_name',
-                            DB::raw('(SELECT (DATEDIFF(balanced.date,pools_sowing.planted_at)) FROM pools_sowing WHERE pools_sowing.pool_id = pools.id) as days'))
-                            ->get();
+                                    ->join('pools_resources_used as balanced','balanced.pool_id','=','pools.id')
+                                    ->leftJoin('resources','resources.id','=','balanced.resource_id')
+                                    ->leftJoin('category_resources as category','category.id','=','resources.category_id')
+                                    ->where('category.id', 1)->groupBy('balanced.date')
+                                    ->select('pools.id as pool_id',DB::raw('(SUM(balanced.quantity)) as quantity'),'balanced.id as balanced_id','balanced.date','balanced.resource_id','balanced.presentation_id','balanced.note','resources.name as resource_name',
+                                    DB::raw('(SELECT (DATEDIFF(balanced.date,pools_sowing.planted_at)) FROM pools_sowing WHERE pools_sowing.pool_id = pools.id) as days'))
+                                    ->get();
 
         $resources = DB::table('resources')->where('resources.category_id', 1)->select('resources.name')->get();
         //dd($pools_balanced);
@@ -164,17 +184,15 @@ class PoolController extends Controller
         $request->validate([
             'name' => 'required',
             'size' => 'required',
-            'coordinates' => 'required'
+            
         ]);
-        
+
         $pool = new Pool;
         $pool->team_id = auth()->user()->currentTeam->id;
         $pool->name = $request->name;
         $pool->size = $request->size;
-        $pool->coordinates = $request->coordinates;
+        $pool->coordinates = '{}';
         $pool->save();
-        $pool_id = Pool::get()->last();
-        $this->saveSampleToPool($pool_id);
         return redirect()->back()->with('message', 'Piscina Guardada!');
     }
 
@@ -251,4 +269,42 @@ class PoolController extends Controller
 
         return redirect()->back()->with('message', 'Piscina Eliminada!');
     }
+
+    public function getPoolInfo($pool_id)
+    {
+        $team_id = auth()->user()->currentTeam->id;
+        $poolInfo = DB::table('pools')->where('team_id','=', $team_id)->where('pools.id','=',$pool_id)
+                        ->leftJoin('pools_sowing as sowing', 'pools.id','=', 'sowing.pool_id' )
+                        ->leftJoin('daily_samples as samples', 'pools.id','=', 'samples.pool_id')->where('samples.id', DB::raw('(SELECT MAX(samples.id) FROM daily_samples as samples WHERE samples.pool_id = pools.id)'))
+                        ->groupBy('pool_id')
+                        ->select('pools.id as pool_id','pools.size','pools.name as name', DB::raw('(IFNULL(sowing.planted_at, 0)) as planted_at'), DB::raw('(IFNULL(samples.abw,0)) as abw'), DB::raw('(IFNULL(samples.wg, 0)) as awg'), DB::raw('(IFNULL(samples.survival_percent, 0)) as survival'),
+                        DB::raw('(IFNULL((DATEDIFF(CURDATE(),sowing.planted_at)),0)) as days'), DB::raw('(IFNULL(sowing.planted_larvae, 0)) as planted_larvae'),
+                        DB::raw('(SELECT (IFNULL(SUM(pools_resources_used.quantity),0)) FROM pools_resources_used, resources WHERE pools_resources_used.pool_id = pools.id and pools_resources_used.resource_id = resources.id and resources.category_id = 1 ) as balanced'))
+                        ->get();
+        
+        $balancedInfo = DB::select('SELECT SUM(pools_resources_used.quantity) as quantity_used,
+                        presentation_resources.name AS presentation_name,
+                        presentation_resources.quantity AS presentation_quantity,
+                        presentation_resources.price, 
+                        presentation_resources.unity, 
+                        presentation_resources.id as presentation
+                        FROM 
+                        resources, 
+                        pools_resources_used, 
+                        presentation_resources 
+                        WHERE pools_resources_used.pool_id ='.$pool_id.' 
+                        and 
+                        pools_resources_used.resource_id = resources.id 
+                        and resources.category_id = 1 and 
+                        presentation_resources.id = pools_resources_used.presentation_id 
+                        GROUP BY presentation');
+
+//dd($poolInfo);
+        return response()->json([
+            'status' => '200',
+            'poolInfo' => $poolInfo,
+            'balancedInfo' => $balancedInfo,
+        ]);
+    }
+    
 }

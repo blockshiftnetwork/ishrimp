@@ -274,4 +274,45 @@ class CultivationController extends Controller
           return redirect()->back()->with('message', 'Datos Eliminados!');
       }
 
+ ## Projections ##
+    public function storeProjections(Request $request)
+    {
+         $request->validate([
+         'pool_id' => 'required',
+         'parameter' => 'required',
+         'theoretical' => 'required',
+        ]);
+    
+        $projection = DB::table('projections_data')->insert($request->except('_token'));
+         return response()->json([
+            'status' => '200',
+            'data' => '!Datos guardados!',
+        ]); 
+    }
+
+    public function getProjections($pool_id, $parameter_id)
+    {
+            $theoretical = DB::table('projections_data')
+            ->where('pool_id',$pool_id)->where('parameter',$parameter_id)->orderBy('week')
+            ->get();
+            if($parameter_id == 1){
+              $realValue = DB::select('SELECT SUM(abw) AS real_abw, WEEK(abw_date) AS week FROM daily_samples WHERE pool_id ='.$pool_id.' GROUP BY week ORDER BY week ASC');
+            }
+
+            if($parameter_id == 2){
+               $realValue = DB::select('SELECT SUM(quantity) AS real_used, WEEK(date) AS week FROM pools_resources_used WHERE pool_id ='.$pool_id.' GROUP BY week ORDER BY week ASC');
+            }
+
+            if($parameter_id == 3){
+              $realValue = DB::select('SELECT AVG(survival_percent) AS real_surv, WEEK(abw_date) AS week FROM daily_samples WHERE pool_id ='.$pool_id.' GROUP BY week ORDER BY week ASC');
+            }
+            
+           //dd($theoretical);
+
+            return response()->json([
+            'status' => '200',
+            'theoretical' => $theoretical,
+            'real' => $realValue,
+        ]); 
+     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class PoolsSowingTable extends Migration
+class CreateProjectionsDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class PoolsSowingTable extends Migration
      */
     public function up()
     {
-        Schema::create('pools_sowing', function (Blueprint $table) {
+        Schema::create('projections_data', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('pool_id')->unsigned()->nullable();
+            $table->integer('pool_id')->unsigned();
             $table->foreign('pool_id')->references('id')->on('pools')->onDelete('cascade');
-            $table->integer('planted_larvae')->comment('Quantity of larvaes planted');
-            $table->string('larvae_type');
-            $table->date('planted_at');
+            $table->integer('week');
+            $table->integer('parameter');
+            $table->float('theoretical')->nullable();
+            $table->float('real')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class PoolsSowingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pools_sowing');
+        Schema::dropIfExists('projections_data');
     }
 }

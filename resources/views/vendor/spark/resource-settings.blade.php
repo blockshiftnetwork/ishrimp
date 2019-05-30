@@ -8,7 +8,7 @@
         </div>
 @endif 
     <div>
-        <div class="spark-screen container">
+        <div class="spark-screen ">
             <div class="row">
                 <!-- Tabs -->
                 @section('resource_options')

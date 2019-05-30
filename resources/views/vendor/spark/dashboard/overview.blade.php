@@ -1,6 +1,14 @@
+<div class="btn-group-md mb-3">
+<a
+    data-toggle="modal"
+    data-target="#createPoolModal"
+    href="javascript:void(0)" class="btn btn-default btn-xs text-info"><i class="fa fa-plus"></i> Agregar Piscina
+    </a>
+</div>
+
+
 <div class="card card-default card-table">
     <div class="card-header">
-
        <span class="font-weight-bold" style="line-height: 2.3em;vertical-align: -webkit-baseline-middle;"> {{__('Visión General')}}</span>
        <div class="float-right search ">
        </div>
@@ -23,22 +31,31 @@
                             data-field="name" data-align="center">Nombre Piscina</th>
                             <th
                             data-sortable="true"
-                            data-field="doc" data-align="center">DOC (Días)</th>
+                            data-field="doc" data-align="center">Días</th>
                             <th
                             data-sortable="true"
-                            data-field="abw" data-align="center">ABW</th>
+                            data-field="abw" data-align="center">Peso Promedio</th>
                             <th
                             data-sortable="true"
-                            data-field="awg" data-align="center">AWG</th>
+                            data-field="awg" data-align="center">Incremento en Gramos</th>
                             <th
                             data-sortable="true"
                             data-field="balaced" data-align="center">Balanceado<br>acumulado (Kg)</th>
                             <th
                             data-sortable="true"
-                            data-field="do" data-align="center">DO<br>(mg / L)</th>
+                            data-field="do" data-align="center">Oxígeno<br>(mg / L)</th>
                             <th
                             data-sortable="true"
                             data-field="ratio" data-align="center">Factor de <br> Conversión (Lb)<br></th>
+                              <th
+                            data-sortable="true"
+                            data-field="size" data-align="center">Área<br></th>
+                             <th
+                            data-sortable="true"
+                            data-field="survival" data-align="center">% Sobrevivencia<br></th>
+                            <th
+                            data-sortable="true"
+                            data-field="lbxHa" data-align="center">Libras x Ha<br></th>
                             <th
                             data-sortable="true"
                             data-field="action" data-align="center">Acciones</th>
@@ -46,14 +63,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php
-                        $doc = 0;
-                        $abw = 0;
-                        $awg = 0.0;
-                        $ba = 0.00;
-                        $do = 0;
-                        $rc =0;
-                        @endphp
                         @foreach ($pools as $item)
                         <tr>
 
@@ -68,6 +77,17 @@
                                                                     0
                                         @else
                                     {{round(($item->balanced*2.2)/((($item->abw/1000)*2.2)*($item->survival/100)*($item->planted_larvae)),3)}}
+                                @endif
+
+
+                            </a></td>
+                            <td><a class="text-muted" href="javascript:void(0)">{{$item->size}}</a></td>
+                            <td><a class="text-muted" href="javascript:void(0)">{{$item->survival}}</a></td>
+                            <td><a class="text-muted" href="javascript:void(0)">
+                                        @if ($item->size == 0)
+                                                0
+                                        @else
+                                    {{round(($item->planted_larvae*(($item->abw/1000)*2.2))/($item->size),3)}}
                                 @endif
 
 

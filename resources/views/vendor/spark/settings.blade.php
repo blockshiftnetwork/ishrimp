@@ -3,7 +3,7 @@
 
 @section('content')
     <spark-settings :user="user" :teams="teams" inline-template>
-        <div class="spark-screen container">
+        <div class="spark-screen ">
             <div class="row">
                 <!-- Tabs -->
                 @section('settings_options')

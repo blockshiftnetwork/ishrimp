@@ -5,10 +5,10 @@
     </div>
 </div>
 <div id="btn-createpool" class="pull-left" style="display: block;">
-    <div class="btn-group-lg">
+   <!-- <div class="btn-group-lg">
        <button id="createpool" class="btn btn-primary btn-sm" style="padding: 0.3rem 0.5rem">Agregar Piscina</button>
          <button id="cancel" class="btn btn-danger btn-sm" style="padding: 0.3rem 0.5rem;display: none">Cancelar</button>
-    </div>
+    </div>-->
 </div>
 <div id="form_pool" class="card bg-white bx-25" style="z-index: 999; position: absolute; top: 35%; display: none">
 <div class="card-body">

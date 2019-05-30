@@ -13,7 +13,9 @@
  
 Route::get('/', 'WelcomeController@show');
 Route::get('/home', 'HomeController@show');
-
+Route::post('generate-pdf','HomeController@simulationProceser');
+Route::get('download-pdf', 'HomeController@generatePDF')->name('download-pdf');
+Route::view('pdf', 'vendor.spark.dashboard.simulationPdf');
 //statistic pools
 Route::resource('/pools', 'PoolController');
 Route::get('/pools/bio/{pool_id}','PoolController@statisticBiomasa');
@@ -21,6 +23,7 @@ Route::get('/pools/balancedused/{pool_id}','PoolController@staticBalanced');
 Route::get('/pools/summary/{pool_id}','PoolController@getPoolSummary');
 Route::get('/pools/parameters/{pool_id}','PoolController@staticParameter');
 Route::get('/pools/resourcesused/{pool_id}','PoolController@statisticResourceUsed');
+Route::get('/pools/poolInfo/{pool_id}', 'PoolController@getPoolInfo');
 
 //sowing controller
 Route::resource('/pools_sowing', 'PoolSowingController');
@@ -38,6 +41,8 @@ Route::delete('/cultivation/daylyabw/{abw_id}', 'CultivationController@destroyDa
 Route::patch('cultivation/used/{used_id}','CultivationController@update')->name('updateUsed');
 Route::delete('cultivation/used/{used_id}','CultivationController@destroy')->name('destroyUsed');
 
+Route::post('/cultivation/projections', 'CultivationController@storeProjections')->name('storeProjections');
+Route::get('/cultivation/projections/{pool_id}/{parameter_id}', 'CultivationController@getProjections')->name('getProjections');
 //check existence
 Route::get('presentation/{resource_id}','CultivationController@getPresentationResource');
 Route::get('existence/{resource_id}/{presentation_id}','CultivationController@verifyExistence');
