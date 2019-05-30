@@ -16,12 +16,13 @@ var projectAbwChart;
 
 $(function (){
 pool_id = $('#select_pool').val();
-iniSummarypool(pool_id);
+if( typeof pool_id != 'undefined') {
+  iniSummarypool(pool_id);
 $('#select_pool').on('change',function(){
   pool_id = $(this).val();
   iniSummarypool(pool_id);
 });
-
+} 
 });
 function iniSummarypool(pool_id){
   let urlPool= '/pools/summary/'+pool_id;
@@ -68,11 +69,16 @@ function loadPool(url){
     size.empty();
     totalBalanced.empty();
     maxBalanced.empty();
-    doc.append(pool.days+' Dias');
-    pls.append(pool.planted_larvae+' ');
-    size.append(pool.size+' Hectareas');
-    totalBalanced.append('<b>'+ pool.balanced +' Kgs</b>');
-    maxBalanced.append('<b>'+ pool.maxbalanced +' Kgs</b>');
+    try {
+      doc.append(pool.days+' Dias');
+      pls.append(pool.planted_larvae+' ');
+      size.append(pool.size+' Hectareas');
+      totalBalanced.append('<b>'+ pool.balanced +' Kgs</b>');
+      maxBalanced.append('<b>'+ pool.maxbalanced +' Kgs</b>');
+    } catch (error) {
+      console.log(error)
+    }
+   
 
   });
 }

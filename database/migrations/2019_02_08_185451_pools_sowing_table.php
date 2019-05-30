@@ -19,7 +19,7 @@ class PoolsSowingTable extends Migration
             $table->foreign('pool_id')->references('id')->on('pools')->onDelete('cascade');
             $table->integer('planted_larvae')->comment('Quantity of larvaes planted');
             $table->string('larvae_type');
-            $table->datetime('planted_at');
+            $table->date('planted_at');
             $table->timestamps();
         });
     }

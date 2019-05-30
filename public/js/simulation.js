@@ -12,12 +12,9 @@ $(function() {
 		})
 		var jsonen= JSON.stringify(html);
 		$.ajax({
-            cache: false,
             type: 'POST',
             url: '/generate-pdf',
-            contentType: false,
-            processData: false,
-            data: { search:jsonen },
+            data: {info:jsonen},
              //xhrFields is what did the trick to read the blob to pdf
             xhrFields: {
                 responseType: 'blob'

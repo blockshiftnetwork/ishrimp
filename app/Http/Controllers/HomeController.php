@@ -35,10 +35,9 @@ class HomeController extends Controller
         $pools = [];
         $pool_id = Pool::get()->last();
         $team_id = auth()->user()->currentTeam->id;
-       // $isExistsParam = DB::table('daily_parameters')->
-         //   join('pools','daily_parameters.pool_id','=','pools.id')->where('pools.id',$pool_id)->where('pools.team_id', $team_id)->exists();
-            
-        //if($isExistsParam){
+        $isExistsParam = DB::table('daily_parameters')->
+          join('pools','daily_parameters.pool_id','=','pools.id')->where('pools.id',$pool_id)->where('pools.team_id', $team_id)->exists();
+       if($isExistsParam){
         $pools = DB::table('pools')->where('team_id','=', $team_id)
                     ->leftjoin('pools_sowing as sowing', 'pools.id','=', 'sowing.pool_id' )
                     ->leftJoin('daily_samples as samples', 'pools.id','=', 'samples.pool_id')->where('samples.id', DB::raw('(SELECT MAX(samples.id) FROM daily_samples as samples WHERE samples.pool_id = pools.id)'))
@@ -48,8 +47,8 @@ class HomeController extends Controller
                         DB::raw('(IFNULL((DATEDIFF(CURDATE(),sowing.planted_at)),0)) as days'), DB::raw('(IFNULL(sowing.planted_larvae, 0)) as planted_larvae'),
                         DB::raw('(SELECT (IFNULL(SUM(pools_resources_used.quantity),0)) FROM pools_resources_used, resources WHERE pools_resources_used.pool_id = pools.id and pools_resources_used.resource_id = resources.id and resources.category_id = 1 ) as balanced'), DB::raw('(IFNULL(parameters.ppm, 0)) as do'))
                     ->get();
-          //  }else{
-/*
+        }else{
+
                 $pools = DB::table('pools')->where('team_id','=', $team_id)
                     ->leftjoin('pools_sowing as sowing', 'pools.id','=', 'sowing.pool_id' )
                     ->leftJoin('daily_samples as samples', 'pools.id','=', 'samples.pool_id')->where('samples.id', DB::raw('(SELECT MAX(samples.id) FROM daily_samples as samples WHERE samples.pool_id = pools.id)'))
@@ -59,7 +58,7 @@ class HomeController extends Controller
                         DB::raw('(IFNULL((DATEDIFF(CURDATE(),sowing.planted_at)),0)) as days'), DB::raw('(IFNULL(sowing.planted_larvae, 0)) as planted_larvae'),
                         DB::raw('(SELECT (IFNULL(SUM(pools_resources_used.quantity),0)) FROM pools_resources_used, resources WHERE pools_resources_used.pool_id = pools.id and pools_resources_used.resource_id = resources.id and resources.category_id = 1 ) as balanced'), DB::raw('(IFNULL(parameters.ppm, 0)) as do'))
                     ->get(); 
-            }*/
+            }
        //dd($pools);
         $resources = DB::table('resources')->where('resources.category_id','>', 1)->get();
         $balanceds = DB::table('resources')->where('resources.category_id','=', 1)->get();
@@ -74,9 +73,8 @@ class HomeController extends Controller
     public function simulationProceser(Request $request){
 
         if($request->ajax()){
-            $data = json_decode($request->search);
-            $pdf = ['pdf' => $data];
-            $pdf = PDF::loadView('vendor.spark.dashboard.simulationPdf', $pdf);
+            $info = ['info' => json_decode($request->info)];
+            $pdf = PDF::loadView('vendor.spark.dashboard.simulationPdf',$info );
             return $pdf->download('simulation.pdf');
         }
 

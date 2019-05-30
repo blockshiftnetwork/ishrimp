@@ -8,7 +8,7 @@
                 @endforeach
             </select>
             @else
-			<a class="text-weight-bold text-danger btn btn-inline btn-light" href="/home?tab=2">Debe agregar piscinas</a>
+			<a class="text-weight-bold text-danger btn btn-inline btn-light" href="/home?tab=1">Debe agregar piscinas</a>
 			@endif
         </div>
         <div class="col-lg-4 right_border">

@@ -166,7 +166,7 @@ class PoolController extends Controller
             'size' => 'required',
             
         ]);
-        
+
         $pool = new Pool;
         $pool->team_id = auth()->user()->currentTeam->id;
         $pool->name = $request->name;
@@ -256,10 +256,9 @@ class PoolController extends Controller
         $poolInfo = DB::table('pools')->where('team_id','=', $team_id)->where('pools.id','=',$pool_id)
             ->leftJoin('pools_sowing as sowing', 'pools.id','=', 'sowing.pool_id' )
             ->leftJoin('daily_samples as samples', 'pools.id','=', 'samples.pool_id')->where('samples.id', DB::raw('(SELECT MAX(samples.id) FROM daily_samples as samples WHERE samples.pool_id = pools.id)'))
-            ->leftJoin('daily_parameters as parameters', 'pools.id','=', 'parameters.pool_id' )->where('parameters.id', DB::raw('(SELECT MAX(parameters.id) FROM daily_parameters as parameters WHERE parameters.pool_id = pools.id)'))
             ->groupBy('pool_id')
             ->select('pools.id as pool_id','pools.size','pools.name as name', DB::raw('(IFNULL(sowing.planted_at, 0)) as planted_at'), DB::raw('(IFNULL(samples.abw,0)) as abw'), DB::raw('(IFNULL(samples.wg, 0)) as awg'), DB::raw('(IFNULL(samples.survival_percent, 0)) as survival'),
-            DB::raw('(IFNULL((DATEDIFF(CURDATE(),sowing.planted_at)),0)) as days'), DB::raw('(IFNULL(sowing.planted_larvae, 0)) as planted_larvae'), DB::raw('(IFNULL(parameters.ppm, 0)) as do'),
+            DB::raw('(IFNULL((DATEDIFF(CURDATE(),sowing.planted_at)),0)) as days'), DB::raw('(IFNULL(sowing.planted_larvae, 0)) as planted_larvae'),
             DB::raw('(SELECT (IFNULL(SUM(pools_resources_used.quantity),0)) FROM pools_resources_used, resources WHERE pools_resources_used.pool_id = pools.id and pools_resources_used.resource_id = resources.id and resources.category_id = 1 ) as balanced'))
             ->get();
         
@@ -268,7 +267,7 @@ class PoolController extends Controller
             ->join('presentation_resources as presentation', 'presentation.resource_id','=','used.resource_id')
             ->select('presentation.id as presentation','presentation.name as presentation_name', 'presentation.price', 'presentation.quantity', 'presentation.unity', 'used.quantity as quantity_used')->groupBy('presentation')
             ->get();
-
+//dd($poolInfo);
         return response()->json([
             'status' => '200',
             'poolInfo' => $poolInfo,

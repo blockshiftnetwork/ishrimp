@@ -10,7 +10,7 @@
             </div>
         <div class="m-0 mb-4 mt-4 row">
     <div class="col-md-6 mx-auto">
-        <form class="form-group" role="form" role="form" method="POST" action="{{route('pools.store')}}">
+        <form id="from-create-pool" class="form-group" role="form" role="form" method="POST" action="{{route('pools.store')}}">
             {{ csrf_field() }}
         <div class="form-group">
         <label for="name">Nombre de la piscina</label>
@@ -22,8 +22,8 @@
         </div>
         <input class="form-control mb-2" type="hidden" name="coordinates" placeholder="coordenadas" id="coordinates">
         <div class="btn-group-md">
-            <button id="savePool" class="btn btn-primary btn-block" type="submit">Crear</button>
-            <a class="btn btn-info btn-block" href="">Crear y Sembrar</a>
+            <button id="savePool" class="btn btn-primary btn-block" type="submit" >Crear</button>
+            <button id="savePoolSowing" class="btn btn-info btn-block" type="button">Crear y Sembrar</button>
         </div>
            
    
