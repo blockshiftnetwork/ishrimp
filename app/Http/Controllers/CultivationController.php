@@ -278,12 +278,13 @@ class CultivationController extends Controller
     public function storeProjections(Request $request)
     {
          $request->validate([
+          
          'pool_id' => 'required',
          'parameter' => 'required',
          'theoretical' => 'required',
         ]);
     
-        $projection = DB::table('projections_data')->insert($request->except('_token'));
+        $projection = DB::table('projections_data')->updateOrInsert($request->except('_token'));
          return response()->json([
             'status' => '200',
             'data' => '!Datos guardados!',

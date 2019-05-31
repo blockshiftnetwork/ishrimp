@@ -65,8 +65,8 @@
 $(function () {
         var j = 0;
         var t = new Date();
-
         var timeout = null;
+
         $('#dateRs').flatpickr({
             altInput: true,
             altFormat: 'F j, Y',
@@ -260,7 +260,29 @@ $(function () {
                 }, 1500);
              }
         });
+
+    $('#pool').on('change', function(){
+       let pool_id = $(this).val();
+       let parameter_id = $('#parameter_id').val();
+       let urlproj = '/cultivation/projections/'+pool_id+'/'+parameter_id;
+        if(pool_id.length > 0 && parameter_id.length > 0){
+            loadProyection(urlproj);
+        }
+        
+        
     });
+
+     $('#parameter_id').on('change', function(){
+       let parameter_id  = $(this).val();
+       let pool_id = $('#pool').val();
+       let urlproj = '/cultivation/projections/'+pool_id+'/'+parameter_id;
+       if(pool_id.length > 0 && parameter_id.length > 0){
+            loadProyection(urlproj);
+        }
+    });
+ 
+});
+
 
     function showPopover(event) {
         var tr = $(event.target).parent().parent();
@@ -530,6 +552,18 @@ function saveDataProjections() {
         let input = $(element).val();
         return input.length > 0;
     }
+
+
+    function loadProyection(url){
+        table = $('#projection-table > tbody');
+         $.get(url, function(resp){
+            console.log(resp);
+            table.find('.val-theoretical').each(function(index){
+                $(this).val((typeof resp.theoretical[index] != 'undefined') ? resp.theoretical[index].theoretical: 0)
+            })
+         });
+    }
+
 
 </script>
 
