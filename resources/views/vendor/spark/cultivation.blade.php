@@ -421,7 +421,7 @@ $(function () {
         var dataValid = false;
         var timeout = null;
         var trs =  table.find('tr')
-        if( $('#lab').val() > 0){
+       
             for (let j = 0; j < trs.length; j++) {
 
                 var inputs = $(trs[j]).find('input');
@@ -439,7 +439,6 @@ $(function () {
                     if(validph && validppt && validppm && validppm_h && validppm_a){
                     $('#dateDp_s').val($('#dateDp').val() +' '+ $('#timeDp').val());
                     $('#hour_s').val($('#timeDp').val());
-                    $('#lab_s').val($('#lab').val());
                     var form = $('#formDayly').serialize();
                     $.post("{{route('storeDaylyParam')}}", form, function (resp) {
 
@@ -461,10 +460,6 @@ $(function () {
         }
     }
 
-    }else{
-        showAlert('#alert-cultivate', 'Error', 'Seleccione un laboratorio', 'alert-danger', 3000, false)
-
-    }
 }
       //save ABW
     function saveDaylyAbw() {
