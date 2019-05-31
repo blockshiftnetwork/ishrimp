@@ -65,7 +65,6 @@
 $(function () {
         var j = 0;
         var t = new Date();
-        var timeout = null;
 
         $('#dateRs').flatpickr({
             altInput: true,
@@ -227,39 +226,9 @@ $(function () {
                 }
             }
 
-            if ($(this).prop('name') === 'quantity') {
-                var tr = $(this).parent().parent();
-                var input = this;
-                var value = $(this).val();
-                var inputs = tr.find('.form-control');
-                var resource_id = $(inputs[1]).val();
-                var presentation_id = $(inputs[2]).val();
-              
-                clearTimeout(timeout);
-                timeout = setTimeout(function () {
-                    $.get('existence/' + resource_id + '/' + presentation_id, function(data){
-                        var existence = data.data[0];
-                      
-                        var message = '';
-                        if(typeof existence != 'undefined' && (existence.quantity*existence.presentation_quantity-existence.used_quatity) < parseInt(value) ){
-                            message = 'Excedió la cantidad disponible';
-                            $(input).removeClass('border border-success');
-                            $(input).addClass('border border-danger');
-                            showAlert('#alert-cultivate', 'Advertencia', message, 'alert-warning', 5000, false)
-                        }
-                        if(typeof existence === 'undefined'){
-                            message = 'No hay recursos en el inventario <a class="btn btn-warning" href="/resource?inventory=1">Agregar</a>';
-                            $(input).removeClass('border border-success');
-                            $(input).addClass('border border-danger');
-                            showAlert('#alert-cultivate', 'Advertencia', message, 'alert-warning', 10000, false)
-                        } else {
-                            $(input).removeClass('border border-danger');
-                            $(input).addClass('border border-success');
-                            }
-                    });                      
-                }, 1500);
-             }
+           
         });
+
 
     $('#pool').on('change', function(){
        let pool_id = $(this).val();
@@ -282,6 +251,7 @@ $(function () {
     });
  
 });
+
 
 
     function showPopover(event) {
@@ -338,6 +308,22 @@ $(function () {
         });
     };
 
+    function selectPresentation(event){
+        
+        var id = event.target.value;
+        var unity = $(event.target).parent().next().children().children();
+        unity.empty();
+        $.ajax({
+            url: '/getpresentation/'+id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                var resp = response.presentation;
+                unity.append(resp[0].unity)
+            }
+        });
+
+    }
 
     //save resource used
     function saveDataResourceUsed() {
@@ -387,6 +373,46 @@ $(function () {
 
 
 
+    }
+
+    function checkQuantity(event){
+                let timeout = null;
+                let tr = $(event.target).parent().parent();
+                console.log(tr);
+                let input = event.target;
+                let value = $(event.target).val();
+                let inputs = tr.find('.form-control');
+                let resource_id = $(inputs[1]).val();
+                let presentation_id = $(inputs[2]).val();
+              
+                clearTimeout(timeout);
+                timeout = setTimeout(function () {
+                    $.get('existence/' + resource_id + '/' + presentation_id, function(data){
+                        var existence = data.data[0];
+                        if(!(typeof existence === 'undefined')){
+                            var total = existence.quantity*existence.presentation_quantity-existence.used_quatity;
+                        }else{
+                            var total = 0.0;
+                        }
+                        
+                        var message = '';
+                        if(typeof existence != 'undefined' && total < parseInt(value) ){
+                            message = 'Excedió la cantidad disponible';
+                            $(input).removeClass('border border-success');
+                            $(input).addClass('border border-danger');
+                            showAlert('#alert-cultivate', 'Advertencia', message, 'alert-warning', 5000, false)
+                        }
+                        if(typeof existence === 'undefined'){
+                            message = 'No hay recursos en el inventario <a class="btn btn-warning" href="/resource?inventory=1">Agregar</a>';
+                            $(input).removeClass('border border-success');
+                            $(input).addClass('border border-danger');
+                            showAlert('#alert-cultivate', 'Advertencia', message, 'alert-warning', 10000, false)
+                        } else {
+                            $(input).removeClass('border border-danger');
+                            $(input).addClass('border border-success');
+                            }
+                    });                      
+                }, 1500); 
     }
 
   //save Dayly Parameters
@@ -502,8 +528,10 @@ function saveDataProjections() {
         var inputs = $(trs[j]).find('.form-control');
         for (let i = 0; i < inputs.length; i++) {
             var inputVal = $(inputs[i]).val();
-            inputName = $(inputs[i]).attr("name");
+            inputName = $(inputs[i]).attr("id");
+            
             $('#' + inputName + '_s').val(inputVal);
+            console.log(inputName, inputVal, '#' + inputName + '_s', $('#' + inputName + '_s').val());
         }
 
         //if exits inputs inside tr
@@ -532,8 +560,12 @@ function saveDataProjections() {
         }
     }
 }
+//show alerts
     function showAlert(target, title, message, type, duration, reload) {
         $(target).empty();
+        $(target).removeClass('show');
+        $(target).removeAttr('class');
+        $(target).addClass('alert  alert-dismissible fade in');
         $(target).addClass(type);
         $(target).addClass('show');
         $(target).append('<strong>' + title + ':' + '</strong> ' + message);
@@ -560,6 +592,9 @@ function saveDataProjections() {
             console.log(resp);
             table.find('.val-theoretical').each(function(index){
                 $(this).val((typeof resp.theoretical[index] != 'undefined') ? resp.theoretical[index].theoretical: 0)
+            })
+            table.find('.projection-id').each(function(index){
+                $(this).val((typeof resp.theoretical[index] != 'undefined') ? resp.theoretical[index].id: 0)
             })
          });
     }

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Resource;
 use App\Provider;
@@ -293,7 +292,6 @@ class ResourceController extends Controller
         return redirect()->back()->with('message', '¡Agregado al inventario!');
     }
 
- 
     public function showInventory(PoolSowing $poolSowing)
     {
         return Sowing::findOrFail($poolSowing);
