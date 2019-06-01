@@ -16,7 +16,7 @@
                         <label for="resource_id">Recurso</label>
                         <select class="form-control" name="resource_id" id="resource_id" required>
                             <option value="" selected>Seleccione un Recurso</option>
-                            @foreach($resources as $resource)
+                            @foreach($supplies as $resource)
                             <option value="{{$resource->id}}">{{$resource->name}}</option>
                             @endforeach
                         </select>
@@ -66,7 +66,7 @@
                         <label for="resource_id">Recurso</label>
                         <select class="form-control" name="resource_id" id="resource_id" required>
                             <option value="" selected>Seleccione un Recurso</option>
-                            @foreach($resources as $resource)
+                            @foreach($supplies as $resource)
                             <option value="{{$resource->id}}">{{$resource->name}}</option>
                             @endforeach
                         </select>

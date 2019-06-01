@@ -2,7 +2,7 @@
 <div>
 	<div class="card card-default">
 		<div class="card-header">
-			<h5>Parámetros Diarios</h5>
+			<h5 style="margin:0;">Parámetros Diarios</h5>
 		</div>
 		<div class="card-body p-0">
 			<form>
@@ -15,18 +15,6 @@
 									<input class="form-control col-2 mr-4 dateField" type="number" id="dateDp" name="date">
 									<label class="mr-2">Hora</label>
 									<input class="form-control col-2 mr-4 " type="number" id="timeDp" name="time">
-									<label class="mr-2">Laboratorios</label>
-								
-									@if(count($laboratories) > 0)
-									<select id="lab" name="lab" class="custom-select">
-										<option value="" selected>Seleccione</option>
-										@foreach($laboratories as $lab)
-										<option value="{{$lab->id}}" >{{$lab->name}}</option>
-										@endforeach
-									</select>
-									@else
-										<a class="text-weight-bold text-danger btn btn-inline btn-light" href="/resource?tab=4">Debe registrar uno o más, aquí</a>
-									@endif
 									<input type="button" onclick="saveDaylyParameters()" value="Guardar" class="btn btn-light ml-auto dayly-parameters-submit">
 								</div>
 							</th>
@@ -98,7 +86,6 @@
 		<input type="hidden" id="yellow_colonies_s" name="yellow_colonies"  required>
 		<input type="hidden" id="dateDp_s" name="date"  required>
 		<input type="hidden" id="hour_s" name="hour"  required>
-		<input type="hidden" id="lab_s" name="laboratory_id"  required>
 		</form>
 	</div>
 </div>

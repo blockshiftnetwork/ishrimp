@@ -2,14 +2,14 @@
 <div>
     <div class="card card-default">
         <div class="card-header">
-            <h5>Insumos y Minerales</h5>
+            <h5 style="margin:0;">Insumos y Minerales</h5>
         </div>
         <div class="card-body p-0">
             
                 <div class="container p-0 m-0">
-                    <div class="row bg-primary text-light m-0" style="width: 100%">
+                    <div class="row bg-primary text-light m-0" style="width: 100%; background: #4396ce !important;">
                         <div class="col-12">
-                            <div class="form-inline py-2">
+                            <div class="form-inline py-3">
                                 <label class="mr-2">Fecha</label>
                                 <input type="text" class="form-control " id="dateRs" name="date">
                             </div>
@@ -47,13 +47,16 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select id="presentation_id" name="presentation_id"  class="form-control" required="">
+                                    <select id="presentation_id" name="presentation_id"  class="form-control" required="" onchange="selectPresentation(event)">
                                         <option value="">Seleccione</option>
                                         
                                     </select>
                                 </td>
-                                <td>
-                                    <input id="quantity" name="quantity" class="form-control" type="text" required="">
+                                <td class="input-group mb-3">
+                                    <input id="quantity" name="quantity" class="form-control" type="text" onkeyup="checkQuantity(event)" required="">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"></span>
+                                    </div>
                                 </td>
                                 <td>
                                 
@@ -71,7 +74,7 @@
                         <hr>
                         <div class="row m-0 p-2">
                             <div class="col-12">
-                                <button  onclick="saveDataResourceUsed()" class="btn btn-primary">Guardar</button>
+                                <button  id="btn_res_used" onclick="saveDataResourceUsed()" class="btn btn-primary">Guardar</button>
                             </div>
                         </div>
                     </form>

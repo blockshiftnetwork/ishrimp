@@ -2,14 +2,14 @@
 
 @section('content')
     <home :user="user" :teams="teams" inline-template>
-        <div class="spark-screen container" style="min-height: fit-content; height: 100%; width: 100%;">
+        <div class="spark-screen " style="min-height: fit-content; height: 100%; width: 100%;">
             <div style="height: 100%;">
                 <!-- Tabs -->
                 @section('overview_options')
                 <ul class="nav flex-column mb-4 ">
                         <li class="nav-item">
                             <a class="nav-link active" href="#dashboard" aria-controls="dashboard" role="tab" data-toggle="tab">
-                                <i class="fa fa-dashboard icon"></i>
+                                <i id="tab_vg" class="fa fa-dashboard icon"></i>
                                 {{__('Visión General')}}
                             </a>
                         </li>
@@ -22,9 +22,15 @@
 
 
                         <li class="nav-item ">
-                            <a class="nav-link" href="#pools" aria-controls="pools" role="tab" data-toggle="tab">
+                            <a id="tab_pool" class="nav-link" href="#pools" aria-controls="pools" role="tab" data-toggle="tab">
                                     <i class="fa fa-spinner icon"></i>
                                 {{__('Piscinas')}}
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a id="tab_sim" class="nav-link" href="#simulations" aria-controls="simulations" role="tab" data-toggle="tab">
+                                    <i class="fa fa-spinner icon"></i>
+                                {{__('Simulaciónes')}}
                             </a>
                         </li>
                     </ul>
@@ -39,9 +45,12 @@
                             <div role="tabcard" class="tab-pane " id="maps" style="height:-webkit-fill-available; width: 100%;">
                                     @include('spark::dashboard.maps')
                                 </div>
-                                <div role="tabcard" class="tab-pane " id="pools" style="height: 100%; width: 100%;">
+                            <div role="tabcard" class="tab-pane " id="pools" style="height: 100%; width: 100%;">
                                     @include('spark::dashboard.pools')
-                                </div>
+                            </div>
+                            <div role="tabcard" class="tab-pane " id="simulations" style="height: 100%; width: 100%;">
+                                    @include('spark::dashboard.simulation')
+                            </div>
                         </div>
                     </div>
             </div>
@@ -49,6 +58,7 @@
         </div>
        
     </home>
+    @include('spark::modals.dashboard.modalCreatePool')
     @include('spark::modals.dashboard.modalPool')
     @include('spark::modals.dashboard.modalResourcesUsed')
     @include('spark::modals.dashboard.modalBalancedPool')
@@ -60,12 +70,13 @@
 @section('custom-scripts')
 <script src="{{ asset('js/gmaps.js') }}"> </script>
 <script src="{{ asset('js/pools_summary.js') }}"> </script>
+<script type="text/javascript" src="{{asset('js/simulation.js')}}"></script>
 <script>
     $(function () {
         var j = 0;
-        var t = new Date();
-        console.log(t.getHours(), t.getMinutes());
+        var t = new Date(); 
         var timeout = null;
+        var tab =  getParameterByName('tab');
         $('#used_date').flatpickr({
             altInput: true,
             altFormat: 'F j, Y',
@@ -108,41 +119,65 @@
             time_24hr: true,
             defaultDate: t.getHours()+':'+t.getMinutes()
         });
-    $('#select_pool').selectpicker({
+        $('#savePoolSowing').on('click',function(){
+            $('#coordinates').val(1);
+            var form = $('#from-create-pool').serialize();
+            $('#btn_res_used').attr("disabled", true);
+                $.post("{{route('pools.store')}}", form, function (resp) {
+                }).done(function (resp) {
+                    window.location.replace("{{route('pools_sowing.index')}}")
+                }).fail(function (resp) {
+              
+                });
+        })
+        $('#select_pool').selectpicker({
         'liveSearch': true,
-    });    
+        });    
 
-     var tab =  getParameterByName('tab');
-    if(tab === '2'){
+        if(tab === '1'){
+        $('#tab_vg').tab('show');
+         }
+         if(tab === '2'){
         $('#tab_maps').tab('show');
-      } 
-});
+         }
+         if(tab === '3'){
+        $('#tab_pool').tab('show');
+         }
+         if(tab === '4'){
+        $('#tab_sim').tab('show');
+         }
 
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
 
-function selectpresentation(event) {
-        let id = event.target.value;
-        let presentation = $(event.target).parent().next().next().children().next()
-        console.log(presentation);
-        $(presentation[0]).empty();
-        $(presentation[0]).append('<option value="" selected>Presentación</option>');
-        $.ajax({
-            url: "presentation/" + id,
-            type: 'GET',
-            dataType: 'json',
-            success: function (response) {
-                var resp = response.data;
-                for (var i = 0; i < resp.length; i++) {
-                    $(presentation[0]).append('<option value="' + resp[i].id + '">' + resp[i].name + '</option>');
-                }
-            }
-        });
+
+
+    });
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
+
+    function selectpresentation(event) {
+            let id = event.target.value;
+            let presentation = $(event.target).parent().next().next().children().next()
+            console.log(presentation);
+            $(presentation[0]).empty();
+            $(presentation[0]).append('<option value="" selected>Presentación</option>');
+            $.ajax({
+                url: "presentation/" + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    var resp = response.data;
+                    for (var i = 0; i < resp.length; i++) {
+                        $(presentation[0]).append('<option value="' + resp[i].id + '">' + resp[i].name + '</option>');
+                    }
+                }
+            });
+        }
+
     $('#deletePoolModal').on('shown.bs.modal',function(event){
         console.log('show')
             var button = $(event.relatedTarget);

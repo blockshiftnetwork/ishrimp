@@ -1,37 +1,41 @@
 <!--add Modal-->
-<div class="modal fade" id="addInventoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="addPresentationBModal" tabindex="-1" role="dialog" aria-labelledby="presentationModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Item</h5>
+                <h5 class="modal-title" id="presentationModalBLabel">Agregar Presentación</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="form-group" action="{{route('storeInventory')}}" method="post">
-            {{ csrf_field() }}
+            <form class="form-group" action="{{route('storePresentation')}}" method="post">
+                 {{ csrf_field() }}
                 <div class="modal-body">
-                    <input type="hidden" name="team_id" value="{{Auth::user()->current_team_id}}">
                     <div class="form-group">
                         <label for="resource_id">Recurso</label>
-                        <select class="form-control" name="resource_id" id="resource_id" onchange="select(event)" required>
-                            <option value="" selected>Recurso</option>
-                            @foreach($resources as $resource)
+                        <select class="form-control" name="resource_id" id="resource_id" required>
+                            <option value="" selected>Seleccione un Recurso</option>
+                            @foreach($balanceds as $resource)
                             <option value="{{$resource->id}}">{{$resource->name}}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Nombre de la Presentación</label>
+                        <input class="form-control" type="text" name="name" id="name" required>
                     </div>
                     <div class="form-group">
                         <label for="quantity">Cantidad</label>
                         <input class="form-control" type="number" name="quantity" id="quantity" required>
                     </div>
                     <div class="form-group">
-                        <label for="presentation_id">Presentación</label>
-                        <select class="form-control" name="presentation_id" id="presentation_id" required>
-                            <option value="" selected>Presentación</option>
-                            
-                        </select>
+                        <label for="name">Precio</label>
+                        <input class="form-control" type="number" name="price" id="price" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Unidad</label>
+                        <input class="form-control" type="text" name="unity" id="unity" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -43,42 +47,45 @@
     </div>
 </div>
 <!-- Edit modal -->
-<div class="modal fade" id="editInventoryModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+<div class="modal fade" id="editPresentationBModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar Item</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Editar Presentación</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="form-group" action="{{route('updateInventory','inventory_id')}}" method="post">
-            @method('PATCH')
-            {{ csrf_field() }}
+            <form class="form-group" action="{{route('updatePresentation','presentation_id')}}" method="post">
+                 @method('PATCH')
+                {{ csrf_field() }}
                 <div class="modal-body">
-                    <input type="hidden" id="team_id" name="team_id" value="{{Auth::user()->current_team_id}}">
                     <input type="hidden" id="id" name="id">
-
                     <div class="form-group">
                         <label for="resource_id">Recurso</label>
-                        <select class="form-control" name="resource_id" id="resource_id" onchange="select(event)" required>
-                            <option value="" selected>Recurso</option>
-                            @foreach($resources as $resource)
+                        <select class="form-control" name="resource_id" id="resource_id" required>
+                            <option value="" selected>Seleccione un Recurso</option>
+                            @foreach($balanceds as $resource)
                             <option value="{{$resource->id}}">{{$resource->name}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="quantity">Cantidad</label>
+                        <label for="name">Nombre de la Presentación</label>
+                        <input class="form-control" type="text" name="name" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Cantidad</label>
                         <input class="form-control" type="number" name="quantity" id="quantity" required>
                     </div>
                     <div class="form-group">
-                        <label for="presentation_id">Presentación</label>
-                        <select class="form-control" name="presentation_id" id="presentation_id" required>
-                            <option value="" selected>Presentación</option>
-                           
-                        </select>
+                        <label for="name">Precio</label>
+                        <input class="form-control" type="number" name="price" id="price" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Unidad</label>
+                        <input class="form-control" type="text" name="unity" id="unity" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -91,7 +98,7 @@
 </div>
 
 <!-- Delete Modal -->
-<div class="modal modal-danger fade" id="deleteInventoryModal" tabindex="-1" role="dialog"
+<div class="modal modal-danger fade" id="deletePresentationModal" tabindex="-1" role="dialog"
     aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -100,13 +107,13 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
 
-            </div> 
-            <form action="{{route('destroyInventory','inventory_id')}}" method="post">
+            </div>
+            <form action="{{route('destroyPresentation','presentation_id')}}" method="post">
                 {{method_field('delete')}}
                 {{csrf_field()}}
                 <div class="modal-body">
                     <p class="text-center">
-                        ¿Está seguro de querer eliminar este item del inventario ?
+                        ¿Está seguro de querer eliminar esta presentación?
                     </p>
                     <input type="hidden" name="id" id="id" value="">
 

@@ -1,12 +1,9 @@
 <div class="card">
-    <div class="card-header">Sembrar</div>
-    <div class="card-body">
+    <div class="card-header"><span class="font-weight-bold" style="line-height: 2.3em; vertical-align: -webkit-baseline-middle;">Sembrar</span><div class="float-right search ">
+       </div></div>
+    <div class="card-body" style="padding-top: 0px;">
         <section class="section">
-            <div class="btn-tools-bar">
-                <button type="button" id="addfood" class="btn btn-info ml-5" data-toggle="modal"
-                data-target="#addSowingPoolModal"><i class="fa fa-plus" aria-hidden="true"></i>
-                Sembrar</button>
-            </div>
+
             <table class="bg-white" id="balanced_tbl"
             data-toggle="table"
             data-classes="table table-striped table-hover table-borderless"
@@ -51,6 +48,11 @@
                     @endforeach
                     </tbody>
             </table>
+            <div class="btn-tools-bar">
+                <button type="button" id="addfood" class="btn btn-primary ml-1 mt-3" data-toggle="modal"
+                data-target="#addSowingPoolModal"><i class="fa fa-plus" aria-hidden="true"></i>
+                Sembrar</button>
+            </div>
         </section>
         </div>
 </div>

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', config('app.name'))</title>
 
     <!-- Fonts -->
@@ -44,12 +44,12 @@
         <div class="row">
                 @if (Auth::check())
          
-            <nav id="sidebar" class="col-md-3">
+            <nav id="sidebar" class="col-md-2">
 
                 @include('spark::nav.user-left')
             </nav>
             
-            <main class="py-4  col-md-9 mx-auto">
+            <main class="py-4  col-md-10 mx-auto">
                     @yield('content')
                 </main>
             @else

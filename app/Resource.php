@@ -13,6 +13,7 @@ class Resource extends Model
    		'name',
    		'category_id',
    		'provider_id',
+   		'note',
    		'team_id'
 	];
 }

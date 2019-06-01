@@ -1,8 +1,8 @@
 <div class="card card-table card-default">
     <div class="card-header">
-        <h5>ABW</h5>
+        <h5 style="margin:0;">Peso Promedio</h5>
     </div>
-    <div class="card-body">
+    <div class="card-body p-0">
     <table id="bar-table" class="table mb-0 bg-white">
 					<thead class="thead-primary">
 						<tr>
@@ -29,10 +29,10 @@ data-locale="es-ES">
         <tr>
             <th class="col-xs-2" data-checkbox="true" data-field="id_pool">id piscina</th>
             <th class="col-xs-2" data-field="name_pool">Nombre piscina</th>
-            <th class="col-xs-1 text-left" data-field="last_abw">Última ABW</th>
-            <th class="col-xs-2" data-field="last_date">Última Fecha ABW</th>
+            <th class="col-xs-1 text-left" data-field="last_abw">Último Peso Promedio</th>
+            <th class="col-xs-2" data-field="last_date">Última Fecha</th>
             <th class="col-xs-1 text-left" >Muestras</th>
-            <th class="col-xs-2 text-center" data-field="abw">ABW (g)</th>
+            <th class="col-xs-2 text-center" data-field="abw">Peso Promedio (g)</th>
             <th class="col-xs-2 text-center" data-field="wg">WG (g)</th>
             <th class="col-xs-2 text-center" data-field="survival">Supervivencia (%)</th>
         </tr>

@@ -1,10 +1,11 @@
+<!-- modal balanced-->
 <!--add Modal-->
-<div class="modal fade" id="addResourceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="addBalancedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Recurso</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Balanceado</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,22 +14,20 @@
             {{ csrf_field() }}
                 <div class="modal-body">
                     <input type="hidden" name="team_id" value="{{Auth::user()->current_team_id}}">
-                    <div class="form-group">
-                        <label for="category_id">Tipo de recurso</label>
-                        <select class="form-control" name="category_id" id="category_id" required>
-                            <option value="" selected>Tipo de Recurso</option>
-                            @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
+
+                        <input type="hidden" id="category_id" name="category_id" value="1">
+                       
                     <div class="form-group">
                         <label for="name">Nombre del Recurso</label>
                         <input class="form-control" type="text" name="name" id="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="provider_id">Proveedor</label>
-                        <input id="provider_id"  class="form-control" type="text" name="provider_id">
+                        <label forr="provider_id">Proveedor</label>
+                        <input id="provider_id" class="form-control" type="text" name="provider_id">
+                    </div>
+                     <div class="form-group">
+                        <label for="note">Nota</label>
+                        <textarea id="note" class="form-control" type="text" name="note" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -40,12 +39,12 @@
     </div>
 </div>
 <!-- Edit modal -->
-<div class="modal fade" id="editResourceModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+<div class="modal fade" id="editBalancedModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar Recurso</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Editar Balanced</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -56,22 +55,19 @@
                  <div class="modal-body">
                     <input type="hidden" name="team_id" value="{{Auth::user()->current_team_id}}">
                     <input type="hidden" id="id" name="id">
-                    <div class="form-group">
-                        <label for="category_id">Tipo de recurso</label>
-                        <select class="form-control" name="category_id" id="category_id" required>
-                            <option value="" selected>Tipo de Recurso</option>
-                            @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    <input type="hidden" id="category_id" name="category_id" value="1">
+                       
                     <div class="form-group">
                         <label for="name">Nombre del Recurso</label>
                         <input class="form-control" type="text" name="name" id="name" required>
                     </div>
                     <div class="form-group">
                         <label for="provider_id">Proveedor</label>
-                        <input id="provider_id" type="text" name="provider_id" class="form-control">
+                        <input id="provider_id" class="form-control" type="text" name="provider_id" class="form-control">
+                    </div>
+                     <div class="form-group">
+                        <label for="note">Nota</label>
+                        <textarea id="note" class="form-control" type="text" name="note" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -84,7 +80,7 @@
 </div>
 
 <!-- Delete Modal -->
-<div class="modal modal-danger fade" id="deleteResourceModal" tabindex="-1" role="dialog"
+<div class="modal modal-danger fade" id="deleteBalancedModal" tabindex="-1" role="dialog"
     aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -112,4 +108,3 @@
         </div>
     </div>
 </div>
-
