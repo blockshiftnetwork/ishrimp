@@ -44,6 +44,15 @@ class CultivationController extends Controller
         ]);
     }
 
+    public function getInfoPresentation($id)
+    {        
+        $presentation = PresentationResource::where('id', $id)->get();
+        return response()->json([
+            'status' => '200',
+            'presentation' => $presentation,
+        ]);
+    }
+
     public function verifyExistence($resource_id, $presentation_id){
 
         $existence = DB::table('inventory_resources as inventory')->where('inventory.id', DB::raw('(SELECT MAX(inventory.id) FROM inventory_resources as inventory WHERE inventory.resource_id = resources.id)'))
@@ -177,7 +186,6 @@ class CultivationController extends Controller
             'ppm_h' => 'required',
             'green_colonies' => 'required',
             'yellow_colonies' => 'required',
-            'laboratory_id' => 'required',
             'date' => 'required',
             'hour' => 'required'
         ]);
@@ -203,7 +211,6 @@ class CultivationController extends Controller
                 'ppm_h' => 'required',
                 'green_colonies' => 'required',
                 'yellow_colonies' => 'required',
-                'laboratory_id' => 'required',
                 'date' => 'required',
                 'hour' => 'required'
             ]);
@@ -282,8 +289,13 @@ class CultivationController extends Controller
          'parameter' => 'required',
          'theoretical' => 'required',
         ]);
-    
-        $projection = DB::table('projections_data')->insert($request->except('_token'));
+        $v = DB::table('projections_data')->where('id',$request->id)->exists();
+    //dd($request);
+    if($v){
+        $projection = DB::table('projections_data')->where('id',$request->id)->update($request->except('_token','id'));
+    }else{
+        $projection = DB::table('projections_data')->insert($request->except('_token','id'));
+    }
          return response()->json([
             'status' => '200',
             'data' => '!Datos guardados!',

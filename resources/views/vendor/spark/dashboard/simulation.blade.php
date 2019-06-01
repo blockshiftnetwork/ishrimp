@@ -1,5 +1,8 @@
 <div id="simulation" class="card" style="min-width: max-content;">
     <div class="card-header">
+            <div class="btn-group-md float-right">
+                    <button id="pdf" class="btn btn-info btn-lg" onclick="generatepdf()"> Generar PDF</button>
+                </div>
     </div>
     <div class="card-body">
         <div class="row ">
@@ -37,7 +40,7 @@
                         </tr>
                         <tr>
                             <td>Precio larva (millar) $</td>
-                            <td><input class="form-control" type="text" id="c6"></td>
+                            <td><input class="form-control" type="number" id="c6"></td>
                         </tr>
                         <tr>
                             <td>Costo Larva Piscina</td>
@@ -45,11 +48,11 @@
                         </tr>
                         <tr>
                             <td>Días corrida</td>
-                            <td><input class="form-control" type="text" id="c8"></td>
+                            <td><input class="form-control" type="number" id="c8"></td>
                         </tr>
                         <tr>
                             <td>Peso cosechado en gr</td>
-                            <td><input class="form-control" type="text" id="c9"></td>
+                            <td><input class="form-control" type="number" id="c9"></td>
                         </tr>
                         <tr>
                             <td>Incremento g (semanal)</td>
@@ -57,7 +60,7 @@
                         </tr>
                         <tr>
                             <td>% Supervivencia</td>
-                            <td><input class="form-control" type="text" id="c11"></td>
+                            <td><input class="form-control" type="number" id="c11"></td>
                         </tr>
                         <tr>
                             <td>Biomasa lbs/ha</td>
@@ -77,7 +80,7 @@
                         </tr>
                         <tr>
                             <td>Costo Fijo (Cost/Ha/día)</td>
-                            <td><input class="form-control" type="text" id="c16"></td>
+                            <td><input class="form-control" type="number" id="c16" ></td>
                         </tr>
                         <tr>
                             <td>Costo FIJO Total / ha (-bal-lar)</td>
@@ -105,7 +108,7 @@
                         </tr>
                         <tr>
                             <td>Precio de Venta x KILO</td>
-                            <td><input class="form-control" type="text" id="c23" ></td>
+                            <td><input class="form-control" type="number" id="c23" ></td>
                         </tr>
                         <tr>
                             <td>Precio de Venta x LIBRA</td>
@@ -142,7 +145,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-5 offset-4 position-fixed">
+            <div class="col-md-5 offset-4 simulation-position">
                 <table id="table-balanced" class="table table-bordered">
                     <thead class="thead-primary">
                         <th>Producto</th>
@@ -198,9 +201,6 @@
                             <label for="p1">Precio Ponderado</label>
                             <input class="form-control" type="text" name="p1" id="p1" readonly>
                     </div>
-                    <div class="btn-group-md">
-                        <button id="pdf" class="btn btn-info btn-lg"> Generar PDF</button>
-                    </div>
 
             </div>                
             </div>
@@ -208,5 +208,9 @@
         </div>
 
     </div>
-
+<div class="card-footer">
+        <div class="btn-group-md float-right">
+                <button id="pdf" class="btn btn-info btn-lg pdf" onclick="generatepdf()"> Generar PDF</button>
+            </div>
+</div>
 </div>

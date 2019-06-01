@@ -1,10 +1,10 @@
 <!--add Modal-->
-<div class="modal fade" id="addPresentationModal" tabindex="-1" role="dialog" aria-labelledby="presentationModalLabel"
+<div class="modal fade" id="addPresentationBModal" tabindex="-1" role="dialog" aria-labelledby="presentationModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="presentationModalLabel">Agregar Presentación</h5>
+                <h5 class="modal-title" id="presentationModalBLabel">Agregar Presentación</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -16,7 +16,7 @@
                         <label for="resource_id">Recurso</label>
                         <select class="form-control" name="resource_id" id="resource_id" required>
                             <option value="" selected>Seleccione un Recurso</option>
-                            @foreach($supplies as $resource)
+                            @foreach($balanceds as $resource)
                             <option value="{{$resource->id}}">{{$resource->name}}</option>
                             @endforeach
                         </select>
@@ -47,7 +47,7 @@
     </div>
 </div>
 <!-- Edit modal -->
-<div class="modal fade" id="editPresentationModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+<div class="modal fade" id="editPresentationBModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -66,7 +66,7 @@
                         <label for="resource_id">Recurso</label>
                         <select class="form-control" name="resource_id" id="resource_id" required>
                             <option value="" selected>Seleccione un Recurso</option>
-                            @foreach($supplies as $resource)
+                            @foreach($balanceds as $resource)
                             <option value="{{$resource->id}}">{{$resource->name}}</option>
                             @endforeach
                         </select>

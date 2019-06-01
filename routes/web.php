@@ -45,6 +45,7 @@ Route::post('/cultivation/projections', 'CultivationController@storeProjections'
 Route::get('/cultivation/projections/{pool_id}/{parameter_id}', 'CultivationController@getProjections')->name('getProjections');
 //check existence
 Route::get('presentation/{resource_id}','CultivationController@getPresentationResource');
+Route::get('getpresentation/{id}','CultivationController@getInfoPresentation');
 Route::get('existence/{resource_id}/{presentation_id}','CultivationController@verifyExistence');
 
 //resources controller

@@ -66,7 +66,6 @@ $(function () {
         var j = 0;
         var t = new Date();
 
-        var timeout = null;
         $('#dateRs').flatpickr({
             altInput: true,
             altFormat: 'F j, Y',
@@ -227,40 +226,33 @@ $(function () {
                 }
             }
 
-            if ($(this).prop('name') === 'quantity') {
-                var tr = $(this).parent().parent();
-                var input = this;
-                var value = $(this).val();
-                var inputs = tr.find('.form-control');
-                var resource_id = $(inputs[1]).val();
-                var presentation_id = $(inputs[2]).val();
-              
-                clearTimeout(timeout);
-                timeout = setTimeout(function () {
-                    $.get('existence/' + resource_id + '/' + presentation_id, function(data){
-                        var existence = data.data[0];
-                      
-                        var message = '';
-                        if(typeof existence != 'undefined' && (existence.quantity*existence.presentation_quantity-existence.used_quatity) < parseInt(value) ){
-                            message = 'Excedió la cantidad disponible';
-                            $(input).removeClass('border border-success');
-                            $(input).addClass('border border-danger');
-                            showAlert('#alert-cultivate', 'Advertencia', message, 'alert-warning', 5000, false)
-                        }
-                        if(typeof existence === 'undefined'){
-                            message = 'No hay recursos en el inventario <a class="btn btn-warning" href="/resource?inventory=1">Agregar</a>';
-                            $(input).removeClass('border border-success');
-                            $(input).addClass('border border-danger');
-                            showAlert('#alert-cultivate', 'Advertencia', message, 'alert-warning', 10000, false)
-                        } else {
-                            $(input).removeClass('border border-danger');
-                            $(input).addClass('border border-success');
-                            }
-                    });                      
-                }, 1500);
-             }
+           
         });
+
+
+    $('#pool').on('change', function(){
+       let pool_id = $(this).val();
+       let parameter_id = $('#parameter_id').val();
+       let urlproj = '/cultivation/projections/'+pool_id+'/'+parameter_id;
+        if(pool_id.length > 0 && parameter_id.length > 0){
+            loadProyection(urlproj);
+        }
+        
+        
     });
+
+     $('#parameter_id').on('change', function(){
+       let parameter_id  = $(this).val();
+       let pool_id = $('#pool').val();
+       let urlproj = '/cultivation/projections/'+pool_id+'/'+parameter_id;
+       if(pool_id.length > 0 && parameter_id.length > 0){
+            loadProyection(urlproj);
+        }
+    });
+ 
+});
+
+
 
     function showPopover(event) {
         var tr = $(event.target).parent().parent();
@@ -316,6 +308,22 @@ $(function () {
         });
     };
 
+    function selectPresentation(event){
+        
+        var id = event.target.value;
+        var unity = $(event.target).parent().next().children().children();
+        unity.empty();
+        $.ajax({
+            url: '/getpresentation/'+id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                var resp = response.presentation;
+                unity.append(resp[0].unity)
+            }
+        });
+
+    }
 
     //save resource used
     function saveDataResourceUsed() {
@@ -367,13 +375,53 @@ $(function () {
 
     }
 
+    function checkQuantity(event){
+                let timeout = null;
+                let tr = $(event.target).parent().parent();
+                console.log(tr);
+                let input = event.target;
+                let value = $(event.target).val();
+                let inputs = tr.find('.form-control');
+                let resource_id = $(inputs[1]).val();
+                let presentation_id = $(inputs[2]).val();
+              
+                clearTimeout(timeout);
+                timeout = setTimeout(function () {
+                    $.get('existence/' + resource_id + '/' + presentation_id, function(data){
+                        var existence = data.data[0];
+                        if(!(typeof existence === 'undefined')){
+                            var total = existence.quantity*existence.presentation_quantity-existence.used_quatity;
+                        }else{
+                            var total = 0.0;
+                        }
+                        
+                        var message = '';
+                        if(typeof existence != 'undefined' && total < parseInt(value) ){
+                            message = 'Excedió la cantidad disponible';
+                            $(input).removeClass('border border-success');
+                            $(input).addClass('border border-danger');
+                            showAlert('#alert-cultivate', 'Advertencia', message, 'alert-warning', 5000, false)
+                        }
+                        if(typeof existence === 'undefined'){
+                            message = 'No hay recursos en el inventario <a class="btn btn-warning" href="/resource?inventory=1">Agregar</a>';
+                            $(input).removeClass('border border-success');
+                            $(input).addClass('border border-danger');
+                            showAlert('#alert-cultivate', 'Advertencia', message, 'alert-warning', 10000, false)
+                        } else {
+                            $(input).removeClass('border border-danger');
+                            $(input).addClass('border border-success');
+                            }
+                    });                      
+                }, 1500); 
+    }
+
   //save Dayly Parameters
     function saveDaylyParameters(e) {
         var table = $('#paramaters-table');
         var dataValid = false;
         var timeout = null;
         var trs =  table.find('tr')
-        if( $('#lab').val() > 0){
+       
             for (let j = 0; j < trs.length; j++) {
 
                 var inputs = $(trs[j]).find('input');
@@ -391,7 +439,6 @@ $(function () {
                     if(validph && validppt && validppm && validppm_h && validppm_a){
                     $('#dateDp_s').val($('#dateDp').val() +' '+ $('#timeDp').val());
                     $('#hour_s').val($('#timeDp').val());
-                    $('#lab_s').val($('#lab').val());
                     var form = $('#formDayly').serialize();
                     $.post("{{route('storeDaylyParam')}}", form, function (resp) {
 
@@ -413,10 +460,6 @@ $(function () {
         }
     }
 
-    }else{
-        showAlert('#alert-cultivate', 'Error', 'Seleccione un laboratorio', 'alert-danger', 3000, false)
-
-    }
 }
       //save ABW
     function saveDaylyAbw() {
@@ -480,8 +523,10 @@ function saveDataProjections() {
         var inputs = $(trs[j]).find('.form-control');
         for (let i = 0; i < inputs.length; i++) {
             var inputVal = $(inputs[i]).val();
-            inputName = $(inputs[i]).attr("name");
+            inputName = $(inputs[i]).attr("id");
+            
             $('#' + inputName + '_s').val(inputVal);
+            console.log(inputName, inputVal, '#' + inputName + '_s', $('#' + inputName + '_s').val());
         }
 
         //if exits inputs inside tr
@@ -510,8 +555,12 @@ function saveDataProjections() {
         }
     }
 }
+//show alerts
     function showAlert(target, title, message, type, duration, reload) {
         $(target).empty();
+        $(target).removeClass('show');
+        $(target).removeAttr('class');
+        $(target).addClass('alert  alert-dismissible fade in');
         $(target).addClass(type);
         $(target).addClass('show');
         $(target).append('<strong>' + title + ':' + '</strong> ' + message);
@@ -530,6 +579,21 @@ function saveDataProjections() {
         let input = $(element).val();
         return input.length > 0;
     }
+
+
+    function loadProyection(url){
+        table = $('#projection-table > tbody');
+         $.get(url, function(resp){
+            console.log(resp);
+            table.find('.val-theoretical').each(function(index){
+                $(this).val((typeof resp.theoretical[index] != 'undefined') ? resp.theoretical[index].theoretical: 0)
+            })
+            table.find('.projection-id').each(function(index){
+                $(this).val((typeof resp.theoretical[index] != 'undefined') ? resp.theoretical[index].id: 0)
+            })
+         });
+    }
+
 
 </script>
 

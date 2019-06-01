@@ -35,6 +35,7 @@
                                 <th>Teorico</th>
                             </thead>
                             <tbody>
+
                                 <tr>
                                   
                                 <td>
@@ -43,7 +44,8 @@
 
                                 </td>
                                 <td>
-                                    <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+                                    <input id="id_proyection" name="id" type="hidden" class="form-control projection-id">
+                                    <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto val-theoretical" type="number" required="">
 
                                 </td>
                              
@@ -56,7 +58,8 @@
 
                                 </td>
                                 <td>
-                                    <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+                                    <input id="id_proyection" name="id" type="hidden" class="form-control projection-id">
+                                    <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto val-theoretical" type="number" required="">
 
                                 </td>
                              
@@ -69,7 +72,8 @@
 
                                 </td>
                                 <td>
-                                    <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+                                    <input id="id_proyection" name="id" type="hidden" class="form-control projection-id">
+                                    <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto val-theoretical" type="number" required="">
 
                                 </td>
                              
@@ -82,7 +86,8 @@
 
                                 </td>
                                 <td>
-                                    <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+                                    <input id="id_proyection" name="id" type="hidden" class="form-control projection-id">
+                                    <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto val-theoretical" type="number" required="">
 
                                 </td>
                              
@@ -95,7 +100,8 @@
 
                                 </td>
                                 <td>
-                                    <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+                                    <input id="id_proyection" name="id" type="hidden" class="form-control projection-id">
+                                    <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto val-theoretical" type="number" required="">
 
                                 </td>
                              
@@ -108,7 +114,8 @@
    
                                    </td>
                                    <td>
-                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+                                        <input id="id_proyection" name="id" type="hidden" class="form-control projection-id">
+                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto val-theoretical" type="number" required="">
    
                                    </td>
                                 
@@ -121,7 +128,9 @@
    
                                    </td>
                                    <td>
-                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+                                        <input id="id_proyection" name="id" type="hidden" class="form-control projection-id">
+
+                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto val-theoretical" type="number" required="">
    
                                    </td>
                                 
@@ -134,7 +143,9 @@
    
                                    </td>
                                    <td>
-                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+                                        <input id="id_proyection" name="id" type="hidden" class="form-control projection-id">
+
+                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto val-theoretical" type="number" required="">
    
                                    </td>
                                 
@@ -147,7 +158,9 @@
    
                                    </td>
                                    <td>
-                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+                                        <input id="id_proyection" name="id" type="hidden" class="form-control projection-id">
+
+                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto val-theoretical" type="number" required="">
    
                                    </td>
                                 
@@ -160,7 +173,9 @@
    
                                    </td>
                                    <td>
-                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+                                        <input id="id_proyection" name="id" type="hidden" class="form-control projection-id">
+
+                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto val-theoretical" type="number" required="">
    
                                    </td>
                                 
@@ -173,7 +188,9 @@
    
                                    </td>
                                    <td>
-                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto" type="number" required="">
+                                        <input id="id_proyection" name="id" type="hidden" class="form-control projection-id">
+
+                                       <input id="theoretical" name="theoretical" class="form-control w-50 mx-auto val-theoretical" type="number" required="">
    
                                    </td>
                                 
@@ -200,6 +217,7 @@
 </div>
 <form id="projection-data" style="display: none">
         {{ csrf_field() }}
+        <input id="id_proyection_s" name="id" type="hide">
         <input id="pool_s" name="pool_id" type="hide" required="">
         <input id="parameter_id_s" name="parameter" type="hide" required="">
         <input id="week_s" name="week" type="hide" required="">

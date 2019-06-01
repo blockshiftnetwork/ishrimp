@@ -27,13 +27,8 @@
                         <input class="form-control" type="text" name="name" id="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="category_id">Proveedor</label>
-                        <select class="form-control" name="provider_id" id="provider_id" required>
-                            <option value="" selected>Proveedor</option>
-                            @foreach($providers as $provider)
-                            <option value="{{$provider->id}}">{{$provider->name}}</option>
-                            @endforeach
-                        </select>
+                        <label for="provider_id">Proveedor</label>
+                        <input id="provider_id"  class="form-control" type="text" name="provider_id">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -75,13 +70,8 @@
                         <input class="form-control" type="text" name="name" id="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="category_id">Proveedor</label>
-                        <select class="form-control" name="provider_id" id="provider_id" required>
-                            <option value="" selected>Proveedor</option>
-                            @foreach($providers as $provider)
-                            <option value="{{$provider->id}}">{{$provider->name}}</option>
-                            @endforeach
-                        </select>
+                        <label for="provider_id">Proveedor</label>
+                        <input id="provider_id" type="text" name="provider_id" class="form-control">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -122,3 +112,4 @@
         </div>
     </div>
 </div>
+

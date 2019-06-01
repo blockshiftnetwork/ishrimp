@@ -47,13 +47,16 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select id="presentation_id" name="presentation_id"  class="form-control" required="">
+                                    <select id="presentation_id" name="presentation_id"  class="form-control" required="" onchange="selectPresentation(event)">
                                         <option value="">Seleccione</option>
                                         
                                     </select>
                                 </td>
-                                <td>
-                                    <input id="quantity" name="quantity" class="form-control" type="text" required="">
+                                <td class="input-group mb-3">
+                                    <input id="quantity" name="quantity" class="form-control" type="text" onkeyup="checkQuantity(event)" required="">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"></span>
+                                    </div>
                                 </td>
                                 <td>
                                 

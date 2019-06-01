@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Resource;
 use App\Provider;
@@ -15,18 +14,35 @@ class ResourceController extends Controller
     public function index()
     {
         $team_id = auth()->user()->currentTeam->id;
-        $resources = DB::table('resources')->where('resources.team_id','=', $team_id)
+         $resources = DB::table('resources')->where('resources.team_id','=', $team_id)
                     ->join('category_resources as category', 'resources.category_id','=', 'category.id' )
-                    ->leftjoin('providers','resources.provider_id','=','providers.id')
-                    ->select('resources.*', 'category.name as category_name',
-                            'providers.name as provider_name')
+                    ->select('resources.*', 'category.name as category_name')
                     ->get();
 
+        $supplies = DB::table('resources')->where('resources.team_id','=', $team_id)->where('resources.category_id','<>',1)
+                    ->join('category_resources as category', 'resources.category_id','=', 'category.id' )
+                    ->select('resources.*', 'category.name as category_name')
+                    ->get();
+
+        $balanceds = DB::table('resources')->where('resources.team_id','=', $team_id)->where('resources.category_id','=',1)
+                    ->join('category_resources as category', 'resources.category_id','=', 'category.id' )
+                    ->select('resources.*', 'category.name as category_name')
+                    ->get();
         $presentations = DB::table('presentation_resources as presentation')
                         ->join('resources', 'presentation.resource_id','=','resources.id')
-                        ->select('resources.name as resource_name','presentation.*')
+                        ->select('resources.name as resource_name','presentation.*')->where('resources.category_id','>',1)
                         ->get();
 
+        $presentations_a = DB::table('presentation_resources as presentation')
+                        ->join('resources', 'presentation.resource_id','=','resources.id')
+                        ->select('resources.name as resource_name','presentation.*')->where('resources.category_id','!=',1)
+                        ->get();
+
+        $presentations_b = DB::table('presentation_resources as presentation')
+                        ->join('resources', 'presentation.resource_id','=','resources.id')
+                        ->select('resources.name as resource_name','presentation.*')->where('resources.category_id','=',1)
+                        ->get();
+                        
     
         $inventory = DB::select('SELECT
                             t1.inventory_resource_id,
@@ -84,27 +100,29 @@ class ResourceController extends Controller
                     GROUP BY
                     t1.resource_id,
                     t1.presentation_id', [$team_id, $team_id]);    
-                    //dd($inventory);                  
-
-        $categories = DB::table('category_resources')->get();
+        $categories = DB::table('category_resources')->where('id','<>',1)->get();
         $providers = Provider::all();
         $laboratories = Laboratory::all();
         return view('vendor.spark.resource-settings')->with(['resources' => $resources,
-                                                            'providers' => $providers,
+                                                            'supplies' => $supplies,
+                                                            'balanceds' => $balanceds,
                                                             'categories' => $categories,
                                                             'presentations' => $presentations,
-                                                            'inventory' => $inventory,
-                                                            'laboratories' => $laboratories]);
+                                                            'presentations_a' => $presentations_a,
+                                                            'presentations_b' => $presentations_b,
+                                                            'inventory' => $inventory]);
     }
 
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required',
             'category_id' => 'required',
             'provider_id' => 'required',
             'team_id' => 'required'
         ]);
+  
 
         $Resource = Resource::create($request->all());
 
@@ -293,7 +311,6 @@ class ResourceController extends Controller
         return redirect()->back()->with('message', '¡Agregado al inventario!');
     }
 
- 
     public function showInventory(PoolSowing $poolSowing)
     {
         return Sowing::findOrFail($poolSowing);
