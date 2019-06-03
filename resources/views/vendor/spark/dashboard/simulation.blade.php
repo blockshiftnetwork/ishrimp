@@ -145,7 +145,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-5 offset-4 position-fixed">
+            <div class="col-md-5 offset-4 simulation-position">
                 <table id="table-balanced" class="table table-bordered">
                     <thead class="thead-primary">
                         <th>Producto</th>

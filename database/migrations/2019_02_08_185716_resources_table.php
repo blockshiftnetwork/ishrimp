@@ -18,10 +18,10 @@ class ResourcesTable extends Migration
             $table->string('name');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('category_resources');
-            $table->integer('provider_id')->unsigned()->nullable();
-            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('SET NULL');
+            $table->string('provider_id')->nullable();
             $table->integer('team_id')->unsigned();
             $table->foreign('team_id')->references('id')->on('teams');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

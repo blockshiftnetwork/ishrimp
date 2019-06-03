@@ -14,9 +14,15 @@
                 @section('resource_options')
                 <ul class="nav flex-column mb-4">
                     <li class="nav-item ">
-                        <a id="resource" class="nav-link active" href="#resources" aria-controls="resource" role="tab" data-toggle="tab">
+                        <a id="tab-balanced" class="nav-link active" href="#balanced" aria-controls="balanced" role="tab" data-toggle="tab">
                             <i class="fa fa-eyedropper icon"></i>
-                            {{__('Resources')}}
+                            {{__('Balanceados')}}
+                        </a>
+                    </li>
+                     <li class="nav-item ">
+                        <a id="tab-supplies" class="nav-link" href="#supplies" aria-controls="supplies" role="tab" data-toggle="tab">
+                            <i class="fa fa-eyedropper icon"></i>
+                            {{__('Insumos')}}
                         </a>
                     </li>
                     <li class="nav-item ">
@@ -32,7 +38,10 @@
                 <!-- Tab Cards -->
                 <div class="col-12">
                     <div class="tab-content">
-                        <div role="tabcard" class="tab-pane active" id="resources">
+                         <div role="tabcard" class="tab-pane active" id="balanced">
+                            @include('spark::resource.balanced')
+                        </div>
+                        <div role="tabcard" class="tab-pane" id="supplies">
                             @include('spark::resource.resource')
                         </div>
                         <div role="tabcard" class="tab-pane" id="inventory">
@@ -69,23 +78,24 @@
     results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
         }
-      // provider actios
-        $('#editProviderModal').on('shown.bs.modal',function(event){
+       // resources actions
+    $('#editBalancedModal').on('shown.bs.modal',function(event){
          var button = $(event.relatedTarget);
          var modal = $(this);
          var id = button.data('id');
+         console.log(id);
          var name = button.data('name');
-         var phone = button.data('phone');
-         var email = button.data('email')
-         var address = button.data('address');
+         var category_id = button.data('category_id');
+         var provider_id = button.data('provider_id');
+         var note = button.data('note')
          modal.find('.modal-body #name').val(name);
-         modal.find('.modal-body #phone').val(phone);
-         modal.find('.modal-body #email').val(email);
-         modal.find('.modal-body #address').val(address);
+         modal.find('.modal-body #provider_id').val(provider_id); 
+         modal.find('.modal-body #category_id').val(category_id);
+         modal.find('.modal-body #note').val(note);
          modal.find('.modal-body #id').val(id);
         })
 
-        $('#deleteProviderModal').on('shown.bs.modal',function(event){
+        $('#deleteRBalancedModal').on('shown.bs.modal',function(event){
             var button = $(event.relatedTarget);
             var modal = $(this);
             var id = button.data('id');
@@ -108,6 +118,31 @@
         })
 
         $('#deleteResourceModal').on('shown.bs.modal',function(event){
+            var button = $(event.relatedTarget);
+            var modal = $(this);
+            var id = button.data('id');
+            modal.find('.modal-body #id').val(id);
+           })
+        // presentation actions
+      $('#editPresentationBModal').on('shown.bs.modal',function(event){
+         var button = $(event.relatedTarget);
+         var modal = $(this);
+         var id = button.data('id');
+         console.log(id);
+         var name = button.data('name');
+         var quantity = button.data('quantity');
+         var price = button.data('price');
+         var unity = button.data('unity')
+         var resource_id = button.data('resource_id')
+         modal.find('.modal-body #name').val(name);
+         modal.find('.modal-body #quantity').val(quantity);
+         modal.find('.modal-body #price').val(price);
+         modal.find('.modal-body #unity').val(unity);
+         modal.find('.modal-body #resource_id').val(resource_id);
+         modal.find('.modal-body #id').val(id);
+        })
+
+        $('#deletePresentationBModal').on('shown.bs.modal',function(event){
             var button = $(event.relatedTarget);
             var modal = $(this);
             var id = button.data('id');
@@ -140,28 +175,7 @@
             modal.find('.modal-body #id').val(id);
            })
 
-     // laboratories actions
-     $('#editLabModal').on('shown.bs.modal',function(event){
-         var button = $(event.relatedTarget);
-         var modal = $(this);
-         var id = button.data('id');
-         var name = button.data('name');
-         var phone = button.data('phone');
-         var email = button.data('email');
-         var address = button.data('address')
-         modal.find('.modal-body #name').val(name);
-         modal.find('.modal-body #phone').val(phone);
-         modal.find('.modal-body #email').val(email);
-         modal.find('.modal-body #address').val(address);
-         modal.find('.modal-body #id').val(id);
-        })
-
-        $('#deleteLabModal').on('shown.bs.modal',function(event){
-            var button = $(event.relatedTarget);
-            var modal = $(this);
-            var id = button.data('id');
-            modal.find('.modal-body #id').val(id);
-           })
+   
               //Inventory actions
  $('#editInventoryModal').on('shown.bs.modal',function(event){
          var button = $(event.relatedTarget);
@@ -226,23 +240,26 @@
             //modify of search field
         $( document ).ready(function() {
            /* resources */
+        $balanced_tab = $("#balanced-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
         $resource_tab = $("#resource-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
         $presentations_tab = $("#presentation > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
-        $providers_tab = $("#providers > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
-        $lab_tab = $("#labs > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
-           
+     
+        $presentations_tab_b = $("#presentation > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();
+        $("#balanced-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar").hide();
         $("#resource-tab > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar").hide();
+         $("#presentation-b > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar").hide();
         $("#presentation > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar").hide();
-        $("#providers > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar").hide();
-        $("#labs > div.mid_container > section > div.bootstrap-table > div.fixed-table-toolbar ").hide();
-        
+
+        $("#pond-detail-pills > div#s_bal").append($balanced_tab);
+        $("#pond-detail-pills > div#s_pres_b").append($presentations_tab_b);
+
+
         $("#pond-detail-pills > div#s_res").append($resource_tab);
         $("#pond-detail-pills > div#s_pres").append($presentations_tab);
-        $("#pond-detail-pills > div#s_prov").append($providers_tab);
-        $("#pond-detail-pills > div#s_labs").append($lab_tab);
+
 
         function mostrar_campo_buscar(id_to_show) {
-            let ids = ['#s_res', '#s_pres', '#s_prov', '#s_labs'];
+            let ids = ['#s_res', '#s_pres', '#s_bal', '#s_pres_b'];
             
             return function() {
                 for (let id of ids) {
@@ -255,14 +272,15 @@
             }
         }        
         $( "#s_res" ).show();  
-        
+        $( "#s_bal" ).show();
+
         $( "#res" ).click(mostrar_campo_buscar("#s_res"));
 
         $( "#pres" ).click(mostrar_campo_buscar("#s_pres"));
 
-        $( "#prov" ).click(mostrar_campo_buscar("#s_prov"));
+         $( "#bal" ).click(mostrar_campo_buscar("#s_bal"));
 
-        $( "#lab" ).click(mostrar_campo_buscar("#s_labs"));
+        $( "#pres_b" ).click(mostrar_campo_buscar("#s_pres_b"));
 
         /* inventory */
         $invent_search = $("#feed_table > div.bootstrap-table > div.fixed-table-toolbar > div > input").detach();

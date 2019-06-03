@@ -91,6 +91,10 @@ img.logo-header {
         margin-left: 0px !important;
         margin-right: -35px !important;
         }
+
+        .simulation-position{
+                position:absolute;
+            }
       
     }
 
@@ -104,6 +108,10 @@ img.logo-header {
         .card-login{
             margin-left: 0px !important;
             margin-right: -35px !important;
+            }
+
+            .simulation-position{
+                position:fixed;
             }
         }
 
@@ -366,3 +374,22 @@ div#btn-createpool {
     background-color: #4396ce;
     border: 1px solid rgba(255, 255, 255, 0.35);
 }
+
+@media screen and (max-width: 1024px) {
+
+        .simulation-position{
+                position: relative;
+                left: -30%;
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+            }
+      
+    }
+
+@media screen and (min-width: 1440px) {
+      
+            .simulation-position{
+                  position: fixed;  
+            }
+        }

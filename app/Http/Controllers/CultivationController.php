@@ -186,7 +186,6 @@ class CultivationController extends Controller
             'ppm_h' => 'required',
             'green_colonies' => 'required',
             'yellow_colonies' => 'required',
-            'laboratory_id' => 'required',
             'date' => 'required',
             'hour' => 'required'
         ]);
@@ -212,7 +211,6 @@ class CultivationController extends Controller
                 'ppm_h' => 'required',
                 'green_colonies' => 'required',
                 'yellow_colonies' => 'required',
-                'laboratory_id' => 'required',
                 'date' => 'required',
                 'hour' => 'required'
             ]);
