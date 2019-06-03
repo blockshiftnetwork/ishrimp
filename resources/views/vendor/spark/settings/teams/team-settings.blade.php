@@ -77,12 +77,7 @@
                             @include('spark::settings.teams.team-profile')
                         </div>
                     @endif
-               <!-- Category Resource -->
-               <!-- <div role="tabcard" class="tab-pane {{ Auth::user()->ownsTeam($team) ? 'active' : '' }}" id="category-resource">
-                        <div v-if="team">
-                        @include('spark::settings.teams.team-category-resource')
-                        </div>
-                    </div> -->
+            
                     <!-- Membership -->
                     <div role="tabcard" class="tab-pane {{ Auth::user()->ownsTeam($team) ? 'active' : '' }}" id="membership">
                         <div v-if="team">
